@@ -78,7 +78,7 @@ Hepsi X2D'nin 256 × 256 × 260 mm hacmine sığıyor.
 # Faz 2 — Motorlu şasi (sonsuz vida)
 
 Seçilen düzen: **boyuna 370 motor + tek ağızlı sonsuz vida, 30:1**, ön aksta.
-Sonsuz vida kendinden kilitli (tan λ = 0.1 < PETG sürtünmesi ~0.2): motor dururken tren eğimde ve şarj istasyonunda kaymaz.
+Kurşun açısı küçük (tan λ ≈ 0.1) ve PETG–PETG sürtünmesi tahminen ~0.2 olduğundan sonsuz vidanın geri döndürülmeye direnç göstermesi *beklenir*; ancak bu **garanti değildir**: gerçek sürtünme yük, yağlama, aşınma, sıcaklık ve titreşimle değişir, kendinden kilitleme kurşun açısı/sürtünme oranından kesin olarak çıkarılamaz. Baskı ve eğim testi **yapılmadı**. Bağımsız bir park freni veya park güvenliği **yok**; tren eğimde ya da şarj istasyonunda kendiliğinden kaymayacak diye varsayılmamalı (takoz, düz istasyon zemini veya ayrı fren gerekebilir).
 
 | Dosya | Açıklama |
 |---|---|
@@ -89,7 +89,7 @@ Sonsuz vida kendinden kilitli (tan λ = 0.1 < PETG sürtünmesi ~0.2): motor dur
 
 Hesaplar (varsayım):
 - Eksen mesafesi (10+30)/2 + 0.15 = 20.15 mm; diş tepesi–karşı kök boşluğu 0.4 mm.
-- 370 motor ~5000–7000 rpm (7.4 V) → aks 167–233 rpm → 0.37–0.51 m/s (2.6 kg tren için ~0.3 W, motor için çok rahat). Hız PWM ile düşürülecek.
+- 370 motor ~5000–7000 rpm (2S: 7.4 V nominal, tam dolu 8.4 V — motorun 8.4 V'ta sürekli çalışması doğrulanmadı) → aks 167–233 rpm → 0.37–0.51 m/s (2.6 kg tren için ~0.3 W, motor için çok rahat). Hız PWM ile düşürülecek.
 - Kurşun açısı 5.7°: karşı dişli düz basıldı, dişli genişliği boyunca ~0.24 mm sapma geri boşlukla karşılanıyor. Aşınma görülürse helisel dişliye geçilmeli.
 
 Doğrulanan (SolidCraft `inspect.clearance`): tekerlek–ray 0.05, tekerlek–şasi 1.0, sonsuz vida göbeği–şasi 1.5, karşı dişli–şasi 2.5, karşı dişli–motor 2.5 mm, çakışma yok.
@@ -172,7 +172,7 @@ ile `out/*.measure.json`'dan yeniden üretilir).
 2. `lok_platform_on` ile `lok_platform_arka`'yı alt flanşlarından **2× M3×10 cıvata + somun** ile birleştir (x = −84).
 3. Platformu şasinin üstüne oturt; dikmeler traverslere gelir. Üstten **2× M3×25** ile `DeckHoleF/B`'ye vidala
    (kazan takılmadan önce). Gövdeyi sökmek için önce kazan (alttan 4 vida; x = 70 / −68 şasi levhalarının dışında, alttan erişilir) çıkarılır.
-4. Fener: 5 mm LED'i kazanın içinden kanala it, önüne Ø10 lens. ESP32, sürücü, buck dönüştürücü kazan içine (çift taraflı bant).
+4. Fener: 5 mm LED'i kazanın içinden kanala it, önüne Ø10 lens. ESP32, sürücü, buck dönüştürücü kazan içine (çift taraflı bant). Gerilim seçimleri açık kararlardır (aşağıda).
 5. Kazanı platforma oturt, alttan **4× M3×8** ile (x = 70 ve −68, y = ±18.1) iç kaburgalara vidala.
 6. Kabini oturt, alttan **4× M3×8** (x = −77.4 ve −134, y = ±37.6). Çatıyı tak (sıkı geçme; gerekirse bir damla yapıştırıcı).
 7. Baca, domlar ve ventili pimlerinden kazandaki deliklere yapıştır (kum domu yapıştırılmazsa ön şasi vidasına erişim kalır).
@@ -213,4 +213,97 @@ ile `out/*.measure.json`'dan yeniden üretilir).
 | 5 mm sıcak beyaz LED + 220 Ω | 1 |
 | Ø10 × 2 lens (isteğe bağlı) | 1 |
 | 2S Li-ion 2×18650 paket (~70×37×20) + 2S BMS | 1 (tenderde) |
-| ESP32 kartı, DRV8833/TB6612, 7.4→5 V buck, A3144 hall, açma/kapama anahtarı, JST-PH konnektör | 1'er |
+| ESP32 kartı, DRV8833/TB6612, buck dönüştürücü (çıkış gerilimi açık karar, girişi 8.4 V'a dayanmalı), A3144 hall, açma/kapama anahtarı | 1'er |
+
+---
+
+# Faz 3b — Araçlar arası elektrik hattı: yalnız mekanik hazırlık
+
+Bu bölüm **elektrik tasarımı değildir** ve üretime hazır değildir. Yalnız tender ve yolcu vagonu
+gövdelerine kablo geçişi için yer ayrıldı. Gerilim, akım, konnektör tipi ve sigorta seçilmedi.
+
+## Modele eklenenler (params → `wiring`)
+
+| Yer | Ne | Ölçü |
+|---|---|---|
+| `tender_depo` ön (x = 70) ve arka (x = −70) duvarı | 2-pin kutuplu konnektör yuvası + iç tutucu blok + 45° baskı desteği | Yuva 10.4 × 6.2, 8 derin; üst kenarda 3 × 1.2 kutuplama kanalı; arkada 6 × 3 tel çıkışı (omuz: konnektör içeri itilemez). Eksen y = 0, z = 84 (raydan ≈ 105) |
+| `vagon_govde` ön/arka alın duvarı (x = ±98) | Aynı yuva | Aynı. Alın kapısı üst kenarı 88 → **68** alçaltıldı (yuvaya yer) |
+| `tender_depo`, `vagon_govde` +y yan duvarı | 3 iç kablo kelepçesi (duvarla kapalı tünel, 45° destekli) | Tünel 4 × 4, z = 42. Tender x = −40/0/40, vagon x = −70/0/70 |
+| `vagon_cati` | İç tepe boyunca düz LED şerit yüzeyi + +y dilinde kablo çentiği | Yüzey 12 geniş (8 mm şerit VARSAYIM), çentik 5 geniş |
+| `tender_depo` ön duvar | **Ana güç** (pil → lokomotif) Ø8 deliği korundu | Aksesuar hattından ayrı |
+
+**Konnektör ölçüleri VARSAYIMDIR** (JST-XH 2P sınıfı bir kablo-kablo/panel konnektörü düşünüldü).
+Konnektör seçilince `params.json → wiring.conn_*` güncellenip `python3 cad/build.py tender_depo vagon_govde`
+ile yeniden derlenmeli.
+
+**Lokomotife konnektör eklenmedi.** Lokomotif–tender arasında bugün yalnız ana güç kablosu geçer.
+Lokomotiften öne aksesuar hattı gerekirse ayrı karar.
+
+## Mekanik ilkeler
+
+- **Çekme kuvvetini kablo taşımaz:** araçları çeki kolu (M3 pimler) bağlar. Ara kablo serbest bir
+  döngü olarak durur; araç içindeki tel konnektörün arkasından kablo bağıyla kelepçe tünellerine
+  bağlanır. Böylece kablo çekilirse yük kelepçeye biner, konnektör lehimine binmez.
+- **Kablo kuplörden ve tekerleklerden uzak:** konnektörler araç ekseninde (y = 0), çeki kolunun
+  (z = 15.5–22.5) ve tamponların (üstü z = 25) çok üstünde, z = 84'te.
+- **Aksesuar hattı, ana güç ve şarj kontakları ayrı yollardır.** Şarj kontakları bu fazda modellenmedi.
+
+## R750 kablo/pin hesabı (`coupling_calc.py` → `coupling_calc.json`)
+
+Düzlemsel bir ön hesaptır. Aracın dönme merkezi (0-4-0'da dingil ortası, bojili vagonda iki pivot
+ortası) ray ekseninde, araç oraya teğet kabul edildi; araçları 44 mm'lik rijit çeki kolu bağlar.
+S-viraj geçişi, dikey hareket, ray toleransı ve kablonun sertliği hesapta **yok**.
+
+| Çift | Pim–pim (düz/R750) | Tampon başı iç boşluk (düz → R750) | Konnektör yüzleri (düz → R750) | 70 mm kabloda en az pay | En kötü sarkma (V varsayımı) |
+|---|---|---|---|---|---|
+| loko–tender* | 44 / 44 | 12.0 → 11.2 | 30.0 → 30.9 | 39.1 | 21.0 → döngü tabanı tampon üstünden 38, platform üstünden 34 |
+| tender–vagon | 44 / 44 | 12.0 → **5.7** | 34.0 → 34.1 | 35.9 | 20.8 → 38.2 / 34.2 |
+| vagon–vagon | 44 / 44 | 12.0 → **3.2** | 36.0 → 36.1 | 33.9 | 20.6 → 38.4 / 34.4 |
+
+\* Lokomotifte konnektör yok; satır, hesap için kabin arka yüzünde varsayılmış bir konnektörle yapıldı.
+
+Yorum (test değil): eksendeki konnektörler arasında virajda mesafe yalnız ~0.1–0.9 mm değişir, bu yüzden
+70 mm kablo hesapta gergin kalmaz. Döngü sarkarsa bile en alçak noktası tamponların ~38 mm üstünde kalır.
+Hesaplanan tampon başı iç boşluğu vagon–vagon çiftinde R750'de **3.2 mm**'ye düşüyor: dar ama pozitif.
+S-virajda bu değer daha da küçülebilir ve **hesaplanmadı**. Bu sonuçlar fiziksel bir viraj testinin yerini tutmaz.
+
+## Açık kararlar (seçilmedi)
+
+| Konu | Durum |
+|---|---|
+| Aksesuar hattı gerilimi | **Seçilmedi.** Pil 2S: 7.4 V nominal, 8.4 V tam dolu (tam boşta ~6 V). Doğrudan pil gerilimi mi, regüleli bir gerilim mi verileceği açık; 5 V varsayılan değildir |
+| Aksesuar hattı sigortası / akım sınırı | **Seçilmedi** (değer, tür, yer) |
+| Konnektör tipi ve akım değeri | **Seçilmedi.** Yuva ölçüleri varsayım; seçilecek konnektörün akım değeri, toplam aydınlatma akımı + pay olmalı |
+| Araç başına izin verilen yük, hat boyunca gerilim düşümü, en fazla araç sayısı | **Hesaplanmadı** |
+| LED şerit gerilimi ve tipi | **Seçilmedi** (hat gerilimine bağlı) |
+| Lokomotif lojik beslemesi (ESP32 buck çıkışı) | Açık; buck girişi en az 8.4 V'a dayanmalı |
+| Ana güç kablosu kesiti / konnektörü / sigortası | **Seçilmedi** (motor akımı ölçülmedi) |
+| Şarj kontakları | **Modellenmedi**, ayrı faz |
+| Kutuplama/ters takma koruması | Yuvada mekanik kanal var; konnektör seçilmeden işe yaradığı **doğrulanmadı** |
+
+## Faz 3b'de doğrulananlar (gerçekten ölçülen)
+
+- `tender_depo` 95 018 mm³ (Faz 3: 90 943), `vagon_govde` 87 473 mm³ (81 276), `vagon_cati` 54 878 mm³ (51 658); kutu ölçüleri değişmedi; her biri tek gövde, `shells = 1`.
+- STL'ler baskı yönünde yatağa oturuyor (z min = 0).
+- `inspect.clearance`: `tender_montaj` (17 çift) ve `vagon_montaj` (37 çift) **çakışma 0**, kontrol edilemeyen çift 0. Vagon kasası–en yakın tekerlek 12.7 mm.
+- Görsel kontrol: `renders/vagon_kablo_ucu.png` (alındaki yuva ve alçaltılmış kapı).
+
+**Doğrulanmayanlar:** baskı yok; konnektörün yuvaya oturması, kutuplama kanalı, tutucunun çekme
+dayanımı, kelepçe tüneline kablo bağının geçişi, LED şerit yapışması, R750 ve S-viraj sürüş testi.
+Lokomotif montajı yeniden derlendi (inceleme 3MF'i için); lokomotif gövdesinde değişiklik yok.
+
+## İnceleme amaçlı renkli montaj 3MF'leri (BASILMAZ)
+
+`out/3mf/lokomotif_montaj.3mf`, `tender_montaj.3mf`, `vagon_montaj.3mf`: dünya koordinatında, parça
+renkleri `basematerials` içinde, **ray hariç** (`build.py → REVIEW_3MF`, `file.export bodies` listesi).
+Site 3B görüntüleyicisi içindir; `parts.json`'da basılacak parça listesinde değil, `review_assemblies`
+altındadır. Kontrol edildi (zip içi `3D/3dmodel.model`):
+
+| Dosya | Nesne | Ray | Üçgen | Renkler |
+|---|---|---|---|---|
+| `lokomotif_montaj.3mf` (1.29 MB) | 21 (tasarımdaki 24 gövdeden 3 ray hariç; eksik yok) | yok | 113 522 | gövde #1B1B1B, tekerlek #C0201A, dom/ventil #B8892C, şasi #202020, motor, dişliler |
+| `tender_montaj.3mf` (0.37 MB) | 10 | yok | 34 820 | gövde, tekerlek, şasi, aks; tampon kirişleri yüz rengiyle kırmızı |
+| `vagon_montaj.3mf` (0.64 MB) | 17 | yok | 58 634 | kasa #2F5A2A, çatı #8A8A8A, platform, bojiler, tekerlekler |
+
+Koordinatlar ray modülüne göredir (lokomotif ve tender x = 100 merkezli, vagon x = 200 merkezli;
+ray üstü z = 13).

@@ -1,0 +1,34 @@
+{
+ "commands": [
+  {
+   "command": "file.export",
+   "params": {
+    "path": "\\\\wsl.localhost\\Ubuntu\\home\\ray\\repo\\tren\\cad\\out\\3mf\\lokomotif_montaj.3mf",
+    "format": "3mf",
+    "bodies": [
+     "Frame",
+     "WormWheel",
+     "Worm",
+     "WormThread",
+     "Motor",
+     "MotorShaft",
+     "Wheel",
+     "Wheel (2)",
+     "Wheel (3)",
+     "Wheel (4)",
+     "AxleF",
+     "AxleB",
+     "FootplateF",
+     "FootplateR",
+     "Boiler",
+     "Cab",
+     "CabRoof",
+     "Chimney",
+     "SteamDome",
+     "SandDome",
+     "SafetyValve"
+    ]
+   }
+  }
+ ]
+}

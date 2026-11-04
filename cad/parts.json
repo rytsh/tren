@@ -1,5 +1,5 @@
 {
-  "_note": "build.py + parts_manifest.py ile üretilir. bbox tasarım yönündedir (mm); kütle PETG 1.27 g/cm3 ile %100 dolu hacimden hesaplanır (gerçek baskı daha hafif). Montaj parçaları (montaj_*, *_montaj) yalnız kontrol amaçlıdır, listede yok.",
+  "_note": "build.py + parts_manifest.py ile üretilir. bbox tasarım yönündedir (mm); kütle PETG 1.27 g/cm3 ile %100 dolu hacimden hesaplanır (gerçek baskı daha hafif). Montaj parçaları (montaj_*, *_montaj) yalnız kontrol amaçlıdır, listede yok; lokomotif/tender/vagon_montaj için out/3mf'de inceleme amaçlı renkli 3MF vardır (review_assemblies).",
   "units": "mm",
   "printer": {
     "model": "Bambu Lab X2D",
@@ -550,15 +550,15 @@
         86.0,
         63.0
       ],
-      "volume_mm3": 90942.6,
-      "mass_g_petg": 115.5,
+      "volume_mm3": 95017.5,
+      "mass_g_petg": 120.7,
       "bodies": 1,
       "fits_x2d": true,
       "qty_per_loco": 0,
       "qty_per_tender": 1,
       "qty_per_coach": 0,
       "qty_per_straight_track": 0,
-      "notes_tr": "Ters (üstü yatakta) basılır"
+      "notes_tr": "Ters (üstü yatakta) basılır; ön/arka 2-pin aksesuar konnektörü yuvası (ölçüler VARSAYIM), 3 iç kablo kelepçesi, Ø8 ana güç deliği"
     },
     {
       "id": "tender_kapak",
@@ -650,15 +650,15 @@
         90.0,
         81.0
       ],
-      "volume_mm3": 81276.3,
-      "mass_g_petg": 103.2,
+      "volume_mm3": 87472.9,
+      "mass_g_petg": 111.1,
       "bodies": 1,
       "fits_x2d": true,
       "qty_per_loco": 0,
       "qty_per_tender": 0,
       "qty_per_coach": 1,
       "qty_per_straight_track": 0,
-      "notes_tr": "Alt yüzü yatakta, çatısız"
+      "notes_tr": "Alt yüzü yatakta, çatısız; ön/arka 2-pin aksesuar konnektörü yuvası (VARSAYIM), 3 iç kablo kelepçesi, alın kapısı 68'e alçaltıldı"
     },
     {
       "id": "vagon_cati",
@@ -675,15 +675,35 @@
         94.0,
         17.3
       ],
-      "volume_mm3": 51657.9,
-      "mass_g_petg": 65.6,
+      "volume_mm3": 54877.8,
+      "mass_g_petg": 69.7,
       "bodies": 1,
       "fits_x2d": true,
       "qty_per_loco": 0,
       "qty_per_tender": 0,
       "qty_per_coach": 1,
       "qty_per_straight_track": 0,
-      "notes_tr": "Ucu yatakta (220 mm yükseklik < 260)"
+      "notes_tr": "Ucu yatakta (200 mm yükseklik < 260); iç tepede 12 mm düz LED şerit yüzeyi, +y dilinde kablo çentiği"
+    }
+  ],
+  "review_assemblies": [
+    {
+      "id": "lokomotif_montaj",
+      "file_3mf": "out/3mf/lokomotif_montaj.3mf",
+      "print": false,
+      "notes_tr": "İnceleme amaçlı (BASILMAZ): dünya koordinatında renkli montaj, ray hariç"
+    },
+    {
+      "id": "tender_montaj",
+      "file_3mf": "out/3mf/tender_montaj.3mf",
+      "print": false,
+      "notes_tr": "İnceleme amaçlı (BASILMAZ): dünya koordinatında renkli montaj, ray hariç"
+    },
+    {
+      "id": "vagon_montaj",
+      "file_3mf": "out/3mf/vagon_montaj.3mf",
+      "print": false,
+      "notes_tr": "İnceleme amaçlı (BASILMAZ): dünya koordinatında renkli montaj, ray hariç"
     }
   ],
   "hardware": [
@@ -712,7 +732,7 @@
       "qty_per_tender": 0,
       "qty_per_coach": 0,
       "qty_per_track_piece": 0,
-      "spec": "Ø24.4 × 30.5, Ø2.3 mil, 6-7.4 V (ölçüleri doğrula)"
+      "spec": "Ø24.4 × 30.5, Ø2.3 mil; 2S besleme 7.4 V nominal / 8.4 V tam dolu (motor ölçüleri ve gerilim sınırı doğrulanmadı)"
     },
     {
       "id": "screw_m25x6",
@@ -820,7 +840,7 @@
       "qty_per_tender": 1,
       "qty_per_coach": 0,
       "qty_per_track_piece": 0,
-      "spec": "~70×37×20 mm, 7.4 V, 2500-3500 mAh; tender deposuna"
+      "spec": "~70×37×20 mm, 7.4 V nominal / 8.4 V tam dolu, 2500-3500 mAh; tender deposuna"
     },
     {
       "id": "bms_2s",
@@ -859,13 +879,13 @@
       "spec": "Tek motor"
     },
     {
-      "id": "buck_5v",
-      "name_tr": "DC-DC buck 7.4→5 V",
+      "id": "buck_logic",
+      "name_tr": "DC-DC buck (lojik beslemesi)",
       "qty_per_loco": 1,
       "qty_per_tender": 0,
       "qty_per_coach": 0,
       "qty_per_track_piece": 0,
-      "spec": "ESP32 beslemesi"
+      "spec": "ESP32 için; çıkış gerilimi kartın girişine göre seçilecek (AÇIK KARAR). Giriş 8.4 V'a dayanmalı"
     },
     {
       "id": "hall_a3144",
@@ -895,13 +915,58 @@
       "spec": "Tender"
     },
     {
-      "id": "wire_conn",
-      "name_tr": "2-pinli JST-PH konnektör + 26 AWG kablo",
+      "id": "wire_main",
+      "name_tr": "Ana güç kablosu + konnektörü (pil → lokomotif)",
       "qty_per_loco": 1,
       "qty_per_tender": 1,
       "qty_per_coach": 0,
       "qty_per_track_piece": 0,
-      "spec": "Loko-tender güç bağlantısı (8 mm delikten)"
+      "spec": "Tender Ø8 deliğinden; kesit/konnektör/sigorta AÇIK KARAR (motor akımına göre)"
+    },
+    {
+      "id": "acc_conn",
+      "name_tr": "Aksesuar hattı 2-pin kutuplu konnektör çifti (VARSAYIM: JST-XH 2P sınıfı)",
+      "qty_per_loco": 0,
+      "qty_per_tender": 2,
+      "qty_per_coach": 2,
+      "qty_per_track_piece": 0,
+      "spec": "Her uçta 1 yuva; yuva 10.4×6.2×8 mm VARSAYIM. Akım değeri ve tip AÇIK KARAR"
+    },
+    {
+      "id": "acc_jumper",
+      "name_tr": "Aksesuar ara kablosu 70 mm (2×0.35 mm² silikon, VARSAYIM)",
+      "qty_per_loco": 0,
+      "qty_per_tender": 1,
+      "qty_per_coach": 1,
+      "qty_per_track_piece": 0,
+      "spec": "Araç başına 1 (arkadaki araca); iki ucu fişli"
+    },
+    {
+      "id": "acc_fuse",
+      "name_tr": "Aksesuar hattı sigortası / akım sınırlayıcı",
+      "qty_per_loco": 0,
+      "qty_per_tender": 1,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 0,
+      "spec": "Değer ve tür AÇIK KARAR"
+    },
+    {
+      "id": "cable_tie_25",
+      "name_tr": "Kablo bağı 2.5 mm",
+      "qty_per_loco": 0,
+      "qty_per_tender": 3,
+      "qty_per_coach": 3,
+      "qty_per_track_piece": 0,
+      "spec": "İç kelepçe tünellerinden; çekme yükünü konnektörden alır"
+    },
+    {
+      "id": "led_strip",
+      "name_tr": "LED şerit (vagon iç aydınlatması)",
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 1,
+      "qty_per_track_piece": 0,
+      "spec": "Genişlik ≤ 12 mm VARSAYIM; gerilimi aksesuar hattı kararına bağlı (AÇIK KARAR)"
     }
   ]
 }

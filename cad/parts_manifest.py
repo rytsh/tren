@@ -34,19 +34,19 @@ PRINTED = {
     "ceki_kolu": ("Çeki kolu (44 mm pim aralığı)", 3, 1, 0, 1, 0, "Araçlar arası; loko-tender için 1, her vagon arkasına 1"),
     "tender_sasi": ("Tender şasisi (motorsuz 0-4-0)", 3, 0, 1, 0, 0, "Yan levha yatakta, 4× 684ZZ"),
     "tender_platform": ("Tender platformu", 3, 0, 1, 0, 0, "Ters basılır; iki uçta çeki çatalı"),
-    "tender_depo": ("Tender su deposu (pil bölmesi)", 3, 0, 1, 0, 0, "Ters (üstü yatakta) basılır"),
+    "tender_depo": ("Tender su deposu (pil bölmesi)", 3, 0, 1, 0, 0, "Ters (üstü yatakta) basılır; ön/arka 2-pin aksesuar konnektörü yuvası (ölçüler VARSAYIM), 3 iç kablo kelepçesi, Ø8 ana güç deliği"),
     "tender_kapak": ("Tender kömür kapağı", 3, 0, 1, 0, 0, "Alt yüzü yatakta; pil erişimi"),
     "vagon_boji": ("Vagon bojisi", 3, 0, 0, 2, 0, "Yan levha yatakta, 4× 684ZZ"),
     "vagon_platform": ("Vagon platformu", 3, 0, 0, 1, 0, "Ters basılır; iki uçta çeki çatalı"),
-    "vagon_govde": ("Vagon kasası", 3, 0, 0, 1, 0, "Alt yüzü yatakta, çatısız"),
-    "vagon_cati": ("Vagon çatısı", 3, 0, 0, 1, 0, "Ucu yatakta (220 mm yükseklik < 260)"),
+    "vagon_govde": ("Vagon kasası", 3, 0, 0, 1, 0, "Alt yüzü yatakta, çatısız; ön/arka 2-pin aksesuar konnektörü yuvası (VARSAYIM), 3 iç kablo kelepçesi, alın kapısı 68'e alçaltıldı"),
+    "vagon_cati": ("Vagon çatısı", 3, 0, 0, 1, 0, "Ucu yatakta (200 mm yükseklik < 260); iç tepede 12 mm düz LED şerit yüzeyi, +y dilinde kablo çentiği"),
 }
 
 # id, ad, loko, tender, vagon, ray parçası, özellik
 HARDWARE = [
     ("bearing_684zz", "684ZZ rulman", 4, 4, 8, 0, "4×9×4 mm"),
     ("axle_4mm", "Çelik aks Ø4 × 55 mm", 2, 2, 4, 0, "Gümüş çelik/paslanmaz, h6"),
-    ("motor_370", "RF-370 / RS-370 DC motor", 1, 0, 0, 0, "Ø24.4 × 30.5, Ø2.3 mil, 6-7.4 V (ölçüleri doğrula)"),
+    ("motor_370", "RF-370 / RS-370 DC motor", 1, 0, 0, 0, "Ø24.4 × 30.5, Ø2.3 mil; 2S besleme 7.4 V nominal / 8.4 V tam dolu (motor ölçüleri ve gerilim sınırı doğrulanmadı)"),
     ("screw_m25x6", "M2.5×6 vida", 2, 0, 0, 0, "Motor ön yüzü"),
     ("grub_m3x4", "M3×4 set vidası", 1, 0, 0, 0, "Karşı dişli göbeği"),
     ("screw_m3x25_body", "M3×25 vida (plastiğe)", 2, 0, 0, 0, "Lokomotif gövdesi → şasi traversleri (x=±60), üstten"),
@@ -58,16 +58,21 @@ HARDWARE = [
     ("screw_m3_track", "M3×16 vida + dübel", 0, 0, 0, 2, "Rayı bahçeye sabitleme (isteğe bağlı)"),
     ("led_5mm", "5 mm sıcak beyaz LED + 220 Ω direnç", 1, 0, 0, 0, "Ön fener"),
     ("lens_10mm", "Ø10 × 2 mm şeffaf lens/disk", 1, 0, 0, 0, "Fener camı (isteğe bağlı, şeffaf PETG baskı da olur)"),
-    ("battery_2s", "2S Li-ion paket (2× 18650) VARSAYIM", 0, 1, 0, 0, "~70×37×20 mm, 7.4 V, 2500-3500 mAh; tender deposuna"),
+    ("battery_2s", "2S Li-ion paket (2× 18650) VARSAYIM", 0, 1, 0, 0, "~70×37×20 mm, 7.4 V nominal / 8.4 V tam dolu, 2500-3500 mAh; tender deposuna"),
     ("bms_2s", "2S BMS kartı", 0, 1, 0, 0, "Koruma; ~40×7 mm"),
     ("charger_2s", "2S şarj modülü / USB-C PD tetik", 0, 1, 0, 0, "Şarj istasyonu için (Faz 4'te kesinleşecek)"),
     ("esp32", "ESP32 dev kartı (ör. ESP32-C3 SuperMini)", 1, 0, 0, 0, "Kazan içine"),
     ("motor_driver", "DRV8833 veya TB6612FNG sürücü", 1, 0, 0, 0, "Tek motor"),
-    ("buck_5v", "DC-DC buck 7.4→5 V", 1, 0, 0, 0, "ESP32 beslemesi"),
+    ("buck_logic", "DC-DC buck (lojik beslemesi)", 1, 0, 0, 0, "ESP32 için; çıkış gerilimi kartın girişine göre seçilecek (AÇIK KARAR). Giriş 8.4 V'a dayanmalı"),
     ("hall_a3144", "A3144 hall sensörü", 1, 0, 0, 0, "Konum/istasyon algılama"),
     ("magnet_6x3", "Neodim mıknatıs 6×3 mm", 0, 0, 0, 1, "Ray üstü işaret (istasyon/sayaç başına, varsayım)"),
     ("switch", "Mini anahtar (açma/kapama)", 0, 1, 0, 0, "Tender"),
-    ("wire_conn", "2-pinli JST-PH konnektör + 26 AWG kablo", 1, 1, 0, 0, "Loko-tender güç bağlantısı (8 mm delikten)"),
+    ("wire_main", "Ana güç kablosu + konnektörü (pil → lokomotif)", 1, 1, 0, 0, "Tender Ø8 deliğinden; kesit/konnektör/sigorta AÇIK KARAR (motor akımına göre)"),
+    ("acc_conn", "Aksesuar hattı 2-pin kutuplu konnektör çifti (VARSAYIM: JST-XH 2P sınıfı)", 0, 2, 2, 0, "Her uçta 1 yuva; yuva 10.4×6.2×8 mm VARSAYIM. Akım değeri ve tip AÇIK KARAR"),
+    ("acc_jumper", "Aksesuar ara kablosu 70 mm (2×0.35 mm² silikon, VARSAYIM)", 0, 1, 1, 0, "Araç başına 1 (arkadaki araca); iki ucu fişli"),
+    ("acc_fuse", "Aksesuar hattı sigortası / akım sınırlayıcı", 0, 1, 0, 0, "Değer ve tür AÇIK KARAR"),
+    ("cable_tie_25", "Kablo bağı 2.5 mm", 0, 3, 3, 0, "İç kelepçe tünellerinden; çekme yükünü konnektörden alır"),
+    ("led_strip", "LED şerit (vagon iç aydınlatması)", 0, 0, 1, 0, "Genişlik ≤ 12 mm VARSAYIM; gerilimi aksesuar hattı kararına bağlı (AÇIK KARAR)"),
 ]
 
 
@@ -102,10 +107,16 @@ def main():
     out = {
         "_note": "build.py + parts_manifest.py ile üretilir. bbox tasarım yönündedir (mm); "
                  "kütle PETG 1.27 g/cm3 ile %100 dolu hacimden hesaplanır (gerçek baskı daha hafif). "
-                 "Montaj parçaları (montaj_*, *_montaj) yalnız kontrol amaçlıdır, listede yok.",
+                 "Montaj parçaları (montaj_*, *_montaj) yalnız kontrol amaçlıdır, listede yok; "
+                 "lokomotif/tender/vagon_montaj için out/3mf'de inceleme amaçlı renkli 3MF vardır (review_assemblies).",
         "units": "mm",
         "printer": {"model": "Bambu Lab X2D", "build_volume_mm": [256, 256, 260]},
         "parts": parts,
+        "review_assemblies": [
+            {"id": a, "file_3mf": f"out/3mf/{a}.3mf", "print": False,
+             "notes_tr": "İnceleme amaçlı (BASILMAZ): dünya koordinatında renkli montaj, ray hariç"}
+            for a in ("lokomotif_montaj", "tender_montaj", "vagon_montaj")
+            if (ROOT / "out" / "3mf" / f"{a}.3mf").exists()],
         "hardware": hw,
     }
     (ROOT / "parts.json").write_text(json.dumps(out, indent=2, ensure_ascii=False))

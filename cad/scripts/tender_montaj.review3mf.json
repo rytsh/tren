@@ -1,0 +1,23 @@
+{
+ "commands": [
+  {
+   "command": "file.export",
+   "params": {
+    "path": "\\\\wsl.localhost\\Ubuntu\\home\\ray\\repo\\tren\\cad\\out\\3mf\\tender_montaj.3mf",
+    "format": "3mf",
+    "bodies": [
+     "TFrame",
+     "Wheel",
+     "Wheel (2)",
+     "Wheel (3)",
+     "Wheel (4)",
+     "Axle0",
+     "Axle1",
+     "TDeck",
+     "TTank",
+     "TLid"
+    ]
+   }
+  }
+ ]
+}

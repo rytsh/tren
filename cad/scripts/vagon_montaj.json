@@ -1768,9 +1768,9 @@
    "command": "parameters.add",
    "params": {
     "name": "coal_open_x1",
-    "expression": "64.0 mm",
+    "expression": "56.0 mm",
     "unit": "mm",
-    "comment": "Kömür/pil açıklığı ön kenarı X"
+    "comment": "Kömür/pil açıklığı ön kenarı X (vida kaburgalarına çarpmaz)"
    }
   },
   {
@@ -1795,7 +1795,7 @@
    "command": "parameters.add",
    "params": {
     "name": "lid_x1",
-    "expression": "66.0 mm",
+    "expression": "58.0 mm",
     "unit": "mm",
     "comment": "Kömür kapağı ön kenarı X"
    }
@@ -1993,9 +1993,9 @@
    "command": "parameters.add",
    "params": {
     "name": "c_door_z1",
-    "expression": "88.0 mm",
+    "expression": "68.0 mm",
     "unit": "mm",
-    "comment": "Vagon alın kapısı üst kenarı"
+    "comment": "Vagon alın kapısı üst kenarı (Faz 3'te 88 idi; konnektör tutucusu kapının üstüne sığsın diye alçaltıldı)"
    }
   },
   {
@@ -2014,6 +2014,222 @@
     "expression": "13.0 mm",
     "unit": "mm",
     "comment": "Vagon tampon kirişi alt kenarı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "conn_w",
+    "expression": "10.4 mm",
+    "unit": "mm",
+    "comment": "Araçlar arası 2-pin kutuplu konnektör yuvası genişliği (Y). VARSAYIM: konnektör seçilmedi (JST-XH 2P / benzeri), seçince ölç ve güncelle"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "conn_h",
+    "expression": "6.2 mm",
+    "unit": "mm",
+    "comment": "Konnektör yuvası yüksekliği (Z). VARSAYIM"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "conn_d",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Konnektör yuvası derinliği, uç duvar dış yüzünden içeri. VARSAYIM"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "conn_key_w",
+    "expression": "3.0 mm",
+    "unit": "mm",
+    "comment": "Kutuplama kanalı genişliği (yuvanın üst kenarında, tek yönlü takılır)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "conn_key_h",
+    "expression": "1.2 mm",
+    "unit": "mm",
+    "comment": "Kutuplama kanalı derinliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "conn_wire_w",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "Yuva arkası tel çıkışı genişliği (omuz: konnektör içeri itilemez)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "conn_wire_h",
+    "expression": "3.0 mm",
+    "unit": "mm",
+    "comment": "Tel çıkışı yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "hold_wall",
+    "expression": "2.0 mm",
+    "unit": "mm",
+    "comment": "Konnektör tutucu bloğu et kalınlığı (yuva çevresi)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "hold_d",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Tutucu bloğun uç duvar iç yüzünden içeri boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "conn_y",
+    "expression": "0.0 mm",
+    "unit": "mm",
+    "comment": "Konnektör ekseni Y: araç ekseninde (araç ters çevrilse de iki uç karşılıklı gelir; virajda yanal uzama ~0)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "conn_z",
+    "expression": "84.0 mm",
+    "unit": "mm",
+    "comment": "Konnektör ekseni Z, aks ekseninden (raydan ~105; tampon üstü 25, çeki kolu üstü 22.5, boji/tekerlek üstü 23.5)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "clip_len",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "İç kablo kelepçesi boyu (X)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "clip_gap",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Kelepçe tüneli genişliği (duvardan), 2 tel + 2.5 mm kablo bağı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "clip_h",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Kelepçe tüneli yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "clip_bar",
+    "expression": "2.0 mm",
+    "unit": "mm",
+    "comment": "Kelepçe çubuğu kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "clip_z",
+    "expression": "42.0 mm",
+    "unit": "mm",
+    "comment": "Kelepçe tüneli ekseni Z (yan duvar iç yüzü, +y tarafı, pencerelerin altında)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "led_pad_w",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "Çatı altı LED şerit düz oturma yüzeyi genişliği (8 mm şerit VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "led_pad_t",
+    "expression": "1.5 mm",
+    "unit": "mm",
+    "comment": "LED yüzeyi, çatı yayı tepesinin altına iniş"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "roof_notch_w",
+    "expression": "5.0 mm",
+    "unit": "mm",
+    "comment": "Çatı dilinde LED kablosu geçiş çentiği genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "jumper_len",
+    "expression": "70.0 mm",
+    "unit": "mm",
+    "comment": "Araçlar arası kablo (servis döngüsü) uzunluğu, konnektör yüzleri arası; coupling_calc.py ile kontrol"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "clip_xs_tender",
+    "expression": "40.0 mm",
+    "unit": "mm",
+    "comment": "Tender iç kelepçeleri X (-40, 0, +40); vida kaburgaları ±64.6'dan uzak"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "clip_xs_coach",
+    "expression": "70.0 mm",
+    "unit": "mm",
+    "comment": "Vagon iç kelepçeleri X (-70, 0, +70)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plug_out",
+    "expression": "14.0 mm",
+    "unit": "mm",
+    "comment": "Takılı fişin uç yüzden dışarı çıkıntısı + kablo bükülme payı (VARSAYIM, konnektöre göre)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plug_bend_r",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "Kablo en küçük bükülme yarıçapı (VARSAYIM, 2×0.35 mm² silikon kablo)"
    }
   },
   {
@@ -2176,6 +2392,15 @@
     "expression": "c_w/2 - wall_t - cab_rib_w/2",
     "unit": "mm",
     "comment": "Vagon kasası vidaları Y (±, türetilmiş)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "loco_conn_x",
+    "expression": "cab_x0",
+    "unit": "mm",
+    "comment": "Lokomotif arka konnektör yüzü X (MODELLENMEDİ; hesap için kabin arka yüzü varsayıldı)"
    }
   },
   {
@@ -4276,6 +4501,475 @@
    }
   },
   {
+   "command": "solid.box",
+   "params": {
+    "length": "((c_body_l/2 - 1 * (wall_t - 0.5 mm))) - ((c_body_l/2 - 1 * (wall_t + hold_d)))",
+    "width": "(conn_y + conn_w/2 + hold_wall) - (conn_y - conn_w/2 - hold_wall)",
+    "height": "(conn_z + conn_h/2 + conn_key_h + hold_wall) - (conn_z - conn_h/2 - hold_wall)",
+    "corner": [
+     "(c_body_l/2 - 1 * (wall_t + hold_d))",
+     "conn_y - conn_w/2 - hold_wall",
+     "conn_z - conn_h/2 - hold_wall"
+    ],
+    "operation": "join",
+    "name": "CBFConnHolder",
+    "targets": [
+     "CBody"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "((c_body_l/2 + 1 * 1 mm)) - ((c_body_l/2 - 1 * conn_d))",
+    "width": "(conn_y + conn_w/2) - (conn_y - conn_w/2)",
+    "height": "(conn_z + conn_h/2) - (conn_z - conn_h/2)",
+    "corner": [
+     "(c_body_l/2 - 1 * conn_d)",
+     "conn_y - conn_w/2",
+     "conn_z - conn_h/2"
+    ],
+    "operation": "cut",
+    "name": "CBFConnPocket",
+    "targets": [
+     "CBody"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "((c_body_l/2 + 1 * 1 mm)) - ((c_body_l/2 - 1 * conn_d))",
+    "width": "(conn_y + conn_key_w/2) - (conn_y - conn_key_w/2)",
+    "height": "(conn_z + conn_h/2 + conn_key_h) - (conn_z + conn_h/2 - 0.5 mm)",
+    "corner": [
+     "(c_body_l/2 - 1 * conn_d)",
+     "conn_y - conn_key_w/2",
+     "conn_z + conn_h/2 - 0.5 mm"
+    ],
+    "operation": "cut",
+    "name": "CBFConnKey",
+    "targets": [
+     "CBody"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "(((c_body_l/2 - 1 * conn_d) + 1 * 0.5 mm)) - ((c_body_l/2 - 1 * (wall_t + hold_d + 1 mm)))",
+    "width": "(conn_y + conn_wire_w/2) - (conn_y - conn_wire_w/2)",
+    "height": "(conn_z + conn_wire_h/2) - (conn_z - conn_wire_h/2)",
+    "corner": [
+     "(c_body_l/2 - 1 * (wall_t + hold_d + 1 mm))",
+     "conn_y - conn_wire_w/2",
+     "conn_z - conn_wire_h/2"
+    ],
+    "operation": "cut",
+    "name": "CBFConnWire",
+    "targets": [
+     "CBody"
+    ]
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "XZ",
+    "offset": "conn_y",
+    "name": "CBFConnGussetSk"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "(c_body_l/2 - 1 * (wall_t - 0.5 mm))",
+      "-(conn_z - conn_h/2 - hold_wall + 0.5 mm)"
+     ],
+     [
+      "(c_body_l/2 - 1 * (wall_t + hold_d))",
+      "-(conn_z - conn_h/2 - hold_wall + 0.5 mm)"
+     ],
+     [
+      "(c_body_l/2 - 1 * (wall_t - 0.5 mm))",
+      "-(conn_z - conn_h/2 - hold_wall - abs(((c_body_l/2 - 1 * (wall_t + hold_d))) - ((c_body_l/2 - 1 * (wall_t - 0.5 mm)))))"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "distance": "conn_w + 2*hold_wall",
+    "direction": "symmetric",
+    "operation": "join",
+    "targets": [
+     "CBody"
+    ],
+    "name": "CBFConnGusset"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "((-c_body_l/2 - -1 * (wall_t + hold_d))) - ((-c_body_l/2 - -1 * (wall_t - 0.5 mm)))",
+    "width": "(conn_y + conn_w/2 + hold_wall) - (conn_y - conn_w/2 - hold_wall)",
+    "height": "(conn_z + conn_h/2 + conn_key_h + hold_wall) - (conn_z - conn_h/2 - hold_wall)",
+    "corner": [
+     "(-c_body_l/2 - -1 * (wall_t - 0.5 mm))",
+     "conn_y - conn_w/2 - hold_wall",
+     "conn_z - conn_h/2 - hold_wall"
+    ],
+    "operation": "join",
+    "name": "CBBConnHolder",
+    "targets": [
+     "CBody"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "((-c_body_l/2 - -1 * conn_d)) - ((-c_body_l/2 + -1 * 1 mm))",
+    "width": "(conn_y + conn_w/2) - (conn_y - conn_w/2)",
+    "height": "(conn_z + conn_h/2) - (conn_z - conn_h/2)",
+    "corner": [
+     "(-c_body_l/2 + -1 * 1 mm)",
+     "conn_y - conn_w/2",
+     "conn_z - conn_h/2"
+    ],
+    "operation": "cut",
+    "name": "CBBConnPocket",
+    "targets": [
+     "CBody"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "((-c_body_l/2 - -1 * conn_d)) - ((-c_body_l/2 + -1 * 1 mm))",
+    "width": "(conn_y + conn_key_w/2) - (conn_y - conn_key_w/2)",
+    "height": "(conn_z + conn_h/2 + conn_key_h) - (conn_z + conn_h/2 - 0.5 mm)",
+    "corner": [
+     "(-c_body_l/2 + -1 * 1 mm)",
+     "conn_y - conn_key_w/2",
+     "conn_z + conn_h/2 - 0.5 mm"
+    ],
+    "operation": "cut",
+    "name": "CBBConnKey",
+    "targets": [
+     "CBody"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "((-c_body_l/2 - -1 * (wall_t + hold_d + 1 mm))) - (((-c_body_l/2 - -1 * conn_d) + -1 * 0.5 mm))",
+    "width": "(conn_y + conn_wire_w/2) - (conn_y - conn_wire_w/2)",
+    "height": "(conn_z + conn_wire_h/2) - (conn_z - conn_wire_h/2)",
+    "corner": [
+     "((-c_body_l/2 - -1 * conn_d) + -1 * 0.5 mm)",
+     "conn_y - conn_wire_w/2",
+     "conn_z - conn_wire_h/2"
+    ],
+    "operation": "cut",
+    "name": "CBBConnWire",
+    "targets": [
+     "CBody"
+    ]
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "XZ",
+    "offset": "conn_y",
+    "name": "CBBConnGussetSk"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "(-c_body_l/2 - -1 * (wall_t - 0.5 mm))",
+      "-(conn_z - conn_h/2 - hold_wall + 0.5 mm)"
+     ],
+     [
+      "(-c_body_l/2 - -1 * (wall_t + hold_d))",
+      "-(conn_z - conn_h/2 - hold_wall + 0.5 mm)"
+     ],
+     [
+      "(-c_body_l/2 - -1 * (wall_t - 0.5 mm))",
+      "-(conn_z - conn_h/2 - hold_wall - abs(((-c_body_l/2 - -1 * (wall_t + hold_d))) - ((-c_body_l/2 - -1 * (wall_t - 0.5 mm)))))"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "distance": "conn_w + 2*hold_wall",
+    "direction": "symmetric",
+    "operation": "join",
+    "targets": [
+     "CBody"
+    ],
+    "name": "CBBConnGusset"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "(-clip_xs_coach + clip_len/2) - (-clip_xs_coach - clip_len/2)",
+    "width": "((c_w/2 - wall_t) + 0.5 mm) - ((c_w/2 - wall_t) - clip_gap - clip_bar)",
+    "height": "(clip_z + clip_h/2 + clip_bar) - (clip_z - clip_h/2 - clip_bar)",
+    "corner": [
+     "-clip_xs_coach - clip_len/2",
+     "(c_w/2 - wall_t) - clip_gap - clip_bar",
+     "clip_z - clip_h/2 - clip_bar"
+    ],
+    "operation": "join",
+    "name": "CBClip0",
+    "targets": [
+     "CBody"
+    ]
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "YZ",
+    "name": "CBClip0GussetSk"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "(c_w/2 - wall_t) + 0.5 mm",
+      "clip_z - clip_h/2 - clip_bar + 0.5 mm"
+     ],
+     [
+      "(c_w/2 - wall_t) - clip_gap - clip_bar",
+      "clip_z - clip_h/2 - clip_bar + 0.5 mm"
+     ],
+     [
+      "(c_w/2 - wall_t) + 0.5 mm",
+      "clip_z - clip_h/2 - clip_bar - abs(((c_w/2 - wall_t) - clip_gap - clip_bar) - ((c_w/2 - wall_t) + 0.5 mm))"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "distance": "clip_len",
+    "start_offset": "-clip_xs_coach - (clip_len)/2",
+    "operation": "join",
+    "targets": [
+     "CBody"
+    ],
+    "name": "CBClip0Gusset"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "(-clip_xs_coach + clip_len/2 + 1 mm) - (-clip_xs_coach - clip_len/2 - 1 mm)",
+    "width": "((c_w/2 - wall_t)) - ((c_w/2 - wall_t) - clip_gap)",
+    "height": "(clip_z + clip_h/2) - (clip_z - clip_h/2)",
+    "corner": [
+     "-clip_xs_coach - clip_len/2 - 1 mm",
+     "(c_w/2 - wall_t) - clip_gap",
+     "clip_z - clip_h/2"
+    ],
+    "operation": "cut",
+    "name": "CBClipTunnel0",
+    "targets": [
+     "CBody"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "(0 mm + clip_len/2) - (0 mm - clip_len/2)",
+    "width": "((c_w/2 - wall_t) + 0.5 mm) - ((c_w/2 - wall_t) - clip_gap - clip_bar)",
+    "height": "(clip_z + clip_h/2 + clip_bar) - (clip_z - clip_h/2 - clip_bar)",
+    "corner": [
+     "0 mm - clip_len/2",
+     "(c_w/2 - wall_t) - clip_gap - clip_bar",
+     "clip_z - clip_h/2 - clip_bar"
+    ],
+    "operation": "join",
+    "name": "CBClip1",
+    "targets": [
+     "CBody"
+    ]
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "YZ",
+    "name": "CBClip1GussetSk"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "(c_w/2 - wall_t) + 0.5 mm",
+      "clip_z - clip_h/2 - clip_bar + 0.5 mm"
+     ],
+     [
+      "(c_w/2 - wall_t) - clip_gap - clip_bar",
+      "clip_z - clip_h/2 - clip_bar + 0.5 mm"
+     ],
+     [
+      "(c_w/2 - wall_t) + 0.5 mm",
+      "clip_z - clip_h/2 - clip_bar - abs(((c_w/2 - wall_t) - clip_gap - clip_bar) - ((c_w/2 - wall_t) + 0.5 mm))"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "distance": "clip_len",
+    "start_offset": "0 mm - (clip_len)/2",
+    "operation": "join",
+    "targets": [
+     "CBody"
+    ],
+    "name": "CBClip1Gusset"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "(0 mm + clip_len/2 + 1 mm) - (0 mm - clip_len/2 - 1 mm)",
+    "width": "((c_w/2 - wall_t)) - ((c_w/2 - wall_t) - clip_gap)",
+    "height": "(clip_z + clip_h/2) - (clip_z - clip_h/2)",
+    "corner": [
+     "0 mm - clip_len/2 - 1 mm",
+     "(c_w/2 - wall_t) - clip_gap",
+     "clip_z - clip_h/2"
+    ],
+    "operation": "cut",
+    "name": "CBClipTunnel1",
+    "targets": [
+     "CBody"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "(clip_xs_coach + clip_len/2) - (clip_xs_coach - clip_len/2)",
+    "width": "((c_w/2 - wall_t) + 0.5 mm) - ((c_w/2 - wall_t) - clip_gap - clip_bar)",
+    "height": "(clip_z + clip_h/2 + clip_bar) - (clip_z - clip_h/2 - clip_bar)",
+    "corner": [
+     "clip_xs_coach - clip_len/2",
+     "(c_w/2 - wall_t) - clip_gap - clip_bar",
+     "clip_z - clip_h/2 - clip_bar"
+    ],
+    "operation": "join",
+    "name": "CBClip2",
+    "targets": [
+     "CBody"
+    ]
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "YZ",
+    "name": "CBClip2GussetSk"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "(c_w/2 - wall_t) + 0.5 mm",
+      "clip_z - clip_h/2 - clip_bar + 0.5 mm"
+     ],
+     [
+      "(c_w/2 - wall_t) - clip_gap - clip_bar",
+      "clip_z - clip_h/2 - clip_bar + 0.5 mm"
+     ],
+     [
+      "(c_w/2 - wall_t) + 0.5 mm",
+      "clip_z - clip_h/2 - clip_bar - abs(((c_w/2 - wall_t) - clip_gap - clip_bar) - ((c_w/2 - wall_t) + 0.5 mm))"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "distance": "clip_len",
+    "start_offset": "clip_xs_coach - (clip_len)/2",
+    "operation": "join",
+    "targets": [
+     "CBody"
+    ],
+    "name": "CBClip2Gusset"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "(clip_xs_coach + clip_len/2 + 1 mm) - (clip_xs_coach - clip_len/2 - 1 mm)",
+    "width": "((c_w/2 - wall_t)) - ((c_w/2 - wall_t) - clip_gap)",
+    "height": "(clip_z + clip_h/2) - (clip_z - clip_h/2)",
+    "corner": [
+     "clip_xs_coach - clip_len/2 - 1 mm",
+     "(c_w/2 - wall_t) - clip_gap",
+     "clip_z - clip_h/2"
+    ],
+    "operation": "cut",
+    "name": "CBClipTunnel2",
+    "targets": [
+     "CBody"
+    ]
+   }
+  },
+  {
    "command": "sketch.create",
    "params": {
     "plane": "YZ",
@@ -4391,6 +5085,42 @@
     ],
     "operation": "join",
     "name": "CRRoofTabR",
+    "targets": [
+     "CRoof"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "(c_body_l/2 - wall_t - roof_clear) - (-(c_body_l/2 - wall_t - roof_clear))",
+    "width": "(led_pad_w/2) - (-led_pad_w/2)",
+    "height": "((c_crown - c_R + sqrt(c_R*c_R - (led_pad_w/2)*(led_pad_w/2)) + 0.3 mm)) - ((c_crown - led_pad_t))",
+    "corner": [
+     "-(c_body_l/2 - wall_t - roof_clear)",
+     "-led_pad_w/2",
+     "(c_crown - led_pad_t)"
+    ],
+    "operation": "join",
+    "name": "CRLedPad",
+    "targets": [
+     "CRoof"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "(roof_notch_w/2) - (-roof_notch_w/2)",
+    "width": "(((c_w/2 - wall_t) - roof_clear) + 1 mm) - (((c_w/2 - wall_t) - roof_clear) - roof_tab_t - 1 mm)",
+    "height": "((c_crown - c_R + sqrt(c_R*c_R - (c_w/2 - wall_t)*(c_w/2 - wall_t))) - 1 mm) - ((c_crown - c_R + sqrt(c_R*c_R - (c_w/2 - wall_t)*(c_w/2 - wall_t))) - roof_tab_h - 1 mm)",
+    "corner": [
+     "-roof_notch_w/2",
+     "((c_w/2 - wall_t) - roof_clear) - roof_tab_t - 1 mm",
+     "(c_crown - c_R + sqrt(c_R*c_R - (c_w/2 - wall_t)*(c_w/2 - wall_t))) - roof_tab_h - 1 mm"
+    ],
+    "operation": "cut",
+    "name": "CRLedNotch",
     "targets": [
      "CRoof"
     ]

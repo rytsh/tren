@@ -940,6 +940,77 @@ def drawbar(name="Drawbar"):
     ]
 
 
+# --- Araçlar arası aksesuar hattı: yalnız mekanik hazırlık -------------------------
+def conn_holder(body, xf, sx, pre):
+    """Uç duvara (dış yüzü xf, sx: dış yön) 2-pin kutuplu konnektör yuvası. Yuva dıştan
+    conn_d derin; arkasında omuz ve tel çıkışı (konnektör içeri itilemez). Üst kenardaki
+    kanal kutuplama içindir. Konnektör seçilmedi: ölçüler VARSAYIM (params → wiring)."""
+    inner = f"({xf} - {sx} * (wall_t + hold_d))"
+    over = f"({xf} - {sx} * (wall_t - 0.5 mm))"
+    out_ = f"({xf} + {sx} * 1 mm)"
+    deep = f"({xf} - {sx} * conn_d)"
+    back = f"({xf} - {sx} * (wall_t + hold_d + 1 mm))"
+    rng = lambda a, b: (a, b) if sx > 0 else (b, a)
+    zc = "conn_z"
+    return [
+        box(*rng(inner, over), "conn_y - conn_w/2 - hold_wall", "conn_y + conn_w/2 + hold_wall",
+            f"{zc} - conn_h/2 - hold_wall", f"{zc} + conn_h/2 + conn_key_h + hold_wall", "join", body,
+            f"{pre}ConnHolder"),
+        box(*rng(deep, out_), "conn_y - conn_w/2", "conn_y + conn_w/2", f"{zc} - conn_h/2",
+            f"{zc} + conn_h/2", "cut", body, f"{pre}ConnPocket"),
+        box(*rng(deep, out_), "conn_y - conn_key_w/2", "conn_y + conn_key_w/2", f"{zc} + conn_h/2 - 0.5 mm",
+            f"{zc} + conn_h/2 + conn_key_h", "cut", body, f"{pre}ConnKey"),
+        box(*rng(back, f"({deep} + {sx} * 0.5 mm)"), "conn_y - conn_wire_w/2", "conn_y + conn_wire_w/2",
+            f"{zc} - conn_wire_h/2", f"{zc} + conn_wire_h/2", "cut", body, f"{pre}ConnWire"),
+    ] + gusset_x(body, over, inner, f"{zc} - conn_h/2 - hold_wall", "conn_y",
+                  "conn_w + 2*hold_wall", pre + "Conn")
+
+
+def gusset_x(body, x_wall, x_tip, z_top, yc, width, pre):
+    """Duvardan X yönünde çıkan çıkıntının altına 45° destek (desteksiz baskı için).
+    XZ çizimi: sketch (x, y) → dünya (X, −Z)."""
+    depth = f"abs(({x_tip}) - ({x_wall}))"
+    return [
+        c("sketch.create", plane="XZ", offset=yc, name=f"{pre}GussetSk"),
+        poly([(x_wall, f"-({z_top} + 0.5 mm)"), (x_tip, f"-({z_top} + 0.5 mm)"),
+              (x_wall, f"-({z_top} - {depth})")]),
+        c("sketch.finish"),
+        c("solid.extrude", distance=width, direction="symmetric", operation="join", targets=[body],
+          name=f"{pre}Gusset"),
+    ]
+
+
+def gusset_y(body, y_wall, y_tip, z_top, xc, length, pre):
+    """+y duvarından −y yönünde çıkan çıkıntının altına 45° destek. YZ çizimi: (Y, Z)."""
+    depth = f"abs(({y_tip}) - ({y_wall}))"
+    return [
+        c("sketch.create", plane="YZ", name=f"{pre}GussetSk"),
+        poly([(y_wall, f"{z_top} + 0.5 mm"), (y_tip, f"{z_top} + 0.5 mm"),
+              (y_wall, f"{z_top} - {depth}")]),
+        c("sketch.finish"),
+        c("solid.extrude", distance=length, start_offset=f"{xc} - ({length})/2", operation="join",
+          targets=[body], name=f"{pre}Gusset"),
+    ]
+
+
+def wall_clips(body, xs, y_in, pre):
+    """+y yan duvarının iç yüzüne kablo kelepçeleri: duvarla birlikte kapalı tünel
+    (clip_gap × clip_h). Kablo bağı veya tel buradan geçer; çekme yükünü konnektör
+    yerine bu noktalar ve çeki kolu taşır."""
+    cmds = []
+    for i, x in enumerate(xs):
+        cmds += [
+            box(f"{x} - clip_len/2", f"{x} + clip_len/2", f"{y_in} - clip_gap - clip_bar", f"{y_in} + 0.5 mm",
+                "clip_z - clip_h/2 - clip_bar", "clip_z + clip_h/2 + clip_bar", "join", body,
+                f"{pre}Clip{i}"),
+        ]
+        cmds += gusset_y(body, f"{y_in} + 0.5 mm", f"{y_in} - clip_gap - clip_bar",
+                         "clip_z - clip_h/2 - clip_bar", x, "clip_len", f"{pre}Clip{i}")
+        cmds.append(box(f"{x} - clip_len/2 - 1 mm", f"{x} + clip_len/2 + 1 mm", f"{y_in} - clip_gap", y_in,
+                        "clip_z - clip_h/2", "clip_z + clip_h/2", "cut", body, f"{pre}ClipTunnel{i}"))
+    return cmds
+
+
 # --- Tender ---------------------------------------------------------------
 T2 = "(t_len/2)"
 
@@ -971,11 +1042,14 @@ def tender_tank(name="TTank"):
         c("solid.shell", faces=[[0, 0, v["fp_z"] + v["fp_t"]]], thickness="wall_t", body=name),
         box("coal_open_x0", "coal_open_x1", "-coal_open_w/2", "coal_open_w/2", "t_tank_top - wall_t - 1 mm",
             "t_tank_top + 1 mm", "cut", name, "CoalOpening"),
-        xcyl("cable_d", "t_tank_x1 - wall_t - 1 mm", "t_tank_x1 + 1 mm", "0 mm", f"{FP_TOP} + 12 mm",
-             "cut", name, "CableHole"),
     ]
     cmds += side_ribs(name, ["t_hole_x", "-t_hole_x"], "t_hole_y", "(t_tank_w/2 - wall_t)", FP_TOP,
                       "t_tank_top - wall_t + 0.5 mm - fp_z - fp_t", "TT")
+    # Ana güç (pil → lokomotif) kablosu: Faz 3'teki Ø8 delik korunur; aksesuar hattından ayrıdır.
+    cmds.append(xcyl("cable_d", "t_tank_x1 - wall_t - 1 mm", "t_tank_x1 + 1 mm", "0 mm",
+                     f"{FP_TOP} + 12 mm", "cut", name, "CableHole"))
+    cmds += conn_holder(name, "t_tank_x1", 1, "TTF") + conn_holder(name, "t_tank_x0", -1, "TTB")
+    cmds += wall_clips(name, ["-clip_xs_tender", "0 mm", "clip_xs_tender"], "(t_tank_w/2 - wall_t)", "TT")
     return cmds
 
 
@@ -1031,13 +1105,34 @@ def coach_body(name="CBody"):
                     f"{FP_TOP} - 1 mm", "c_door_z1", "cut", name, "CBDoors"))
     cmds += side_ribs(name, ["c_hole_x", "-c_hole_x"], "c_hole_y", "(c_w/2 - wall_t)", FP_TOP,
                       "cab_rib_h", "CB")
+    cmds += conn_holder(name, "c_body_l/2", 1, "CBF") + conn_holder(name, "-c_body_l/2", -1, "CBB")
+    cmds += wall_clips(name, ["-clip_xs_coach", "0 mm", "clip_xs_coach"], "(c_w/2 - wall_t)", "CB")
     return cmds
 
 
 def coach_roof(name="CRoof"):
+    """Vagon çatısı + iç tepe boyunca LED şerit oturma yüzeyi (düz, led_pad_w) ve +y dilinde
+    LED kablosunun duvar içine inmesi için çentik. Şerit/LED gerilimi seçilmedi."""
     return arch_roof(name, "-(c_body_l/2 + roof_over)", "c_body_l/2 + roof_over",
                      "(c_w/2 + roof_over)", "c_crown", "c_R", "-(c_body_l/2 - wall_t - roof_clear)",
-                     "c_body_l/2 - wall_t - roof_clear", "(c_w/2 - wall_t)", "CR")
+                     "c_body_l/2 - wall_t - roof_clear", "(c_w/2 - wall_t)", "CR") + led_pad(
+        name, "-(c_body_l/2 - wall_t - roof_clear)", "c_body_l/2 - wall_t - roof_clear", "c_crown",
+        "(c_w/2 - wall_t)", "c_R", "CR")
+
+
+def led_pad(body, x0, x1, z_crown, wall_in, R, pre):
+    """Çatı iç yayının tepesine düz şerit yüzeyi (yay tepesinden led_pad_t aşağıda biter;
+    şerit yapışkanı düz yüze yapışır) + +y çatı dilinde kablo çentiği (dil ortasında)."""
+    hw = "led_pad_w/2"
+    zb = f"({z_crown} - led_pad_t)"
+    za = f"({z_crown} - {R} + sqrt({R}*{R} - ({hw})*({hw})) + 0.3 mm)"
+    ytab = f"({wall_in} - roof_clear)"
+    ztab = f"({z_crown} - {R} + sqrt({R}*{R} - {wall_in}*{wall_in}))"
+    return [
+        box(x0, x1, f"-{hw}", hw, zb, za, "join", body, f"{pre}LedPad"),
+        box("-roof_notch_w/2", "roof_notch_w/2", f"{ytab} - roof_tab_t - 1 mm", f"{ytab} + 1 mm",
+            f"{ztab} - roof_tab_h - 1 mm", f"{ztab} - 1 mm", "cut", body, f"{pre}LedNotch"),
+    ]
 
 
 # --- Montajlar -----------------------------------------------------------------
@@ -1220,6 +1315,26 @@ def bed_drop(part, body, orient):
     return [c("solid.move", bodies=bodies, translate=[f"{v:.4f} mm" for v in t])]
 
 
+# İnceleme amaçlı (BASILMAZ) renkli montaj 3MF'leri: dünya koordinatında, ray hariç.
+# Site 3B görüntüleyicisi için; parts_manifest.py bunları basılacak parça listesine almaz.
+REVIEW_3MF = {"lokomotif_montaj": ("Track",), "tender_montaj": ("Track",),
+              "vagon_montaj": ("Track",)}
+
+
+def export_review_3mf(part):
+    d = json.loads((ROOT / "out" / f"{part}.measure.json").read_text())
+    skip = REVIEW_3MF[part]
+    bodies = [b["name"] for b in d["bodies"] if not b["name"].startswith(skip)]
+    ps = ROOT / "scripts" / f"{part}.review3mf.json"
+    ps.write_text(json.dumps({"commands": [c("file.export", path=win(ROOT / "out" / "3mf" / f"{part}.3mf"),
+                                             format="3mf", bodies=bodies)]}, indent=1))
+    r = subprocess.run([CLI, "run", win(ps), "--in", win(ROOT / "designs" / f"{part}.sc"), "--quiet"],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        print(r.stdout[-2000:], r.stderr[-2000:])
+        raise SystemExit(f"{part}: inceleme 3MF dışa aktarımı başarısız")
+
+
 def win(p: Path) -> str:
     return subprocess.check_output(["wslpath", "-w", str(p)], text=True).strip()
 
@@ -1253,6 +1368,8 @@ def run(part):
         if r.returncode != 0:
             print(r.stdout[-3000:], r.stderr[-3000:])
             raise SystemExit(f"{part}: baskı yönü başarısız")
+    if part in REVIEW_3MF:
+        export_review_3mf(part)
     subprocess.run([CLI, "snapshot", "--in", win(ROOT / "designs" / f"{part}.sc"),
                     "--out", win(ROOT / "renders" / f"{part}.png"), "--view", "iso",
                     "--width", "1200", "--height", "700"], capture_output=True, text=True)

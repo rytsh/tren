@@ -1,0 +1,89 @@
+{
+  "_note": "Düzlemsel ön hesap (R750, düz yol). Test değildir; S-viraj, dikey hareket, ray toleransı ve kablo sertliği dahil değil.",
+  "radius_mm": 750.0,
+  "couple_gap_mm": 28.0,
+  "drawbar_pitch_mm": 44.0,
+  "pairs": {
+    "loco-tender": {
+      "straight": {
+        "pin_to_pin": 44.0,
+        "beam_gap_center": 28.0,
+        "buffer_head_gap_inner": 12.0,
+        "buffer_head_gap_outer": 12.0,
+        "connector_face_dist": 30.0
+      },
+      "R750": {
+        "pin_to_pin": 44.0,
+        "beam_gap_center": 28.99,
+        "buffer_head_gap_inner": 11.2,
+        "buffer_head_gap_outer": 23.32,
+        "connector_face_dist": 30.94
+      },
+      "buffer_gap_reduction_inner_mm": 0.8,
+      "connector_face_change_mm": 0.94,
+      "jumper_len_mm": 70.0,
+      "jumper_slack_min_mm": 39.06,
+      "plug_tip_gap_min_mm": 2.0,
+      "loop_sag_max_mm": 21.0,
+      "loop_low_point_above_axle_mm": 63.0,
+      "loop_low_point_above_rail_mm": 84.0,
+      "clear_above_buffer_top_mm": 38.0,
+      "clear_above_fork_top_mm": 34.0,
+      "clear_above_flange_top_mm": 39.5
+    },
+    "tender-coach": {
+      "straight": {
+        "pin_to_pin": 44.0,
+        "beam_gap_center": 28.0,
+        "buffer_head_gap_inner": 12.0,
+        "buffer_head_gap_outer": 12.0,
+        "connector_face_dist": 34.0
+      },
+      "R750": {
+        "pin_to_pin": 44.0,
+        "beam_gap_center": 28.25,
+        "buffer_head_gap_inner": 5.72,
+        "buffer_head_gap_outer": 20.52,
+        "connector_face_dist": 34.11
+      },
+      "buffer_gap_reduction_inner_mm": 6.28,
+      "connector_face_change_mm": 0.11,
+      "jumper_len_mm": 70.0,
+      "jumper_slack_min_mm": 35.89,
+      "plug_tip_gap_min_mm": 6.0,
+      "loop_sag_max_mm": 20.8,
+      "loop_low_point_above_axle_mm": 63.2,
+      "loop_low_point_above_rail_mm": 84.2,
+      "clear_above_buffer_top_mm": 38.2,
+      "clear_above_fork_top_mm": 34.2,
+      "clear_above_flange_top_mm": 39.7
+    },
+    "coach-coach": {
+      "straight": {
+        "pin_to_pin": 44.0,
+        "beam_gap_center": 28.0,
+        "buffer_head_gap_inner": 12.0,
+        "buffer_head_gap_outer": 12.0,
+        "connector_face_dist": 36.0
+      },
+      "R750": {
+        "pin_to_pin": 44.0,
+        "beam_gap_center": 28.19,
+        "buffer_head_gap_inner": 3.19,
+        "buffer_head_gap_outer": 21.57,
+        "connector_face_dist": 36.09
+      },
+      "buffer_gap_reduction_inner_mm": 8.81,
+      "connector_face_change_mm": 0.09,
+      "jumper_len_mm": 70.0,
+      "jumper_slack_min_mm": 33.91,
+      "plug_tip_gap_min_mm": 8.0,
+      "loop_sag_max_mm": 20.6,
+      "loop_low_point_above_axle_mm": 63.4,
+      "loop_low_point_above_rail_mm": 84.4,
+      "clear_above_buffer_top_mm": 38.4,
+      "clear_above_fork_top_mm": 34.4,
+      "clear_above_flange_top_mm": 39.9
+    }
+  }
+}
