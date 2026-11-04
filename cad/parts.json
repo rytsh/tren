@@ -1,0 +1,898 @@
+{
+  "_note": "build.py + parts_manifest.py ile üretilir. bbox tasarım yönündedir (mm); kütle PETG 1.27 g/cm3 ile %100 dolu hacimden hesaplanır (gerçek baskı daha hafif). Montaj parçaları (montaj_*, *_montaj) yalnız kontrol amaçlıdır, listede yok.",
+  "units": "mm",
+  "printer": {
+    "model": "Bambu Lab X2D",
+    "build_volume_mm": [
+      256,
+      256,
+      260
+    ]
+  },
+  "parts": [
+    {
+      "id": "ray_duz_200",
+      "name_tr": "Düz ray modülü 200 mm",
+      "phase": 1,
+      "file": {
+        "stl": "out/stl/ray_duz_200.stl",
+        "3mf": "out/3mf/ray_duz_200.3mf",
+        "step": "out/step/ray_duz_200.step",
+        "design": "designs/ray_duz_200.sc"
+      },
+      "bbox_mm": [
+        214.0,
+        66.0,
+        13.0
+      ],
+      "volume_mm3": 54263.7,
+      "mass_g_petg": 68.9,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 1,
+      "notes_tr": "Kırlangıç bağlantılı, 2× M3 bahçe montaj deliği"
+    },
+    {
+      "id": "ray_viraj_r750_15",
+      "name_tr": "Viraj ray modülü R750 15°",
+      "phase": 1,
+      "file": {
+        "stl": "out/stl/ray_viraj_r750_15.stl",
+        "3mf": "out/3mf/ray_viraj_r750_15.3mf",
+        "step": "out/step/ray_viraj_r750_15.step",
+        "design": "designs/ray_viraj_r750_15.sc"
+      },
+      "bbox_mm": [
+        209.4,
+        90.4,
+        13.0
+      ],
+      "volume_mm3": 55664.2,
+      "mass_g_petg": 70.7,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "24 adet tam daire"
+    },
+    {
+      "id": "tekerlek_test_d42",
+      "name_tr": "Tekerlek Ø42 (flanş Ø47)",
+      "phase": 1,
+      "file": {
+        "stl": "out/stl/tekerlek_test_d42.stl",
+        "3mf": "out/3mf/tekerlek_test_d42.3mf",
+        "step": "out/step/tekerlek_test_d42.step",
+        "design": "designs/tekerlek_test_d42.sc"
+      },
+      "bbox_mm": [
+        47.0,
+        47.0,
+        7.5
+      ],
+      "volume_mm3": 7577.6,
+      "mass_g_petg": 9.6,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 4,
+      "qty_per_tender": 4,
+      "qty_per_coach": 8,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Arka yüz yatakta basılır; aksa sıkı geçme"
+    },
+    {
+      "id": "pul_aks_4mm",
+      "name_tr": "Aks pulu 4 mm",
+      "phase": 1,
+      "file": {
+        "stl": "out/stl/pul_aks_4mm.stl",
+        "3mf": "out/3mf/pul_aks_4mm.3mf",
+        "step": "out/step/pul_aks_4mm.step",
+        "design": "designs/pul_aks_4mm.sc"
+      },
+      "bbox_mm": [
+        5.5,
+        5.5,
+        1.0
+      ],
+      "volume_mm3": 9.2,
+      "mass_g_petg": 0.0,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 4,
+      "qty_per_tender": 4,
+      "qty_per_coach": 8,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Tekerlek-rulman arası; hazır M4 pul da olur"
+    },
+    {
+      "id": "sasi_test_040",
+      "name_tr": "Test şasisi 0-4-0 (motorsuz)",
+      "phase": 1,
+      "file": {
+        "stl": "out/stl/sasi_test_040.stl",
+        "3mf": "out/3mf/sasi_test_040.3mf",
+        "step": "out/step/sasi_test_040.step",
+        "design": "designs/sasi_test_040.sc"
+      },
+      "bbox_mm": [
+        130.0,
+        38.0,
+        22.0
+      ],
+      "volume_mm3": 38107.9,
+      "mass_g_petg": 48.4,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Yalnız test; lokomotifte sasi_motorlu_040 kullanılır"
+    },
+    {
+      "id": "tolerans_kuponu",
+      "name_tr": "Tolerans kuponu",
+      "phase": 1,
+      "file": {
+        "stl": "out/stl/tolerans_kuponu.stl",
+        "3mf": "out/3mf/tolerans_kuponu.3mf",
+        "step": "out/step/tolerans_kuponu.step",
+        "design": "designs/tolerans_kuponu.sc"
+      },
+      "bbox_mm": [
+        82.0,
+        34.0,
+        6.0
+      ],
+      "volume_mm3": 15015.5,
+      "mass_g_petg": 19.1,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Bir kez basılır (aks/rulman toleransı)"
+    },
+    {
+      "id": "sasi_motorlu_040",
+      "name_tr": "Motorlu şasi 0-4-0",
+      "phase": 2,
+      "file": {
+        "stl": "out/stl/sasi_motorlu_040.stl",
+        "3mf": "out/3mf/sasi_motorlu_040.3mf",
+        "step": "out/step/sasi_motorlu_040.step",
+        "design": "designs/sasi_motorlu_040.sc"
+      },
+      "bbox_mm": [
+        130.0,
+        38.0,
+        44.0
+      ],
+      "volume_mm3": 45097.0,
+      "mass_g_petg": 57.3,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "370 motor yatağı, 4× 684ZZ"
+    },
+    {
+      "id": "sonsuz_vida_m1",
+      "name_tr": "Sonsuz vida m1",
+      "phase": 2,
+      "file": {
+        "stl": "out/stl/sonsuz_vida_m1.stl",
+        "3mf": "out/3mf/sonsuz_vida_m1.3mf",
+        "step": "out/step/sonsuz_vida_m1.step",
+        "design": "designs/sonsuz_vida_m1.sc"
+      },
+      "bbox_mm": [
+        12.0,
+        12.0,
+        21.5
+      ],
+      "volume_mm3": 1432.8,
+      "mass_g_petg": 1.8,
+      "bodies": 2,
+      "fits_x2d": true,
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "İki gövde (göbek+helis), dilimleyicide birleşir"
+    },
+    {
+      "id": "karsi_disli_m1_z30",
+      "name_tr": "Karşı dişli m1 z30",
+      "phase": 2,
+      "file": {
+        "stl": "out/stl/karsi_disli_m1_z30.stl",
+        "3mf": "out/3mf/karsi_disli_m1_z30.3mf",
+        "step": "out/step/karsi_disli_m1_z30.step",
+        "design": "designs/karsi_disli_m1_z30.sc"
+      },
+      "bbox_mm": [
+        32.0,
+        31.9,
+        10.0
+      ],
+      "volume_mm3": 4305.0,
+      "mass_g_petg": 5.5,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ön aksa sıkı geçme + M3 set vidası"
+    },
+    {
+      "id": "lok_platform_on",
+      "name_tr": "Lokomotif ön platform (tampon kirişi, silindirler)",
+      "phase": 3,
+      "file": {
+        "stl": "out/stl/lok_platform_on.stl",
+        "3mf": "out/3mf/lok_platform_on.3mf",
+        "step": "out/step/lok_platform_on.step",
+        "design": "designs/lok_platform_on.sc"
+      },
+      "bbox_mm": [
+        234.0,
+        95.0,
+        23.5
+      ],
+      "volume_mm3": 94944.6,
+      "mass_g_petg": 120.6,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ters (üstü yatakta) basılır; şasiye 2× M3"
+    },
+    {
+      "id": "lok_platform_arka",
+      "name_tr": "Lokomotif arka platform (kabin tabanı, çeki çatalı)",
+      "phase": 3,
+      "file": {
+        "stl": "out/stl/lok_platform_arka.stl",
+        "3mf": "out/3mf/lok_platform_arka.3mf",
+        "step": "out/step/lok_platform_arka.step",
+        "design": "designs/lok_platform_arka.sc"
+      },
+      "bbox_mm": [
+        66.0,
+        95.0,
+        19.0
+      ],
+      "volume_mm3": 31257.7,
+      "mass_g_petg": 39.7,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ters basılır; ön platforma 2× M3 cıvata+somun"
+    },
+    {
+      "id": "lok_kazan",
+      "name_tr": "Kazan + duman kutusu + fener",
+      "phase": 3,
+      "file": {
+        "stl": "out/stl/lok_kazan.stl",
+        "3mf": "out/3mf/lok_kazan.3mf",
+        "step": "out/step/lok_kazan.step",
+        "design": "designs/lok_kazan.sc"
+      },
+      "bbox_mm": [
+        219.2,
+        64.0,
+        69.0
+      ],
+      "volume_mm3": 115182.3,
+      "mass_g_petg": 146.3,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Alt yüzü yatakta, içi boş (2.4 mm et)"
+    },
+    {
+      "id": "lok_kabin",
+      "name_tr": "Kabin",
+      "phase": 3,
+      "file": {
+        "stl": "out/stl/lok_kabin.stl",
+        "3mf": "out/3mf/lok_kabin.3mf",
+        "step": "out/step/lok_kabin.step",
+        "design": "designs/lok_kabin.sc"
+      },
+      "bbox_mm": [
+        70.0,
+        86.0,
+        98.0
+      ],
+      "volume_mm3": 49498.5,
+      "mass_g_petg": 62.9,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Alt yüzü yatakta, çatısız"
+    },
+    {
+      "id": "lok_kabin_cati",
+      "name_tr": "Kabin çatısı",
+      "phase": 3,
+      "file": {
+        "stl": "out/stl/lok_kabin_cati.stl",
+        "3mf": "out/3mf/lok_kabin_cati.3mf",
+        "step": "out/step/lok_kabin_cati.step",
+        "design": "designs/lok_kabin_cati.sc"
+      },
+      "bbox_mm": [
+        74.0,
+        90.0,
+        17.3
+      ],
+      "volume_mm3": 18295.1,
+      "mass_g_petg": 23.2,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ön/arka ucu yatakta (yay kesit dik)"
+    },
+    {
+      "id": "lok_baca",
+      "name_tr": "Baca",
+      "phase": 3,
+      "file": {
+        "stl": "out/stl/lok_baca.stl",
+        "3mf": "out/3mf/lok_baca.3mf",
+        "step": "out/step/lok_baca.step",
+        "design": "designs/lok_baca.sc"
+      },
+      "bbox_mm": [
+        27.0,
+        27.0,
+        41.0
+      ],
+      "volume_mm3": 9586.9,
+      "mass_g_petg": 12.2,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Tepesi yatakta"
+    },
+    {
+      "id": "lok_buhar_domu",
+      "name_tr": "Buhar domu",
+      "phase": 3,
+      "file": {
+        "stl": "out/stl/lok_buhar_domu.stl",
+        "3mf": "out/3mf/lok_buhar_domu.3mf",
+        "step": "out/step/lok_buhar_domu.step",
+        "design": "designs/lok_buhar_domu.sc"
+      },
+      "bbox_mm": [
+        28.0,
+        28.0,
+        17.0
+      ],
+      "volume_mm3": 7960.3,
+      "mass_g_petg": 10.1,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Tepesi yatakta; pirinç renk"
+    },
+    {
+      "id": "lok_kum_domu",
+      "name_tr": "Kum domu",
+      "phase": 3,
+      "file": {
+        "stl": "out/stl/lok_kum_domu.stl",
+        "3mf": "out/3mf/lok_kum_domu.3mf",
+        "step": "out/step/lok_kum_domu.step",
+        "design": "designs/lok_kum_domu.sc"
+      },
+      "bbox_mm": [
+        22.0,
+        22.0,
+        14.0
+      ],
+      "volume_mm3": 3892.0,
+      "mass_g_petg": 4.9,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Tepesi yatakta; ön şasi vidasının üstünde"
+    },
+    {
+      "id": "lok_emniyet_ventili",
+      "name_tr": "Emniyet ventili",
+      "phase": 3,
+      "file": {
+        "stl": "out/stl/lok_emniyet_ventili.stl",
+        "3mf": "out/3mf/lok_emniyet_ventili.3mf",
+        "step": "out/step/lok_emniyet_ventili.step",
+        "design": "designs/lok_emniyet_ventili.sc"
+      },
+      "bbox_mm": [
+        18.0,
+        18.0,
+        23.0
+      ],
+      "volume_mm3": 2787.9,
+      "mass_g_petg": 3.5,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Tepesi yatakta; pirinç renk"
+    },
+    {
+      "id": "ceki_kolu",
+      "name_tr": "Çeki kolu (44 mm pim aralığı)",
+      "phase": 3,
+      "file": {
+        "stl": "out/stl/ceki_kolu.stl",
+        "3mf": "out/3mf/ceki_kolu.3mf",
+        "step": "out/step/ceki_kolu.step",
+        "design": "designs/ceki_kolu.sc"
+      },
+      "bbox_mm": [
+        54.0,
+        10.0,
+        5.5
+      ],
+      "volume_mm3": 2858.1,
+      "mass_g_petg": 3.6,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 1,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Araçlar arası; loko-tender için 1, her vagon arkasına 1"
+    },
+    {
+      "id": "tender_sasi",
+      "name_tr": "Tender şasisi (motorsuz 0-4-0)",
+      "phase": 3,
+      "file": {
+        "stl": "out/stl/tender_sasi.stl",
+        "3mf": "out/3mf/tender_sasi.3mf",
+        "step": "out/step/tender_sasi.step",
+        "design": "designs/tender_sasi.sc"
+      },
+      "bbox_mm": [
+        104.0,
+        38.0,
+        22.0
+      ],
+      "volume_mm3": 31168.5,
+      "mass_g_petg": 39.6,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 1,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Yan levha yatakta, 4× 684ZZ"
+    },
+    {
+      "id": "tender_platform",
+      "name_tr": "Tender platformu",
+      "phase": 3,
+      "file": {
+        "stl": "out/stl/tender_platform.stl",
+        "3mf": "out/3mf/tender_platform.3mf",
+        "step": "out/step/tender_platform.step",
+        "design": "designs/tender_platform.sc"
+      },
+      "bbox_mm": [
+        160.0,
+        90.0,
+        19.0
+      ],
+      "volume_mm3": 66221.6,
+      "mass_g_petg": 84.1,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 1,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ters basılır; iki uçta çeki çatalı"
+    },
+    {
+      "id": "tender_depo",
+      "name_tr": "Tender su deposu (pil bölmesi)",
+      "phase": 3,
+      "file": {
+        "stl": "out/stl/tender_depo.stl",
+        "3mf": "out/3mf/tender_depo.3mf",
+        "step": "out/step/tender_depo.step",
+        "design": "designs/tender_depo.sc"
+      },
+      "bbox_mm": [
+        140.0,
+        86.0,
+        63.0
+      ],
+      "volume_mm3": 90942.6,
+      "mass_g_petg": 115.5,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 1,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ters (üstü yatakta) basılır"
+    },
+    {
+      "id": "tender_kapak",
+      "name_tr": "Tender kömür kapağı",
+      "phase": 3,
+      "file": {
+        "stl": "out/stl/tender_kapak.stl",
+        "3mf": "out/3mf/tender_kapak.3mf",
+        "step": "out/step/tender_kapak.step",
+        "design": "designs/tender_kapak.sc"
+      },
+      "bbox_mm": [
+        68.0,
+        76.0,
+        13.5
+      ],
+      "volume_mm3": 54612.2,
+      "mass_g_petg": 69.4,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 1,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Alt yüzü yatakta; pil erişimi"
+    },
+    {
+      "id": "vagon_boji",
+      "name_tr": "Vagon bojisi",
+      "phase": 3,
+      "file": {
+        "stl": "out/stl/vagon_boji.stl",
+        "3mf": "out/3mf/vagon_boji.3mf",
+        "step": "out/step/vagon_boji.step",
+        "design": "designs/vagon_boji.sc"
+      },
+      "bbox_mm": [
+        64.0,
+        38.0,
+        22.0
+      ],
+      "volume_mm3": 18099.2,
+      "mass_g_petg": 23.0,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 2,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Yan levha yatakta, 4× 684ZZ"
+    },
+    {
+      "id": "vagon_platform",
+      "name_tr": "Vagon platformu",
+      "phase": 3,
+      "file": {
+        "stl": "out/stl/vagon_platform.stl",
+        "3mf": "out/3mf/vagon_platform.3mf",
+        "step": "out/step/vagon_platform.step",
+        "design": "designs/vagon_platform.sc"
+      },
+      "bbox_mm": [
+        220.0,
+        90.0,
+        18.0
+      ],
+      "volume_mm3": 82181.4,
+      "mass_g_petg": 104.4,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 1,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ters basılır; iki uçta çeki çatalı"
+    },
+    {
+      "id": "vagon_govde",
+      "name_tr": "Vagon kasası",
+      "phase": 3,
+      "file": {
+        "stl": "out/stl/vagon_govde.stl",
+        "3mf": "out/3mf/vagon_govde.3mf",
+        "step": "out/step/vagon_govde.step",
+        "design": "designs/vagon_govde.sc"
+      },
+      "bbox_mm": [
+        196.0,
+        90.0,
+        81.0
+      ],
+      "volume_mm3": 81276.3,
+      "mass_g_petg": 103.2,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 1,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Alt yüzü yatakta, çatısız"
+    },
+    {
+      "id": "vagon_cati",
+      "name_tr": "Vagon çatısı",
+      "phase": 3,
+      "file": {
+        "stl": "out/stl/vagon_cati.stl",
+        "3mf": "out/3mf/vagon_cati.3mf",
+        "step": "out/step/vagon_cati.step",
+        "design": "designs/vagon_cati.sc"
+      },
+      "bbox_mm": [
+        200.0,
+        94.0,
+        17.3
+      ],
+      "volume_mm3": 51657.9,
+      "mass_g_petg": 65.6,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 1,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ucu yatakta (220 mm yükseklik < 260)"
+    }
+  ],
+  "hardware": [
+    {
+      "id": "bearing_684zz",
+      "name_tr": "684ZZ rulman",
+      "qty_per_loco": 4,
+      "qty_per_tender": 4,
+      "qty_per_coach": 8,
+      "qty_per_track_piece": 0,
+      "spec": "4×9×4 mm"
+    },
+    {
+      "id": "axle_4mm",
+      "name_tr": "Çelik aks Ø4 × 55 mm",
+      "qty_per_loco": 2,
+      "qty_per_tender": 2,
+      "qty_per_coach": 4,
+      "qty_per_track_piece": 0,
+      "spec": "Gümüş çelik/paslanmaz, h6"
+    },
+    {
+      "id": "motor_370",
+      "name_tr": "RF-370 / RS-370 DC motor",
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 0,
+      "spec": "Ø24.4 × 30.5, Ø2.3 mil, 6-7.4 V (ölçüleri doğrula)"
+    },
+    {
+      "id": "screw_m25x6",
+      "name_tr": "M2.5×6 vida",
+      "qty_per_loco": 2,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 0,
+      "spec": "Motor ön yüzü"
+    },
+    {
+      "id": "grub_m3x4",
+      "name_tr": "M3×4 set vidası",
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 0,
+      "spec": "Karşı dişli göbeği"
+    },
+    {
+      "id": "screw_m3x12",
+      "name_tr": "M3×12 vida (plastiğe)",
+      "qty_per_loco": 2,
+      "qty_per_tender": 2,
+      "qty_per_coach": 2,
+      "qty_per_track_piece": 0,
+      "spec": "Gövde-şasi (loko x=±60), tender platform-şasi, vagon boji pivotu"
+    },
+    {
+      "id": "screw_m3x8",
+      "name_tr": "M3×8 vida (plastiğe)",
+      "qty_per_loco": 8,
+      "qty_per_tender": 4,
+      "qty_per_coach": 4,
+      "qty_per_track_piece": 0,
+      "spec": "Kazan 4, kabin 4 / depo 4 / kasa 4 (platform altından)"
+    },
+    {
+      "id": "screw_m3x10_nut",
+      "name_tr": "M3×10 cıvata + M3 somun",
+      "qty_per_loco": 2,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 0,
+      "spec": "Ön-arka platform flanşı"
+    },
+    {
+      "id": "screw_m3x25",
+      "name_tr": "M3×25 vida (çeki pimi)",
+      "qty_per_loco": 1,
+      "qty_per_tender": 2,
+      "qty_per_coach": 2,
+      "qty_per_track_piece": 0,
+      "spec": "Çatal başına 1; çeki kolu bunun üstünde döner"
+    },
+    {
+      "id": "nut_m3_lock",
+      "name_tr": "M3 kontra (nylon) somun",
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 2,
+      "qty_per_track_piece": 0,
+      "spec": "Boji pivotu (boji serbest dönmeli)"
+    },
+    {
+      "id": "screw_m3_track",
+      "name_tr": "M3×16 vida + dübel",
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 2,
+      "spec": "Rayı bahçeye sabitleme (isteğe bağlı)"
+    },
+    {
+      "id": "led_5mm",
+      "name_tr": "5 mm sıcak beyaz LED + 220 Ω direnç",
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 0,
+      "spec": "Ön fener"
+    },
+    {
+      "id": "lens_10mm",
+      "name_tr": "Ø10 × 2 mm şeffaf lens/disk",
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 0,
+      "spec": "Fener camı (isteğe bağlı, şeffaf PETG baskı da olur)"
+    },
+    {
+      "id": "battery_2s",
+      "name_tr": "2S Li-ion paket (2× 18650) VARSAYIM",
+      "qty_per_loco": 0,
+      "qty_per_tender": 1,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 0,
+      "spec": "~70×37×20 mm, 7.4 V, 2500-3500 mAh; tender deposuna"
+    },
+    {
+      "id": "bms_2s",
+      "name_tr": "2S BMS kartı",
+      "qty_per_loco": 0,
+      "qty_per_tender": 1,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 0,
+      "spec": "Koruma; ~40×7 mm"
+    },
+    {
+      "id": "charger_2s",
+      "name_tr": "2S şarj modülü / USB-C PD tetik",
+      "qty_per_loco": 0,
+      "qty_per_tender": 1,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 0,
+      "spec": "Şarj istasyonu için (Faz 4'te kesinleşecek)"
+    },
+    {
+      "id": "esp32",
+      "name_tr": "ESP32 dev kartı (ör. ESP32-C3 SuperMini)",
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 0,
+      "spec": "Kazan içine"
+    },
+    {
+      "id": "motor_driver",
+      "name_tr": "DRV8833 veya TB6612FNG sürücü",
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 0,
+      "spec": "Tek motor"
+    },
+    {
+      "id": "buck_5v",
+      "name_tr": "DC-DC buck 7.4→5 V",
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 0,
+      "spec": "ESP32 beslemesi"
+    },
+    {
+      "id": "hall_a3144",
+      "name_tr": "A3144 hall sensörü",
+      "qty_per_loco": 1,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 0,
+      "spec": "Konum/istasyon algılama"
+    },
+    {
+      "id": "magnet_6x3",
+      "name_tr": "Neodim mıknatıs 6×3 mm",
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 1,
+      "spec": "Ray üstü işaret (istasyon/sayaç başına, varsayım)"
+    },
+    {
+      "id": "switch",
+      "name_tr": "Mini anahtar (açma/kapama)",
+      "qty_per_loco": 0,
+      "qty_per_tender": 1,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 0,
+      "spec": "Tender"
+    },
+    {
+      "id": "wire_conn",
+      "name_tr": "2-pinli JST-PH konnektör + 26 AWG kablo",
+      "qty_per_loco": 1,
+      "qty_per_tender": 1,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 0,
+      "spec": "Loko-tender güç bağlantısı (8 mm delikten)"
+    }
+  ]
+}

@@ -19,6 +19,7 @@
         16.588110092750682,
         2.962086037842345
       ],
+      "closed": true,
       "density_g_cm3": 1.29,
       "edges": 1286,
       "face_types": {
@@ -46,6 +47,7 @@
     "edges": 1286,
     "faces": 478,
     "mass_g": 19.370020620800325,
+    "open_bodies_skipped": 0,
     "vertices": 866,
     "volume_mm3": 15015.519861085524
   }

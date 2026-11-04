@@ -1,0 +1,53 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 54585.9890004658,
+      "bbox": {
+        "max": [
+          150.00000000000006,
+          47.5,
+          29.000000000000018
+        ],
+        "min": [
+          -84.00000000000004,
+          -47.5,
+          5.500295528852931
+        ]
+      },
+      "center_of_mass": [
+        53.78864861365247,
+        -4.081788117402008e-6,
+        23.170676079018595
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 110,
+      "face_types": {
+        "cylinder": 18,
+        "plane": 35
+      },
+      "faces": 53,
+      "kernel": {
+        "edges": 186,
+        "faces": 73,
+        "shells": 1,
+        "vertices": 124
+      },
+      "mass_g": 122.47853707678229,
+      "material": "Default",
+      "name": "FootplateF",
+      "vertices": 84,
+      "volume_mm3": 94944.60238510255
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 54585.9890004658,
+    "edges": 110,
+    "faces": 53,
+    "mass_g": 122.47853707678229,
+    "open_bodies_skipped": 0,
+    "vertices": 84,
+    "volume_mm3": 94944.60238510255
+  }
+}

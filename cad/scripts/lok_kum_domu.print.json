@@ -1,0 +1,31 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "SandDome"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "180 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "SandDome"
+    ],
+    "translate": [
+     "-60.0000 mm",
+     "0.0000 mm",
+     "104.0000 mm"
+    ]
+   }
+  }
+ ]
+}

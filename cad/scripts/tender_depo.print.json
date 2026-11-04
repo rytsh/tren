@@ -1,0 +1,31 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "TTank"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "180 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "TTank"
+    ],
+    "translate": [
+     "-0.0000 mm",
+     "-0.0000 mm",
+     "92.0000 mm"
+    ]
+   }
+  }
+ ]
+}

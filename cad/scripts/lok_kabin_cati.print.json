@@ -1,0 +1,31 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "CabRoof"
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "angle": "90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "CabRoof"
+    ],
+    "translate": [
+     "-120.7699 mm",
+     "0.0000 mm",
+     "-70.0000 mm"
+    ]
+   }
+  }
+ ]
+}

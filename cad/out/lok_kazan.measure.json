@@ -1,0 +1,54 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 76421.82214159137,
+      "bbox": {
+        "max": [
+          147.50000000000009,
+          31.999999999999996,
+          98.00000000000003
+        ],
+        "min": [
+          -71.69999999999193,
+          -32.0,
+          28.999999999998266
+        ]
+      },
+      "center_of_mass": [
+        61.321907625113994,
+        0.00018828441888707237,
+        65.63772647524199
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 205,
+      "face_types": {
+        "cone": 1,
+        "cylinder": 20,
+        "plane": 59
+      },
+      "faces": 80,
+      "kernel": {
+        "edges": 320,
+        "faces": 115,
+        "shells": 1,
+        "vertices": 212
+      },
+      "mass_g": 148.58512167304121,
+      "material": "Default",
+      "name": "Boiler",
+      "vertices": 145,
+      "volume_mm3": 115182.26486282265
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 76421.82214159137,
+    "edges": 205,
+    "faces": 80,
+    "mass_g": 148.58512167304121,
+    "open_bodies_skipped": 0,
+    "vertices": 145,
+    "volume_mm3": 115182.26486282265
+  }
+}

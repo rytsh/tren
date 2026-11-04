@@ -1,0 +1,31 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "CRoof"
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "angle": "90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "CRoof"
+    ],
+    "translate": [
+     "-103.7430 mm",
+     "0.0000 mm",
+     "100.0000 mm"
+    ]
+   }
+  }
+ ]
+}

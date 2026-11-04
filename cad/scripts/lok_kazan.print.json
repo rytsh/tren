@@ -1,0 +1,31 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Boiler"
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "angle": "-90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Boiler"
+    ],
+    "translate": [
+     "63.5000 mm",
+     "0.0000 mm",
+     "71.7000 mm"
+    ]
+   }
+  }
+ ]
+}

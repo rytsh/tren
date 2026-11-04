@@ -1,0 +1,53 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 72176.34691153913,
+      "bbox": {
+        "max": [
+          70.00000000000003,
+          43.0,
+          92.0
+        ],
+        "min": [
+          -70.00000000000001,
+          -43.000000000000114,
+          28.99999999999998
+        ]
+      },
+      "center_of_mass": [
+        -3.0098049459655107,
+        1.3059203259643191e-8,
+        65.49887870064758
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 70,
+      "face_types": {
+        "cylinder": 5,
+        "plane": 27
+      },
+      "faces": 32,
+      "kernel": {
+        "edges": 90,
+        "faces": 37,
+        "shells": 1,
+        "vertices": 60
+      },
+      "mass_g": 117.31599139628297,
+      "material": "Default",
+      "name": "TTank",
+      "vertices": 50,
+      "volume_mm3": 90942.62898936664
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 72176.34691153913,
+    "edges": 70,
+    "faces": 32,
+    "mass_g": 117.31599139628297,
+    "open_bodies_skipped": 0,
+    "vertices": 50,
+    "volume_mm3": 90942.62898936664
+  }
+}

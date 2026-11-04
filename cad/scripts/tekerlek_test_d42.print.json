@@ -1,0 +1,17 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel"
+    ],
+    "translate": [
+     "-0.0000 mm",
+     "-0.0000 mm",
+     "0.0000 mm"
+    ]
+   }
+  }
+ ]
+}

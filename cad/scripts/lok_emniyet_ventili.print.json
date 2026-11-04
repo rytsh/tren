@@ -1,0 +1,31 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "SafetyValve"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "180 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "SafetyValve"
+    ],
+    "translate": [
+     "46.0000 mm",
+     "0.0000 mm",
+     "113.0000 mm"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 42302.22586912182,
+      "bbox": {
+        "max": [
+          80.00000000000004,
+          45.0,
+          29.000000000000018
+        ],
+        "min": [
+          -80.00000000000006,
+          -45.0,
+          10.0
+        ]
+      },
+      "center_of_mass": [
+        0.000015484235341863753,
+        -0.00001292377021680086,
+        23.855052155684284
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 124,
+      "face_types": {
+        "cylinder": 20,
+        "plane": 44
+      },
+      "faces": 64,
+      "kernel": {
+        "edges": 204,
+        "faces": 84,
+        "shells": 1,
+        "vertices": 136
+      },
+      "mass_g": 85.42582774267338,
+      "material": "Default",
+      "name": "TDeck",
+      "vertices": 96,
+      "volume_mm3": 66221.57189354526
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 42302.22586912182,
+    "edges": 124,
+    "faces": 64,
+    "mass_g": 85.42582774267338,
+    "open_bodies_skipped": 0,
+    "vertices": 96,
+    "volume_mm3": 66221.57189354526
+  }
+}

@@ -1,0 +1,17 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Curve"
+    ],
+    "translate": [
+     "-97.7069 mm",
+     "-12.1832 mm",
+     "0.0000 mm"
+    ]
+   }
+  }
+ ]
+}

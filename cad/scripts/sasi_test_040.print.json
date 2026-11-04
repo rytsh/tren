@@ -13,6 +13,19 @@
     ],
     "angle": "-90 deg"
    }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Frame"
+    ],
+    "translate": [
+     "-0.0000 mm",
+     "-1.0000 mm",
+     "19.0000 mm"
+    ]
+   }
   }
  ]
 }

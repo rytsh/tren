@@ -1,0 +1,53 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 14388.643669512683,
+      "bbox": {
+        "max": [
+          52.0,
+          19.000000000000014,
+          12.000000000000007
+        ],
+        "min": [
+          -52.0,
+          -19.00000000000001,
+          -10.0
+        ]
+      },
+      "center_of_mass": [
+        -1.955408940528505e-9,
+        -5.680620604010729e-10,
+        2.007960883559799
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 68,
+      "face_types": {
+        "cylinder": 10,
+        "plane": 21
+      },
+      "faces": 31,
+      "kernel": {
+        "edges": 116,
+        "faces": 41,
+        "shells": 1,
+        "vertices": 80
+      },
+      "mass_g": 40.20738118963868,
+      "material": "Default",
+      "name": "TFrame",
+      "vertices": 52,
+      "volume_mm3": 31168.512550107505
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 14388.643669512683,
+    "edges": 68,
+    "faces": 31,
+    "mass_g": 40.20738118963868,
+    "open_bodies_skipped": 0,
+    "vertices": 52,
+    "volume_mm3": 31168.512550107505
+  }
+}

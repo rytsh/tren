@@ -325,5 +325,663 @@
       2.5,
       "M3 set vidası pilot deliği"
     ]
+  },
+  "body": {
+    "loco_len": [
+      300.0,
+      "Lokomotif boyu, tampon başları dahil"
+    ],
+    "loco_w": [
+      95.0,
+      "Lokomotif genişliği (ana platform)"
+    ],
+    "loco_h": [
+      155.0,
+      "Lokomotif yüksekliği, ray üstünden baca tepesine"
+    ],
+    "wall_t": [
+      2.4,
+      "Gövde kabuk et kalınlığı"
+    ],
+    "fp_z": [
+      26.0,
+      "Ana platform (footplate) alt yüzü, aks ekseninden (flanş tepesi 23.5)"
+    ],
+    "fp_t": [
+      3.0,
+      "Ana platform kalınlığı"
+    ],
+    "beam_t": [
+      4.0,
+      "Tampon kirişi kalınlığı"
+    ],
+    "beam_bot": [
+      10.0,
+      "Tampon kirişi alt kenarı, aks ekseninden"
+    ],
+    "valance_h": [
+      6.0,
+      "Platform kenar etek yüksekliği"
+    ],
+    "valance_t": [
+      2.0,
+      "Platform kenar etek kalınlığı"
+    ],
+    "buf_len": [
+      8.0,
+      "Tampon boyu (kirişten)"
+    ],
+    "buf_stock_d": [
+      10.0,
+      "Tampon gövde çapı"
+    ],
+    "buf_head_d": [
+      14.0,
+      "Tampon başı çapı"
+    ],
+    "buf_head_t": [
+      2.0,
+      "Tampon başı kalınlığı"
+    ],
+    "buf_y": [
+      30.0,
+      "Tampon ekseni, merkezden"
+    ],
+    "buf_z": [
+      18.0,
+      "Tampon/kanca yüksekliği, aks ekseninden (raydan ~39)"
+    ],
+    "body_boss_d": [
+      7.0,
+      "Gövde modülü vida dikmesi çapı (M3 pilot)"
+    ],
+    "body_boss_h": [
+      10.0,
+      "Gövde modülü vida dikmesi yüksekliği"
+    ],
+    "fork_pin_in": [
+      8.0,
+      "Çeki pimi, tampon kirişi dış yüzünden içeri"
+    ],
+    "fork_len": [
+      18.0,
+      "Çeki çatalı bloğu boyu (kiriş dış yüzünden içeri)"
+    ],
+    "fork_w": [
+      30.0,
+      "Çeki çatalı bloğu genişliği (boji tekerleğinden uzak)"
+    ],
+    "fork_zb": [
+      11.0,
+      "Çeki çatalı alt kenarı, aks ekseninden (alt çene 4.5 mm)"
+    ],
+    "fork_z0": [
+      15.5,
+      "Çeki yarığı alt"
+    ],
+    "fork_z1": [
+      22.5,
+      "Çeki yarığı üst"
+    ],
+    "db_w": [
+      10.0,
+      "Çeki kolu genişliği"
+    ],
+    "db_t": [
+      5.5,
+      "Çeki kolu kalınlığı"
+    ],
+    "couple_gap": [
+      28.0,
+      "Araçlar arası kiriş-kiriş mesafesi (tek tip çeki kolu; R750'de tampon payı)"
+    ],
+    "boil_d": [
+      56.0,
+      "Kazan çapı"
+    ],
+    "boil_z": [
+      66.0,
+      "Kazan ekseni, aks ekseninden (raydan ~87)"
+    ],
+    "skirt_w": [
+      46.0,
+      "Kazan altı etek genişliği (motor perdesi ±19'u geçer)"
+    ],
+    "band_d": [
+      57.6,
+      "Kazan kuşağı çapı"
+    ],
+    "band_w": [
+      2.5,
+      "Kazan kuşağı genişliği"
+    ],
+    "sb_x0": [
+      95.0,
+      "Duman kutusu arka ucu (X)"
+    ],
+    "sb_x1": [
+      128.0,
+      "Duman kutusu ön yüzü (X)"
+    ],
+    "sb_d": [
+      62.0,
+      "Duman kutusu çapı"
+    ],
+    "saddle_w": [
+      52.0,
+      "Duman kutusu altlığı genişliği"
+    ],
+    "lamp_d": [
+      14.0,
+      "Ön fener gövdesi çapı"
+    ],
+    "lamp_z": [
+      78.0,
+      "Ön fener ekseni, aks ekseninden (kapak düz yüzünde)"
+    ],
+    "led_d": [
+      6.0,
+      "LED kanalı (5 mm LED'in Ø5.8 flanşı geçer; LED içeriden lens yuvasına itilir)"
+    ],
+    "lens_d": [
+      10.0,
+      "Fener camı/lens yuvası çapı"
+    ],
+    "lens_depth": [
+      2.0,
+      "Lens yuvası derinliği"
+    ],
+    "chim_x": [
+      "(sb_x0 + sb_x1)/2",
+      "Baca ekseni X (duman kutusu ortası)"
+    ],
+    "chim_bore": [
+      10.0,
+      "Baca ağzı çapı (15 mm derin)"
+    ],
+    "dome_x": [
+      10.0,
+      "Buhar domu X (kazan ortası)"
+    ],
+    "sand_x": [
+      60.0,
+      "Kum domu X"
+    ],
+    "valve_x": [
+      -46.0,
+      "Emniyet ventili X (ateşlik üstü; -50..-60 aralığında SolidCraft kesimi başarısız)"
+    ],
+    "cab_x0": [
+      "-(loco_len/2 - buf_len)",
+      "Kabin arka yüzü (X) = arka kiriş"
+    ],
+    "cab_x1": [
+      -72.0,
+      "Kabin ön yüzü (X)"
+    ],
+    "cab_w": [
+      86.0,
+      "Kabin genişliği"
+    ],
+    "cab_side_top": [
+      117.0,
+      "Kabin yan duvar üstü, aks ekseninden"
+    ],
+    "cab_crown": [
+      127.0,
+      "Kabin çatı yayı tepesi (çatı altı), aks ekseninden"
+    ],
+    "cab_R": [
+      "(cab_w*cab_w/4 + (cab_crown - cab_side_top)*(cab_crown - cab_side_top)) / (2*(cab_crown - cab_side_top))",
+      "Kabin çatı yayı yarıçapı (türetilmiş)"
+    ],
+    "cab_win_d": [
+      16.0,
+      "Kabin ön (gözlük) pencere çapı"
+    ],
+    "cab_win_y": [
+      30.0,
+      "Ön pencere Y"
+    ],
+    "cab_win_z": [
+      100.0,
+      "Ön pencere Z"
+    ],
+    "side_win_x0": [
+      -124.0,
+      "Yan pencere arka kenarı"
+    ],
+    "side_win_x1": [
+      -92.0,
+      "Yan pencere ön kenarı"
+    ],
+    "side_win_z0": [
+      72.0,
+      "Yan pencere alt kenarı"
+    ],
+    "side_win_z1": [
+      104.0,
+      "Yan pencere üst kenarı"
+    ],
+    "cab_rear_w": [
+      60.0,
+      "Kabin arka açıklığı genişliği (60 mm köprü)"
+    ],
+    "cab_rear_z0": [
+      45.0,
+      "Kabin arka açıklığı alt kenarı"
+    ],
+    "roof_over": [
+      2.0,
+      "Çatı taşması"
+    ],
+    "cyl_d": [
+      22.0,
+      "Silindir çapı"
+    ],
+    "cyl_y": [
+      34.0,
+      "Silindir ekseni Y"
+    ],
+    "cyl_z": [
+      16.5,
+      "Silindir ekseni Z (kapak üstü platform üstüyle hizalı)"
+    ],
+    "cyl_x0": [
+      68.0,
+      "Silindir arka ucu X"
+    ],
+    "cyl_len": [
+      34.0,
+      "Silindir boyu"
+    ],
+    "roof_t": [
+      2.4,
+      "Çatı kalınlığı"
+    ],
+    "dome_seat_d": [
+      28.0,
+      "Buhar domu taban çapı"
+    ],
+    "sand_seat_d": [
+      22.0,
+      "Kum domu taban çapı"
+    ],
+    "valve_seat_d": [
+      18.0,
+      "Emniyet ventili taban çapı"
+    ],
+    "chim_seat_d": [
+      27.0,
+      "Baca taban çapı"
+    ],
+    "chim_seat_top": [
+      99.0,
+      "Baca tabanı üst kenarı (duman kutusu tepesi 97)"
+    ],
+    "fit_clear": [
+      0.15,
+      "Bilezik-yuva radyal boşluğu"
+    ],
+    "cable_w": [
+      40.0,
+      "Kabin ön duvarı kablo geçişi genişliği (kazanın arkasında gizli)"
+    ],
+    "cable_h": [
+      50.0,
+      "Kablo geçişi yüksekliği"
+    ],
+    "axle_h": [
+      "wheel_d/2 - (track_gauge/2 + rail_top_ch - back_to_back/2 - flange_t - root_ch) * tread_taper + 0.05 mm",
+      "Aks ekseninin ray üstünden yüksekliği (türetilmiş, ~21.0)"
+    ],
+    "boil_x0": [
+      -71.7,
+      "Kazan arka ucu (X); kabin ön duvarına 0.3 boşluk"
+    ],
+    "rib_w": [
+      5.0,
+      "Kazan iç vida kaburgası genişliği"
+    ],
+    "rib_h": [
+      6.0,
+      "Vida kaburgası yüksekliği (platform üstünden)"
+    ],
+    "cab_rib_w": [
+      6.0,
+      "Kabin/depo/vagon iç vida kaburgası genişliği"
+    ],
+    "boil_hole_xf": [
+      70.0,
+      "Kazan ön vidaları X (şasi levhası ucu 65'in önünde)"
+    ],
+    "boil_hole_xr": [
+      -68.0,
+      "Kazan arka vidaları X (şasi levhası ucu -65'in arkasında; alttan erişilir)"
+    ],
+    "cab_hole_xf": [
+      "cab_x1 - wall_t - 3 mm",
+      "Kabin ön vidaları X"
+    ],
+    "cab_hole_xr": [
+      "cab_x0 + beam_t + 4 mm",
+      "Kabin arka vidaları X (tampon kirişinden uzak)"
+    ],
+    "door_d": [
+      40.0,
+      "Duman kutusu kapağı ön düz yüz çapı"
+    ],
+    "door_t": [
+      10.0,
+      "Duman kutusu kapağı derinliği (45° konik: Ø60 → Ø40, desteksiz baskı)"
+    ],
+    "lamp_len": [
+      7.0,
+      "Fener gövdesi boyu"
+    ],
+    "lamp_spig_d": [
+      8.0,
+      "Fener arka pimi çapı (kapaktaki deliğe girer)"
+    ],
+    "lamp_spig_l": [
+      2.5,
+      "Fener pimi boyu"
+    ],
+    "chim_h": [
+      "loco_h - axle_h - chim_seat_top",
+      "Baca yüksekliği (tepe = ray üstünden loco_h)"
+    ],
+    "mount_boss_d": [
+      10.0,
+      "Gövdeyi şasiye bağlayan dikme çapı (şasi traversine oturur)"
+    ],
+    "boil_hole_y": [
+      "skirt_w/2 - wall_t - rib_w/2",
+      "Kazan vidaları Y (±, türetilmiş)"
+    ],
+    "cab_hole_y": [
+      "cab_w/2 - wall_t - cab_rib_w/2",
+      "Kabin vidaları Y (±, türetilmiş)"
+    ],
+    "cab_rear_z1": [
+      100.0,
+      "Kabin arka açıklığı üst kenarı"
+    ],
+    "band_x1": [
+      -35.0,
+      "Kazan kuşağı 1 X"
+    ],
+    "band_x2": [
+      35.0,
+      "Kazan kuşağı 2 X"
+    ],
+    "fork_slot_w": [
+      22.0,
+      "Çeki yarığı genişliği (kolun yanal dönüşü için)"
+    ],
+    "fp_split_x": [
+      -84.0,
+      "Ön/arka platform modülü ayrım çizgisi (X); kabin ön vidasından 6.6 mm geride"
+    ],
+    "fp_open_x0": [
+      -50.0,
+      "Platform açıklığı arka ucu X (motor, perde, kablolar)"
+    ],
+    "fp_open_x1": [
+      46.0,
+      "Platform açıklığı ön ucu X (sonsuz vida 43.3'e kadar)"
+    ],
+    "fp_open_w": [
+      40.0,
+      "Platform açıklığı genişliği (Y)"
+    ],
+    "sb_ring_w": [
+      2.5,
+      "Duman kutusu ön bileziği genişliği"
+    ],
+    "spig_od": [
+      11.0,
+      "Dom/baca yerleştirme pimi çapı (kazandaki deliğe girer, yapıştırılır)"
+    ],
+    "spig_h": [
+      3.0,
+      "Yerleştirme pimi boyu (kazan yüzeyinden aşağı)"
+    ],
+    "jflange_w": [
+      60.0,
+      "Platform modülleri birleşim flanşı genişliği (Y)"
+    ],
+    "jflange_t": [
+      4.0,
+      "Birleşim flanşı kalınlığı (X, her modülde)"
+    ],
+    "jflange_bot": [
+      17.0,
+      "Birleşim flanşı alt kenarı (aks ekseninden)"
+    ],
+    "jbolt_y": [
+      20.0,
+      "Flanş cıvataları Y (±)"
+    ],
+    "jbolt_z": [
+      21.5,
+      "Flanş cıvataları Z"
+    ],
+    "cab_rib_h": [
+      8.0,
+      "Kabin/depo/vagon vida kaburgası yüksekliği"
+    ],
+    "seat_base": [
+      "boil_z + 20 mm",
+      "Dom/baca tabanı alt ucu (kazan yüzeyine göre semer kesilir)"
+    ],
+    "sb_ring_d": [
+      64.0,
+      "Duman kutusu ön bileziği çapı"
+    ],
+    "roof_tab_h": [
+      6.0,
+      "Çatı yerleştirme dili yüksekliği (duvar içine iner)"
+    ],
+    "roof_tab_t": [
+      2.0,
+      "Çatı yerleştirme dili kalınlığı"
+    ],
+    "roof_clear": [
+      0.3,
+      "Çatı dili - duvar boşluğu"
+    ],
+    "buf_hole_d": [
+      5.3,
+      "Tampon pimi deliği (kirişte)"
+    ],
+    "buf_spig_d": [
+      5.0,
+      "Tampon pimi çapı (kirişteki deliğe girer)"
+    ],
+    "door_clear": [
+      0.2,
+      "Duman kutusu kapağı pimi radyal boşluğu"
+    ],
+    "db_pitch": [
+      "couple_gap + 2*fork_pin_in",
+      "Çeki kolu pim aralığı (türetilmiş)"
+    ]
+  },
+  "tender": {
+    "t_w": [
+      90.0,
+      "Tender genişliği"
+    ],
+    "t_tank_x0": [
+      -70.0,
+      "Su deposu arka yüzü X"
+    ],
+    "t_tank_x1": [
+      70.0,
+      "Su deposu ön yüzü X"
+    ],
+    "t_tank_w": [
+      86.0,
+      "Su deposu genişliği"
+    ],
+    "t_tank_top": [
+      92.0,
+      "Su deposu üst kenarı, aks ekseninden"
+    ],
+    "ledge_w": [
+      2.0,
+      "Kapak oturma çıkıntısı genişliği"
+    ],
+    "t_len": [
+      144.0,
+      "Tender kiriş dış yüzleri arası (+2×8 tampon = 160 toplam)"
+    ],
+    "t_hole_x": [
+      "t_tank_x1 - wall_t - 3 mm",
+      "Depo vidaları X (±)"
+    ],
+    "t_xm_x": [
+      45.0,
+      "Tender şasisi travers konumu (çeki çatalına yer bırakır)"
+    ],
+    "t_hole_y": [
+      "t_tank_w/2 - wall_t - cab_rib_w/2",
+      "Depo vidaları Y (±, türetilmiş)"
+    ],
+    "t_plate_len": [
+      104.0,
+      "Tender şasi levhası boyu (çeki çatallarına yer bırakır)"
+    ],
+    "coal_open_x0": [
+      -8.0,
+      "Kömür/pil açıklığı arka kenarı X"
+    ],
+    "coal_open_x1": [
+      56.0,
+      "Kömür/pil açıklığı ön kenarı X (vida kaburgalarına çarpmaz)"
+    ],
+    "coal_open_w": [
+      72.0,
+      "Kömür/pil açıklığı genişliği (Y)"
+    ],
+    "lid_x0": [
+      -10.0,
+      "Kömür kapağı arka kenarı X"
+    ],
+    "lid_x1": [
+      58.0,
+      "Kömür kapağı ön kenarı X"
+    ],
+    "lid_w": [
+      76.0,
+      "Kömür kapağı genişliği"
+    ],
+    "lid_t": [
+      2.5,
+      "Kömür kapağı plaka kalınlığı"
+    ],
+    "lid_board_h": [
+      8.0,
+      "Kömür tahtası yüksekliği (kapak üstünden)"
+    ],
+    "lid_board_t": [
+      1.6,
+      "Kömür tahtası kalınlığı"
+    ],
+    "lid_plug_h": [
+      3.0,
+      "Kapak yerleştirme tapası yüksekliği (açıklığa iner)"
+    ],
+    "lid_clear": [
+      0.3,
+      "Tapa - açıklık boşluğu"
+    ],
+    "coping": [
+      1.0,
+      "Depo üst kenar pervazı taşması"
+    ],
+    "cable_d": [
+      8.0,
+      "Kablo deliği çapı"
+    ]
+  },
+  "coach": {
+    "c_len": [
+      220.0,
+      "Vagon boyu, tampon başları dahil"
+    ],
+    "c_w": [
+      90.0,
+      "Vagon genişliği"
+    ],
+    "c_wall_top": [
+      100.0,
+      "Vagon yan duvar üstü, aks ekseninden"
+    ],
+    "c_crown": [
+      110.0,
+      "Vagon çatı (iç yay) tepesi"
+    ],
+    "c_R": [
+      "(c_w*c_w/4 + (c_crown - c_wall_top)*(c_crown - c_wall_top)) / (2*(c_crown - c_wall_top))",
+      "Vagon çatı yayı yarıçapı (türetilmiş)"
+    ],
+    "bogie_x": [
+      50.0,
+      "Boji pivotu X (±); iç tekerlek flanşları arası 5 mm"
+    ],
+    "bogie_wb": [
+      48.0,
+      "Boji dingil mesafesi (flanş Ø47'den büyük olmalı)"
+    ],
+    "bogie_len": [
+      64.0,
+      "Boji yan levha boyu"
+    ],
+    "c_win_w": [
+      18.0,
+      "Vagon pencere genişliği"
+    ],
+    "c_win_z0": [
+      60.0,
+      "Vagon pencere alt kenarı"
+    ],
+    "c_win_z1": [
+      86.0,
+      "Vagon pencere üst kenarı"
+    ],
+    "c_win_pitch": [
+      27.0,
+      "Vagon pencere aralığı"
+    ],
+    "c_body_l": [
+      196.0,
+      "Vagon kasası boyu"
+    ],
+    "c_hole_x": [
+      "c_body_l/2 - wall_t - cab_rib_w/2",
+      "Vagon kasası vidaları X (±, türetilmiş)"
+    ],
+    "c_door_w": [
+      20.0,
+      "Vagon alın kapısı genişliği"
+    ],
+    "c_door_z1": [
+      88.0,
+      "Vagon alın kapısı üst kenarı"
+    ],
+    "c_win_n": [
+      6,
+      "Yan pencere sayısı (her yan)"
+    ],
+    "c_hole_y": [
+      "c_w/2 - wall_t - cab_rib_w/2",
+      "Vagon kasası vidaları Y (±, türetilmiş)"
+    ],
+    "c_beam_bot": [
+      13.0,
+      "Vagon tampon kirişi alt kenarı"
+    ]
   }
 }

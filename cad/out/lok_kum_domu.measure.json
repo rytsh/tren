@@ -1,0 +1,54 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 1481.7125958122565,
+      "bbox": {
+        "max": [
+          71.0,
+          11.0,
+          104.0
+        ],
+        "min": [
+          49.0,
+          -11.0,
+          89.99999999999994
+        ]
+      },
+      "center_of_mass": [
+        59.99999969419784,
+        -0.000023326224730525628,
+        97.58214137601081
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 5,
+      "face_types": {
+        "cone": 1,
+        "cylinder": 3,
+        "plane": 2
+      },
+      "faces": 6,
+      "kernel": {
+        "edges": 21,
+        "faces": 11,
+        "shells": 1,
+        "vertices": 13
+      },
+      "mass_g": 5.020708121255719,
+      "material": "Default",
+      "name": "SandDome",
+      "vertices": 5,
+      "volume_mm3": 3892.0217994230384
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 1481.7125958122565,
+    "edges": 5,
+    "faces": 6,
+    "mass_g": 5.020708121255719,
+    "open_bodies_skipped": 0,
+    "vertices": 5,
+    "volume_mm3": 3892.0217994230384
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 16416.810451104153,
+      "bbox": {
+        "max": [
+          -69.99999999999724,
+          45.00000000000028,
+          129.4000000000754
+        ],
+        "min": [
+          -144.0,
+          -45.00000000060344,
+          112.1397426341692
+        ]
+      },
+      "center_of_mass": [
+        -106.99999999991283,
+        -3.7870903097893563e-10,
+        123.70266574972933
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 64,
+      "face_types": {
+        "cylinder": 11,
+        "plane": 16
+      },
+      "faces": 27,
+      "kernel": {
+        "edges": 74,
+        "faces": 32,
+        "shells": 1,
+        "vertices": 44
+      },
+      "mass_g": 23.600638329719853,
+      "material": "Default",
+      "name": "CabRoof",
+      "vertices": 39,
+      "volume_mm3": 18295.068472651048
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 16416.810451104153,
+    "edges": 64,
+    "faces": 27,
+    "mass_g": 23.600638329719853,
+    "open_bodies_skipped": 0,
+    "vertices": 39,
+    "volume_mm3": 18295.068472651048
+  }
+}

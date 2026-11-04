@@ -1,0 +1,18 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Worm",
+     "WormThread"
+    ],
+    "translate": [
+     "-0.0002 mm",
+     "-0.0001 mm",
+     "-0.0000 mm"
+    ]
+   }
+  }
+ ]
+}

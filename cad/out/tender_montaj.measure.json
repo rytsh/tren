@@ -1,0 +1,446 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 31472.480691725603,
+      "bbox": {
+        "max": [
+          207.0,
+          33.0,
+          13.0
+        ],
+        "min": [
+          -7.000000000000001,
+          -33.0,
+          -8.881784197001252e-16
+        ]
+      },
+      "center_of_mass": [
+        99.99999999999997,
+        -3.4096722549595554e-14,
+        4.230959940841914
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 496,
+      "face_types": {
+        "cylinder": 2,
+        "plane": 157
+      },
+      "faces": 159,
+      "kernel": {
+        "edges": 504,
+        "faces": 161,
+        "shells": 1,
+        "vertices": 336
+      },
+      "mass_g": 70.00021328865196,
+      "material": "Default",
+      "name": "Track",
+      "vertices": 332,
+      "volume_mm3": 54263.73123151315
+    },
+    {
+      "area_mm2": 14388.64366951268,
+      "bbox": {
+        "max": [
+          152.0,
+          19.000000000000014,
+          46.01500000000003
+        ],
+        "min": [
+          48.0,
+          -19.000000000000014,
+          24.015
+        ]
+      },
+      "center_of_mass": [
+        99.99999999804457,
+        -5.68051882717364e-10,
+        36.022960883559804
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 68,
+      "face_types": {
+        "cylinder": 10,
+        "plane": 21
+      },
+      "faces": 31,
+      "kernel": {
+        "edges": 116,
+        "faces": 41,
+        "shells": 1,
+        "vertices": 80
+      },
+      "mass_g": 40.20738118963874,
+      "material": "Default",
+      "name": "TFrame",
+      "vertices": 52,
+      "volume_mm3": 31168.51255010755
+    },
+    {
+      "area_mm2": 4931.810951071041,
+      "bbox": {
+        "max": [
+          158.49986333673706,
+          27.5,
+          57.515
+        ],
+        "min": [
+          111.50013666326292,
+          19.999999999999996,
+          10.515
+        ]
+      },
+      "center_of_mass": [
+        134.9999999995092,
+        22.783699194380322,
+        34.01499999971665
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 12,
+      "face_types": {
+        "cone": 4,
+        "cylinder": 4,
+        "plane": 4
+      },
+      "faces": 12,
+      "kernel": {
+        "edges": 60,
+        "faces": 28,
+        "shells": 1,
+        "vertices": 36
+      },
+      "mass_g": 9.775154237179448,
+      "material": "Default",
+      "name": "Wheel",
+      "vertices": 12,
+      "volume_mm3": 7577.638943549959
+    },
+    {
+      "area_mm2": 4931.810951073049,
+      "bbox": {
+        "max": [
+          158.49986333673706,
+          -19.999999999999993,
+          57.515
+        ],
+        "min": [
+          111.50013666326292,
+          -27.5,
+          10.515
+        ]
+      },
+      "center_of_mass": [
+        134.99999999902002,
+        -22.783699194354355,
+        34.015
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 12,
+      "face_types": {
+        "cone": 4,
+        "cylinder": 4,
+        "plane": 4
+      },
+      "faces": 12,
+      "kernel": {
+        "edges": 60,
+        "faces": 28,
+        "shells": 1,
+        "vertices": 36
+      },
+      "mass_g": 9.77515423743497,
+      "material": "Default",
+      "name": "Wheel (2)",
+      "vertices": 12,
+      "volume_mm3": 7577.638943748039
+    },
+    {
+      "area_mm2": 4931.810951071045,
+      "bbox": {
+        "max": [
+          88.49986333673708,
+          27.5,
+          57.515
+        ],
+        "min": [
+          41.50013666326292,
+          19.999999999999996,
+          10.515
+        ]
+      },
+      "center_of_mass": [
+        64.9999999990208,
+        22.783699194380326,
+        34.015000000565344
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 12,
+      "face_types": {
+        "cone": 4,
+        "cylinder": 4,
+        "plane": 4
+      },
+      "faces": 12,
+      "kernel": {
+        "edges": 60,
+        "faces": 28,
+        "shells": 1,
+        "vertices": 36
+      },
+      "mass_g": 9.77515423717947,
+      "material": "Default",
+      "name": "Wheel (3)",
+      "vertices": 12,
+      "volume_mm3": 7577.638943549976
+    },
+    {
+      "area_mm2": 4931.810951071045,
+      "bbox": {
+        "max": [
+          88.49986333673708,
+          -19.999999999999996,
+          57.515
+        ],
+        "min": [
+          41.50013666326292,
+          -27.5,
+          10.515
+        ]
+      },
+      "center_of_mass": [
+        64.99999999902082,
+        -22.783699194380326,
+        34.014999999434664
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 12,
+      "face_types": {
+        "cone": 4,
+        "cylinder": 4,
+        "plane": 4
+      },
+      "faces": 12,
+      "kernel": {
+        "edges": 60,
+        "faces": 28,
+        "shells": 1,
+        "vertices": 36
+      },
+      "mass_g": 9.77515423717946,
+      "material": "Default",
+      "name": "Wheel (4)",
+      "vertices": 12,
+      "volume_mm3": 7577.638943549969
+    },
+    {
+      "area_mm2": 716.2502485024177,
+      "bbox": {
+        "max": [
+          136.99996911242653,
+          27.500000000000018,
+          36.0149462674813
+        ],
+        "min": [
+          133.00003088757347,
+          -27.500000000000018,
+          32.01505373251871
+        ]
+      },
+      "center_of_mass": [
+        135.0,
+        -1.3161329554726485e-14,
+        34.01500000000001
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 2,
+      "face_types": {
+        "cylinder": 1,
+        "plane": 2
+      },
+      "faces": 3,
+      "kernel": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "vertices": 4
+      },
+      "mass_g": 0.8914358997003776,
+      "material": "Default",
+      "name": "Axle0",
+      "vertices": 2,
+      "volume_mm3": 691.0355811630834
+    },
+    {
+      "area_mm2": 716.2502485024147,
+      "bbox": {
+        "max": [
+          66.99996911242648,
+          27.500000000000018,
+          36.01494626748129
+        ],
+        "min": [
+          63.00003088757351,
+          -27.500000000000018,
+          32.01505373251871
+        ]
+      },
+      "center_of_mass": [
+        65.0,
+        2.1935549257877433e-15,
+        34.015
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 2,
+      "face_types": {
+        "cylinder": 1,
+        "plane": 2
+      },
+      "faces": 3,
+      "kernel": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "vertices": 4
+      },
+      "mass_g": 0.8914358997003794,
+      "material": "Default",
+      "name": "Axle1",
+      "vertices": 2,
+      "volume_mm3": 691.0355811630848
+    },
+    {
+      "area_mm2": 42302.22586912183,
+      "bbox": {
+        "max": [
+          180.0000000000001,
+          45.0,
+          63.01500000000004
+        ],
+        "min": [
+          19.99999999999999,
+          -45.0,
+          44.015
+        ]
+      },
+      "center_of_mass": [
+        100.00001548423539,
+        -0.000012923770218371685,
+        57.870052155684284
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 124,
+      "face_types": {
+        "cylinder": 20,
+        "plane": 44
+      },
+      "faces": 64,
+      "kernel": {
+        "edges": 204,
+        "faces": 84,
+        "shells": 1,
+        "vertices": 136
+      },
+      "mass_g": 85.42582774267349,
+      "material": "Default",
+      "name": "TDeck",
+      "vertices": 96,
+      "volume_mm3": 66221.57189354533
+    },
+    {
+      "area_mm2": 72176.34691153915,
+      "bbox": {
+        "max": [
+          170.00000000000009,
+          43.0,
+          126.015
+        ],
+        "min": [
+          29.999999999999986,
+          -43.000000000000114,
+          63.014999999999944
+        ]
+      },
+      "center_of_mass": [
+        96.99019505403469,
+        1.3059185988344017e-8,
+        99.51387870064754
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 70,
+      "face_types": {
+        "cylinder": 5,
+        "plane": 27
+      },
+      "faces": 32,
+      "kernel": {
+        "edges": 90,
+        "faces": 37,
+        "shells": 1,
+        "vertices": 60
+      },
+      "mass_g": 117.31599139628327,
+      "material": "Default",
+      "name": "TTank",
+      "vertices": 50,
+      "volume_mm3": 90942.62898936687
+    },
+    {
+      "area_mm2": 12749.474456526268,
+      "bbox": {
+        "max": [
+          158.0,
+          38.0,
+          136.515
+        ],
+        "min": [
+          90.0,
+          -38.00000000000001,
+          123.015
+        ]
+      },
+      "center_of_mass": [
+        124.00000000000003,
+        -2.220418983458298e-15,
+        129.12816587908162
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 36,
+      "face_types": {
+        "plane": 16
+      },
+      "faces": 16,
+      "kernel": {
+        "edges": 36,
+        "faces": 16,
+        "shells": 1,
+        "vertices": 24
+      },
+      "mass_g": 70.44976877195933,
+      "material": "Default",
+      "name": "TLid",
+      "vertices": 24,
+      "volume_mm3": 54612.223854232034
+    }
+  ],
+  "body_count": 11,
+  "total": {
+    "area_mm2": 194248.91589971655,
+    "edges": 846,
+    "faces": 356,
+    "mass_g": 424.2826711375809,
+    "open_bodies_skipped": 0,
+    "vertices": 606,
+    "volume_mm3": 328901.2954554891
+  }
+}

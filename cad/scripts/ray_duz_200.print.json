@@ -1,0 +1,17 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Track"
+    ],
+    "translate": [
+     "-100.0000 mm",
+     "-0.0000 mm",
+     "0.0000 mm"
+    ]
+   }
+  }
+ ]
+}

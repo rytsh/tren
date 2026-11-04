@@ -1,0 +1,17 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Coupon"
+    ],
+    "translate": [
+     "-41.0000 mm",
+     "-17.0000 mm",
+     "0.0000 mm"
+    ]
+   }
+  }
+ ]
+}

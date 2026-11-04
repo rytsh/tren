@@ -1,0 +1,17 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "TLid"
+    ],
+    "translate": [
+     "-24.0000 mm",
+     "0.0000 mm",
+     "-89.0000 mm"
+    ]
+   }
+  }
+ ]
+}

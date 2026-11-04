@@ -1,0 +1,31 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "CDeck"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "180 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "CDeck"
+    ],
+    "translate": [
+     "-0.0000 mm",
+     "-0.0000 mm",
+     "29.0000 mm"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,54 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 1336.768270590136,
+      "bbox": {
+        "max": [
+          -37.0,
+          9.0,
+          113.0
+        ],
+        "min": [
+          -55.0,
+          -9.0,
+          89.99999999999994
+        ]
+      },
+      "center_of_mass": [
+        -46.000000218621764,
+        -0.000010464665121535495,
+        99.1452547888844
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 8,
+      "face_types": {
+        "cone": 2,
+        "cylinder": 5,
+        "plane": 2
+      },
+      "faces": 9,
+      "kernel": {
+        "edges": 39,
+        "faces": 20,
+        "shells": 1,
+        "vertices": 22
+      },
+      "mass_g": 3.596421157907647,
+      "material": "Default",
+      "name": "SafetyValve",
+      "vertices": 8,
+      "volume_mm3": 2787.923378222982
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 1336.768270590136,
+    "edges": 8,
+    "faces": 9,
+    "mass_g": 3.596421157907647,
+    "open_bodies_skipped": 0,
+    "vertices": 8,
+    "volume_mm3": 2787.923378222982
+  }
+}

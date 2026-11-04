@@ -1,0 +1,31 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Bogie"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "-90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Bogie"
+    ],
+    "translate": [
+     "-0.0000 mm",
+     "-1.0000 mm",
+     "19.0000 mm"
+    ]
+   }
+  }
+ ]
+}

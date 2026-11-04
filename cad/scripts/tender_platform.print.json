@@ -1,0 +1,31 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "TDeck"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "180 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "TDeck"
+    ],
+    "translate": [
+     "0.0000 mm",
+     "-0.0000 mm",
+     "29.0000 mm"
+    ]
+   }
+  }
+ ]
+}
