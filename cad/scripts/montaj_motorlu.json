@@ -1,0 +1,4249 @@
+{
+ "commands": [
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "track_gauge",
+    "expression": "45.0 mm",
+    "unit": "mm",
+    "comment": "Ray açıklığı (ray başlarının iç yüzleri arası)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "track_len",
+    "expression": "200.0 mm",
+    "unit": "mm",
+    "comment": "Düz ray modülü nominal uzunluğu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_gap",
+    "expression": "0.5 mm",
+    "unit": "mm",
+    "comment": "Ek yerinde toplam genleşme boşluğu (her uçta yarısı)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_head_w",
+    "expression": "5.0 mm",
+    "unit": "mm",
+    "comment": "Ray başı genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_head_h",
+    "expression": "2.5 mm",
+    "unit": "mm",
+    "comment": "Ray başı yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_web_w",
+    "expression": "3.0 mm",
+    "unit": "mm",
+    "comment": "Ray gövdesi (web) genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_foot_w",
+    "expression": "9.0 mm",
+    "unit": "mm",
+    "comment": "Ray tabanı / alt kiriş genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_h",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Ray yüksekliği (travers üstünden)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_top_ch",
+    "expression": "0.6 mm",
+    "unit": "mm",
+    "comment": "Ray başı üst köşe pahı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tie_len",
+    "expression": "66.0 mm",
+    "unit": "mm",
+    "comment": "Travers boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tie_w",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Travers genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tie_t",
+    "expression": "5.0 mm",
+    "unit": "mm",
+    "comment": "Travers kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tie_pitch",
+    "expression": "20.0 mm",
+    "unit": "mm",
+    "comment": "Travers aralığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "end_tie_w",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "Uç (bağlantı) traversi genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "joint_y",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "Kırlangıç kuyruğu bağlantısının eksenden uzaklığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dt_neck",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "Kırlangıç boyun genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dt_tip",
+    "expression": "9.0 mm",
+    "unit": "mm",
+    "comment": "Kırlangıç uç genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dt_len",
+    "expression": "7.0 mm",
+    "unit": "mm",
+    "comment": "Kırlangıç boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dt_clear",
+    "expression": "0.2 mm",
+    "unit": "mm",
+    "comment": "Kırlangıç yuva boşluğu (her yüz)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_end_ch",
+    "expression": "0.4 mm",
+    "unit": "mm",
+    "comment": "Ray ucu pahı (tekerlek takılmasın)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "curve_radius",
+    "expression": "750.0 mm",
+    "unit": "mm",
+    "comment": "Viraj yarıçapı (ray ekseni)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "curve_angle",
+    "expression": "15.0 deg",
+    "unit": "deg",
+    "comment": "Viraj modülü açısı (derece; 24 modül = tam daire)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "wheel_d",
+    "expression": "42.0 mm",
+    "unit": "mm",
+    "comment": "Yuvarlanma dairesi çapı (flanş kökünde)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "wheel_w",
+    "expression": "7.5 mm",
+    "unit": "mm",
+    "comment": "Tekerlek toplam genişliği (flanş dahil)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "flange_h",
+    "expression": "2.5 mm",
+    "unit": "mm",
+    "comment": "Flanş yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "flange_t",
+    "expression": "1.8 mm",
+    "unit": "mm",
+    "comment": "Flanş kalınlığı (ray başı köşe seviyesinde)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "flange_tip_w",
+    "expression": "0.7 mm",
+    "unit": "mm",
+    "comment": "Flanş tepesi düz kısmı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "root_ch",
+    "expression": "0.6 mm",
+    "unit": "mm",
+    "comment": "Flanş kökü pahı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tread_taper",
+    "expression": "0.05",
+    "unit": "",
+    "comment": "Yuvarlanma yüzeyi konikliği (1:20)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "back_to_back",
+    "expression": "40.0 mm",
+    "unit": "mm",
+    "comment": "Tekerlek arka yüzleri arası (B)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "wheel_bore",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Tekerlek aks deliği (nominal; test kuponuyla ayarlanacak)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rim_t",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Jant kalınlığı (radyal)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "web_t",
+    "expression": "3.5 mm",
+    "unit": "mm",
+    "comment": "Tekerlek gövde (disk) kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "boss_d",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "Göbek çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "axle_d",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Çelik aks çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bearing_od",
+    "expression": "9.0 mm",
+    "unit": "mm",
+    "comment": "684ZZ rulman dış çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bearing_w",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "684ZZ rulman genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bearing_clear",
+    "expression": "0.1 mm",
+    "unit": "mm",
+    "comment": "Rulman yuvası çap boşluğu (nominal)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "spacer_t",
+    "expression": "1.0 mm",
+    "unit": "mm",
+    "comment": "Tekerlek-rulman arası pul kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "spacer_od",
+    "expression": "5.5 mm",
+    "unit": "mm",
+    "comment": "Pul dış çapı (yalnız iç bileziğe değer)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "spacer_id",
+    "expression": "4.3 mm",
+    "unit": "mm",
+    "comment": "Pul iç çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "wheelbase",
+    "expression": "70.0 mm",
+    "unit": "mm",
+    "comment": "Aks aralığı (0-4-0 rijit dingil mesafesi)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plate_t",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "Yan levha kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plate_len",
+    "expression": "130.0 mm",
+    "unit": "mm",
+    "comment": "Yan levha boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plate_above",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "Levhanın aks üstündeki yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plate_below",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Levhanın aks altındaki yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "xm_size",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Travers (crossmember) kesiti"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "xm_x",
+    "expression": "60.0 mm",
+    "unit": "mm",
+    "comment": "Crossmember konumu (merkezden; karşı dişliye yer bırakır)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "m3_clear",
+    "expression": "3.4 mm",
+    "unit": "mm",
+    "comment": "M3 geçiş deliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "m3_tap",
+    "expression": "2.6 mm",
+    "unit": "mm",
+    "comment": "M3 vida (plastiğe) pilot deliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gear_m",
+    "expression": "1.0 mm",
+    "unit": "mm",
+    "comment": "Modül (sonsuz vida eksenel modülü = karşı dişli modülü)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "z_wheel",
+    "expression": "30",
+    "unit": "",
+    "comment": "Karşı dişli diş sayısı (tek ağızlı vida: 30:1)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "pressure_ang",
+    "expression": "20.0 deg",
+    "unit": "deg",
+    "comment": "Basınç açısı (derece)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gear_w",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "Karşı dişli genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gear_hub_d",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Karşı dişli göbek çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gear_hub_len",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Göbek boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "worm_pd",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Sonsuz vida bölüm dairesi çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "worm_len",
+    "expression": "16.5 mm",
+    "unit": "mm",
+    "comment": "Sonsuz vida boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "worm_bore",
+    "expression": "2.2 mm",
+    "unit": "mm",
+    "comment": "Vida deliği (2.3 mil, sıkı geçme; kuponla doğrula)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "mesh_backlash",
+    "expression": "0.15 mm",
+    "unit": "mm",
+    "comment": "Eksenler arası ek boşluk"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "motor_d",
+    "expression": "24.4 mm",
+    "unit": "mm",
+    "comment": "RS/RF-370 motor gövde çapı (VARSAYIM, kumpasla doğrula)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "motor_len",
+    "expression": "30.5 mm",
+    "unit": "mm",
+    "comment": "Motor gövde boyu, mil ve arka burç hariç (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "motor_boss_d",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Ön burç çapı (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "motor_shaft_d",
+    "expression": "2.3 mm",
+    "unit": "mm",
+    "comment": "Mil çapı (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "motor_shaft_l",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Mil boyu, ön yüzden (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "motor_hole_s",
+    "expression": "17.0 mm",
+    "unit": "mm",
+    "comment": "Ön yüz M2.5 vida aralığı (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bulk_t",
+    "expression": "3.0 mm",
+    "unit": "mm",
+    "comment": "Motor perde levhası kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "worm_hub_d",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Sonsuz vida göbeği (motor miline geçen kısım) çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bulk_top",
+    "expression": "34.0 mm",
+    "unit": "mm",
+    "comment": "Perde üst kenarı (aks ekseninden)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "saddle_x0",
+    "expression": "-14.0 mm",
+    "unit": "mm",
+    "comment": "Arka motor yatağı başlangıcı (X)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "saddle_len",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Arka motor yatağı boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "m25_clear",
+    "expression": "2.8 mm",
+    "unit": "mm",
+    "comment": "M2.5 geçiş deliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "worm_hub_len",
+    "expression": "5.0 mm",
+    "unit": "mm",
+    "comment": "Vida göbeği boyu (bölme levhası deliğinden geçer)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bulk_bottom",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "Bölme levhası alt kenarı (karşı dişli dönüş çapının üstünde)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cradle_top",
+    "expression": "26.0 mm",
+    "unit": "mm",
+    "comment": "Motor yan duvarlarının üst kenarı (aks ekseninden)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gear_bore",
+    "expression": "3.9 mm",
+    "unit": "mm",
+    "comment": "Karşı dişli aks deliği (sıkı geçme + yapıştırıcı; kuponla doğrula)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "grub_tap",
+    "expression": "2.5 mm",
+    "unit": "mm",
+    "comment": "M3 set vidası pilot deliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "motor_face_x",
+    "expression": "wheelbase/2 - worm_len/2 - worm_hub_len - bulk_t - 0.5 mm",
+    "unit": "mm",
+    "comment": "Motor ön yüzü X (türetilmiş: vida aksın üstünde ortalanır)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "motor_z",
+    "expression": "(worm_pd + z_wheel*gear_m)/2 + mesh_backlash",
+    "unit": "mm",
+    "comment": "Motor/vida ekseni yüksekliği, aks ekseninden (türetilmiş)"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "end_tie_w - rail_gap/2",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "rail_gap/2",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "new",
+    "body_name": "Track",
+    "name": "EndTie_A"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "end_tie_w - rail_gap/2",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "track_len - end_tie_w",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "EndTie_B"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "tie_w",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "tie_pitch * 1 + tie_pitch/2 - tie_w/2",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "Tie1"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "tie_w",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "tie_pitch * 2 + tie_pitch/2 - tie_w/2",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "Tie2"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "tie_w",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "tie_pitch * 3 + tie_pitch/2 - tie_w/2",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "Tie3"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "tie_w",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "tie_pitch * 4 + tie_pitch/2 - tie_w/2",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "Tie4"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "tie_w",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "tie_pitch * 5 + tie_pitch/2 - tie_w/2",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "Tie5"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "tie_w",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "tie_pitch * 6 + tie_pitch/2 - tie_w/2",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "Tie6"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "tie_w",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "tie_pitch * 7 + tie_pitch/2 - tie_w/2",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "Tie7"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "tie_w",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "tie_pitch * 8 + tie_pitch/2 - tie_w/2",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "Tie8"
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "YZ",
+    "name": "RailProfiles"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "(track_gauge/2 + rail_head_w/2) - rail_foot_w/2",
+      "0 mm"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) + rail_foot_w/2",
+      "0 mm"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) + rail_foot_w/2",
+      "(tie_t + 1.5 mm)"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) + rail_web_w/2",
+      "(tie_t + 1.5 mm)"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) + rail_web_w/2",
+      "(tie_t + rail_h - rail_head_h - (rail_head_w - rail_web_w)/2)"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) + rail_head_w/2",
+      "(tie_t + rail_h - rail_head_h)"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) + rail_head_w/2",
+      "(tie_t + rail_h) - rail_top_ch"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) + rail_head_w/2 - rail_top_ch",
+      "(tie_t + rail_h)"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) - rail_head_w/2 + rail_top_ch",
+      "(tie_t + rail_h)"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) - rail_head_w/2",
+      "(tie_t + rail_h) - rail_top_ch"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) - rail_head_w/2",
+      "(tie_t + rail_h - rail_head_h)"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) - rail_web_w/2",
+      "(tie_t + rail_h - rail_head_h - (rail_head_w - rail_web_w)/2)"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) - rail_web_w/2",
+      "(tie_t + 1.5 mm)"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) - rail_foot_w/2",
+      "(tie_t + 1.5 mm)"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "-(track_gauge/2 + rail_head_w/2) - rail_foot_w/2",
+      "0 mm"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) + rail_foot_w/2",
+      "0 mm"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) + rail_foot_w/2",
+      "(tie_t + 1.5 mm)"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) + rail_web_w/2",
+      "(tie_t + 1.5 mm)"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) + rail_web_w/2",
+      "(tie_t + rail_h - rail_head_h - (rail_head_w - rail_web_w)/2)"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) + rail_head_w/2",
+      "(tie_t + rail_h - rail_head_h)"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) + rail_head_w/2",
+      "(tie_t + rail_h) - rail_top_ch"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) + rail_head_w/2 - rail_top_ch",
+      "(tie_t + rail_h)"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) - rail_head_w/2 + rail_top_ch",
+      "(tie_t + rail_h)"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) - rail_head_w/2",
+      "(tie_t + rail_h) - rail_top_ch"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) - rail_head_w/2",
+      "(tie_t + rail_h - rail_head_h)"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) - rail_web_w/2",
+      "(tie_t + rail_h - rail_head_h - (rail_head_w - rail_web_w)/2)"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) - rail_web_w/2",
+      "(tie_t + 1.5 mm)"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) - rail_foot_w/2",
+      "(tie_t + 1.5 mm)"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "distance": "track_len - rail_gap",
+    "start_offset": "(rail_gap/2)",
+    "profiles": "all",
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "Rails"
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "XY",
+    "name": "Tongues"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "(track_len - 1 * 1 mm)",
+      "joint_y - (dt_neck - (dt_tip - dt_neck) / dt_len * 1 mm)/2"
+     ],
+     [
+      "(track_len + 1 * dt_len)",
+      "joint_y - dt_tip/2"
+     ],
+     [
+      "(track_len + 1 * dt_len)",
+      "joint_y + dt_tip/2"
+     ],
+     [
+      "(track_len - 1 * 1 mm)",
+      "joint_y + (dt_neck - (dt_tip - dt_neck) / dt_len * 1 mm)/2"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "(0 mm - -1 * 1 mm)",
+      "-joint_y - (dt_neck - (dt_tip - dt_neck) / dt_len * 1 mm)/2"
+     ],
+     [
+      "(0 mm + -1 * dt_len)",
+      "-joint_y - dt_tip/2"
+     ],
+     [
+      "(0 mm + -1 * dt_len)",
+      "-joint_y + dt_tip/2"
+     ],
+     [
+      "(0 mm - -1 * 1 mm)",
+      "-joint_y + (dt_neck - (dt_tip - dt_neck) / dt_len * 1 mm)/2"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "distance": "tie_t",
+    "profiles": "all",
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "TongueExt"
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "XY",
+    "name": "Sockets"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "(0 mm - 1 * 1 mm)",
+      "joint_y - (dt_neck + 2*dt_clear - (dt_tip - dt_neck) / dt_len * 1 mm)/2"
+     ],
+     [
+      "(0 mm + 1 * (dt_len + dt_clear))",
+      "joint_y - (dt_tip + 2*dt_clear + (dt_tip - dt_neck) / dt_len * dt_clear)/2"
+     ],
+     [
+      "(0 mm + 1 * (dt_len + dt_clear))",
+      "joint_y + (dt_tip + 2*dt_clear + (dt_tip - dt_neck) / dt_len * dt_clear)/2"
+     ],
+     [
+      "(0 mm - 1 * 1 mm)",
+      "joint_y + (dt_neck + 2*dt_clear - (dt_tip - dt_neck) / dt_len * 1 mm)/2"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "(track_len - -1 * 1 mm)",
+      "-joint_y - (dt_neck + 2*dt_clear - (dt_tip - dt_neck) / dt_len * 1 mm)/2"
+     ],
+     [
+      "(track_len + -1 * (dt_len + dt_clear))",
+      "-joint_y - (dt_tip + 2*dt_clear + (dt_tip - dt_neck) / dt_len * dt_clear)/2"
+     ],
+     [
+      "(track_len + -1 * (dt_len + dt_clear))",
+      "-joint_y + (dt_tip + 2*dt_clear + (dt_tip - dt_neck) / dt_len * dt_clear)/2"
+     ],
+     [
+      "(track_len - -1 * 1 mm)",
+      "-joint_y + (dt_neck + 2*dt_clear - (dt_tip - dt_neck) / dt_len * 1 mm)/2"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "distance": "tie_t",
+    "profiles": "all",
+    "operation": "cut",
+    "targets": [
+     "Track"
+    ],
+    "name": "SocketCut"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "m3_clear",
+    "height": "tie_t",
+    "base": [
+     "tie_pitch * 4 + tie_pitch/2",
+     "0 mm",
+     "0 mm"
+    ],
+    "axis": "Z",
+    "operation": "cut",
+    "targets": [
+     "Track"
+    ],
+    "name": "MountHole1"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "m3_clear",
+    "height": "tie_t",
+    "base": [
+     "tie_pitch * 5 + tie_pitch/2",
+     "0 mm",
+     "0 mm"
+    ],
+    "axis": "Z",
+    "operation": "cut",
+    "targets": [
+     "Track"
+    ],
+    "name": "MountHole2"
+   }
+  },
+  {
+   "command": "solid.chamfer",
+   "params": {
+    "edges": [
+     [
+      0.25,
+      25.0,
+      13.0
+     ],
+     [
+      0.25,
+      22.5,
+      11.45
+     ],
+     [
+      0.25,
+      -25.0,
+      13.0
+     ],
+     [
+      0.25,
+      -22.5,
+      11.45
+     ],
+     [
+      199.75,
+      25.0,
+      13.0
+     ],
+     [
+      199.75,
+      22.5,
+      11.45
+     ],
+     [
+      199.75,
+      -25.0,
+      13.0
+     ],
+     [
+      199.75,
+      -22.5,
+      11.45
+     ]
+    ],
+    "distance": "rail_end_ch",
+    "body": "Track"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "plate_len",
+    "width": "plate_t",
+    "height": "plate_above + plate_below",
+    "corner": [
+     "-plate_len/2",
+     "((back_to_back/2 - spacer_t) - plate_t)",
+     "-plate_below"
+    ],
+    "operation": "new",
+    "body_name": "Frame",
+    "name": "PlateL"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "plate_len",
+    "width": "plate_t",
+    "height": "plate_above + plate_below",
+    "corner": [
+     "-plate_len/2",
+     "-(back_to_back/2 - spacer_t)",
+     "-plate_below"
+    ],
+    "operation": "join",
+    "targets": [
+     "Frame"
+    ],
+    "name": "PlateR"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "xm_size",
+    "width": "2 * ((back_to_back/2 - spacer_t) - plate_t) + 2 mm",
+    "height": "xm_size",
+    "corner": [
+     "1 * xm_x - xm_size/2",
+     "-((back_to_back/2 - spacer_t) - plate_t) - 1 mm",
+     "plate_above - xm_size"
+    ],
+    "operation": "join",
+    "targets": [
+     "Frame"
+    ],
+    "name": "CrossF"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "m3_tap",
+    "height": "xm_size",
+    "base": [
+     "1 * xm_x",
+     "0 mm",
+     "plate_above - xm_size"
+    ],
+    "axis": "Z",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "DeckHoleF"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "xm_size",
+    "width": "2 * ((back_to_back/2 - spacer_t) - plate_t) + 2 mm",
+    "height": "xm_size",
+    "corner": [
+     "-1 * xm_x - xm_size/2",
+     "-((back_to_back/2 - spacer_t) - plate_t) - 1 mm",
+     "plate_above - xm_size"
+    ],
+    "operation": "join",
+    "targets": [
+     "Frame"
+    ],
+    "name": "CrossB"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "m3_tap",
+    "height": "xm_size",
+    "base": [
+     "-1 * xm_x",
+     "0 mm",
+     "plate_above - xm_size"
+    ],
+    "axis": "Z",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "DeckHoleB"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "6.5 mm",
+    "height": "2 * (back_to_back/2 - spacer_t) + 2 mm",
+    "base": [
+     "1 * wheelbase/2",
+     "-(back_to_back/2 - spacer_t) - 1 mm",
+     "0 mm"
+    ],
+    "axis": "Y",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "AxleBoreF"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "bearing_od + bearing_clear",
+    "height": "bearing_w + 0.01 mm",
+    "base": [
+     "1 * wheelbase/2",
+     "(back_to_back/2 - spacer_t) - bearing_w",
+     "0 mm"
+    ],
+    "axis": "Y",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "BearingFL"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "bearing_od + bearing_clear",
+    "height": "bearing_w + 0.01 mm",
+    "base": [
+     "1 * wheelbase/2",
+     "-(back_to_back/2 - spacer_t) - 0.01 mm",
+     "0 mm"
+    ],
+    "axis": "Y",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "BearingFR"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "6.5 mm",
+    "height": "2 * (back_to_back/2 - spacer_t) + 2 mm",
+    "base": [
+     "-1 * wheelbase/2",
+     "-(back_to_back/2 - spacer_t) - 1 mm",
+     "0 mm"
+    ],
+    "axis": "Y",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "AxleBoreB"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "bearing_od + bearing_clear",
+    "height": "bearing_w + 0.01 mm",
+    "base": [
+     "-1 * wheelbase/2",
+     "(back_to_back/2 - spacer_t) - bearing_w",
+     "0 mm"
+    ],
+    "axis": "Y",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "BearingBL"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "bearing_od + bearing_clear",
+    "height": "bearing_w + 0.01 mm",
+    "base": [
+     "-1 * wheelbase/2",
+     "-(back_to_back/2 - spacer_t) - 0.01 mm",
+     "0 mm"
+    ],
+    "axis": "Y",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "BearingBR"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "bulk_t",
+    "width": "2 * (back_to_back/2 - spacer_t)",
+    "height": "bulk_top - bulk_bottom",
+    "corner": [
+     "motor_face_x",
+     "-(back_to_back/2 - spacer_t)",
+     "bulk_bottom"
+    ],
+    "operation": "join",
+    "targets": [
+     "Frame"
+    ],
+    "name": "Bulkhead"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "motor_face_x + bulk_t - saddle_x0",
+    "width": "plate_t / 2",
+    "height": "cradle_top - plate_above",
+    "corner": [
+     "saddle_x0",
+     "((back_to_back/2 - spacer_t) - plate_t)",
+     "plate_above"
+    ],
+    "operation": "join",
+    "targets": [
+     "Frame"
+    ],
+    "name": "MotorWallL"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "motor_face_x + bulk_t - saddle_x0",
+    "width": "plate_t / 2",
+    "height": "cradle_top - plate_above",
+    "corner": [
+     "saddle_x0",
+     "-((back_to_back/2 - spacer_t) - plate_t) - plate_t/2",
+     "plate_above"
+    ],
+    "operation": "join",
+    "targets": [
+     "Frame"
+    ],
+    "name": "MotorWallR"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "saddle_len",
+    "width": "2 * ((back_to_back/2 - spacer_t) - plate_t) + 1 mm",
+    "height": "plate_above",
+    "corner": [
+     "saddle_x0",
+     "-((back_to_back/2 - spacer_t) - plate_t) - 0.5 mm",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Frame"
+    ],
+    "name": "MotorSaddle"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "motor_d + 0.3 mm",
+    "height": "motor_face_x - saddle_x0 + 1 mm",
+    "base": [
+     "saddle_x0 - 1 mm",
+     "0 mm",
+     "motor_z"
+    ],
+    "axis": "X",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "MotorPocket"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "motor_boss_d + 0.4 mm",
+    "height": "bulk_t + 2 mm",
+    "base": [
+     "motor_face_x - 1 mm",
+     "0 mm",
+     "motor_z"
+    ],
+    "axis": "X",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "MotorBossHole"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "m25_clear",
+    "height": "bulk_t + 2 mm",
+    "base": [
+     "motor_face_x - 1 mm",
+     "1 * motor_hole_s/2",
+     "motor_z"
+    ],
+    "axis": "X",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "MotorScrewL"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "m25_clear",
+    "height": "bulk_t + 2 mm",
+    "base": [
+     "motor_face_x - 1 mm",
+     "-1 * motor_hole_s/2",
+     "motor_z"
+    ],
+    "axis": "X",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "MotorScrewR"
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "XY",
+    "name": "WormWheelTeeth"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      13.7219,
+      -0.8785
+     ],
+     [
+      14.0666,
+      -0.9005
+     ],
+     [
+      14.4504,
+      -0.8651
+     ],
+     [
+      14.8369,
+      -0.7776
+     ],
+     [
+      15.2241,
+      -0.6538
+     ],
+     [
+      15.6111,
+      -0.4988
+     ],
+     [
+      15.9969,
+      -0.3153
+     ],
+     [
+      15.9969,
+      0.3153
+     ],
+     [
+      15.6111,
+      0.4988
+     ],
+     [
+      15.2241,
+      0.6538
+     ],
+     [
+      14.8369,
+      0.7776
+     ],
+     [
+      14.4504,
+      0.8651
+     ],
+     [
+      14.0666,
+      0.9005
+     ],
+     [
+      13.7219,
+      0.8785
+     ],
+     [
+      13.693,
+      1.2512
+     ],
+     [
+      13.6539,
+      1.6231
+     ],
+     [
+      13.6047,
+      1.9937
+     ],
+     [
+      13.9464,
+      2.0438
+     ],
+     [
+      14.3145,
+      2.1583
+     ],
+     [
+      14.6743,
+      2.3242
+     ],
+     [
+      15.0274,
+      2.5258
+     ],
+     [
+      15.3737,
+      2.7578
+     ],
+     [
+      15.7129,
+      3.0175
+     ],
+     [
+      15.5818,
+      3.6344
+     ],
+     [
+      15.1663,
+      3.7336
+     ],
+     [
+      14.7555,
+      3.8048
+     ],
+     [
+      14.351,
+      3.8454
+     ],
+     [
+      13.9548,
+      3.8506
+     ],
+     [
+      13.572,
+      3.8054
+     ],
+     [
+      13.2394,
+      3.7122
+     ],
+     [
+      13.1336,
+      4.0708
+     ],
+     [
+      13.018,
+      4.4264
+     ],
+     [
+      12.8929,
+      4.7787
+     ],
+     [
+      13.2167,
+      4.8987
+     ],
+     [
+      13.553,
+      5.0873
+     ],
+     [
+      13.8704,
+      5.3243
+     ],
+     [
+      14.1739,
+      5.5949
+     ],
+     [
+      14.4643,
+      5.8939
+     ],
+     [
+      14.7422,
+      6.2184
+     ],
+     [
+      14.4856,
+      6.7946
+     ],
+     [
+      14.0586,
+      6.8053
+     ],
+     [
+      13.642,
+      6.7895
+     ],
+     [
+      13.2379,
+      6.7451
+     ],
+     [
+      12.8493,
+      6.6678
+     ],
+     [
+      12.4842,
+      6.5441
+     ],
+     [
+      12.1783,
+      6.3837
+     ],
+     [
+      12.0002,
+      6.7125
+     ],
+     [
+      11.8133,
+      7.0363
+     ],
+     [
+      11.6176,
+      7.3549
+     ],
+     [
+      11.9094,
+      7.5396
+     ],
+     [
+      12.1991,
+      7.7939
+     ],
+     [
+      12.4603,
+      8.0918
+     ],
+     [
+      12.7009,
+      8.4196
+     ],
+     [
+      12.9228,
+      8.7724
+     ],
+     [
+      13.1271,
+      9.1476
+     ],
+     [
+      12.7564,
+      9.6579
+     ],
+     [
+      12.3365,
+      9.5795
+     ],
+     [
+      11.9323,
+      9.4775
+     ],
+     [
+      11.5462,
+      9.35
+     ],
+     [
+      11.1822,
+      9.1936
+     ],
+     [
+      10.8508,
+      8.9967
+     ],
+     [
+      10.5849,
+      8.7762
+     ],
+     [
+      10.3424,
+      9.0608
+     ],
+     [
+      10.0922,
+      9.3386
+     ],
+     [
+      9.8346,
+      9.6096
+     ],
+     [
+      10.0816,
+      9.851
+     ],
+     [
+      10.3121,
+      10.1599
+     ],
+     [
+      10.5057,
+      10.5056
+     ],
+     [
+      10.6728,
+      10.8762
+     ],
+     [
+      10.8166,
+      11.2675
+     ],
+     [
+      10.9384,
+      11.677
+     ],
+     [
+      10.4697,
+      12.099
+     ],
+     [
+      10.0752,
+      11.9351
+     ],
+     [
+      9.7011,
+      11.7512
+     ],
+     [
+      9.3499,
+      11.5463
+     ],
+     [
+      9.0264,
+      11.3176
+     ],
+     [
+      8.7432,
+      11.0561
+     ],
+     [
+      8.5289,
+      10.7852
+     ],
+     [
+      8.2325,
+      11.0131
+     ],
+     [
+      7.9301,
+      11.2328
+     ],
+     [
+      7.6217,
+      11.4443
+     ],
+     [
+      7.8132,
+      11.7318
+     ],
+     [
+      7.9744,
+      12.0819
+     ],
+     [
+      8.0919,
+      12.4603
+     ],
+     [
+      8.1783,
+      12.8576
+     ],
+     [
+      8.2375,
+      13.2702
+     ],
+     [
+      8.2715,
+      13.696
+     ],
+     [
+      7.7253,
+      14.0114
+     ],
+     [
+      7.3736,
+      13.769
+     ],
+     [
+      7.0458,
+      13.5114
+     ],
+     [
+      6.745,
+      13.2379
+     ],
+     [
+      6.4761,
+      12.947
+     ],
+     [
+      6.2534,
+      12.6323
+     ],
+     [
+      6.1002,
+      12.3227
+     ],
+     [
+      5.7629,
+      12.4841
+     ],
+     [
+      5.4213,
+      12.6361
+     ],
+     [
+      5.0758,
+      12.7789
+     ],
+     [
+      5.2033,
+      13.0999
+     ],
+     [
+      5.2882,
+      13.4759
+     ],
+     [
+      5.3244,
+      13.8704
+     ],
+     [
+      5.3263,
+      14.277
+     ],
+     [
+      5.2985,
+      14.6929
+     ],
+     [
+      5.2432,
+      15.1165
+     ],
+     [
+      4.6434,
+      15.3114
+     ],
+     [
+      4.3497,
+      15.0012
+     ],
+     [
+      4.0827,
+      14.681
+     ],
+     [
+      3.8453,
+      14.351
+     ],
+     [
+      3.6427,
+      14.0105
+     ],
+     [
+      3.4904,
+      13.6564
+     ],
+     [
+      3.4048,
+      13.3218
+     ],
+     [
+      3.0414,
+      13.4094
+     ],
+     [
+      2.6757,
+      13.4872
+     ],
+     [
+      2.308,
+      13.5549
+     ],
+     [
+      2.3659,
+      13.8954
+     ],
+     [
+      2.3708,
+      14.2809
+     ],
+     [
+      2.3242,
+      14.6743
+     ],
+     [
+      2.2416,
+      15.0724
+     ],
+     [
+      2.1279,
+      15.4735
+     ],
+     [
+      1.9857,
+      15.8763
+     ],
+     [
+      1.3585,
+      15.9422
+     ],
+     [
+      1.1357,
+      15.5777
+     ],
+     [
+      0.9411,
+      15.2091
+     ],
+     [
+      0.7775,
+      14.8369
+     ],
+     [
+      0.6502,
+      14.4617
+     ],
+     [
+      0.5748,
+      14.0837
+     ],
+     [
+      0.5607,
+      13.7386
+     ],
+     [
+      0.1869,
+      13.7487
+     ],
+     [
+      -0.1869,
+      13.7487
+     ],
+     [
+      -0.5607,
+      13.7386
+     ],
+     [
+      -0.5748,
+      14.0837
+     ],
+     [
+      -0.6502,
+      14.4617
+     ],
+     [
+      -0.7775,
+      14.8369
+     ],
+     [
+      -0.9411,
+      15.2091
+     ],
+     [
+      -1.1357,
+      15.5777
+     ],
+     [
+      -1.3585,
+      15.9422
+     ],
+     [
+      -1.9857,
+      15.8763
+     ],
+     [
+      -2.1279,
+      15.4735
+     ],
+     [
+      -2.2416,
+      15.0724
+     ],
+     [
+      -2.3242,
+      14.6743
+     ],
+     [
+      -2.3708,
+      14.2809
+     ],
+     [
+      -2.3659,
+      13.8954
+     ],
+     [
+      -2.308,
+      13.5549
+     ],
+     [
+      -2.6757,
+      13.4872
+     ],
+     [
+      -3.0414,
+      13.4094
+     ],
+     [
+      -3.4048,
+      13.3218
+     ],
+     [
+      -3.4904,
+      13.6564
+     ],
+     [
+      -3.6427,
+      14.0105
+     ],
+     [
+      -3.8453,
+      14.351
+     ],
+     [
+      -4.0827,
+      14.681
+     ],
+     [
+      -4.3497,
+      15.0012
+     ],
+     [
+      -4.6434,
+      15.3114
+     ],
+     [
+      -5.2432,
+      15.1165
+     ],
+     [
+      -5.2985,
+      14.6929
+     ],
+     [
+      -5.3263,
+      14.277
+     ],
+     [
+      -5.3244,
+      13.8704
+     ],
+     [
+      -5.2882,
+      13.4759
+     ],
+     [
+      -5.2033,
+      13.0999
+     ],
+     [
+      -5.0758,
+      12.7789
+     ],
+     [
+      -5.4213,
+      12.6361
+     ],
+     [
+      -5.7629,
+      12.4841
+     ],
+     [
+      -6.1002,
+      12.3227
+     ],
+     [
+      -6.2534,
+      12.6323
+     ],
+     [
+      -6.4761,
+      12.947
+     ],
+     [
+      -6.745,
+      13.2379
+     ],
+     [
+      -7.0458,
+      13.5114
+     ],
+     [
+      -7.3736,
+      13.769
+     ],
+     [
+      -7.7253,
+      14.0114
+     ],
+     [
+      -8.2715,
+      13.696
+     ],
+     [
+      -8.2375,
+      13.2702
+     ],
+     [
+      -8.1783,
+      12.8576
+     ],
+     [
+      -8.0919,
+      12.4603
+     ],
+     [
+      -7.9744,
+      12.0819
+     ],
+     [
+      -7.8132,
+      11.7318
+     ],
+     [
+      -7.6217,
+      11.4443
+     ],
+     [
+      -7.9301,
+      11.2328
+     ],
+     [
+      -8.2325,
+      11.0131
+     ],
+     [
+      -8.5289,
+      10.7852
+     ],
+     [
+      -8.7432,
+      11.0561
+     ],
+     [
+      -9.0264,
+      11.3176
+     ],
+     [
+      -9.3499,
+      11.5463
+     ],
+     [
+      -9.7011,
+      11.7512
+     ],
+     [
+      -10.0752,
+      11.9351
+     ],
+     [
+      -10.4697,
+      12.099
+     ],
+     [
+      -10.9384,
+      11.677
+     ],
+     [
+      -10.8166,
+      11.2675
+     ],
+     [
+      -10.6728,
+      10.8762
+     ],
+     [
+      -10.5057,
+      10.5056
+     ],
+     [
+      -10.3121,
+      10.1599
+     ],
+     [
+      -10.0816,
+      9.851
+     ],
+     [
+      -9.8346,
+      9.6096
+     ],
+     [
+      -10.0922,
+      9.3386
+     ],
+     [
+      -10.3424,
+      9.0608
+     ],
+     [
+      -10.5849,
+      8.7762
+     ],
+     [
+      -10.8508,
+      8.9967
+     ],
+     [
+      -11.1822,
+      9.1936
+     ],
+     [
+      -11.5462,
+      9.35
+     ],
+     [
+      -11.9323,
+      9.4775
+     ],
+     [
+      -12.3365,
+      9.5795
+     ],
+     [
+      -12.7564,
+      9.6579
+     ],
+     [
+      -13.1271,
+      9.1476
+     ],
+     [
+      -12.9228,
+      8.7724
+     ],
+     [
+      -12.7009,
+      8.4196
+     ],
+     [
+      -12.4603,
+      8.0918
+     ],
+     [
+      -12.1991,
+      7.7939
+     ],
+     [
+      -11.9094,
+      7.5396
+     ],
+     [
+      -11.6176,
+      7.3549
+     ],
+     [
+      -11.8133,
+      7.0363
+     ],
+     [
+      -12.0002,
+      6.7125
+     ],
+     [
+      -12.1783,
+      6.3837
+     ],
+     [
+      -12.4842,
+      6.5441
+     ],
+     [
+      -12.8493,
+      6.6678
+     ],
+     [
+      -13.2379,
+      6.7451
+     ],
+     [
+      -13.642,
+      6.7895
+     ],
+     [
+      -14.0586,
+      6.8053
+     ],
+     [
+      -14.4856,
+      6.7946
+     ],
+     [
+      -14.7422,
+      6.2184
+     ],
+     [
+      -14.4643,
+      5.8939
+     ],
+     [
+      -14.1739,
+      5.5949
+     ],
+     [
+      -13.8704,
+      5.3243
+     ],
+     [
+      -13.553,
+      5.0873
+     ],
+     [
+      -13.2167,
+      4.8987
+     ],
+     [
+      -12.8929,
+      4.7787
+     ],
+     [
+      -13.018,
+      4.4264
+     ],
+     [
+      -13.1336,
+      4.0708
+     ],
+     [
+      -13.2394,
+      3.7122
+     ],
+     [
+      -13.572,
+      3.8054
+     ],
+     [
+      -13.9548,
+      3.8506
+     ],
+     [
+      -14.351,
+      3.8454
+     ],
+     [
+      -14.7555,
+      3.8048
+     ],
+     [
+      -15.1663,
+      3.7336
+     ],
+     [
+      -15.5818,
+      3.6344
+     ],
+     [
+      -15.7129,
+      3.0175
+     ],
+     [
+      -15.3737,
+      2.7578
+     ],
+     [
+      -15.0274,
+      2.5258
+     ],
+     [
+      -14.6743,
+      2.3242
+     ],
+     [
+      -14.3145,
+      2.1583
+     ],
+     [
+      -13.9464,
+      2.0438
+     ],
+     [
+      -13.6047,
+      1.9937
+     ],
+     [
+      -13.6539,
+      1.6231
+     ],
+     [
+      -13.693,
+      1.2512
+     ],
+     [
+      -13.7219,
+      0.8785
+     ],
+     [
+      -14.0666,
+      0.9005
+     ],
+     [
+      -14.4504,
+      0.8651
+     ],
+     [
+      -14.8369,
+      0.7776
+     ],
+     [
+      -15.2241,
+      0.6538
+     ],
+     [
+      -15.6111,
+      0.4988
+     ],
+     [
+      -15.9969,
+      0.3153
+     ],
+     [
+      -15.9969,
+      -0.3153
+     ],
+     [
+      -15.6111,
+      -0.4988
+     ],
+     [
+      -15.2241,
+      -0.6538
+     ],
+     [
+      -14.8369,
+      -0.7776
+     ],
+     [
+      -14.4504,
+      -0.8651
+     ],
+     [
+      -14.0666,
+      -0.9005
+     ],
+     [
+      -13.7219,
+      -0.8785
+     ],
+     [
+      -13.693,
+      -1.2512
+     ],
+     [
+      -13.6539,
+      -1.6231
+     ],
+     [
+      -13.6047,
+      -1.9937
+     ],
+     [
+      -13.9464,
+      -2.0438
+     ],
+     [
+      -14.3145,
+      -2.1583
+     ],
+     [
+      -14.6743,
+      -2.3242
+     ],
+     [
+      -15.0274,
+      -2.5258
+     ],
+     [
+      -15.3737,
+      -2.7578
+     ],
+     [
+      -15.7129,
+      -3.0175
+     ],
+     [
+      -15.5818,
+      -3.6344
+     ],
+     [
+      -15.1663,
+      -3.7336
+     ],
+     [
+      -14.7555,
+      -3.8048
+     ],
+     [
+      -14.351,
+      -3.8454
+     ],
+     [
+      -13.9548,
+      -3.8506
+     ],
+     [
+      -13.572,
+      -3.8054
+     ],
+     [
+      -13.2394,
+      -3.7122
+     ],
+     [
+      -13.1336,
+      -4.0708
+     ],
+     [
+      -13.018,
+      -4.4264
+     ],
+     [
+      -12.8929,
+      -4.7787
+     ],
+     [
+      -13.2167,
+      -4.8987
+     ],
+     [
+      -13.553,
+      -5.0873
+     ],
+     [
+      -13.8704,
+      -5.3243
+     ],
+     [
+      -14.1739,
+      -5.5949
+     ],
+     [
+      -14.4643,
+      -5.8939
+     ],
+     [
+      -14.7422,
+      -6.2184
+     ],
+     [
+      -14.4856,
+      -6.7946
+     ],
+     [
+      -14.0586,
+      -6.8053
+     ],
+     [
+      -13.642,
+      -6.7895
+     ],
+     [
+      -13.2379,
+      -6.7451
+     ],
+     [
+      -12.8493,
+      -6.6678
+     ],
+     [
+      -12.4842,
+      -6.5441
+     ],
+     [
+      -12.1783,
+      -6.3837
+     ],
+     [
+      -12.0002,
+      -6.7125
+     ],
+     [
+      -11.8133,
+      -7.0363
+     ],
+     [
+      -11.6176,
+      -7.3549
+     ],
+     [
+      -11.9094,
+      -7.5396
+     ],
+     [
+      -12.1991,
+      -7.7939
+     ],
+     [
+      -12.4603,
+      -8.0918
+     ],
+     [
+      -12.7009,
+      -8.4196
+     ],
+     [
+      -12.9228,
+      -8.7724
+     ],
+     [
+      -13.1271,
+      -9.1476
+     ],
+     [
+      -12.7564,
+      -9.6579
+     ],
+     [
+      -12.3365,
+      -9.5795
+     ],
+     [
+      -11.9323,
+      -9.4775
+     ],
+     [
+      -11.5462,
+      -9.35
+     ],
+     [
+      -11.1822,
+      -9.1936
+     ],
+     [
+      -10.8508,
+      -8.9967
+     ],
+     [
+      -10.5849,
+      -8.7762
+     ],
+     [
+      -10.3424,
+      -9.0608
+     ],
+     [
+      -10.0922,
+      -9.3386
+     ],
+     [
+      -9.8346,
+      -9.6096
+     ],
+     [
+      -10.0816,
+      -9.851
+     ],
+     [
+      -10.3121,
+      -10.1599
+     ],
+     [
+      -10.5057,
+      -10.5056
+     ],
+     [
+      -10.6728,
+      -10.8762
+     ],
+     [
+      -10.8166,
+      -11.2675
+     ],
+     [
+      -10.9384,
+      -11.677
+     ],
+     [
+      -10.4697,
+      -12.099
+     ],
+     [
+      -10.0752,
+      -11.9351
+     ],
+     [
+      -9.7011,
+      -11.7512
+     ],
+     [
+      -9.3499,
+      -11.5463
+     ],
+     [
+      -9.0264,
+      -11.3176
+     ],
+     [
+      -8.7432,
+      -11.0561
+     ],
+     [
+      -8.5289,
+      -10.7852
+     ],
+     [
+      -8.2325,
+      -11.0131
+     ],
+     [
+      -7.9301,
+      -11.2328
+     ],
+     [
+      -7.6217,
+      -11.4443
+     ],
+     [
+      -7.8132,
+      -11.7318
+     ],
+     [
+      -7.9744,
+      -12.0819
+     ],
+     [
+      -8.0919,
+      -12.4603
+     ],
+     [
+      -8.1783,
+      -12.8576
+     ],
+     [
+      -8.2375,
+      -13.2702
+     ],
+     [
+      -8.2715,
+      -13.696
+     ],
+     [
+      -7.7253,
+      -14.0114
+     ],
+     [
+      -7.3736,
+      -13.769
+     ],
+     [
+      -7.0458,
+      -13.5114
+     ],
+     [
+      -6.745,
+      -13.2379
+     ],
+     [
+      -6.4761,
+      -12.947
+     ],
+     [
+      -6.2534,
+      -12.6323
+     ],
+     [
+      -6.1002,
+      -12.3227
+     ],
+     [
+      -5.7629,
+      -12.4841
+     ],
+     [
+      -5.4213,
+      -12.6361
+     ],
+     [
+      -5.0758,
+      -12.7789
+     ],
+     [
+      -5.2033,
+      -13.0999
+     ],
+     [
+      -5.2882,
+      -13.4759
+     ],
+     [
+      -5.3244,
+      -13.8704
+     ],
+     [
+      -5.3263,
+      -14.277
+     ],
+     [
+      -5.2985,
+      -14.6929
+     ],
+     [
+      -5.2432,
+      -15.1165
+     ],
+     [
+      -4.6434,
+      -15.3114
+     ],
+     [
+      -4.3497,
+      -15.0012
+     ],
+     [
+      -4.0827,
+      -14.681
+     ],
+     [
+      -3.8453,
+      -14.351
+     ],
+     [
+      -3.6427,
+      -14.0105
+     ],
+     [
+      -3.4904,
+      -13.6564
+     ],
+     [
+      -3.4048,
+      -13.3218
+     ],
+     [
+      -3.0414,
+      -13.4094
+     ],
+     [
+      -2.6757,
+      -13.4872
+     ],
+     [
+      -2.308,
+      -13.5549
+     ],
+     [
+      -2.3659,
+      -13.8954
+     ],
+     [
+      -2.3708,
+      -14.2809
+     ],
+     [
+      -2.3242,
+      -14.6743
+     ],
+     [
+      -2.2416,
+      -15.0724
+     ],
+     [
+      -2.1279,
+      -15.4735
+     ],
+     [
+      -1.9857,
+      -15.8763
+     ],
+     [
+      -1.3585,
+      -15.9422
+     ],
+     [
+      -1.1357,
+      -15.5777
+     ],
+     [
+      -0.9411,
+      -15.2091
+     ],
+     [
+      -0.7775,
+      -14.8369
+     ],
+     [
+      -0.6502,
+      -14.4617
+     ],
+     [
+      -0.5748,
+      -14.0837
+     ],
+     [
+      -0.5607,
+      -13.7386
+     ],
+     [
+      -0.1869,
+      -13.7487
+     ],
+     [
+      0.1869,
+      -13.7487
+     ],
+     [
+      0.5607,
+      -13.7386
+     ],
+     [
+      0.5748,
+      -14.0837
+     ],
+     [
+      0.6502,
+      -14.4617
+     ],
+     [
+      0.7775,
+      -14.8369
+     ],
+     [
+      0.9411,
+      -15.2091
+     ],
+     [
+      1.1357,
+      -15.5777
+     ],
+     [
+      1.3585,
+      -15.9422
+     ],
+     [
+      1.9857,
+      -15.8763
+     ],
+     [
+      2.1279,
+      -15.4735
+     ],
+     [
+      2.2416,
+      -15.0724
+     ],
+     [
+      2.3242,
+      -14.6743
+     ],
+     [
+      2.3708,
+      -14.2809
+     ],
+     [
+      2.3659,
+      -13.8954
+     ],
+     [
+      2.308,
+      -13.5549
+     ],
+     [
+      2.6757,
+      -13.4872
+     ],
+     [
+      3.0414,
+      -13.4094
+     ],
+     [
+      3.4048,
+      -13.3218
+     ],
+     [
+      3.4904,
+      -13.6564
+     ],
+     [
+      3.6427,
+      -14.0105
+     ],
+     [
+      3.8453,
+      -14.351
+     ],
+     [
+      4.0827,
+      -14.681
+     ],
+     [
+      4.3497,
+      -15.0012
+     ],
+     [
+      4.6434,
+      -15.3114
+     ],
+     [
+      5.2432,
+      -15.1165
+     ],
+     [
+      5.2985,
+      -14.6929
+     ],
+     [
+      5.3263,
+      -14.277
+     ],
+     [
+      5.3244,
+      -13.8704
+     ],
+     [
+      5.2882,
+      -13.4759
+     ],
+     [
+      5.2033,
+      -13.0999
+     ],
+     [
+      5.0758,
+      -12.7789
+     ],
+     [
+      5.4213,
+      -12.6361
+     ],
+     [
+      5.7629,
+      -12.4841
+     ],
+     [
+      6.1002,
+      -12.3227
+     ],
+     [
+      6.2534,
+      -12.6323
+     ],
+     [
+      6.4761,
+      -12.947
+     ],
+     [
+      6.745,
+      -13.2379
+     ],
+     [
+      7.0458,
+      -13.5114
+     ],
+     [
+      7.3736,
+      -13.769
+     ],
+     [
+      7.7253,
+      -14.0114
+     ],
+     [
+      8.2715,
+      -13.696
+     ],
+     [
+      8.2375,
+      -13.2702
+     ],
+     [
+      8.1783,
+      -12.8576
+     ],
+     [
+      8.0919,
+      -12.4603
+     ],
+     [
+      7.9744,
+      -12.0819
+     ],
+     [
+      7.8132,
+      -11.7318
+     ],
+     [
+      7.6217,
+      -11.4443
+     ],
+     [
+      7.9301,
+      -11.2328
+     ],
+     [
+      8.2325,
+      -11.0131
+     ],
+     [
+      8.5289,
+      -10.7852
+     ],
+     [
+      8.7432,
+      -11.0561
+     ],
+     [
+      9.0264,
+      -11.3176
+     ],
+     [
+      9.3499,
+      -11.5463
+     ],
+     [
+      9.7011,
+      -11.7512
+     ],
+     [
+      10.0752,
+      -11.9351
+     ],
+     [
+      10.4697,
+      -12.099
+     ],
+     [
+      10.9384,
+      -11.677
+     ],
+     [
+      10.8166,
+      -11.2675
+     ],
+     [
+      10.6728,
+      -10.8762
+     ],
+     [
+      10.5057,
+      -10.5056
+     ],
+     [
+      10.3121,
+      -10.1599
+     ],
+     [
+      10.0816,
+      -9.851
+     ],
+     [
+      9.8346,
+      -9.6096
+     ],
+     [
+      10.0922,
+      -9.3386
+     ],
+     [
+      10.3424,
+      -9.0608
+     ],
+     [
+      10.5849,
+      -8.7762
+     ],
+     [
+      10.8508,
+      -8.9967
+     ],
+     [
+      11.1822,
+      -9.1936
+     ],
+     [
+      11.5462,
+      -9.35
+     ],
+     [
+      11.9323,
+      -9.4775
+     ],
+     [
+      12.3365,
+      -9.5795
+     ],
+     [
+      12.7564,
+      -9.6579
+     ],
+     [
+      13.1271,
+      -9.1476
+     ],
+     [
+      12.9228,
+      -8.7724
+     ],
+     [
+      12.7009,
+      -8.4196
+     ],
+     [
+      12.4603,
+      -8.0918
+     ],
+     [
+      12.1991,
+      -7.7939
+     ],
+     [
+      11.9094,
+      -7.5396
+     ],
+     [
+      11.6176,
+      -7.3549
+     ],
+     [
+      11.8133,
+      -7.0363
+     ],
+     [
+      12.0002,
+      -6.7125
+     ],
+     [
+      12.1783,
+      -6.3837
+     ],
+     [
+      12.4842,
+      -6.5441
+     ],
+     [
+      12.8493,
+      -6.6678
+     ],
+     [
+      13.2379,
+      -6.7451
+     ],
+     [
+      13.642,
+      -6.7895
+     ],
+     [
+      14.0586,
+      -6.8053
+     ],
+     [
+      14.4856,
+      -6.7946
+     ],
+     [
+      14.7422,
+      -6.2184
+     ],
+     [
+      14.4643,
+      -5.8939
+     ],
+     [
+      14.1739,
+      -5.5949
+     ],
+     [
+      13.8704,
+      -5.3243
+     ],
+     [
+      13.553,
+      -5.0873
+     ],
+     [
+      13.2167,
+      -4.8987
+     ],
+     [
+      12.8929,
+      -4.7787
+     ],
+     [
+      13.018,
+      -4.4264
+     ],
+     [
+      13.1336,
+      -4.0708
+     ],
+     [
+      13.2394,
+      -3.7122
+     ],
+     [
+      13.572,
+      -3.8054
+     ],
+     [
+      13.9548,
+      -3.8506
+     ],
+     [
+      14.351,
+      -3.8454
+     ],
+     [
+      14.7555,
+      -3.8048
+     ],
+     [
+      15.1663,
+      -3.7336
+     ],
+     [
+      15.5818,
+      -3.6344
+     ],
+     [
+      15.7129,
+      -3.0175
+     ],
+     [
+      15.3737,
+      -2.7578
+     ],
+     [
+      15.0274,
+      -2.5258
+     ],
+     [
+      14.6743,
+      -2.3242
+     ],
+     [
+      14.3145,
+      -2.1583
+     ],
+     [
+      13.9464,
+      -2.0438
+     ],
+     [
+      13.6047,
+      -1.9937
+     ],
+     [
+      13.6539,
+      -1.6231
+     ],
+     [
+      13.693,
+      -1.2512
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.circle.center",
+   "params": {
+    "center": [
+     0,
+     0
+    ],
+    "diameter": "gear_bore"
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "distance": "gear_w",
+    "operation": "new",
+    "body_name": "WormWheel",
+    "name": "WormWheelBody"
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "XY",
+    "offset": "gear_w",
+    "name": "WormWheelHubSk"
+   }
+  },
+  {
+   "command": "sketch.circle.center",
+   "params": {
+    "center": [
+     0,
+     0
+    ],
+    "diameter": "gear_hub_d"
+   }
+  },
+  {
+   "command": "sketch.circle.center",
+   "params": {
+    "center": [
+     0,
+     0
+    ],
+    "diameter": "gear_bore"
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "distance": "gear_hub_len",
+    "operation": "join",
+    "targets": [
+     "WormWheel"
+    ],
+    "name": "WormWheelHub"
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "XZ",
+    "name": "WormWheelGrubSk"
+   }
+  },
+  {
+   "command": "sketch.circle.center",
+   "params": {
+    "center": [
+     "0 mm",
+     "-(gear_w + gear_hub_len/2)"
+    ],
+    "diameter": "grub_tap"
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "distance": "gear_hub_d",
+    "direction": "symmetric",
+    "operation": "cut",
+    "targets": [
+     "WormWheel"
+    ],
+    "name": "WormWheelGrub"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "worm_hub_d",
+    "height": "worm_hub_len",
+    "operation": "new",
+    "body_name": "Worm",
+    "name": "WormHub"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "2 * (worm_pd/2 - 1.25 * gear_m) + 0.02 mm",
+    "height": "worm_len",
+    "base": [
+     "0 mm",
+     "0 mm",
+     "worm_hub_len"
+    ],
+    "operation": "join",
+    "targets": [
+     "Worm"
+    ],
+    "name": "WormCore"
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "XZ",
+    "name": "WormThreadSec"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "(worm_pd/2 - 1.25 * gear_m)",
+      "-((worm_hub_len - (pi * gear_m)) - ((pi * gear_m)/4 + 1.25 * gear_m * tan(pressure_ang) - 0.05 mm))"
+     ],
+     [
+      "(worm_pd/2 + gear_m)",
+      "-((worm_hub_len - (pi * gear_m)) - ((pi * gear_m)/4 - gear_m * tan(pressure_ang) - 0.05 mm))"
+     ],
+     [
+      "(worm_pd/2 + gear_m)",
+      "-((worm_hub_len - (pi * gear_m)) + ((pi * gear_m)/4 - gear_m * tan(pressure_ang) - 0.05 mm))"
+     ],
+     [
+      "(worm_pd/2 - 1.25 * gear_m)",
+      "-((worm_hub_len - (pi * gear_m)) + ((pi * gear_m)/4 + 1.25 * gear_m * tan(pressure_ang) - 0.05 mm))"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.coil",
+   "params": {
+    "sketch": "WormThreadSec",
+    "pitch": "(pi * gear_m)",
+    "height": "worm_len + 2 * (pi * gear_m)",
+    "operation": "new",
+    "body_name": "WormThread",
+    "name": "WormCoil"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "2 * (worm_pd/2 + gear_m) + 1 mm",
+    "height": "worm_len",
+    "base": [
+     "0 mm",
+     "0 mm",
+     "worm_hub_len"
+    ],
+    "operation": "new",
+    "body_name": "WormTrim",
+    "name": "WormTrim"
+   }
+  },
+  {
+   "command": "solid.combine",
+   "params": {
+    "target": "WormThread",
+    "tools": [
+     "WormTrim"
+    ],
+    "operation": "intersect"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "worm_bore",
+    "height": "worm_hub_len + worm_len",
+    "operation": "cut",
+    "targets": [
+     "Worm"
+    ],
+    "name": "WormBore"
+   }
+  },
+  {
+   "command": "solid.chamfer",
+   "params": {
+    "edges": [
+     [
+      4.0,
+      0,
+      0
+     ]
+    ],
+    "distance": "0.4 mm",
+    "body": "Worm"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "motor_d",
+    "height": "motor_len",
+    "base": [
+     "motor_face_x - motor_len",
+     "0 mm",
+     "motor_z"
+    ],
+    "axis": "X",
+    "operation": "new",
+    "body_name": "Motor",
+    "name": "MotorCan"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "motor_boss_d",
+    "height": "bulk_t",
+    "base": [
+     "motor_face_x",
+     "0 mm",
+     "motor_z"
+    ],
+    "axis": "X",
+    "operation": "join",
+    "targets": [
+     "Motor"
+    ],
+    "name": "MotorBoss"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "motor_shaft_d",
+    "height": "motor_shaft_l",
+    "base": [
+     "motor_face_x",
+     "0 mm",
+     "motor_z"
+    ],
+    "axis": "X",
+    "operation": "new",
+    "body_name": "MotorShaft",
+    "name": "MotorShaft"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "WormWheel"
+    ],
+    "translate": [
+     "0 mm",
+     "0 mm",
+     "-gear_w/2"
+    ]
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "WormWheel"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "-90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "WormWheel"
+    ],
+    "translate": [
+     "wheelbase/2",
+     "0 mm",
+     "0 mm"
+    ]
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Worm",
+     "WormThread"
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "angle": "90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Worm",
+     "WormThread"
+    ],
+    "translate": [
+     "wheelbase/2 - worm_len/2 - worm_hub_len",
+     "0 mm",
+     "motor_z"
+    ]
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "YZ",
+    "name": "WheelProfile"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "wheel_bore/2",
+      "0 mm"
+     ],
+     [
+      "((wheel_d/2) + flange_h) - 0.4 mm",
+      "0 mm"
+     ],
+     [
+      "((wheel_d/2) + flange_h)",
+      "0.4 mm"
+     ],
+     [
+      "((wheel_d/2) + flange_h)",
+      "0.4 mm + flange_tip_w"
+     ],
+     [
+      "(wheel_d/2) + root_ch",
+      "flange_t"
+     ],
+     [
+      "(wheel_d/2)",
+      "flange_t + root_ch"
+     ],
+     [
+      "(wheel_d/2) - (wheel_w - flange_t - root_ch) * tread_taper",
+      "wheel_w"
+     ],
+     [
+      "(wheel_d/2) - rim_t",
+      "wheel_w"
+     ],
+     [
+      "(wheel_d/2) - rim_t",
+      "web_t"
+     ],
+     [
+      "boss_d/2",
+      "web_t"
+     ],
+     [
+      "boss_d/2",
+      "wheel_w"
+     ],
+     [
+      "wheel_bore/2",
+      "wheel_w"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.revolve",
+   "params": {
+    "axis": "Z",
+    "operation": "new",
+    "body_name": "Wheel",
+    "name": "WheelRevolve"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Frame",
+     "WormWheel",
+     "Worm",
+     "WormThread",
+     "Motor",
+     "MotorShaft"
+    ],
+    "translate": [
+     "track_len/2",
+     "0 mm",
+     "(tie_t + rail_h + (wheel_d/2 - ((track_gauge/2 + rail_top_ch - back_to_back/2) - flange_t - root_ch) * tread_taper) + 0.05 mm)"
+    ]
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel"
+    ],
+    "copy": true
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel"
+    ],
+    "copy": true
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel"
+    ],
+    "copy": true
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "-90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel"
+    ],
+    "translate": [
+     "track_len/2 + 1 * wheelbase/2",
+     "1 * back_to_back/2",
+     "(tie_t + rail_h + (wheel_d/2 - ((track_gauge/2 + rail_top_ch - back_to_back/2) - flange_t - root_ch) * tread_taper) + 0.05 mm)"
+    ]
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel (2)"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel (2)"
+    ],
+    "translate": [
+     "track_len/2 + 1 * wheelbase/2",
+     "-1 * back_to_back/2",
+     "(tie_t + rail_h + (wheel_d/2 - ((track_gauge/2 + rail_top_ch - back_to_back/2) - flange_t - root_ch) * tread_taper) + 0.05 mm)"
+    ]
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel (3)"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "-90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel (3)"
+    ],
+    "translate": [
+     "track_len/2 + -1 * wheelbase/2",
+     "1 * back_to_back/2",
+     "(tie_t + rail_h + (wheel_d/2 - ((track_gauge/2 + rail_top_ch - back_to_back/2) - flange_t - root_ch) * tread_taper) + 0.05 mm)"
+    ]
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel (4)"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel (4)"
+    ],
+    "translate": [
+     "track_len/2 + -1 * wheelbase/2",
+     "-1 * back_to_back/2",
+     "(tie_t + rail_h + (wheel_d/2 - ((track_gauge/2 + rail_top_ch - back_to_back/2) - flange_t - root_ch) * tread_taper) + 0.05 mm)"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "axle_d",
+    "height": "back_to_back + 2*wheel_w",
+    "base": [
+     "track_len/2 + 1 * wheelbase/2",
+     "-back_to_back/2 - wheel_w",
+     "(tie_t + rail_h + (wheel_d/2 - ((track_gauge/2 + rail_top_ch - back_to_back/2) - flange_t - root_ch) * tread_taper) + 0.05 mm)"
+    ],
+    "axis": "Y",
+    "operation": "new",
+    "body_name": "AxleF",
+    "name": "AxleF"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "axle_d",
+    "height": "back_to_back + 2*wheel_w",
+    "base": [
+     "track_len/2 + -1 * wheelbase/2",
+     "-back_to_back/2 - wheel_w",
+     "(tie_t + rail_h + (wheel_d/2 - ((track_gauge/2 + rail_top_ch - back_to_back/2) - flange_t - root_ch) * tread_taper) + 0.05 mm)"
+    ],
+    "axis": "Y",
+    "operation": "new",
+    "body_name": "AxleB",
+    "name": "AxleB"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Frame"
+    ],
+    "color": "#202020"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "WormWheel"
+    ],
+    "color": "#d8b000"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Worm"
+    ],
+    "color": "#909090"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "WormThread"
+    ],
+    "color": "#909090"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Motor"
+    ],
+    "color": "#b0b8c0"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Wheel"
+    ],
+    "color": "#c0201a"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Wheel (2)"
+    ],
+    "color": "#c0201a"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Wheel (3)"
+    ],
+    "color": "#c0201a"
+   }
+  },
+  {
+   "command": "appearance.assign",
+   "params": {
+    "bodies": [
+     "Wheel (4)"
+    ],
+    "color": "#c0201a"
+   }
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 4931.810951073051,
+      "bbox": {
+        "max": [
+          23.49986333673708,
+          23.5,
+          7.5
+        ],
+        "min": [
+          -23.499863336737075,
+          -23.5,
+          -3.552713678800501e-15
+        ]
+      },
+      "center_of_mass": [
+        9.799696783665e-10,
+        3.646338750505005e-15,
+        2.783699194354362
+      ],
+      "density_g_cm3": 1.29,
+      "edges": 12,
+      "face_types": {
+        "cone": 4,
+        "cylinder": 4,
+        "plane": 4
+      },
+      "faces": 12,
+      "kernel": {
+        "edges": 60,
+        "faces": 28,
+        "shells": 1,
+        "vertices": 36
+      },
+      "mass_g": 9.77515423743502,
+      "material": "Default",
+      "name": "Wheel",
+      "vertices": 12,
+      "volume_mm3": 7577.638943748077
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 4931.810951073051,
+    "edges": 12,
+    "faces": 12,
+    "mass_g": 9.77515423743502,
+    "vertices": 12,
+    "volume_mm3": 7577.638943748077
+  }
+}

@@ -1,0 +1,426 @@
+{
+ "commands": [
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "track_gauge",
+    "expression": "45.0 mm",
+    "comment": "Ray açıklığı (ray başlarının iç yüzleri arası)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "track_len",
+    "expression": "200.0 mm",
+    "comment": "Düz ray modülü nominal uzunluğu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_gap",
+    "expression": "0.5 mm",
+    "comment": "Ek yerinde toplam genleşme boşluğu (her uçta yarısı)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_head_w",
+    "expression": "5.0 mm",
+    "comment": "Ray başı genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_head_h",
+    "expression": "2.5 mm",
+    "comment": "Ray başı yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_web_w",
+    "expression": "3.0 mm",
+    "comment": "Ray gövdesi (web) genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_foot_w",
+    "expression": "9.0 mm",
+    "comment": "Ray tabanı / alt kiriş genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_h",
+    "expression": "8.0 mm",
+    "comment": "Ray yüksekliği (travers üstünden)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_top_ch",
+    "expression": "0.6 mm",
+    "comment": "Ray başı üst köşe pahı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tie_len",
+    "expression": "66.0 mm",
+    "comment": "Travers boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tie_w",
+    "expression": "8.0 mm",
+    "comment": "Travers genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tie_t",
+    "expression": "5.0 mm",
+    "comment": "Travers kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tie_pitch",
+    "expression": "20.0 mm",
+    "comment": "Travers aralığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "end_tie_w",
+    "expression": "12.0 mm",
+    "comment": "Uç (bağlantı) traversi genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "joint_y",
+    "expression": "12.0 mm",
+    "comment": "Kırlangıç kuyruğu bağlantısının eksenden uzaklığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dt_neck",
+    "expression": "6.0 mm",
+    "comment": "Kırlangıç boyun genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dt_tip",
+    "expression": "9.0 mm",
+    "comment": "Kırlangıç uç genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dt_len",
+    "expression": "7.0 mm",
+    "comment": "Kırlangıç boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dt_clear",
+    "expression": "0.2 mm",
+    "comment": "Kırlangıç yuva boşluğu (her yüz)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_end_ch",
+    "expression": "0.4 mm",
+    "comment": "Ray ucu pahı (tekerlek takılmasın)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "curve_radius",
+    "expression": "750.0 mm",
+    "comment": "Viraj yarıçapı (ray ekseni)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "curve_angle",
+    "expression": "15.0 deg",
+    "comment": "Viraj modülü açısı (derece; 24 modül = tam daire)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "wheel_d",
+    "expression": "42.0 mm",
+    "comment": "Yuvarlanma dairesi çapı (flanş kökünde)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "wheel_w",
+    "expression": "7.5 mm",
+    "comment": "Tekerlek toplam genişliği (flanş dahil)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "flange_h",
+    "expression": "2.5 mm",
+    "comment": "Flanş yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "flange_t",
+    "expression": "1.8 mm",
+    "comment": "Flanş kalınlığı (ray başı köşe seviyesinde)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "flange_tip_w",
+    "expression": "0.7 mm",
+    "comment": "Flanş tepesi düz kısmı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "root_ch",
+    "expression": "0.6 mm",
+    "comment": "Flanş kökü pahı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tread_taper",
+    "expression": "0.05",
+    "comment": "Yuvarlanma yüzeyi konikliği (1:20)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "back_to_back",
+    "expression": "40.0 mm",
+    "comment": "Tekerlek arka yüzleri arası (B)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "wheel_bore",
+    "expression": "4.0 mm",
+    "comment": "Tekerlek aks deliği (nominal; test kuponuyla ayarlanacak)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rim_t",
+    "expression": "4.0 mm",
+    "comment": "Jant kalınlığı (radyal)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "web_t",
+    "expression": "3.5 mm",
+    "comment": "Tekerlek gövde (disk) kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "boss_d",
+    "expression": "12.0 mm",
+    "comment": "Göbek çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "axle_d",
+    "expression": "4.0 mm",
+    "comment": "Çelik aks çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bearing_od",
+    "expression": "9.0 mm",
+    "comment": "684ZZ rulman dış çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bearing_w",
+    "expression": "4.0 mm",
+    "comment": "684ZZ rulman genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bearing_clear",
+    "expression": "0.1 mm",
+    "comment": "Rulman yuvası çap boşluğu (nominal)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "spacer_t",
+    "expression": "1.0 mm",
+    "comment": "Tekerlek-rulman arası pul kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "spacer_od",
+    "expression": "5.5 mm",
+    "comment": "Pul dış çapı (yalnız iç bileziğe değer)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "spacer_id",
+    "expression": "4.3 mm",
+    "comment": "Pul iç çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "wheelbase",
+    "expression": "70.0 mm",
+    "comment": "Aks aralığı (0-4-0 rijit dingil mesafesi)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plate_t",
+    "expression": "6.0 mm",
+    "comment": "Yan levha kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plate_len",
+    "expression": "110.0 mm",
+    "comment": "Yan levha boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plate_above",
+    "expression": "12.0 mm",
+    "comment": "Levhanın aks üstündeki yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plate_below",
+    "expression": "10.0 mm",
+    "comment": "Levhanın aks altındaki yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "xm_size",
+    "expression": "10.0 mm",
+    "comment": "Travers (crossmember) kesiti"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "xm_x",
+    "expression": "50.0 mm",
+    "comment": "Crossmember konumu (merkezden)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "m3_clear",
+    "expression": "3.4 mm",
+    "comment": "M3 geçiş deliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "m3_tap",
+    "expression": "2.6 mm",
+    "comment": "M3 vida (plastiğe) pilot deliği"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "spacer_od",
+    "height": "spacer_t",
+    "operation": "new",
+    "body_name": "Spacer",
+    "name": "SpacerOD"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "spacer_id",
+    "height": "spacer_t",
+    "operation": "cut",
+    "targets": [
+     "Spacer"
+    ],
+    "name": "SpacerID"
+   }
+  }
+ ]
+}

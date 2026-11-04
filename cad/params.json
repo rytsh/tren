@@ -1,0 +1,329 @@
+{
+  "_note": "Ortak tasarım parametreleri (mm). Tüm parçalar buradan türetilir; SolidCraft tasarımlarına kullanıcı parametresi olarak yazılır. Değerler VARSAYIMDIR, baskı testleriyle doğrulanacak.",
+  "track": {
+    "track_gauge": [
+      45.0,
+      "Ray açıklığı (ray başlarının iç yüzleri arası)"
+    ],
+    "track_len": [
+      200.0,
+      "Düz ray modülü nominal uzunluğu"
+    ],
+    "rail_gap": [
+      0.5,
+      "Ek yerinde toplam genleşme boşluğu (her uçta yarısı)"
+    ],
+    "rail_head_w": [
+      5.0,
+      "Ray başı genişliği"
+    ],
+    "rail_head_h": [
+      2.5,
+      "Ray başı yüksekliği"
+    ],
+    "rail_web_w": [
+      3.0,
+      "Ray gövdesi (web) genişliği"
+    ],
+    "rail_foot_w": [
+      9.0,
+      "Ray tabanı / alt kiriş genişliği"
+    ],
+    "rail_h": [
+      8.0,
+      "Ray yüksekliği (travers üstünden)"
+    ],
+    "rail_top_ch": [
+      0.6,
+      "Ray başı üst köşe pahı"
+    ],
+    "tie_len": [
+      66.0,
+      "Travers boyu"
+    ],
+    "tie_w": [
+      8.0,
+      "Travers genişliği"
+    ],
+    "tie_t": [
+      5.0,
+      "Travers kalınlığı"
+    ],
+    "tie_pitch": [
+      20.0,
+      "Travers aralığı"
+    ],
+    "end_tie_w": [
+      12.0,
+      "Uç (bağlantı) traversi genişliği"
+    ],
+    "joint_y": [
+      12.0,
+      "Kırlangıç kuyruğu bağlantısının eksenden uzaklığı"
+    ],
+    "dt_neck": [
+      6.0,
+      "Kırlangıç boyun genişliği"
+    ],
+    "dt_tip": [
+      9.0,
+      "Kırlangıç uç genişliği"
+    ],
+    "dt_len": [
+      7.0,
+      "Kırlangıç boyu"
+    ],
+    "dt_clear": [
+      0.2,
+      "Kırlangıç yuva boşluğu (her yüz)"
+    ],
+    "rail_end_ch": [
+      0.4,
+      "Ray ucu pahı (tekerlek takılmasın)"
+    ],
+    "curve_radius": [
+      750.0,
+      "Viraj yarıçapı (ray ekseni)"
+    ],
+    "curve_angle": [
+      15.0,
+      "Viraj modülü açısı (derece; 24 modül = tam daire)"
+    ]
+  },
+  "wheel": {
+    "wheel_d": [
+      42.0,
+      "Yuvarlanma dairesi çapı (flanş kökünde)"
+    ],
+    "wheel_w": [
+      7.5,
+      "Tekerlek toplam genişliği (flanş dahil)"
+    ],
+    "flange_h": [
+      2.5,
+      "Flanş yüksekliği"
+    ],
+    "flange_t": [
+      1.8,
+      "Flanş kalınlığı (ray başı köşe seviyesinde)"
+    ],
+    "flange_tip_w": [
+      0.7,
+      "Flanş tepesi düz kısmı"
+    ],
+    "root_ch": [
+      0.6,
+      "Flanş kökü pahı"
+    ],
+    "tread_taper": [
+      0.05,
+      "Yuvarlanma yüzeyi konikliği (1:20)"
+    ],
+    "back_to_back": [
+      40.0,
+      "Tekerlek arka yüzleri arası (B)"
+    ],
+    "wheel_bore": [
+      4.0,
+      "Tekerlek aks deliği (nominal; test kuponuyla ayarlanacak)"
+    ],
+    "rim_t": [
+      4.0,
+      "Jant kalınlığı (radyal)"
+    ],
+    "web_t": [
+      3.5,
+      "Tekerlek gövde (disk) kalınlığı"
+    ],
+    "boss_d": [
+      12.0,
+      "Göbek çapı"
+    ]
+  },
+  "axle": {
+    "axle_d": [
+      4.0,
+      "Çelik aks çapı"
+    ],
+    "bearing_od": [
+      9.0,
+      "684ZZ rulman dış çapı"
+    ],
+    "bearing_w": [
+      4.0,
+      "684ZZ rulman genişliği"
+    ],
+    "bearing_clear": [
+      0.1,
+      "Rulman yuvası çap boşluğu (nominal)"
+    ],
+    "spacer_t": [
+      1.0,
+      "Tekerlek-rulman arası pul kalınlığı"
+    ],
+    "spacer_od": [
+      5.5,
+      "Pul dış çapı (yalnız iç bileziğe değer)"
+    ],
+    "spacer_id": [
+      4.3,
+      "Pul iç çapı"
+    ]
+  },
+  "frame": {
+    "wheelbase": [
+      70.0,
+      "Aks aralığı (0-4-0 rijit dingil mesafesi)"
+    ],
+    "plate_t": [
+      6.0,
+      "Yan levha kalınlığı"
+    ],
+    "plate_len": [
+      130.0,
+      "Yan levha boyu"
+    ],
+    "plate_above": [
+      12.0,
+      "Levhanın aks üstündeki yüksekliği"
+    ],
+    "plate_below": [
+      10.0,
+      "Levhanın aks altındaki yüksekliği"
+    ],
+    "xm_size": [
+      10.0,
+      "Travers (crossmember) kesiti"
+    ],
+    "xm_x": [
+      60.0,
+      "Crossmember konumu (merkezden; karşı dişliye yer bırakır)"
+    ],
+    "m3_clear": [
+      3.4,
+      "M3 geçiş deliği"
+    ],
+    "m3_tap": [
+      2.6,
+      "M3 vida (plastiğe) pilot deliği"
+    ]
+  },
+  "drive": {
+    "gear_m": [
+      1.0,
+      "Modül (sonsuz vida eksenel modülü = karşı dişli modülü)"
+    ],
+    "z_wheel": [
+      30,
+      "Karşı dişli diş sayısı (tek ağızlı vida: 30:1)"
+    ],
+    "pressure_ang": [
+      20.0,
+      "Basınç açısı (derece)"
+    ],
+    "gear_w": [
+      6.0,
+      "Karşı dişli genişliği"
+    ],
+    "gear_hub_d": [
+      10.0,
+      "Karşı dişli göbek çapı"
+    ],
+    "gear_hub_len": [
+      4.0,
+      "Göbek boyu"
+    ],
+    "worm_pd": [
+      10.0,
+      "Sonsuz vida bölüm dairesi çapı"
+    ],
+    "worm_len": [
+      16.5,
+      "Sonsuz vida boyu"
+    ],
+    "worm_bore": [
+      2.2,
+      "Vida deliği (2.3 mil, sıkı geçme; kuponla doğrula)"
+    ],
+    "mesh_backlash": [
+      0.15,
+      "Eksenler arası ek boşluk"
+    ],
+    "motor_d": [
+      24.4,
+      "RS/RF-370 motor gövde çapı (VARSAYIM, kumpasla doğrula)"
+    ],
+    "motor_len": [
+      30.5,
+      "Motor gövde boyu, mil ve arka burç hariç (VARSAYIM)"
+    ],
+    "motor_boss_d": [
+      10.0,
+      "Ön burç çapı (VARSAYIM)"
+    ],
+    "motor_shaft_d": [
+      2.3,
+      "Mil çapı (VARSAYIM)"
+    ],
+    "motor_shaft_l": [
+      10.0,
+      "Mil boyu, ön yüzden (VARSAYIM)"
+    ],
+    "motor_hole_s": [
+      17.0,
+      "Ön yüz M2.5 vida aralığı (VARSAYIM)"
+    ],
+    "motor_face_x": [
+      "wheelbase/2 - worm_len/2 - worm_hub_len - bulk_t - 0.5 mm",
+      "Motor ön yüzü X (türetilmiş: vida aksın üstünde ortalanır)"
+    ],
+    "bulk_t": [
+      3.0,
+      "Motor perde levhası kalınlığı"
+    ],
+    "worm_hub_d": [
+      8.0,
+      "Sonsuz vida göbeği (motor miline geçen kısım) çapı"
+    ],
+    "bulk_top": [
+      34.0,
+      "Perde üst kenarı (aks ekseninden)"
+    ],
+    "saddle_x0": [
+      -14.0,
+      "Arka motor yatağı başlangıcı (X)"
+    ],
+    "saddle_len": [
+      8.0,
+      "Arka motor yatağı boyu"
+    ],
+    "m25_clear": [
+      2.8,
+      "M2.5 geçiş deliği"
+    ],
+    "worm_hub_len": [
+      5.0,
+      "Vida göbeği boyu (bölme levhası deliğinden geçer)"
+    ],
+    "motor_z": [
+      "(worm_pd + z_wheel*gear_m)/2 + mesh_backlash",
+      "Motor/vida ekseni yüksekliği, aks ekseninden (türetilmiş)"
+    ],
+    "bulk_bottom": [
+      12.0,
+      "Bölme levhası alt kenarı (karşı dişli dönüş çapının üstünde)"
+    ],
+    "cradle_top": [
+      26.0,
+      "Motor yan duvarlarının üst kenarı (aks ekseninden)"
+    ],
+    "gear_bore": [
+      3.9,
+      "Karşı dişli aks deliği (sıkı geçme + yapıştırıcı; kuponla doğrula)"
+    ],
+    "grub_tap": [
+      2.5,
+      "M3 set vidası pilot deliği"
+    ]
+  }
+}

@@ -1,0 +1,1481 @@
+{
+ "commands": [
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "track_gauge",
+    "expression": "45.0 mm",
+    "unit": "mm",
+    "comment": "Ray açıklığı (ray başlarının iç yüzleri arası)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "track_len",
+    "expression": "200.0 mm",
+    "unit": "mm",
+    "comment": "Düz ray modülü nominal uzunluğu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_gap",
+    "expression": "0.5 mm",
+    "unit": "mm",
+    "comment": "Ek yerinde toplam genleşme boşluğu (her uçta yarısı)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_head_w",
+    "expression": "5.0 mm",
+    "unit": "mm",
+    "comment": "Ray başı genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_head_h",
+    "expression": "2.5 mm",
+    "unit": "mm",
+    "comment": "Ray başı yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_web_w",
+    "expression": "3.0 mm",
+    "unit": "mm",
+    "comment": "Ray gövdesi (web) genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_foot_w",
+    "expression": "9.0 mm",
+    "unit": "mm",
+    "comment": "Ray tabanı / alt kiriş genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_h",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Ray yüksekliği (travers üstünden)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_top_ch",
+    "expression": "0.6 mm",
+    "unit": "mm",
+    "comment": "Ray başı üst köşe pahı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tie_len",
+    "expression": "66.0 mm",
+    "unit": "mm",
+    "comment": "Travers boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tie_w",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Travers genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tie_t",
+    "expression": "5.0 mm",
+    "unit": "mm",
+    "comment": "Travers kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tie_pitch",
+    "expression": "20.0 mm",
+    "unit": "mm",
+    "comment": "Travers aralığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "end_tie_w",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "Uç (bağlantı) traversi genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "joint_y",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "Kırlangıç kuyruğu bağlantısının eksenden uzaklığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dt_neck",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "Kırlangıç boyun genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dt_tip",
+    "expression": "9.0 mm",
+    "unit": "mm",
+    "comment": "Kırlangıç uç genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dt_len",
+    "expression": "7.0 mm",
+    "unit": "mm",
+    "comment": "Kırlangıç boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dt_clear",
+    "expression": "0.2 mm",
+    "unit": "mm",
+    "comment": "Kırlangıç yuva boşluğu (her yüz)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_end_ch",
+    "expression": "0.4 mm",
+    "unit": "mm",
+    "comment": "Ray ucu pahı (tekerlek takılmasın)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "curve_radius",
+    "expression": "750.0 mm",
+    "unit": "mm",
+    "comment": "Viraj yarıçapı (ray ekseni)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "curve_angle",
+    "expression": "15.0 deg",
+    "unit": "deg",
+    "comment": "Viraj modülü açısı (derece; 24 modül = tam daire)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "wheel_d",
+    "expression": "42.0 mm",
+    "unit": "mm",
+    "comment": "Yuvarlanma dairesi çapı (flanş kökünde)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "wheel_w",
+    "expression": "7.5 mm",
+    "unit": "mm",
+    "comment": "Tekerlek toplam genişliği (flanş dahil)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "flange_h",
+    "expression": "2.5 mm",
+    "unit": "mm",
+    "comment": "Flanş yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "flange_t",
+    "expression": "1.8 mm",
+    "unit": "mm",
+    "comment": "Flanş kalınlığı (ray başı köşe seviyesinde)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "flange_tip_w",
+    "expression": "0.7 mm",
+    "unit": "mm",
+    "comment": "Flanş tepesi düz kısmı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "root_ch",
+    "expression": "0.6 mm",
+    "unit": "mm",
+    "comment": "Flanş kökü pahı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tread_taper",
+    "expression": "0.05",
+    "unit": "",
+    "comment": "Yuvarlanma yüzeyi konikliği (1:20)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "back_to_back",
+    "expression": "40.0 mm",
+    "unit": "mm",
+    "comment": "Tekerlek arka yüzleri arası (B)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "wheel_bore",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Tekerlek aks deliği (nominal; test kuponuyla ayarlanacak)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rim_t",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Jant kalınlığı (radyal)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "web_t",
+    "expression": "3.5 mm",
+    "unit": "mm",
+    "comment": "Tekerlek gövde (disk) kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "boss_d",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "Göbek çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "axle_d",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Çelik aks çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bearing_od",
+    "expression": "9.0 mm",
+    "unit": "mm",
+    "comment": "684ZZ rulman dış çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bearing_w",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "684ZZ rulman genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bearing_clear",
+    "expression": "0.1 mm",
+    "unit": "mm",
+    "comment": "Rulman yuvası çap boşluğu (nominal)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "spacer_t",
+    "expression": "1.0 mm",
+    "unit": "mm",
+    "comment": "Tekerlek-rulman arası pul kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "spacer_od",
+    "expression": "5.5 mm",
+    "unit": "mm",
+    "comment": "Pul dış çapı (yalnız iç bileziğe değer)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "spacer_id",
+    "expression": "4.3 mm",
+    "unit": "mm",
+    "comment": "Pul iç çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "wheelbase",
+    "expression": "70.0 mm",
+    "unit": "mm",
+    "comment": "Aks aralığı (0-4-0 rijit dingil mesafesi)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plate_t",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "Yan levha kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plate_len",
+    "expression": "110.0 mm",
+    "unit": "mm",
+    "comment": "Yan levha boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plate_above",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "Levhanın aks üstündeki yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plate_below",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Levhanın aks altındaki yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "xm_size",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Travers (crossmember) kesiti"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "xm_x",
+    "expression": "50.0 mm",
+    "unit": "mm",
+    "comment": "Crossmember konumu (merkezden)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "m3_clear",
+    "expression": "3.4 mm",
+    "unit": "mm",
+    "comment": "M3 geçiş deliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "m3_tap",
+    "expression": "2.6 mm",
+    "unit": "mm",
+    "comment": "M3 vida (plastiğe) pilot deliği"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "end_tie_w - rail_gap/2",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "rail_gap/2",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "new",
+    "body_name": "Track",
+    "name": "EndTie_A"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "end_tie_w - rail_gap/2",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "track_len - end_tie_w",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "EndTie_B"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "tie_w",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "tie_pitch * 1 + tie_pitch/2 - tie_w/2",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "Tie1"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "tie_w",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "tie_pitch * 2 + tie_pitch/2 - tie_w/2",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "Tie2"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "tie_w",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "tie_pitch * 3 + tie_pitch/2 - tie_w/2",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "Tie3"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "tie_w",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "tie_pitch * 4 + tie_pitch/2 - tie_w/2",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "Tie4"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "tie_w",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "tie_pitch * 5 + tie_pitch/2 - tie_w/2",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "Tie5"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "tie_w",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "tie_pitch * 6 + tie_pitch/2 - tie_w/2",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "Tie6"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "tie_w",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "tie_pitch * 7 + tie_pitch/2 - tie_w/2",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "Tie7"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "tie_w",
+    "width": "tie_len",
+    "height": "tie_t",
+    "corner": [
+     "tie_pitch * 8 + tie_pitch/2 - tie_w/2",
+     "-tie_len/2",
+     "0 mm"
+    ],
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "Tie8"
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "YZ",
+    "name": "RailProfiles"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "(track_gauge/2 + rail_head_w/2) - rail_foot_w/2",
+      "0 mm"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) + rail_foot_w/2",
+      "0 mm"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) + rail_foot_w/2",
+      "(tie_t + 1.5 mm)"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) + rail_web_w/2",
+      "(tie_t + 1.5 mm)"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) + rail_web_w/2",
+      "(tie_t + rail_h - rail_head_h - (rail_head_w - rail_web_w)/2)"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) + rail_head_w/2",
+      "(tie_t + rail_h - rail_head_h)"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) + rail_head_w/2",
+      "(tie_t + rail_h) - rail_top_ch"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) + rail_head_w/2 - rail_top_ch",
+      "(tie_t + rail_h)"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) - rail_head_w/2 + rail_top_ch",
+      "(tie_t + rail_h)"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) - rail_head_w/2",
+      "(tie_t + rail_h) - rail_top_ch"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) - rail_head_w/2",
+      "(tie_t + rail_h - rail_head_h)"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) - rail_web_w/2",
+      "(tie_t + rail_h - rail_head_h - (rail_head_w - rail_web_w)/2)"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) - rail_web_w/2",
+      "(tie_t + 1.5 mm)"
+     ],
+     [
+      "(track_gauge/2 + rail_head_w/2) - rail_foot_w/2",
+      "(tie_t + 1.5 mm)"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "-(track_gauge/2 + rail_head_w/2) - rail_foot_w/2",
+      "0 mm"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) + rail_foot_w/2",
+      "0 mm"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) + rail_foot_w/2",
+      "(tie_t + 1.5 mm)"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) + rail_web_w/2",
+      "(tie_t + 1.5 mm)"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) + rail_web_w/2",
+      "(tie_t + rail_h - rail_head_h - (rail_head_w - rail_web_w)/2)"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) + rail_head_w/2",
+      "(tie_t + rail_h - rail_head_h)"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) + rail_head_w/2",
+      "(tie_t + rail_h) - rail_top_ch"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) + rail_head_w/2 - rail_top_ch",
+      "(tie_t + rail_h)"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) - rail_head_w/2 + rail_top_ch",
+      "(tie_t + rail_h)"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) - rail_head_w/2",
+      "(tie_t + rail_h) - rail_top_ch"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) - rail_head_w/2",
+      "(tie_t + rail_h - rail_head_h)"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) - rail_web_w/2",
+      "(tie_t + rail_h - rail_head_h - (rail_head_w - rail_web_w)/2)"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) - rail_web_w/2",
+      "(tie_t + 1.5 mm)"
+     ],
+     [
+      "-(track_gauge/2 + rail_head_w/2) - rail_foot_w/2",
+      "(tie_t + 1.5 mm)"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "distance": "track_len - rail_gap",
+    "start_offset": "(rail_gap/2)",
+    "profiles": "all",
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "Rails"
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "XY",
+    "name": "Tongues"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "(track_len - 1 * 1 mm)",
+      "joint_y - (dt_neck - (dt_tip - dt_neck) / dt_len * 1 mm)/2"
+     ],
+     [
+      "(track_len + 1 * dt_len)",
+      "joint_y - dt_tip/2"
+     ],
+     [
+      "(track_len + 1 * dt_len)",
+      "joint_y + dt_tip/2"
+     ],
+     [
+      "(track_len - 1 * 1 mm)",
+      "joint_y + (dt_neck - (dt_tip - dt_neck) / dt_len * 1 mm)/2"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "(0 mm - -1 * 1 mm)",
+      "-joint_y - (dt_neck - (dt_tip - dt_neck) / dt_len * 1 mm)/2"
+     ],
+     [
+      "(0 mm + -1 * dt_len)",
+      "-joint_y - dt_tip/2"
+     ],
+     [
+      "(0 mm + -1 * dt_len)",
+      "-joint_y + dt_tip/2"
+     ],
+     [
+      "(0 mm - -1 * 1 mm)",
+      "-joint_y + (dt_neck - (dt_tip - dt_neck) / dt_len * 1 mm)/2"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "distance": "tie_t",
+    "profiles": "all",
+    "operation": "join",
+    "targets": [
+     "Track"
+    ],
+    "name": "TongueExt"
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "XY",
+    "name": "Sockets"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "(0 mm - 1 * 1 mm)",
+      "joint_y - (dt_neck + 2*dt_clear - (dt_tip - dt_neck) / dt_len * 1 mm)/2"
+     ],
+     [
+      "(0 mm + 1 * (dt_len + dt_clear))",
+      "joint_y - (dt_tip + 2*dt_clear + (dt_tip - dt_neck) / dt_len * dt_clear)/2"
+     ],
+     [
+      "(0 mm + 1 * (dt_len + dt_clear))",
+      "joint_y + (dt_tip + 2*dt_clear + (dt_tip - dt_neck) / dt_len * dt_clear)/2"
+     ],
+     [
+      "(0 mm - 1 * 1 mm)",
+      "joint_y + (dt_neck + 2*dt_clear - (dt_tip - dt_neck) / dt_len * 1 mm)/2"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "(track_len - -1 * 1 mm)",
+      "-joint_y - (dt_neck + 2*dt_clear - (dt_tip - dt_neck) / dt_len * 1 mm)/2"
+     ],
+     [
+      "(track_len + -1 * (dt_len + dt_clear))",
+      "-joint_y - (dt_tip + 2*dt_clear + (dt_tip - dt_neck) / dt_len * dt_clear)/2"
+     ],
+     [
+      "(track_len + -1 * (dt_len + dt_clear))",
+      "-joint_y + (dt_tip + 2*dt_clear + (dt_tip - dt_neck) / dt_len * dt_clear)/2"
+     ],
+     [
+      "(track_len - -1 * 1 mm)",
+      "-joint_y + (dt_neck + 2*dt_clear - (dt_tip - dt_neck) / dt_len * 1 mm)/2"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "distance": "tie_t",
+    "profiles": "all",
+    "operation": "cut",
+    "targets": [
+     "Track"
+    ],
+    "name": "SocketCut"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "m3_clear",
+    "height": "tie_t",
+    "base": [
+     "tie_pitch * 4 + tie_pitch/2",
+     "0 mm",
+     "0 mm"
+    ],
+    "axis": "Z",
+    "operation": "cut",
+    "targets": [
+     "Track"
+    ],
+    "name": "MountHole1"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "m3_clear",
+    "height": "tie_t",
+    "base": [
+     "tie_pitch * 5 + tie_pitch/2",
+     "0 mm",
+     "0 mm"
+    ],
+    "axis": "Z",
+    "operation": "cut",
+    "targets": [
+     "Track"
+    ],
+    "name": "MountHole2"
+   }
+  },
+  {
+   "command": "solid.chamfer",
+   "params": {
+    "edges": [
+     [
+      0.25,
+      25.0,
+      13.0
+     ],
+     [
+      0.25,
+      22.5,
+      11.45
+     ],
+     [
+      0.25,
+      -25.0,
+      13.0
+     ],
+     [
+      0.25,
+      -22.5,
+      11.45
+     ],
+     [
+      199.75,
+      25.0,
+      13.0
+     ],
+     [
+      199.75,
+      22.5,
+      11.45
+     ],
+     [
+      199.75,
+      -25.0,
+      13.0
+     ],
+     [
+      199.75,
+      -22.5,
+      11.45
+     ]
+    ],
+    "distance": "rail_end_ch",
+    "body": "Track"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "plate_len",
+    "width": "plate_t",
+    "height": "plate_above + plate_below",
+    "corner": [
+     "-plate_len/2",
+     "((back_to_back/2 - spacer_t) - plate_t)",
+     "-plate_below"
+    ],
+    "operation": "new",
+    "body_name": "Frame",
+    "name": "PlateL"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "plate_len",
+    "width": "plate_t",
+    "height": "plate_above + plate_below",
+    "corner": [
+     "-plate_len/2",
+     "-(back_to_back/2 - spacer_t)",
+     "-plate_below"
+    ],
+    "operation": "join",
+    "targets": [
+     "Frame"
+    ],
+    "name": "PlateR"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "xm_size",
+    "width": "2 * ((back_to_back/2 - spacer_t) - plate_t) + 2 mm",
+    "height": "xm_size",
+    "corner": [
+     "1 * xm_x - xm_size/2",
+     "-((back_to_back/2 - spacer_t) - plate_t) - 1 mm",
+     "plate_above - xm_size"
+    ],
+    "operation": "join",
+    "targets": [
+     "Frame"
+    ],
+    "name": "CrossF"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "m3_tap",
+    "height": "xm_size",
+    "base": [
+     "1 * xm_x",
+     "0 mm",
+     "plate_above - xm_size"
+    ],
+    "axis": "Z",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "DeckHoleF"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "xm_size",
+    "width": "2 * ((back_to_back/2 - spacer_t) - plate_t) + 2 mm",
+    "height": "xm_size",
+    "corner": [
+     "-1 * xm_x - xm_size/2",
+     "-((back_to_back/2 - spacer_t) - plate_t) - 1 mm",
+     "plate_above - xm_size"
+    ],
+    "operation": "join",
+    "targets": [
+     "Frame"
+    ],
+    "name": "CrossB"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "m3_tap",
+    "height": "xm_size",
+    "base": [
+     "-1 * xm_x",
+     "0 mm",
+     "plate_above - xm_size"
+    ],
+    "axis": "Z",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "DeckHoleB"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "6.5 mm",
+    "height": "2 * (back_to_back/2 - spacer_t) + 2 mm",
+    "base": [
+     "1 * wheelbase/2",
+     "-(back_to_back/2 - spacer_t) - 1 mm",
+     "0 mm"
+    ],
+    "axis": "Y",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "AxleBoreF"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "bearing_od + bearing_clear",
+    "height": "bearing_w + 0.01 mm",
+    "base": [
+     "1 * wheelbase/2",
+     "(back_to_back/2 - spacer_t) - bearing_w",
+     "0 mm"
+    ],
+    "axis": "Y",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "BearingFL"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "bearing_od + bearing_clear",
+    "height": "bearing_w + 0.01 mm",
+    "base": [
+     "1 * wheelbase/2",
+     "-(back_to_back/2 - spacer_t) - 0.01 mm",
+     "0 mm"
+    ],
+    "axis": "Y",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "BearingFR"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "6.5 mm",
+    "height": "2 * (back_to_back/2 - spacer_t) + 2 mm",
+    "base": [
+     "-1 * wheelbase/2",
+     "-(back_to_back/2 - spacer_t) - 1 mm",
+     "0 mm"
+    ],
+    "axis": "Y",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "AxleBoreB"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "bearing_od + bearing_clear",
+    "height": "bearing_w + 0.01 mm",
+    "base": [
+     "-1 * wheelbase/2",
+     "(back_to_back/2 - spacer_t) - bearing_w",
+     "0 mm"
+    ],
+    "axis": "Y",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "BearingBL"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "bearing_od + bearing_clear",
+    "height": "bearing_w + 0.01 mm",
+    "base": [
+     "-1 * wheelbase/2",
+     "-(back_to_back/2 - spacer_t) - 0.01 mm",
+     "0 mm"
+    ],
+    "axis": "Y",
+    "operation": "cut",
+    "targets": [
+     "Frame"
+    ],
+    "name": "BearingBR"
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "YZ",
+    "name": "WheelProfile"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "wheel_bore/2",
+      "0 mm"
+     ],
+     [
+      "((wheel_d/2) + flange_h) - 0.4 mm",
+      "0 mm"
+     ],
+     [
+      "((wheel_d/2) + flange_h)",
+      "0.4 mm"
+     ],
+     [
+      "((wheel_d/2) + flange_h)",
+      "0.4 mm + flange_tip_w"
+     ],
+     [
+      "(wheel_d/2) + root_ch",
+      "flange_t"
+     ],
+     [
+      "(wheel_d/2)",
+      "flange_t + root_ch"
+     ],
+     [
+      "(wheel_d/2) - (wheel_w - flange_t - root_ch) * tread_taper",
+      "wheel_w"
+     ],
+     [
+      "(wheel_d/2) - rim_t",
+      "wheel_w"
+     ],
+     [
+      "(wheel_d/2) - rim_t",
+      "web_t"
+     ],
+     [
+      "boss_d/2",
+      "web_t"
+     ],
+     [
+      "boss_d/2",
+      "wheel_w"
+     ],
+     [
+      "wheel_bore/2",
+      "wheel_w"
+     ]
+    ],
+    "closed": true
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.revolve",
+   "params": {
+    "axis": "Z",
+    "operation": "new",
+    "body_name": "Wheel",
+    "name": "WheelRevolve"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Frame"
+    ],
+    "translate": [
+     "track_len/2",
+     "0 mm",
+     "(tie_t + rail_h + (wheel_d/2 - ((track_gauge/2 + rail_top_ch - back_to_back/2) - flange_t - root_ch) * tread_taper) + 0.05 mm)"
+    ]
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel"
+    ],
+    "copy": true
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel"
+    ],
+    "copy": true
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel"
+    ],
+    "copy": true
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "-90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel"
+    ],
+    "translate": [
+     "track_len/2 + 1 * wheelbase/2",
+     "1 * back_to_back/2",
+     "(tie_t + rail_h + (wheel_d/2 - ((track_gauge/2 + rail_top_ch - back_to_back/2) - flange_t - root_ch) * tread_taper) + 0.05 mm)"
+    ]
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel (2)"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel (2)"
+    ],
+    "translate": [
+     "track_len/2 + 1 * wheelbase/2",
+     "-1 * back_to_back/2",
+     "(tie_t + rail_h + (wheel_d/2 - ((track_gauge/2 + rail_top_ch - back_to_back/2) - flange_t - root_ch) * tread_taper) + 0.05 mm)"
+    ]
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel (3)"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "-90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel (3)"
+    ],
+    "translate": [
+     "track_len/2 + -1 * wheelbase/2",
+     "1 * back_to_back/2",
+     "(tie_t + rail_h + (wheel_d/2 - ((track_gauge/2 + rail_top_ch - back_to_back/2) - flange_t - root_ch) * tread_taper) + 0.05 mm)"
+    ]
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel (4)"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Wheel (4)"
+    ],
+    "translate": [
+     "track_len/2 + -1 * wheelbase/2",
+     "-1 * back_to_back/2",
+     "(tie_t + rail_h + (wheel_d/2 - ((track_gauge/2 + rail_top_ch - back_to_back/2) - flange_t - root_ch) * tread_taper) + 0.05 mm)"
+    ]
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "axle_d",
+    "height": "back_to_back + 2*wheel_w",
+    "base": [
+     "track_len/2 + 1 * wheelbase/2",
+     "-back_to_back/2 - wheel_w",
+     "(tie_t + rail_h + (wheel_d/2 - ((track_gauge/2 + rail_top_ch - back_to_back/2) - flange_t - root_ch) * tread_taper) + 0.05 mm)"
+    ],
+    "axis": "Y",
+    "operation": "new",
+    "body_name": "AxleF",
+    "name": "AxleF"
+   }
+  },
+  {
+   "command": "solid.cylinder",
+   "params": {
+    "diameter": "axle_d",
+    "height": "back_to_back + 2*wheel_w",
+    "base": [
+     "track_len/2 + -1 * wheelbase/2",
+     "-back_to_back/2 - wheel_w",
+     "(tie_t + rail_h + (wheel_d/2 - ((track_gauge/2 + rail_top_ch - back_to_back/2) - flange_t - root_ch) * tread_taper) + 0.05 mm)"
+    ],
+    "axis": "Y",
+    "operation": "new",
+    "body_name": "AxleB",
+    "name": "AxleB"
+   }
+  }
+ ]
+}
