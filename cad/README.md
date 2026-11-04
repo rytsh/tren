@@ -118,7 +118,7 @@ Lokomotifte bu çerçeve motorlu şasinin çerçevesiyle aynıdır.
 | Kazan | Ø56, eksen z = 66, x = −71.7…95; duman kutusu Ø62, x = 95…128; 45° konik kapak + Ø14 fener |
 | Kazan içi | 2.4 mm et, altı ve arkası açık; 46 mm genişlikte etek platforma oturur. Motor, ESP32, sürücü kazan içinde |
 | Kabin | x = −142…−72, 86 geniş, yan duvar 117, çatı yayı tepesi 127 (R 97.45); 2 ön yuvarlak pencere, yan pencereler, arka açıklık 60×55 |
-| Şasiye bağlantı | ön platformdaki iki Ø10 dikme şasi traverslerine (x = ±60, y = 0) oturur, **M3×12** ile `DeckHoleF/B`'ye vidalanır |
+| Şasiye bağlantı | ön platformdaki iki Ø10 dikme şasi traverslerine (x = ±60, y = 0) oturur; üstten **M3×25** (dikme 14 + platform 3 + traversa ~8) `DeckHoleF/B`'ye vidalanır |
 | Tamponlar / kanca | 2× tampon y = ±30, z = 18 (raydan 39); ön kirişte kanca bloğu, arkada çeki çatalı |
 | Çeki kolu | 44 mm pim aralığı, araç kirişleri arası 28 mm. Pim = alttan M3×25 vida (çatal alt çenesinde geçiş, üstte kılavuz) |
 | Tender | 144 kiriş arası + 2×8 tampon = **160**, 90 geniş, depo üstü raydan 113; motorsuz 0-4-0 şasi (70 mm dingil) |
@@ -170,15 +170,15 @@ ile `out/*.measure.json`'dan yeniden üretilir).
 
 1. Motorlu şasiyi (Faz 2) tekerlek, aks ve motorla birleştir.
 2. `lok_platform_on` ile `lok_platform_arka`'yı alt flanşlarından **2× M3×10 cıvata + somun** ile birleştir (x = −84).
-3. Platformu şasinin üstüne oturt; dikmeler traverslere gelir. Alttan değil üstten **2× M3×12** ile
-   `DeckHoleF/B`'ye vidala (ön vida kum domu yerinde, arka vida motor açıklığının arkasında).
+3. Platformu şasinin üstüne oturt; dikmeler traverslere gelir. Üstten **2× M3×25** ile `DeckHoleF/B`'ye vidala
+   (kazan takılmadan önce). Gövdeyi sökmek için önce kazan (alttan 4 vida; x = 70 / −68 şasi levhalarının dışında, alttan erişilir) çıkarılır.
 4. Fener: 5 mm LED'i kazanın içinden kanala it, önüne Ø10 lens. ESP32, sürücü, buck dönüştürücü kazan içine (çift taraflı bant).
 5. Kazanı platforma oturt, alttan **4× M3×8** ile (x = 70 ve −68, y = ±18.1) iç kaburgalara vidala.
 6. Kabini oturt, alttan **4× M3×8** (x = −77.4 ve −134, y = ±37.6). Çatıyı tak (sıkı geçme; gerekirse bir damla yapıştırıcı).
 7. Baca, domlar ve ventili pimlerinden kazandaki deliklere yapıştır (kum domu yapıştırılmazsa ön şasi vidasına erişim kalır).
-8. Tender: şasi → platform (2× M3×12, x = ±45), depo (4× M3×8), kapak (tapa ile oturur). Pil kapağın altına.
+8. Tender: şasi → platform (alttan 2× M3×20, x = ±45), depo (4× M3×8), kapak (tapa ile oturur). Pil kapağın altına.
 9. Çeki kolu: lokomotif arka çatalı ile tender ön çatalı arasına koy, alttan M3×25 pimleri tak.
-10. Vagon: bojiler platform pivotlarına **M3×20 + kontra somun** (boji serbest dönecek), kasa 4× M3×8, çatı.
+10. Vagon: bojiler platform pivotlarına alttan **M3×20** (boji serbest dönecek kadar gevşek; kontra somun veya bir damla vida sabitleyici), kasa 4× M3×8, çatı.
 
 ## Doğrulananlar (SolidCraft 0.18.3, gerçekten ölçülen)
 
@@ -197,7 +197,7 @@ ile `out/*.measure.json`'dan yeniden üretilir).
 - Çeki kolunun çatal yarığındaki yanal dönüşü (yarık 22 geniş, kol 10) ölçülmedi.
 - Sallanan biyel/kol (connecting rod) yok — sonraki faz. Silindirler yalnız görsel.
 - Emniyet ventili x = −46'da: −50…−60 aralığında SolidCraft kazan kabuğuna delik açamadı ("boolean Cut: no result"), bu yüzden kaydırıldı.
-- Kömür kapağı (`tender_kapak`) STL'i çok az üçgenli (44 bayt başlıkla 2.3 kB); kapak basit prizmalardan oluştuğu için normal, ama dilimleyicide bir kez bakılmalı.
+- Kömür kapağı (`tender_kapak`) STL'i yalnız 44 üçgen (yalnız düz yüzler, normal); kömür yığını sade bir kesik piramit.
 - Gövde içi ESP32/sürücü/buck yerleşimi modellenmedi; kazan iç kesiti ≈ 51 mm çap, motor açıklığının önünde ~60 mm, arkasında ~20 mm boş uzunluk var (ölçülmedi, tahmin).
 - Tamponlar sabit (yaysız).
 
@@ -205,10 +205,11 @@ ile `out/*.measure.json`'dan yeniden üretilir).
 
 | Kalem | Adet |
 |---|---|
-| M3×12 vida (gövde → şasi) | 2 |
+| M3×25 vida (gövde → şasi) | 2 |
 | M3×8 vida (kazan 4, kabin 4) | 8 |
 | M3×10 cıvata + somun (platform birleşimi) | 2 |
 | M3×25 vida (çeki pimi) | 1 loko + 2 tender + 2 vagon |
+| M3×20 vida (tender platform→şasi, vagon boji pivotu) | 2 tender + 2 vagon |
 | 5 mm sıcak beyaz LED + 220 Ω | 1 |
 | Ø10 × 2 lens (isteğe bağlı) | 1 |
 | 2S Li-ion 2×18650 paket (~70×37×20) + 2S BMS | 1 (tenderde) |

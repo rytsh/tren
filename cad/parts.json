@@ -733,13 +733,22 @@
       "spec": "Karşı dişli göbeği"
     },
     {
-      "id": "screw_m3x12",
-      "name_tr": "M3×12 vida (plastiğe)",
+      "id": "screw_m3x25_body",
+      "name_tr": "M3×25 vida (plastiğe)",
       "qty_per_loco": 2,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_track_piece": 0,
+      "spec": "Lokomotif gövdesi → şasi traversleri (x=±60), üstten"
+    },
+    {
+      "id": "screw_m3x20",
+      "name_tr": "M3×20 vida (plastiğe)",
+      "qty_per_loco": 0,
       "qty_per_tender": 2,
       "qty_per_coach": 2,
       "qty_per_track_piece": 0,
-      "spec": "Gövde-şasi (loko x=±60), tender platform-şasi, vagon boji pivotu"
+      "spec": "Tender platform → şasi (alttan), vagon boji pivotu (alttan, gevşek)"
     },
     {
       "id": "screw_m3x8",
@@ -775,7 +784,7 @@
       "qty_per_tender": 0,
       "qty_per_coach": 2,
       "qty_per_track_piece": 0,
-      "spec": "Boji pivotu (boji serbest dönmeli)"
+      "spec": "Boji pivotu kilidi (isteğe bağlı; boji serbest dönmeli)"
     },
     {
       "id": "screw_m3_track",
