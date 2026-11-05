@@ -15,7 +15,7 @@
 | Yolcu 250 | iç aydınlatma | tüketir |
 | Enerji 250 | ek pil + gösterge | besler |
 | Radar 250 | dönen anten, mesafe sensörü | tüketir |
-| Şarj 250 | istasyon pabuçları, şarj durumu | ayrı devre |
+| Şarj 250 | döner şarj kolları, şarj durumu | ayrı devre |
 | Ses 250 | hoparlör, düdük | tüketir |
 | Gözlem 250 | kamera kubbesi, balkon | tüketir |
 

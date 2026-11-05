@@ -15,7 +15,7 @@
   const roles = [
     ["Besler", "BD 0-4-0, Tender 160, Enerji 250", "Pil paketi ideal diyot ve akım sınırıyla (öneri 2 A) BAT+ hattına bağlanır."],
     ["Tüketir", "Yolcu, Radar, Ses, Gözlem 250", "Her araç girişinde PTC/eFuse (öneri 1 A) ve kendi 5 V / 3,3 V regülatörü."],
-    ["Ayrı devre", "Şarj 250", "İstasyon şarjı kendi pabuçlarından; şarj akımı kuplör pinlerinden geçmez."],
+    ["Ayrı devre", "Şarj 250", "İstasyon şarjı kendi döner kollarından; şarj akımı kuplör pinlerinden geçmez."],
   ];
   const steps = [
     ["Tolerans kuponunu bas", "4 mm çelik aksı Ø3,8–4,2 deliklerde; 684ZZ rulmanı Ø9,0–9,3 yuvalarda dene. Sıkı geçme tekerlekte, rahat dönme rulmanda olmalı."],

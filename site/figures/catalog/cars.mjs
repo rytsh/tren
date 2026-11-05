@@ -152,19 +152,22 @@ export function makeCar(api, kind) {
     const R2 = (C.half ** 2 + (low.crown - low.side) ** 2) / (2 * (low.crown - low.side));
     const zc2 = low.crown - R2;
     const arc2 = (half, rr, n = 22) => Array.from({ length: n + 1 }, (_, i) => { const y = half - (2 * half * i) / n; return [y, zc2 + Math.sqrt(Math.max(0, rr * rr - y * y))]; });
-    const lightbar = `<path class="tc-hole" d="${rectY(P, C.half, -90, 90, Z(54), Z(60), 1.5)}"/>` + Array.from({ length: 12 }, (_, i) => `<path class="tc-led" data-c="${i < 9 ? "g" : "b"}" d="${rectY(P, C.half, -87 + i * 14.8, -77 + i * 14.8, Z(55.2), Z(58.8), 0.6)}"/>`).join("");
-    const plates = Ln([-80, -40, 0, 40, 80].map((x) => k.pathOf([at([x, C.half, C.z0 + 3]), at([x, C.half, Z(50)])])).join("") + belt([Z(50), Z(64)]).replace(/^/, ""), { tone: "mid" });
-    prism("body", F0, [[-C.half, C.z0], [C.half, C.z0], ...arc2(C.half, R2)], C.x0, C.x1, { tone: "hi" }, { extra: plates + lightbar + rivetRow(C.z0 + 4) + `<path class="tc-hole" d="${rectX(P, C.x1, -16, 16, C.z0 + 4, Z(62), 2)}"/>` + [-6, 6].map((y) => `<path class="tc-led" d="${circleX(P, C.x1, y, Z(48), 2, 16)}"/>`).join("") });
+    const lightbar = `<path class="tc-hole" d="${rectY(P, C.half, 30, 104, Z(54), Z(60), 1.5)}"/>` + Array.from({ length: 10 }, (_, i) => `<path class="tc-led" data-c="${i < 7 ? "g" : "b"}" d="${rectY(P, C.half, 33 + i * 7, 38 + i * 7, Z(55.2), Z(58.8), 0.6)}"/>`).join("");
+    const plates = Ln([-80, -40, 18].map((x) => k.pathOf([at([x, C.half, C.z0 + 3]), at([x, C.half, Z(50)])])).join("") + belt([Z(50), Z(64)]).replace(/^/, ""), { tone: "mid" });
+    // side pocket for the two charge arms (one servo, one vertical shaft); stowed flush, inside the body line
+    const pocket = `<path class="tc-hole" d="${rectY(P, C.half, -29, 5, Z(36), Z(65), 1.5)}"/>` + Ln(rectY(P, C.half, -30.5, 6.5, Z(34.5), Z(66.5), 2.4), { tone: "mid" });
+    prism("body", F0, [[-C.half, C.z0], [C.half, C.z0], ...arc2(C.half, R2)], C.x0, C.x1, { tone: "hi" }, { extra: plates + lightbar + pocket + rivetRow(C.z0 + 4) + `<path class="tc-hole" d="${rectX(P, C.x1, -16, 16, C.z0 + 4, Z(62), 2)}"/>` + [-6, 6].map((y) => `<path class="tc-led" d="${circleX(P, C.x1, y, Z(48), 2, 16)}"/>`).join("") });
     prism("roof", F0, [...arc2(C.half + 2, R2 + 0.2), ...arc2(C.half + 2, R2 + 2.6).reverse()], C.x0 - 2, C.x1 + 2, { tone: "hi" });
-    const top2 = zc2 + R2 + 2.6;
-    // pantograph-like charge arm folded on the roof and two shoes under the frame
-    box("arm.base", [-20, -10, top2 - 1], [20, 10, top2 + 3], { tone: "hi" }, { r: 1, bevel: 0.3 });
-    for (const y of [-7, 7]) box("arm.link", [-16, y - 1, top2 + 3], [26, y + 1, top2 + 6], { tone: "hi" }, { r: 0.4, steps: 1 });
-    box("arm.head", [24, -14, top2 + 6], [30, 14, top2 + 8], { tone: "hi", className: "tc-signal" }, { r: 0.6, steps: 2 });
-    for (const x of [-30, 30]) box("shoe", [x - 12, C.half - 14, Z(1)], [x + 12, C.half - 8, Z(5)], { tone: "hi", className: "tc-signal" }, { r: 1, bevel: 0.3 });
-    for (const x of [-30, 30]) box("shoe.spring", [x - 2, C.half - 13, Z(5)], [x + 2, C.half - 9, Z(14)], { tone: "hi" }, { r: 0.4, steps: 1, extra: Ln([0, 1, 2, 3].map((i) => k.pathOf([at([x - 2, C.half - 9, Z(6) + i * 2]), at([x + 2, C.half - 9, Z(7) + i * 2])])).join(""), { tone: "hi" }) });
+    // the two arms swung out (upper +, lower −), brass shoes at the tips
+    const PX = 0, PY = 41;
+    for (const [z0, z1] of [[Z(41), Z(45)], [Z(55), Z(59)]]) {
+      box("arm", [PX - 3.2, PY - 3.2, z0], [PX + 3.2, PY + 18, z1], { tone: "hi" }, { r: 1.2, steps: 2 });
+      box("arm.holder", [PX - 3.8, PY + 18, z0], [PX + 3.8, PY + 22, z1], { tone: "hi" }, { r: 0.5, steps: 2 });
+      box("arm.shoe", [PX - 2.6, PY + 22, z0 + 0.5], [PX + 2.6, PY + 26, z1 - 0.5], { tone: "hi", className: "tc-signal" }, { r: 0.5, steps: 2 });
+    }
+    disc("arm.shaft", alongZ([PX, PY, 0]), Z(37), Z(64), 1.5, { tone: "hi" });
     glowAt([0, C.half, Z(57)], 30);
-    label = "Şarj 250: alçak kasalı şarj vagonu; altında yaylı istasyon pabuçları, yanında şarj durumu ışık çubuğu, çatıda katlanır şarj kolu.";
+    label = "Şarj 250: alçak kasalı şarj vagonu; yan cebinden kapı gibi açılan üst (+) ve alt (−) şarj kolu, yaylı pirinç pabuçlar, yanında şarj durumu ışık çubuğu.";
   } else if (kind === "ses") {
     const grille = (cx) => `<path class="tc-grille" d="${circleY(P, C.half, cx, Z(66), 13, 40)}"/>` + Ln(circleY(P, C.half, cx, Z(66), 15.5, 40) + circleY(P, C.half, cx, Z(66), 4, 20), { tone: "hi" }) + Dots(Array.from({ length: 24 }, (_, i) => { const a = (i / 24) * 2 * Math.PI, r = i % 2 ? 7.5 : 10.5; return at([cx + r * Math.cos(a), C.half, Z(66) + r * Math.sin(a)]); }), { size: 0.5, tone: "lit" });
     const doors = [-1, 1].map((s) => Ln(rectY(P, C.half, s * 30 - 22, s * 30 + 22, C.z0 + 2, Z(92), 1.5) + k.pathOf([at([s * 30, C.half, C.z0 + 2]), at([s * 30, C.half, Z(92)])]), { tone: "mid" })).join("");

@@ -1,7 +1,9 @@
-// Fig 3 · Şarj istasyonu: a battery tender runs along the track past a low platform. A hall sensor on its front
-// beam sees an approach magnet between the ties, the tender slows and stops over the stop magnet, and only then
-// the pin carriage on the station pedestal runs out until two spring-loaded pogo pins press on the tender's pads.
-// Units are millimetres; x along the track, y across (the station is on +y, toward the viewer), z up.
+// Fig 3 · Şarj istasyonu: a Şarj 250 car runs along the track past a low platform. A hall sensor under its frame
+// sees an approach magnet between the ties, the car slows and stops over the stop magnet, and only then one micro
+// servo turns a vertical shaft that swings two arms (upper +, lower −) out of a pocket in the car's side, like a
+// door. Each arm's spring-loaded brass shoe presses on one of two brass rails held by the station's posts. To
+// leave, the servo turns the arms back into the pocket, flush with the side, and the car departs.
+// Units are millimetres; x along the track, y across (the station is on +y, toward the viewer), z up from the plate.
 import * as k from "../../anatomy/kit/iso-kit.mjs";
 import * as G from "../../anatomy/kit/lathe.mjs";
 import * as A from "../../anatomy/kit/audit.mjs";
@@ -14,44 +16,49 @@ const H = 420;
 // Track (cad: track); ties sit on the plate.
 const TIE = { len: 66, w: 8, t: 5, pitch: 20, at: 10 };
 const RAIL = { h: 8, head: 5, headH: 2.5, web: 3, foot: 9, gauge: 45 };
-const RAIL_TOP = TIE.t + RAIL.h;
+const RT = TIE.t + RAIL.h; // rail top above the plate
 const RAIL_Y = RAIL.gauge / 2 + RAIL.head / 2;
-const TRACK_X = 132;
+const TRACK_X = 190;
 
-// Tender (wheels and frame as the test chassis: Ø42 wheels, back-to-back 40, 70 mm wheelbase).
+// Şarj 250 (docs/standart.md): 250 × 90 underframe, bogies at ±75 with a 48 mm wheelbase, Ø42 wheels.
 const WHEEL_R = 21;
 const FLANGE_R = WHEEL_R + 2.5;
 const BACK = 20;
 const WIDTH = 7.5;
-const AXLE_Z = RAIL_TOP + WHEEL_R;
-const AXLE_X = [-35, 35];
-const DECK = { x0: -56, x1: 56, z0: 58, z1: 61.5, half: 34 };
-const BODY = { x0: -48, x1: 48, z0: DECK.z1, z1: 92, half: 34 };
-const PAD = { xs: [-6, 6], z: 68, r: 2.6, face: BODY.half + 2, t: 0.6 };
-const PAD_FACE = PAD.face + PAD.t; // 36.6
-const SENSOR = { x: 62, y: 8 };
-const STOP_X = SENSOR.x; // stop magnet under the sensor when the tender is at c = 0
+const AXLE_Z = RT + WHEEL_R;
+const BOGIE_X = [-75, 75];
+const AXLE_X = BOGIE_X.flatMap((b) => [b - 24, b + 24]);
+const HALF = 45;
+const FRAME = { x: 121, z0: RT + 47, z1: RT + 51 };
+const BODY = { x: 118, z0: FRAME.z1, side: RT + 89, crown: RT + 97 };
+const SENSOR = { x: 40, y: 8 };
+const STOP_X = SENSOR.x; // stop magnet under the sensor when the car is at c = 0
 const DECEL = 80; // approach magnet 80 mm before
 const APPROACH_X = STOP_X - DECEL;
 
-// Station
-const PLATFORM = { x: -82, y: 40, w: 164, d: 52, r: 2, h: 30 };
-const PED = { x0: -14, x1: 24, y0: 46, y1: 74, z1: 60 };
-const GUIDE_Z = PED.z1 + 1.5;
-const CAR = { x0: -11, x1: 11, depth: 8, z0: GUIDE_Z, z1: 66 };
-const PIN = { z: PAD.z, r: 2, barrel: 10, spring: 6, coil: 1.6, rod: 0.8, collar: 1.7, collarT: 0.8, tip: 2.4, comp: 2.5 };
-const PIN_FREE = 1 + PIN.spring + PIN.collarT + PIN.tip; // from the carriage's far edge to the free tip
-const F_EXT = PAD_FACE - PIN.comp + PIN_FREE; // carriage far edge when the pins are pressed 2.5 mm
-const STROKE = 10;
-const F_RET = F_EXT + STROKE;
-const MAST = { x: 19, y: 69, r: 1.6, z1: 98 };
+// Charge arms: one shaft at (PX, PY), two arms that lie in a side pocket when stowed (pointing −x) and swing a
+// quarter turn out to point +y. A brass shoe rides 1.5 mm in a holder at the tip.
+const ARM = { px: 0, py: 41, eye: 3.6, half: 3.2, hold0: 18, hold1: 22, holdHalf: 3.8, shoe: 4, shoeHalf: 2.6, travel: 1.5 };
+const LEVELS = [
+  { name: "lo", z0: RT + 62, z1: RT + 66, bar: RT + 64 },
+  { name: "up", z0: RT + 76, z1: RT + 80, bar: RT + 78 },
+];
+const TIP = ARM.hold1 + ARM.shoe; // pivot to the free shoe tip, 26 mm
+const RAIL_FACE = ARM.py + TIP - ARM.travel; // station rails' face: the shoe is pressed its full 1.5 mm at 90°
+const POCKET = { x0: -29, x1: 5, y0: 36.5, z0: RT + 57, z1: RT + 86 };
 
-const PLAN = { x: -140, y: -56, w: 280, d: 150, r: 10 };
+// Station
+const PLATFORM = { x: -160, y: 52, w: 320, d: 64, r: 2, h: 40 };
+const BAR = { x0: -45, x1: 45, t: 3, h: 6 };
+const POST = { x: 45, w: 6, y0: RAIL_FACE, y1: RAIL_FACE + 8, z1: RT + 87 };
+const LAMP_C = [POST.x + POST.w / 2, (POST.y0 + POST.y1) / 2];
+
+const PLAN = { x: -205, y: -62, w: 410, d: 184, r: 10 };
 const P = k.fitProjection(
-  [...k.boxCorners(PLAN, -15, 0), [-60, -36, 95], [60, -36, 95], [MAST.x, MAST.y, MAST.z1 + 10]],
+  [...k.boxCorners(PLAN, -15, 0), [-150, -HALF, BODY.crown + 6], [150, HALF, BODY.crown + 6], [LAMP_C[0], LAMP_C[1], POST.z1 + 12]],
   W,
   H,
-  { pad: 20, azimuth: Number(process.env.AZ ?? 22), elevation: Number(process.env.EL ?? 42) },
+  { pad: 16, azimuth: Number(process.env.AZ ?? 58), elevation: Number(process.env.EL ?? 46) },
 );
 const at = (p) => k.iso(p, P);
 const S = (paths, style) => k.solidSvg(paths, style);
@@ -59,23 +66,29 @@ const Ln = (d, style) => k.lineSvg(d, style);
 const Dots = (points, style) => k.dotsSvg(points, style);
 const path3 = (points, closed = false) => k.pathOf(points.map(at), closed);
 const circleOnY = (y, cx, cz, r, n = 48) => path3(Array.from({ length: n }, (_, i) => [cx + r * Math.cos((i / n) * 2 * Math.PI), y, cz + r * Math.sin((i / n) * 2 * Math.PI)]), true);
+const circleOnX = (x, cy, cz, r, n = 40) => path3(Array.from({ length: n }, (_, i) => [x, cy + r * Math.cos((i / n) * 2 * Math.PI), cz + r * Math.sin((i / n) * 2 * Math.PI)]), true);
+const rectOnY = (y, x0, x1, z0, z1, r) => path3(k.roundedPlan({ x: x0, y: z0, w: x1 - x0, d: z1 - z0, r }, 4).map(([x, z]) => [x, y, z]), true);
+const rectOnX = (x, y0, y1, z0, z1, r) => path3(k.roundedPlan({ x: y0, y: z0, w: y1 - y0, d: z1 - z0, r }, 4).map(([y, z]) => [x, y, z]), true);
+const slotOnY = (y, x0, x1, z0, z1) => rectOnY(y, x0, x1, z0, z1, Math.min(x1 - x0, z1 - z0) / 2);
 const alongY = (o, sign = 1) => G.frameOf(o, [0, sign, 0], [1, 0, 0], [0, 0, 1]);
 const alongX = (o) => G.frameOf(o, [1, 0, 0], [0, 1, 0], [0, 0, 1]);
+const alongMinusX = (o) => G.frameOf(o, [-1, 0, 0], [0, -1, 0], [0, 0, 1]);
+const alongZ = (o) => G.frameOf(o, [0, 0, 1], [1, 0, 0], [0, 1, 0]);
 const XF = alongX([0, 0, 0]);
-const slotOnY = (y, x0, x1, z0, z1) => path3(k.roundedPlan({ x: x0, y: z0, w: x1 - x0, d: z1 - z0, r: Math.min(x1 - x0, z1 - z0) / 2 }, 4).map(([x, z]) => [x, y, z]), true);
+const F0 = G.frameOf([0, 0, 0], [1, 0, 0], [0, 1, 0], [0, 0, 1]);
 
 // ── back: plate, ties, magnets, rails ──
 const back = [];
-back.push(basePlate(P, PLAN, { ruler: { x: -120, y: -50, w: 96, d: 5, r: 1 }, label: { x: 96, y: 78, w: 34, d: 10, r: 1.2 } }));
+back.push(basePlate(P, PLAN, { ruler: { x: -185, y: -56, w: 96, d: 5, r: 1 }, label: { x: 150, y: 96, w: 34, d: 10, r: 1.2 } }));
 const fadeA = at([-TRACK_X, 0, 0]);
 const fadeB = at([TRACK_X, 0, 0]);
 back.push(
   `<defs><linearGradient id="cs-fade" gradientUnits="userSpaceOnUse" x1="${fadeA[0].toFixed(1)}" y1="${fadeA[1].toFixed(1)}" x2="${fadeB[0].toFixed(1)}" y2="${fadeB[1].toFixed(1)}">` +
-    `<stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".07" stop-color="#fff" stop-opacity="1"/><stop offset=".93" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>` +
+    `<stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".06" stop-color="#fff" stop-opacity="1"/><stop offset=".94" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>` +
     `<mask id="cs-mask" maskUnits="userSpaceOnUse" x="-50" y="-50" width="${W + 100}" height="${H + 100}"><rect x="-50" y="-50" width="${W + 100}" height="${H + 100}" fill="url(#cs-fade)"/></mask></defs>`,
 );
 const ties = [];
-for (let x = TIE.at - 140; x <= 140; x += TIE.pitch) ties.push(S(k.slabOf({ x: x - TIE.w / 2, y: -TIE.len / 2, w: TIE.w, d: TIE.len, r: 0.8 }, 0, TIE.t, P, 3, 0.5), { tone: "lo" }));
+for (let x = TIE.at - 190; x <= 190; x += TIE.pitch) ties.push(S(k.slabOf({ x: x - TIE.w / 2, y: -TIE.len / 2, w: TIE.w, d: TIE.len, r: 0.8 }, 0, TIE.t, P, 3, 0.5), { tone: "lo" }));
 back.push(`<g mask="url(#cs-mask)">${ties.join("")}</g>`);
 for (const [x, name] of [[APPROACH_X, "approach"], [STOP_X, "stop"]]) {
   back.push(S(k.slabOf({ x: x - 5, y: SENSOR.y - 5, w: 10, d: 10, r: 1.5 }, 0, 2.2, P, 3, 0.4), { tone: "lo" }));
@@ -83,108 +96,141 @@ for (const [x, name] of [[APPROACH_X, "approach"], [STOP_X, "stop"]]) {
 }
 function railPoly(yc) {
   const f = RAIL.foot / 2, wb = RAIL.web / 2, h = RAIL.head / 2, c = 0.6;
-  const z0 = TIE.t, zf = z0 + 1.6, zh = RAIL_TOP - RAIL.headH;
-  return [[yc - f, z0], [yc + f, z0], [yc + f, zf], [yc + wb, zf + 1.2], [yc + wb, zh], [yc + h, zh], [yc + h, RAIL_TOP - c], [yc + h - c, RAIL_TOP], [yc - h + c, RAIL_TOP], [yc - h, RAIL_TOP - c], [yc - h, zh], [yc - wb, zh], [yc - wb, zf + 1.2], [yc - f, zf]];
+  const z0 = TIE.t, zf = z0 + 1.6, zh = RT - RAIL.headH;
+  return [[yc - f, z0], [yc + f, z0], [yc + f, zf], [yc + wb, zf + 1.2], [yc + wb, zh], [yc + h, zh], [yc + h, RT - c], [yc + h - c, RT], [yc - h + c, RT], [yc - h, RT - c], [yc - h, zh], [yc - wb, zh], [yc - wb, zf + 1.2], [yc - f, zf]];
 }
 const Sb = scene(P);
 for (const sign of [-1, 1]) Sb.prism("rail", XF, railPoly(sign * RAIL_Y), -TRACK_X, TRACK_X, { tone: "mid" });
 back.push(`<g mask="url(#cs-mask)">${Sb.finish()}</g>`);
 
-// ── the tender, built docked (c = 0) ──
+// ── the Şarj 250 car, built docked (c = 0) ──
 const V = scene(P);
 for (const sign of [-1, 1]) V.record(A.prism(XF, railPoly(sign * RAIL_Y), -TRACK_X, TRACK_X, { name: "stand.rail", ground: true }));
-const roundRect = (x0, x1, z0, z1, r, n = 4) => {
-  const pts = [];
-  const corner = (cx, cz, a0) => { for (let i = 0; i <= n; i++) { const a = a0 + (i / n) * Math.PI / 2; pts.push([cx + r * Math.cos(a), cz + r * Math.sin(a)]); } };
-  corner(x1 - r, z0 + r, -Math.PI / 2); corner(x1 - r, z1 - r, 0); corner(x0 + r, z1 - r, Math.PI / 2); corner(x0 + r, z0 + r, Math.PI);
-  return pts;
-};
-const YF = G.frameOf([0, 0, 0], [0, 1, 0], [1, 0, 0], [0, 0, 1]);
-for (const sign of [-1, 1]) {
-  const [y0, y1] = sign > 0 ? [13, 19] : [-19, -13];
-  V.prism("tender.frame", YF, roundRect(-50, 50, 24, DECK.z0, 2), y0, y1, { tone: "mid" }, {
-    inner: sign > 0 ? Ln(AXLE_X.map((x) => circleOnY(19, x, AXLE_Z, 4.5) + circleOnY(19, x, AXLE_Z, 3)).join(""), { tone: "lo" }) : "",
-  });
-}
+
+// Bogies: inside side frames, bolster and a pivot under the frame; two axles each.
 const flangeProfile = [[BACK, FLANGE_R - 0.7], [BACK + 0.5, FLANGE_R], [BACK + 1.2, FLANGE_R], [BACK + 1.8, WHEEL_R + 0.3]];
 const treadProfile = [[BACK + 1.8, WHEEL_R], [BACK + WIDTH, WHEEL_R - (WIDTH - 1.8) * 0.05]];
 const OUTER = BACK + WIDTH;
 const wheelSlots = [];
+for (const bx of BOGIE_X) {
+  for (const sign of [-1, 1]) {
+    const [y0, y1] = sign > 0 ? [13, 19] : [-19, -13];
+    const xs = [bx - 24, bx + 24];
+    V.box("bogie.side", [bx - 32, y0, RT + 12], [bx + 32, y1, RT + 32], { tone: "mid" }, {
+      r: 2,
+      bevel: 0.4,
+      extra: sign > 0 ? Ln(xs.map((x) => circleOnY(y1, x, AXLE_Z, 4.5)).join("") + rectOnY(y1, bx - 10, bx + 10, RT + 15, RT + 29, 2), { tone: "lo" }) + Dots([bx - 28, bx - 14, bx + 14, bx + 28].map((x) => at([x, y1, RT + 29])), { size: 0.45, tone: "mid" }) : "",
+    });
+  }
+  V.box("bogie.bolster", [bx - 5, -13, RT + 26], [bx + 5, 13, RT + 32], { tone: "mid" }, { r: 0.6, steps: 2 });
+  V.disc("bogie.pivot", alongZ([bx, 0, 0]), RT + 32, FRAME.z0, 4, { tone: "mid" });
+}
 for (const x of AXLE_X) {
   for (const sign of [-1, 1]) {
     const F = alongY([x, 0, AXLE_Z], sign);
-    V.turned("tender.flange", F, flangeProfile, { tone: "mid", className: "rt-red" });
-    const part = sign > 0 ? `spokes-${x > 0 ? "f" : "r"}` : null;
+    V.turned("car.flange", F, flangeProfile, { tone: "mid", className: "rt-red" });
+    const part = sign > 0 ? `spokes-${wheelSlots.length}` : null;
     const face = part ? Ln(circleOnY(OUTER, x, AXLE_Z, WHEEL_R - 4.3) + circleOnY(OUTER, x, AXLE_Z, 6), { tone: "lo" }) + `<g data-part="${part}"></g>` + Dots([at([x, OUTER, AXLE_Z])], { size: 0.5, tone: "hi" }) : "";
-    V.turned("tender.tread", F, treadProfile, { tone: "mid", className: "rt-red" }, { extra: face });
+    V.turned("car.tread", F, treadProfile, { tone: "mid", className: "rt-red" }, { extra: face });
     if (part) wheelSlots.push({ part, x });
   }
-  for (const [s0, s1] of [[-BACK, -19], [19, BACK]]) V.disc("tender.axle", alongY([x, 0, AXLE_Z]), s0, s1, 2, { tone: "hi" });
+  for (const [s0, s1] of [[-BACK, -19], [19, BACK]]) V.disc("car.axle", alongY([x, 0, AXLE_Z]), s0, s1, 2, { tone: "hi" });
 }
-const deckPlan = { x: DECK.x0, y: -DECK.half, w: DECK.x1 - DECK.x0, d: DECK.half * 2, r: 1.5 };
-V.box("tender.deck", [DECK.x0, -DECK.half, DECK.z0], [DECK.x1, DECK.half, DECK.z1], { tone: "mid" }, { r: 1.5, bevel: 0.6, inner: Ln(k.sideSeam(deckPlan, DECK.z0 + 1.6, P, 3), { tone: "faint" }) });
-for (const sign of [-1, 1]) {
-  const x0 = sign > 0 ? DECK.x1 : DECK.x0 - 3;
-  V.box("tender.beam", [x0, -30, 52], [x0 + 3, 30, DECK.z1], { tone: "mid" }, { r: 0.6, bevel: 0.4 });
-  for (const y of [-21, 21]) {
-    const F = alongX([0, y, 56.5]);
-    const face = sign > 0 ? x0 + 3 : x0;
-    const [s0, s1, h0, h1] = sign > 0 ? [face, face + 5, face + 5, face + 6.2] : [face - 5, face, face - 6.2, face - 5];
-    V.disc("tender.buffer", F, s0, s1, 2.4, { tone: "mid" });
-    V.disc("tender.bufferhead", F, h0, h1, 4.2, { tone: "mid" }, { bevel: 0.3 });
-  }
-}
-// Hall sensor (A3144) on a bracket ahead of the front beam, over the magnets' line.
-V.box("tender.bracket", [DECK.x1 + 3, SENSOR.y - 3, 17], [DECK.x1 + 5, SENSOR.y + 3, 54], { tone: "mid" }, { r: 0.4, steps: 2, extra: Dots([at([DECK.x1 + 5, SENSOR.y, 50])], { size: 0.45, tone: "mid" }) });
-V.box("tender.hall", [DECK.x1 + 5, SENSOR.y - 2.1, 17], [DECK.x1 + 7, SENSOR.y + 2.1, 21], { tone: "hi" }, {
+
+// Underframe, node box, hall sensor
+V.box("car.frame", [-FRAME.x, -HALF, FRAME.z0], [FRAME.x, HALF, FRAME.z1], { tone: "mid" }, {
+  r: 1.2,
+  bevel: 0.4,
+  extra: Dots(Array.from({ length: 22 }, (_, i) => at([-FRAME.x + 9 + i * 11, HALF, FRAME.z0 + 2])), { size: 0.4, tone: "mid" }),
+});
+V.box("car.node", [-30, -14, RT + 38], [20, 22, FRAME.z0], { tone: "mid" }, {
+  r: 1,
+  bevel: 0.3,
+  extra: Ln(rectOnY(22, -24, -6, RT + 40, RT + 45, 1), { tone: "lo" }) + Dots([at([-27, 22, RT + 45]), at([17, 22, RT + 45])], { size: 0.45, tone: "mid" }) + `<g data-part="node-led">${Dots([at([10, 22, RT + 42.5])], { size: 0.8, tone: "lo" })}</g>`,
+});
+V.box("car.bracket", [SENSOR.x - 4, SENSOR.y - 3, RT + 9], [SENSOR.x - 2, SENSOR.y + 3, FRAME.z0], { tone: "mid" }, { r: 0.4, steps: 2, extra: Dots([at([SENSOR.x - 2, SENSOR.y, RT + 40])], { size: 0.45, tone: "mid" }) });
+V.box("car.hall", [SENSOR.x - 2, SENSOR.y - 2.1, RT + 5], [SENSOR.x + 2, SENSOR.y + 2.1, RT + 9], { tone: "hi" }, {
   r: 0.3,
   steps: 2,
-  extra: `<g data-part="hall-dot">${Dots([at([SENSOR.x, SENSOR.y, 21])], { size: 0.7, tone: "hi" })}</g>`,
+  extra: `<g data-part="hall-dot">${Dots([at([SENSOR.x, SENSOR.y, RT + 9])], { size: 0.7, tone: "hi" })}</g>`,
 });
-// Body, roof and hatch
-const bodyPlan = { x: BODY.x0, y: -BODY.half, w: BODY.x1 - BODY.x0, d: BODY.half * 2, r: 3 };
-const vents = Ln([20, 24, 28, 32, 36].map((x) => slotOnY(BODY.half, x, x + 1.6, 70, 84)).join(""), { tone: "lo" });
-const rivets = Dots([...Array.from({ length: 11 }, (_, i) => at([BODY.x0 + 6 + i * 8.4, BODY.half, 89])), ...Array.from({ length: 7 }, (_, i) => at([BODY.x1, -BODY.half + 6 + i * 9.7, 89]))], { size: 0.4, tone: "mid" });
-V.box("tender.body", [BODY.x0, -BODY.half, BODY.z0], [BODY.x1, BODY.half, BODY.z1], { tone: "mid" }, {
-  r: 3,
-  steps: 6,
-  bevel: 0.5,
-  inner: Ln(k.sideSeam(bodyPlan, 86, P, 6), { tone: "faint" }) + vents,
-  extra: rivets + Ln(k.segment([0, BODY.half, BODY.z0], [0, BODY.half, 86], P) + k.segment([BODY.x1, 0, BODY.z0], [BODY.x1, 0, 86], P), { tone: "faint" }),
+
+// End beams, buffers, T45 couplers
+for (const sign of [-1, 1]) {
+  const face = sign * 125;
+  const x0 = sign > 0 ? FRAME.x : -125;
+  V.box("car.beam", [x0, -HALF, RT + 34], [x0 + 4, HALF, FRAME.z1], { tone: "mid", className: "rt-red" }, { r: 0.6, bevel: 0.4 });
+  for (const y of [-32, 32]) {
+    const F = sign > 0 ? alongX([0, y, RT + 41]) : alongMinusX([0, -y, RT + 41]);
+    V.disc("car.buffer", F, 125, 129.5, 4.6, { tone: "mid" }, { bevel: 0.3 });
+    V.disc("car.bufferrod", F, 129.5, 130.2, 2.6, { tone: "mid" });
+    V.disc("car.bufferhead", F, 130.2, 131.8, 6.4, { tone: "mid" }, { bevel: 0.4 });
+  }
+  const zc = RT + 39;
+  V.box("coupler.arm", [sign > 0 ? face : face - 6, -3.5, zc - 3], [sign > 0 ? face + 6 : face, 3.5, zc + 3], { tone: "mid" }, { r: 0.5, steps: 2 });
+  const hx0 = sign > 0 ? face + 6 : face - 20;
+  const fx = sign > 0 ? hx0 + 14 : hx0;
+  V.box("coupler.head", [hx0, -19, zc - 15], [hx0 + 14, 19, zc + 15], { tone: "mid" }, {
+    r: 1.6,
+    bevel: 0.5,
+    extra: sign > 0
+      ? `<path class="rt-hole" d="${circleOnX(fx, 11, zc + 6, 3.6, 28)}"/>` +
+        Ln(rectOnX(fx, -10.5, -4.5, zc - 14, zc - 2, 0.8) + rectOnX(fx, 4.5, 10.5, zc - 14, zc - 2, 0.8), { tone: "lo" }) +
+        Dots([...[-9.5, -7, -4.5, -2].map((d) => at([fx, -7.5, zc + d - 1])), ...[-9.5, -7, -4.5, -2].map((d) => at([fx, 7.5, zc + d - 1]))], { size: 0.45, tone: "mid" })
+      : "",
+  });
+  const coneF = sign > 0 ? alongX([0, -11, zc + 6]) : alongMinusX([0, 11, zc + 6]);
+  V.turned("coupler.cone", coneF, [[145, 6.5], [148.5, 4.5, 1], [150, 3.5]], { tone: "mid" });
+}
+
+// Body: low arched box van with a pocket for the arms, a charge light bar and an end door; arched roof with vents.
+const R = (HALF ** 2 + (BODY.crown - BODY.side) ** 2) / (2 * (BODY.crown - BODY.side));
+const zc = BODY.crown - R;
+const arc = (half, rr, n = 22) => Array.from({ length: n + 1 }, (_, i) => { const y = half - (2 * half * i) / n; return [y, zc + Math.sqrt(Math.max(0, rr * rr - y * y))]; });
+const roofTop = zc + R + 2.6;
+const BELT = [BODY.z0 + 4, BODY.side - 3];
+const LIGHTBAR = { x0: 30, x1: 104, z0: RT + 68, z1: RT + 74 };
+const LEDS = Array.from({ length: 10 }, (_, i) => LIGHTBAR.x0 + 3 + i * 7);
+const panelLines = [-88, -58, 18].map((x) => k.pathOf([at([x, HALF, BELT[0]]), at([x, HALF, BELT[1]])])).join("");
+const belts = BELT.map((z) => k.pathOf([at([-BODY.x, HALF, z]), at([BODY.x, HALF, z])]) + k.pathOf([at([BODY.x, -HALF, z]), at([BODY.x, HALF, z])])).join("");
+const lightbar = `<path class="rt-hole" d="${rectOnY(HALF, LIGHTBAR.x0, LIGHTBAR.x1, LIGHTBAR.z0, LIGHTBAR.z1, 1.2)}"/>` +
+  LEDS.map((x, i) => `<path class="cs-led" data-led="${i}" d="${rectOnY(HALF, x, x + 5, LIGHTBAR.z0 + 1.4, LIGHTBAR.z1 - 1.4, 0.5)}"/>`).join("");
+const pocket = `<path class="rt-hole" d="${rectOnY(HALF, POCKET.x0, POCKET.x1, POCKET.z0, POCKET.z1, 1.5)}"/>` + Ln(rectOnY(HALF, POCKET.x0 - 1.5, POCKET.x1 + 1.5, POCKET.z0 - 1.5, POCKET.z1 + 1.5, 2.4), { tone: "mid" });
+const endDoor = `<path class="rt-hole" d="${rectOnX(BODY.x, -16, 16, BODY.z0 + 4, RT + 80, 2)}"/>` + Ln(rectOnX(BODY.x, -12, 12, RT + 66, RT + 76, 1.5), { tone: "faint" });
+const tail = [-30, 30].map((y) => `<path class="cs-tail" d="${circleOnX(BODY.x, y, RT + 62, 2.6, 20)}"/>`).join("");
+const rivets = Dots(Array.from({ length: 30 }, (_, i) => at([-BODY.x + 4 + i * ((2 * BODY.x - 8) / 29), HALF, BODY.z0 + 2])), { size: 0.4, tone: "mid" });
+V.prism("car.body", F0, [[-HALF, BODY.z0], [HALF, BODY.z0], ...arc(HALF, R)], -BODY.x, BODY.x, { tone: "mid" }, {
+  extra: Ln(belts + panelLines, { tone: "faint" }) + lightbar + pocket + endDoor + tail + rivets,
 });
-const roofPlan = { x: BODY.x0 - 2, y: -BODY.half - 2, w: BODY.x1 - BODY.x0 + 4, d: BODY.half * 2 + 4, r: 4 };
-V.box("tender.roof", [roofPlan.x, roofPlan.y, BODY.z1], [roofPlan.x + roofPlan.w, roofPlan.y + roofPlan.d, BODY.z1 + 2.5], { tone: "mid" }, {
-  r: 4,
-  steps: 6,
-  bevel: 0.6,
-  extra: Ln(k.planOutline(k.insetPlan(roofPlan, 4), BODY.z1 + 2.5, P, 6), { tone: "faint" }),
-});
-const hatch = { x: -26, y: -12, w: 22, d: 24, r: 2 };
-V.box("tender.hatch", [hatch.x, hatch.y, BODY.z1 + 2.5], [hatch.x + hatch.w, hatch.y + hatch.d, BODY.z1 + 4], { tone: "mid" }, {
-  r: 2,
-  steps: 4,
-  bevel: 0.4,
-  extra: Dots(k.corners(hatch, 2.5).map(([x, y]) => at([x, y, BODY.z1 + 4])), { size: 0.45, tone: "mid" }) + S(k.slabOf({ x: hatch.x + hatch.w - 6, y: -4, w: 3, d: 8, r: 1 }, BODY.z1 + 4, 1.4, P, 2), { tone: "mid" }),
-});
-// Contact block with two pads on the station side.
-V.box("tender.contacts", [-12, BODY.half, 63], [12, PAD.face, 74], { tone: "mid" }, {
-  r: 0.8,
-  bevel: 0.4,
-  extra: Dots([at([-10, PAD.face, 72]), at([10, PAD.face, 72])], { size: 0.45, tone: "mid" }),
-});
-for (const x of PAD.xs) V.disc("tender.pad", alongY([x, 0, PAD.z]), PAD.face, PAD_FACE, PAD.r, { tone: "hi", crease: "lo" });
+V.prism("car.roof", F0, [...arc(HALF + 2, R + 0.2), ...arc(HALF + 2, R + 2.6).reverse()], -BODY.x - 2, BODY.x + 2, { tone: "mid" });
+for (const x of [-80, 80]) {
+  V.disc("car.vent", alongZ([x, 0, 0]), roofTop - 1, roofTop + 2.5, 3.2, { tone: "mid" }, { bevel: 0.3 });
+  V.disc("car.ventcap", alongZ([x, 0, 0]), roofTop + 2.5, roofTop + 3.6, 4.4, { tone: "mid" });
+}
 const vehicle = V.finish();
 
-// ── front: platform, pedestal, pin carriage, lamp mast, charger box ──
+// Arms: drawn after the car (they sit in its pocket or stand out of its side), rebuilt by the page as they turn.
+const shaft = (z0, z1) => S(k.cylinder(ARM.px, ARM.py, 1.5, z0, z1 - z0, P, 20), { tone: "hi", crease: "lo" });
+const [LO, UP] = LEVELS;
+const armsSvg =
+  S(k.slabOf({ x: POCKET.x0, y: POCKET.y0, w: POCKET.x1 - POCKET.x0, d: HALF - POCKET.y0, r: 0.6 }, POCKET.z0 - 0.6, 0.6, P, 3), { tone: "lo", crease: "none" }) +
+  S(k.cylinder(ARM.px, ARM.py, 3, POCKET.z0, 1.2, P, 24), { tone: "mid" }) +
+  shaft(POCKET.z0 + 1.2, LO.z0) +
+  `<g data-part="arm-lo"></g>` +
+  shaft(LO.z1, UP.z0) +
+  `<g data-part="arm-up"></g>` +
+  shaft(UP.z1, POCKET.z1 - 1.2);
+
+// ── front: platform, posts, the two brass rails, lamp, charger box and its leads ──
 const Fr = scene(P);
 Fr.record(A.slab(PLAN, -10, 10, { name: "stand.plate", ground: true }, 8));
 const platPlan = { x: PLATFORM.x, y: PLATFORM.y, w: PLATFORM.w, d: PLATFORM.d, r: PLATFORM.r };
 const joints = [];
-for (let x = PLATFORM.x + 20; x < PLATFORM.x + PLATFORM.w - 1; x += 20) joints.push(k.lineOnTop([x, PLATFORM.y + 6], [x, PLATFORM.y + PLATFORM.d], PLATFORM.h, P));
+for (let x = PLATFORM.x + 32; x < PLATFORM.x + PLATFORM.w - 1; x += 32) joints.push(k.lineOnTop([x, PLATFORM.y + 6], [x, PLATFORM.y + PLATFORM.d], PLATFORM.h, P));
 Fr.box("platform", [PLATFORM.x, PLATFORM.y, 0], [PLATFORM.x + PLATFORM.w, PLATFORM.y + PLATFORM.d, PLATFORM.h], { tone: "mid" }, {
   r: PLATFORM.r,
   bevel: 0.8,
-  inner: Ln(k.sideSeam(platPlan, 6, P, 3) + k.sideSeam(platPlan, 18, P, 3), { tone: "faint" }),
+  inner: Ln(k.sideSeam(platPlan, 8, P, 3) + k.sideSeam(platPlan, 24, P, 3), { tone: "faint" }),
   extra: Ln(joints.join("") + k.lineOnTop([PLATFORM.x, PLATFORM.y + 6], [PLATFORM.x + PLATFORM.w, PLATFORM.y + 6], PLATFORM.h, P), { tone: "faint" }),
   bias: -30,
 });
@@ -193,63 +239,44 @@ const tactileDots = [];
 for (let x = tactile.x + 2; x < tactile.x + tactile.w - 1; x += 3) for (const y of [tactile.y + 1, tactile.y + 2.6]) tactileDots.push(at([x, y, PLATFORM.h + 0.6]));
 Fr.box("platform.edge", [tactile.x, tactile.y, PLATFORM.h], [tactile.x + tactile.w, tactile.y + tactile.d, PLATFORM.h + 0.6], { tone: "lo", crease: "none" }, { r: 0.8, extra: Dots(tactileDots, { size: 0.3, tone: "lo" }) });
 
-const pedPlan = { x: PED.x0, y: PED.y0, w: PED.x1 - PED.x0, d: PED.y1 - PED.y0, r: 1.5 };
-Fr.box("pedestal", [PED.x0, PED.y0, PLATFORM.h], [PED.x1, PED.y1, PED.z1], { tone: "mid" }, {
-  r: 1.5,
-  bevel: 0.6,
-  inner: Ln(k.sideSeam(pedPlan, PLATFORM.h + 3, P, 3), { tone: "faint" }),
-  extra: Dots(k.corners(pedPlan, 2.5).map(([x, y]) => at([x, y, PED.z1])), { size: 0.45, tone: "mid" }) + Ln(slotOnY(PED.y1, -6, 6, PLATFORM.h + 6, PLATFORM.h + 10), { tone: "lo" }),
-});
-for (const x of [CAR.x0 + 2, CAR.x1 - 4]) Fr.box("pedestal.guide", [x, PED.y0, PED.z1], [x + 2, PED.y1 - 6, GUIDE_Z], { tone: "mid" }, { r: 0.3, steps: 2 });
-Fr.box("pedestal.drive", [-9, PED.y1 - 5.5, PED.z1], [9, PED.y1 - 0.5, PED.z1 + 9], { tone: "mid" }, {
-  r: 1,
-  bevel: 0.4,
-  extra: Dots([at([-6, PED.y1 - 0.5, PED.z1 + 6.5]), at([6, PED.y1 - 0.5, PED.z1 + 6.5])], { size: 0.45, tone: "mid" }),
-});
+// Insulating posts with a foot plate, screwed to the platform.
+for (const sign of [-1, 1]) {
+  const x0 = sign > 0 ? POST.x : -POST.x - POST.w;
+  const foot = { x: x0 - 3, y: POST.y0 - 1, w: POST.w + 6, d: POST.y1 - POST.y0 + 6, r: 1 };
+  Fr.box("post.foot", [foot.x, foot.y, PLATFORM.h], [foot.x + foot.w, foot.y + foot.d, PLATFORM.h + 1.6], { tone: "mid" }, {
+    r: 1,
+    bevel: 0.3,
+    extra: Dots(k.corners(foot, 1.6).map(([x, y]) => at([x, y, PLATFORM.h + 1.6])), { size: 0.4, tone: "mid" }),
+  });
+  Fr.box("post", [x0, POST.y0, PLATFORM.h + 1.6], [x0 + POST.w, POST.y1, POST.z1], { tone: "mid" }, {
+    r: 0.8,
+    bevel: 0.4,
+    extra: Dots(LEVELS.map((L) => at([sign > 0 ? x0 + POST.w : x0, (POST.y0 + POST.y1) / 2 + 1.5, L.bar])), { size: 0.45, tone: "mid" }),
+  });
+}
+// Two brass rails between the posts: upper +, lower −; contact faces toward the track.
+for (const L of LEVELS) {
+  Fr.box(`bar.${L.name}`, [BAR.x0, RAIL_FACE, L.bar - BAR.h / 2], [BAR.x1, RAIL_FACE + BAR.t, L.bar + BAR.h / 2], { tone: "hi", className: "cs-brass" }, {
+    r: 0.4,
+    steps: 2,
+    bevel: 0.2,
+    extra: Dots([-36, -12, 12, 36].map((x) => at([x, RAIL_FACE + BAR.t, L.bar + BAR.h / 2])), { size: 0.35, tone: "hi" }),
+  });
+}
 
-// The carriage and its pins, built retracted; live code moves the carriage and rebuilds the springs.
-const carPlan = { x: CAR.x0, y: F_RET, w: CAR.x1 - CAR.x0, d: CAR.depth, r: 1 };
-const carParts = [];
-carParts.push(S(k.slabOf(carPlan, CAR.z0, CAR.z1 - CAR.z0, P, 3, 0.4), { tone: "mid" }));
-carParts.push(Dots([at([CAR.x0 + 2, F_RET + CAR.depth - 2, CAR.z1]), at([CAR.x1 - 2, F_RET + CAR.depth - 2, CAR.z1])], { size: 0.45, tone: "mid" }));
-const pinParts = PAD.xs.map((x) => {
-  const F = alongY([x, 0, PIN.z], -1); // s grows toward the tender: y = -s
-  const sCollar = -(F_RET - 1 - PIN.spring);
-  return S(G.disc(-(F_RET - 1) + 0.2, sCollar, PIN.rod, F, P), { tone: "hi", lit: true }) +
-    S(G.disc(sCollar, sCollar + PIN.collarT, PIN.collar, F, P), { tone: "hi", lit: true }) +
-    S(G.solidOf([[sCollar + PIN.collarT, PIN.rod + 0.2], [sCollar + PIN.collarT + PIN.tip - 0.6, PIN.rod + 0.2, 1], [sCollar + PIN.collarT + PIN.tip - 0.2, PIN.rod * 0.8, 1], [sCollar + PIN.collarT + PIN.tip, 0.2, 1]], F, P), { tone: "hi", lit: true });
-});
-// Barrels lie in the carriage's straps; the barrel's own axis runs along -y from the carriage's far edge.
-const barrelSvg = PAD.xs.map((x) => {
-  const F = alongY([x, 0, PIN.z], 1);
-  return S(G.disc(F_RET - 1, F_RET - 1 + PIN.barrel, PIN.r, F, P, { bevel: 0.2 }), { tone: "hi", crease: "lo" }) + S(G.disc(F_RET + 0.6, F_RET + 2, PIN.r + 0.45, F, P), { tone: "mid" });
-});
-const pinsSvg = pinParts
-  .map((p, i) => `<g data-part="coil-back-${i}"></g><g data-part="plunger-${i}">${p}</g><g data-part="coil-front-${i}"></g>${barrelSvg[i]}`)
-  .join("");
-const carShapes = [
-  Fr.record(A.slab(carPlan, CAR.z0, CAR.z1 - CAR.z0, { name: "carriage" }, 3)),
-  ...PAD.xs.map((x) => Fr.record(A.disc(alongY([x, 0, PIN.z], 1), F_RET - 1, F_RET - 1 + PIN.barrel, PIN.r, { name: "pin.barrel" }))),
-  ...PAD.xs.map((x) => Fr.record(A.disc(alongY([x, 0, PIN.z], 1), F_RET - 1 - PIN_FREE + 1, F_RET - 1, PIN.rod, { name: "pin.plunger" }))),
-];
-// Straps over the barrels, screwed to the carriage plate.
-const strapSvg = PAD.xs.map((x) => S(k.slabOf({ x: x - 3.2, y: F_RET + 4, w: 6.4, d: 2.4, r: 0.4 }, CAR.z1, PIN.z + PIN.r + 0.5 - CAR.z1, P, 2, 0.2), { tone: "mid" }) + Dots([at([x - 3.2 - 0.9, F_RET + 5.2, CAR.z1]), at([x + 3.2 + 0.9, F_RET + 5.2, CAR.z1])], { size: 0.4, tone: "mid" })).join("");
-Fr.put("carriage", [0, F_RET + CAR.depth / 2, CAR.z1], `<g data-part="carriage">${carParts.join("")}${pinsSvg}${strapSvg}</g>`, carShapes, { bias: 0.2 });
-
-// Lamp mast at the pedestal's corner.
-const mastF = G.frameOf([MAST.x, MAST.y, 0], [0, 0, 1], [1, 0, 0], [0, 1, 0]);
-Fr.disc("mast.foot", mastF, PED.z1, PED.z1 + 1.6, 3.4, { tone: "mid" }, { bevel: 0.3 });
-Fr.disc("mast", mastF, PED.z1 + 1.6, MAST.z1, MAST.r, { tone: "mid" }, { inner: Ln(G.arcOf(mastF, 64, MAST.r, P), { tone: "faint" }) });
-Fr.disc("lamp.body", mastF, MAST.z1, MAST.z1 + 4.5, 4, { tone: "mid" }, { bevel: 0.3 });
-const LAMP_C = [MAST.x, MAST.y, MAST.z1 + 4.5];
-const lampF = G.frameOf(LAMP_C, [0, 0, 1], [1, 0, 0], [0, 1, 0]);
-const lampProfile = Array.from({ length: 9 }, (_, i) => { const a = (i / 8) * (Math.PI / 2); return [3.4 * Math.sin(a), 3.4 * Math.cos(a), i > 0 && i < 8 ? 1 : 0]; });
+// Lamp on the right post.
+const lampF0 = G.frameOf([LAMP_C[0], LAMP_C[1], 0], [0, 0, 1], [1, 0, 0], [0, 1, 0]);
+Fr.disc("lamp.foot", lampF0, POST.z1, POST.z1 + 1.4, 2.8, { tone: "mid" }, { bevel: 0.2 });
+Fr.disc("lamp.body", lampF0, POST.z1 + 1.4, POST.z1 + 5, 3.4, { tone: "mid" }, { bevel: 0.3 });
+const LAMP = [LAMP_C[0], LAMP_C[1], POST.z1 + 5];
+const lampF = G.frameOf(LAMP, [0, 0, 1], [1, 0, 0], [0, 1, 0]);
+const lampProfile = Array.from({ length: 9 }, (_, i) => { const a = (i / 8) * (Math.PI / 2); return [3 * Math.sin(a), 3 * Math.cos(a), i > 0 && i < 8 ? 1 : 0]; });
 const lampPaths = G.solidOf(lampProfile, lampF, P);
-Fr.put("lamp", LAMP_C, S(lampPaths, { tone: "hi", crease: "lo" }) + `<path class="cs-lamp" data-part="lamp" d="${lampPaths.fill}" style="opacity:0"/><path class="iso-line" data-tone="hi" d="${lampPaths.outline}"/>`, [Fr.record(A.solid(lampF, lampProfile, { name: "lamp" }))]);
-Fr.disc("lamp.cap", lampF, 3.4, 4.2, 1.2, { tone: "mid" });
+Fr.put("lamp", LAMP, S(lampPaths, { tone: "hi", crease: "lo" }) + `<path class="cs-lamp" data-part="lamp" d="${lampPaths.fill}" style="opacity:0"/><path class="iso-line" data-tone="hi" d="${lampPaths.outline}"/>`, [Fr.record(A.solid(lampF, lampProfile, { name: "lamp" }))]);
+Fr.disc("lamp.cap", lampF, 3, 3.8, 1.1, { tone: "mid" });
 
-// Charger box on the platform and its cable to the pedestal.
-const BOX = { x0: -54, x1: -30, y0: 56, y1: 80, z1: PLATFORM.h + 16 };
+// Charger box and the two leads from the back of the rails.
+const BOX = { x0: -128, x1: -104, y0: 76, y1: 102, z1: PLATFORM.h + 16 };
 const boxPlan = { x: BOX.x0, y: BOX.y0, w: BOX.x1 - BOX.x0, d: BOX.y1 - BOX.y0, r: 1.5 };
 Fr.box("charger", [BOX.x0, BOX.y0, PLATFORM.h], [BOX.x1, BOX.y1, BOX.z1], { tone: "mid" }, {
   r: 1.5,
@@ -257,125 +284,145 @@ Fr.box("charger", [BOX.x0, BOX.y0, PLATFORM.h], [BOX.x1, BOX.y1, BOX.z1], { tone
   inner: Ln(k.sideSeam(boxPlan, BOX.z1 - 3, P, 3), { tone: "faint" }) + Ln([BOX.x0 + 5, BOX.x0 + 8, BOX.x0 + 11, BOX.x0 + 14].map((x) => slotOnY(BOX.y1, x, x + 1.4, PLATFORM.h + 3, PLATFORM.h + 9)).join(""), { tone: "lo" }),
   extra: Dots(k.corners(boxPlan, 2.5).map(([x, y]) => at([x, y, BOX.z1])), { size: 0.45, tone: "mid" }) + `<g data-part="charger-led">${Dots([at([BOX.x1 - 4, BOX.y1, BOX.z1 - 5])], { size: 0.8, tone: "lo" })}</g>`,
 });
-Fr.cable("cable", [[BOX.x1, 66, PLATFORM.h + 6], [BOX.x1 + 5, 66, PLATFORM.h + 6], [BOX.x1 + 7, 66, PLATFORM.h + 1.4], [PED.x0 - 3, 66, PLATFORM.h + 1.4], [PED.x0 - 3, 66, PLATFORM.h + 3], [PED.x0, 66, PLATFORM.h + 3]], 0.9, { tone: "mid", bend: 2.4 });
+const LEAD_R = 1;
+const back0 = RAIL_FACE + BAR.t;
+const floor = PLATFORM.h + LEAD_R;
+Fr.cable("lead.up", [[-36, back0, UP.bar], [-36, 82, UP.bar], [-36, 82, floor], [BOX.x1, 82, floor]], LEAD_R, { tone: "mid", bend: 4 });
+Fr.cable("lead.lo", [[-28, back0, LO.bar], [-28, 92, LO.bar], [-28, 92, floor], [BOX.x1, 92, floor]], LEAD_R, { tone: "mid", bend: 4 });
 const front = Fr.finish();
 
 const svg = k.figureSvg({
   width: W,
   height: H,
-  label: "Ray kenarında alçak bir peron ve üzerinde şarj direği. Ray boyunca gelen tenderin ön kirişinde bir hall sensörü, traversler arasında iki mıknatıs var. Tender durunca direğin pim arabası öne çıkar ve iki yaylı pogo pimi tenderin yan kontak plakalarına bastırır; direğin lambası yanar.",
-  body: [...back, `<g data-part="vehicle-fade"><g data-part="vehicle">${vehicle}</g></g>`, `<g data-part="station">${front}</g>`],
+  label: "Ray kenarında alçak bir peron ve üzerinde iki direk arasında üst üste iki pirinç ray. Ray boyunca gelen şarj vagonunun altında bir hall sensörü, traversler arasında iki mıknatıs var. Vagon durunca yan cebindeki üst ve alt kol kapı gibi dışarı döner ve yaylı pabuçları üstteki artı, alttaki eksi raya basar; direğin lambası yanar. Şarj bitince kollar cebe geri döner.",
+  body: [...back, `<g data-part="vehicle-fade"><g data-part="vehicle">${vehicle}<g data-part="arms">${armsSvg}</g></g></g>`, `<g data-part="station">${front}</g>`],
 });
 
-const DATA = { P, F_RET, F_EXT, STROKE, PAD_FACE, PIN, PIN_FREE, xs: PAD.xs, wheels: wheelSlots, AXLE_Z, OUTER, WHEEL_R, DECEL, SLOW: 3 };
+const DATA = {
+  P, ARM, LEVELS, TIP, RAIL_FACE, LEDS: LEDS.length,
+  wheels: wheelSlots, AXLE_Z, OUTER, WHEEL_R, DECEL, SLOW: 3,
+};
 const live = `
 const D = ${JSON.stringify(DATA)};
 const P = D.P;
+const VIEW = rtView(P);
 const stage = document.querySelector(".iso-stage");
 const svg = stage.querySelector("svg");
 const readout = document.querySelector("[data-readout]");
 const sr = document.querySelector("[data-status]");
 const still = matchMedia("(prefers-reduced-motion: reduce)");
 const part = (name) => svg.querySelector('[data-part="' + name + '"]');
-const veh = part("vehicle"), vehFade = part("vehicle-fade"), station = part("station"), car = part("carriage"), lamp = part("lamp"), led = part("charger-led");
-const plungers = D.xs.map((_, i) => part("plunger-" + i));
-const coilsB = D.xs.map((_, i) => part("coil-back-" + i));
-const coilsF = D.xs.map((_, i) => part("coil-front-" + i));
+const veh = part("vehicle"), vehFade = part("vehicle-fade"), lamp = part("lamp"), led = part("charger-led"), nodeLed = part("node-led");
+const armEls = D.LEVELS.map((L) => part("arm-" + L.name));
+const leds = [...svg.querySelectorAll("[data-led]")];
 const spokes = D.wheels.map((w) => ({ el: part(w.part), x: w.x }));
 const fmt = (v, d) => v.toFixed(d).replace(".", ",");
+const A = D.ARM;
 const V0 = 300 / D.SLOW; // 0,30 m/s drawn at a third of real speed, in mm per second
-const START = -260, END = 260;
-// States follow the train's state machine. Holds wait for Space, Enter or a click (the tour presses for you).
-let state = "IDLE", c = START, v = 0, travelled = 0, stroke = 0, lampOn = 0, volts = 7.6, amps = 0, since = 0, verified = false;
+const SWING = 0.9; // a quarter turn of the servo, drawn slowed
+const START = -340, END = 340;
+// States follow the car's state machine. Holds wait for Space, Enter or a click (the tour presses for you).
+let state = "IDLE", c = START, v = 0, travelled = 0, open = 0, held = 0, lampOn = 0, soc = 0.42, amps = 0, since = 0, verified = false;
 let frame = 0, last = 0, touring = !still.matches, visible = false, idle = 0, heard = "";
-const HOLD = { IDLE: 1.6, DOCKING: 1.8, CHARGING: 3.6, READY: 1.6 };
-const NAMES = { IDLE: "BEKLİYOR", RUNNING: "SEYİR", APPROACHING: "YAKLAŞIYOR", DOCKING: "YANAŞIYOR", CHARGING: "ŞARJ", READY: "KALKIŞA HAZIR", DEPARTING: "KALKIYOR" };
+const HOLD = { IDLE: 1.6, DOCKING: 1.4, CHARGING: 4, READY: 1.4 };
+const NAMES = { IDLE: "BEKLİYOR", RUNNING: "SEYİR", APPROACHING: "YAKLAŞIYOR", DOCKING: "KOLLAR AÇILIYOR", CHARGING: "ŞARJ", STOWING: "KOLLAR KAPANIYOR", READY: "KALKIŞA HAZIR", DEPARTING: "KALKIYOR" };
 const go = (next) => { state = next; since = 0; };
+const ease = (t) => t * t * (3 - 2 * t);
+const angleOf = () => (Math.PI / 2) * ease(open);
+const tipY = () => A.py + D.TIP * Math.sin(angleOf());
+const compression = () => (c === 0 ? Math.max(0, Math.min(A.travel, tipY() - D.RAIL_FACE)) : 0);
+const volts = () => 6.4 + 2 * soc;
 function advance() {
   if (state === "IDLE") go("RUNNING");
   else if (state === "DOCKING" && verified) go("CHARGING");
-  else if (state === "CHARGING") go("READY");
-  else if (state === "READY" && stroke < 0.01) go("DEPARTING");
+  else if (state === "CHARGING") go("STOWING");
+  else if (state === "READY") go("DEPARTING");
 }
-const holding = () => (state === "IDLE") || (state === "DOCKING" && verified) || state === "CHARGING" || (state === "READY" && stroke < 0.01);
+const holding = () => state === "IDLE" || (state === "DOCKING" && verified) || state === "CHARGING" || state === "READY";
 function step(dt) {
   since += dt;
   if (state === "RUNNING" || state === "APPROACHING") {
     if (state === "RUNNING") { v = Math.min(V0, v + V0 * dt / 0.6); if (c >= -D.DECEL) go("APPROACHING"); }
     if (state === "APPROACHING") v = Math.max(V0 * Math.sqrt(Math.max(0, -c) / D.DECEL), 4);
     c = Math.min(0, c + v * dt);
-    if (state === "APPROACHING" && c >= 0) { c = 0; v = 0; verified = false; go("DOCKING"); }
+    if (state === "APPROACHING" && c >= 0) { c = 0; v = 0; verified = false; held = 0; go("DOCKING"); }
   } else if (state === "DEPARTING") {
     v = Math.min(V0, v + V0 * dt / 1.4);
     c += v * dt;
-    if (c >= END) { c = START; v = 0; volts = 7.6; go("IDLE"); }
+    if (c >= END) { c = START; v = 0; soc = 0.42; go("IDLE"); }
   }
   const want = state === "DOCKING" || state === "CHARGING" ? 1 : 0;
-  stroke += (want - stroke) * (1 - Math.exp(-dt / 0.35));
-  if (Math.abs(want - stroke) < 0.002) stroke = want;
-  if (state === "DOCKING" && stroke === 1 && since > 1) verified = true;
+  open = want > open ? Math.min(1, open + dt / SWING) : Math.max(0, open - dt / SWING);
+  if (Math.abs(open - want) < 1e-3) open = want;
+  if (state === "DOCKING") { held = compression() >= A.travel - 0.01 ? held + dt : 0; if (held > 0.6) verified = true; }
+  if (state === "STOWING" && open === 0) go("READY");
   const lit = state === "CHARGING" ? 1 : 0;
   lampOn += (lit - lampOn) * (1 - Math.exp(-dt / 0.25));
-  if (state === "CHARGING") { amps += (1.2 - amps) * (1 - Math.exp(-dt / 0.3)); volts = 7.6 + 0.6 * (1 - Math.exp(-since / 2.5)); }
-  else amps += (0 - amps) * (1 - Math.exp(-dt / 0.2));
-  if (state === "READY") volts += (8.4 - volts) * (1 - Math.exp(-dt / 0.4));
+  if (state === "CHARGING") {
+    const target = soc < 0.85 ? 1.2 : 1.2 * (1 - soc) / 0.15;
+    amps += (target - amps) * (1 - Math.exp(-dt / 0.3));
+    soc = Math.min(1, soc + dt * 0.07 * (amps / 1.2));
+  } else amps += (0 - amps) * (1 - Math.exp(-dt / 0.2));
   travelled += v * dt;
 }
-function carriageAt(s) {
-  const f = D.F_RET - D.STROKE * s;
-  const free = f - D.PIN_FREE;
-  const comp = c === 0 ? Math.max(0, D.PAD_FACE - free) : 0;
-  return { dy: f - D.F_RET, comp };
+function armSvg(L, a, comp) {
+  const dx = -Math.cos(a), dy = Math.sin(a);
+  const F = { o: [A.px, A.py, 0], a: [0, 0, 1], u: [dx, dy, 0], v: [-dy, dx, 0] };
+  const eye = Array.from({ length: 13 }, (_, i) => { const t = Math.PI / 2 + (i / 12) * Math.PI; return [A.eye * Math.cos(t), A.eye * Math.sin(t)]; });
+  const poly = [...eye, [A.hold0, -A.half], [A.hold0, -A.holdHalf], [A.hold1, -A.holdHalf], [A.hold1, A.holdHalf], [A.hold0, A.holdHalf], [A.hold0, A.half], [0, A.half]];
+  const u0 = A.hold1 - comp, u1 = A.hold1 + A.shoe - comp;
+  const shoePoly = [[u0, -A.shoeHalf], [u1 - 0.6, -A.shoeHalf], [u1, -A.shoeHalf + 0.6], [u1, A.shoeHalf - 0.6], [u1 - 0.6, A.shoeHalf], [u0, A.shoeHalf]];
+  const arm = solidSvg(rtPrism(F, poly, L.z0, L.z1, P), { tone: "hi" }) +
+    lineSvg(pathOf([0.62, 0.38].map((s) => iso(rtAt(F, L.z1, A.hold0 + 4 * s, 0), P))), { tone: "mid", free: true }) +
+    dotsSvg([iso([A.px, A.py, L.z1], P), iso(rtAt(F, L.z1, A.hold0 + 2, A.holdHalf - 1), P), iso(rtAt(F, L.z1, A.hold0 + 2, -A.holdHalf + 1), P)], { size: 0.5, tone: "hi" });
+  const shoe = '<g class="cs-brass">' + solidSvg(rtPrism(F, shoePoly, L.z0 + 0.5, L.z1 - 0.5, P), { tone: "hi" }) + "</g>";
+  return dx * VIEW[0] + dy * VIEW[1] > 0 ? arm + shoe : shoe + arm;
 }
 function draw() {
   veh.setAttribute("transform", translateAlong(P, [c, 0, 0]));
-  const fade = Math.max(0, Math.min(1, (115 - Math.abs(c)) / 50));
-  const ahead = c > 70;
-  if (ahead !== (vehFade.nextElementSibling === null)) (ahead ? svg.appendChild(vehFade) : svg.insertBefore(vehFade, station));
+  const fade = Math.max(0, Math.min(1, (250 - Math.abs(c)) / 90));
   vehFade.setAttribute("opacity", (fade * fade * (3 - 2 * fade)).toFixed(3));
   const angle = -travelled / D.WHEEL_R;
   for (const s of spokes) s.el.innerHTML = lineSvg(rtSpokes([s.x, 0, D.AXLE_Z], D.OUTER, 6, D.WHEEL_R - 4.3, 6, angle, P), { tone: "lo" });
-  const { dy, comp } = carriageAt(stroke);
-  car.setAttribute("transform", translateAlong(P, [0, dy, 0]));
-  D.xs.forEach((x, i) => {
-    plungers[i].setAttribute("transform", comp ? translateAlong(P, [0, comp, 0]) : "");
-    const from = D.F_RET - 1, to = D.F_RET - 1 - D.PIN.spring + comp;
-    const springs = coilOf(to, from, x);
-    coilsB[i].innerHTML = lineSvg(springs.back, { tone: "lo" });
-    coilsF[i].innerHTML = lineSvg(springs.front, { tone: "lit" });
-  });
+  const a = angleOf(), comp = compression();
+  D.LEVELS.forEach((L, i) => { armEls[i].innerHTML = armSvg(L, a, comp); });
   lamp.style.opacity = lampOn.toFixed(3);
-  led.setAttribute("data-on", state === "CHARGING" ? "" : null);
+  led.toggleAttribute("data-on", state === "CHARGING");
+  nodeLed.toggleAttribute("data-on", state !== "IDLE");
+  const on = Math.round(soc * D.LEDS);
+  const blink = state === "CHARGING" && Math.floor(since * 2) % 2 === 0;
+  leds.forEach((el, i) => el.toggleAttribute("data-on", i < on || (blink && i === on)));
   let text;
   const speed = fmt(v * D.SLOW / 1000, 2) + " m/s";
-  if (state === "IDLE") text = "BEKLİYOR · pimler enerjisiz";
+  const deg = Math.round((a * 180) / Math.PI) + "°";
+  if (state === "IDLE") text = "BEKLİYOR · kollar içeride, raylar enerjisiz";
   else if (state === "RUNNING") text = "SEYİR · " + speed;
   else if (state === "APPROACHING") text = "YAKLAŞIYOR · " + speed;
-  else if (state === "DOCKING") text = verified ? "YANAŞIYOR · temas doğrulandı" : comp > 0 ? "YANAŞIYOR · pimler basıyor" : "YANAŞIYOR · durdu";
-  else if (state === "CHARGING") text = "ŞARJ · " + fmt(volts, 1) + " V · " + fmt(amps, 1) + " A";
-  else if (state === "READY") text = "KALKIŞA HAZIR · " + fmt(volts, 1) + " V";
+  else if (state === "DOCKING") text = verified ? "TEMAS DOĞRULANDI · üst +, alt −" : comp > 0 ? "KOLLAR AÇILIYOR · yay " + fmt(comp, 1) + " mm" : "KOLLAR AÇILIYOR · " + deg;
+  else if (state === "CHARGING") text = "ŞARJ · " + fmt(volts(), 1) + " V · " + fmt(amps, 1) + " A · %" + Math.round(soc * 100);
+  else if (state === "STOWING") text = "KOLLAR KAPANIYOR · " + deg;
+  else if (state === "READY") text = "KALKIŞA HAZIR · kollar cepte · %" + Math.round(soc * 100);
   else text = "KALKIYOR · " + speed;
   if (readout.textContent !== text) readout.textContent = text;
   const phase = NAMES[state];
   if (phase !== heard) { heard = phase; stage.setAttribute("aria-valuetext", phase); if (sr && document.activeElement === stage) sr.textContent = phase; }
 }
-const coilOf = (from, to, x) => coil(from, to, [x, D.PIN.z], D.PIN.coil, 7, "y", P);
 function tick(now) {
   const dt = last ? Math.min((now - last) / 1000, 1 / 30) : 1 / 60;
   last = now;
   if (touring && holding() && since > (HOLD[state] ?? 1.6)) advance();
   step(dt);
   draw();
-  const settled = !touring && holding() && stroke % 1 === 0 && Math.abs(lampOn - (state === "CHARGING" ? 1 : 0)) < 0.002 && (state !== "CHARGING" || since > 12);
+  const settled = !touring && holding() && (open === 0 || open === 1) && Math.abs(lampOn - (state === "CHARGING" ? 1 : 0)) < 0.002 && (state !== "CHARGING" || soc >= 1);
   frame = visible && !settled ? requestAnimationFrame(tick) : 0;
 }
 const run = () => { if (!frame && visible) { last = 0; frame = requestAnimationFrame(tick); } };
 function stillStep() {
   advance();
-  if (state === "RUNNING") { c = 0; v = 0; stroke = 1; verified = true; state = "DOCKING"; }
-  else if (state === "CHARGING") { stroke = 1; lampOn = 1; amps = 1.2; volts = 8.1; }
-  else if (state === "READY") { stroke = 0; lampOn = 0; amps = 0; volts = 8.4; }
-  else if (state === "DEPARTING") { c = START; v = 0; state = "IDLE"; volts = 7.6; }
+  if (state === "RUNNING") { c = 0; v = 0; open = 1; verified = true; state = "DOCKING"; }
+  else if (state === "CHARGING") { open = 1; lampOn = 1; amps = 1.2; soc = 0.62; }
+  else if (state === "STOWING") { open = 0; lampOn = 0; amps = 0; soc = 0.7; state = "READY"; }
+  else if (state === "DEPARTING") { c = START; v = 0; open = 0; state = "IDLE"; soc = 0.42; }
   since = 99;
   draw();
 }
@@ -393,31 +440,34 @@ stage.addEventListener("keydown", (event) => {
   press();
 });
 stage.addEventListener("focus", () => { if (sr) sr.textContent = NAMES[state]; });
-if (still.matches) { touring = false; state = "CHARGING"; c = 0; stroke = 1; lampOn = 1; amps = 1.2; volts = 8.1; verified = true; since = 99; }
+if (still.matches) { touring = false; state = "CHARGING"; c = 0; open = 1; lampOn = 1; amps = 1.2; soc = 0.62; verified = true; since = 99; }
 draw();
 `;
 
 const body =
-  `<style>.cs-lamp{fill:var(--rt-lamp);stroke:none;mix-blend-mode:normal}[data-part="charger-led"][data-on] circle{fill:var(--rt-lamp);opacity:1}</style>` +
+  `<style>.cs-lamp{fill:var(--rt-lamp);stroke:none;mix-blend-mode:normal}[data-part="charger-led"][data-on] circle,[data-part="node-led"][data-on] circle{fill:var(--rt-lamp);opacity:1}` +
+  `.cs-led{fill:var(--rt-lamp-off);stroke:none}.cs-led[data-on]{fill:var(--cs-led)}.cs-tail{fill:var(--rt-lamp-off);stroke:var(--anatomy-mid);stroke-width:var(--anatomy-weight);vector-effect:non-scaling-stroke}` +
+  `.iso{--cs-led:#7fd36b;--cs-b0:#3a2e10;--cs-b1:#4a3a14;--cs-b2:#5c4819;--cs-b3:#6e571f;--cs-bt:#806626}.iso[data-theme="light"]{--cs-led:#3f9a2e;--cs-b0:#a87a22;--cs-b1:#bb8c2c;--cs-b2:#cc9f3c;--cs-b3:#dcb352;--cs-bt:#e9c76c;--rt-lamp-off:#cfc6aa}` +
+  `.cs-brass .iso-fill{fill:var(--cs-b2)}.cs-brass .iso-shade[data-shade="0"]{fill:var(--cs-b0)}.cs-brass .iso-shade[data-shade="1"]{fill:var(--cs-b1)}.cs-brass .iso-shade[data-shade="2"]{fill:var(--cs-b2)}.cs-brass .iso-shade[data-shade="3"]{fill:var(--cs-b3)}.cs-brass .iso-top{fill:var(--cs-bt)}</style>` +
   k.plateHtml({
     fig: "Şekil 3",
     title: "Şarj istasyonu · temsili",
     hint: "Tıkla veya boşluk · sonraki adım",
-    readout: "BEKLİYOR · pimler enerjisiz",
+    readout: "BEKLİYOR · kollar içeride, raylar enerjisiz",
     keys: [
-      { mark: "lit", label: "Yaylı pogo pimleri: pim arabası tender durunca 10 mm öne çıkar" },
-      { mark: "raised", label: "Tenderin yan kontak plakaları ve ön kirişteki A3144 hall sensörü" },
-      { mark: "dim", label: "Traversler arasında 6×3 mm mıknatıslar: yaklaşma ve durma noktası" },
-      { mark: "dashed", label: "Volt ve akım: temsili değerler, devre henüz yok" },
+      { mark: "lit", label: "Döner şarj kolları: tek mikro servo ve ortak dikey mil, uçlarında 1,5 mm yaylı pirinç pabuç; kapalıyken yan cepte, gövdeyle aynı hizada" },
+      { mark: "raised", label: "İstasyonda üst üste iki pirinç ray, 90 mm boy: üst artı (+), alt eksi (−)" },
+      { mark: "dim", label: "Traversler arasında 6×3 mm mıknatıslar ve vagon altındaki A3144 hall sensörü: yaklaşma ve durma noktası" },
+      { mark: "dashed", label: "Volt, akım ve doluluk: temsili değerler, devre henüz yok" },
     ],
     caption:
-      "Temsili şema, uygulanmış devre değil. Planlanan akış: tender ilk mıknatısın üstünden geçince ESP32 yavaşlar (YAKLAŞIYOR), ikinci mıknatısın üstünde durur. Pim arabası ancak o zaman öne çıkar ve yaylı pimler plakalara basar. Pimler yanaşma doğrulanana kadar enerjisizdir; doğrulamadan sonra 2S Li-ion paket şarj edilir ve lamba yanar. Okumadaki volt ve akım değerleri (8,4 V'a kadar, 1,2 A) yalnız açıklama içindir, ölçüm değildir. Hareket gerçek hızın üçte biriyle, şarj süresi çok kısaltılarak çizilir.",
-    body: `<div class="iso-stage" tabindex="0" role="group" aria-label="Şarj istasyonu. Boşluk, Enter veya tıklama durum makinesini bir sonraki adıma geçirir: bekliyor, seyir, yaklaşıyor, yanaşıyor, şarj, kalkışa hazır, kalkıyor." style="cursor:pointer">${svg}<span class="iso-sr" role="status" aria-live="polite" data-status></span></div>`,
+      "Temsili şema, uygulanmış devre değil. Planlanan akış: vagon ilk mıknatısın üstünden geçince ESP32 yavaşlar (YAKLAŞIYOR) ve ikinci mıknatısın üstünde durur. Bundan sonra tek bir mikro servo ortak mili çeyrek tur döndürür. Üst ve alt kol, cepten kapı gibi dışarı açılır ve pabuçları istasyondaki üst (+) ve alt (−) pirinç raylara 1,5 mm yay baskısıyla dayanır. Raylar 90 mm uzun olduğu için vagonun ±40 mm kadar kayık durması temasa engel olmaz. Raylar temas doğrulanana kadar enerjisizdir; doğrulamadan sonra 2S Li-ion paket şarj edilir, direğin lambası yanar ve yandaki ışık çubuğu doluluğu gösterir. Şarj bitince servo kolları geri çevirir, kollar cebe girer ve dışarı taşmaz; vagon ancak kollar kapanınca kalkar. Volt, akım ve yüzde değerleri yalnız açıklama içindir, ölçüm değildir. Hareket gerçek hızın üçte biriyle, şarj süresi çok kısaltılarak çizilir.",
+    body: `<div class="iso-stage" tabindex="0" role="group" aria-label="Şarj istasyonu. Boşluk, Enter veya tıklama durum makinesini bir sonraki adıma geçirir: bekliyor, seyir, yaklaşıyor, kollar açılıyor, şarj, kollar kapanıyor, kalkışa hazır, kalkıyor." style="cursor:pointer">${svg}<span class="iso-sr" role="status" aria-live="polite" data-status></span></div>`,
   });
 
 writePages("charging-station", { title: "Şarj istasyonu", body, live });
-console.log(`tender ${V.R.items.length} items · station ${Fr.R.items.length} items · ${Fr.R.solids.length + V.R.solids.length} solids`);
-console.log("— tender —");
+console.log(`car ${V.R.items.length} items · station ${Fr.R.items.length} items · ${Fr.R.solids.length + V.R.solids.length} solids · rail face y ${RAIL_FACE}`);
+console.log("— car —");
 A.auditOrExit(V.R, P, {});
 console.log("— station —");
 A.auditOrExit(Fr.R, P, {});
