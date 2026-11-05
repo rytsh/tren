@@ -1085,5 +1085,755 @@
       "cab_x0",
       "Lokomotif arka konnektör yüzü X (MODELLENMEDİ; hesap için kabin arka yüzü varsayıldı)"
     ]
+  },
+  "coupler": {
+    "cpl_z_rail": [
+      39.0,
+      "T45 kuplör ekseni, ray üstünden (BÜTÜN araçlarda aynı)"
+    ],
+    "cpl_out": [
+      20.0,
+      "Kafa yüzü, kiriş dış yüzünden dışarı (iki 250 vagon kuplör yüzleri arası 250 + 2·20 = 290)"
+    ],
+    "cpl_w": [
+      38.0,
+      "Kafa genişliği (Y)"
+    ],
+    "cpl_h": [
+      30.0,
+      "Kafa yüksekliği (Z)"
+    ],
+    "cpl_d": [
+      14.0,
+      "Kafa derinliği (X, yüzden arkaya)"
+    ],
+    "cpl_ch": [
+      3.0,
+      "Kafa arka dikey köşe pahı (salınımda kiriş payı)"
+    ],
+    "cpl_cone_d": [
+      13.0,
+      "Koni taban çapı (yüzde); mıknatıs koninin içine kadar girer"
+    ],
+    "cpl_cone_tip": [
+      7.0,
+      "Koni uç çapı"
+    ],
+    "cpl_cone_l": [
+      5.0,
+      "Koni boyu (yüzden dışarı)"
+    ],
+    "cpl_cone_y": [
+      11.0,
+      "Koni (yüzden bakınca sağ, +Y yerel) / huni (sol) ekseninin merkezden yanal uzaklığı"
+    ],
+    "cpl_cone_z": [
+      6.0,
+      "Koni/huni ekseni Z (kafa merkezine göre, üst yarı)"
+    ],
+    "cpl_clear": [
+      0.3,
+      "Koni-huni radyal boşluğu ve huni derinlik payı"
+    ],
+    "cpl_mag_d": [
+      10.0,
+      "Neodim mıknatıs çapı (Ø10×3, VARSAYIM)"
+    ],
+    "cpl_mag_t": [
+      3.0,
+      "Mıknatıs kalınlığı"
+    ],
+    "cpl_mag_fit": [
+      0.1,
+      "Mıknatıs yuvası çap payı (sıkı geçme; baskı sonrası ayarlanacak, VARSAYIM)"
+    ],
+    "cpl_mag_wall": [
+      0.8,
+      "Huni dibi ile mıknatıs arası et"
+    ],
+    "cpl_lug_t": [
+      4.0,
+      "Kilit kulağı kalınlığı (Z, kafa üstünden yukarı)"
+    ],
+    "cpl_lug_l": [
+      7.0,
+      "Kilit kulağı yüzden çıkıntısı"
+    ],
+    "cpl_lug_w": [
+      6.0,
+      "Kilit kulağı genişliği (Y)"
+    ],
+    "cpl_lug_y": [
+      16.0,
+      "Kilit kulağı merkezi yanal uzaklık (koni tarafı); birleşince karşı kafanın huni tarafı üstüne biner"
+    ],
+    "cpl_pin_x": [
+      3.5,
+      "Kilit pimi deliği, yüzden uzaklık (kulakta yüzün önünde, cepte yüzün arkasında)"
+    ],
+    "cpl_pin_d": [
+      3.2,
+      "Ø3 kilit pimi deliği (geçme boşluklu)"
+    ],
+    "cpl_pogo_w": [
+      4.5,
+      "4-pin mıknatıslı pogo modül genişliği (VARSAYIM, ticari modül seçilmedi)"
+    ],
+    "cpl_pogo_h": [
+      12.0,
+      "Pogo modül yüksekliği (4 pin dikey, 2.54 aralık; VARSAYIM)"
+    ],
+    "cpl_pogo_d": [
+      6.0,
+      "Pogo modül derinliği (VARSAYIM)"
+    ],
+    "cpl_pogo_fit": [
+      0.2,
+      "Pogo cebi toplam payı"
+    ],
+    "cpl_pogo_y": [
+      7.5,
+      "Pogo cebi merkezi yanal uzaklık (sağ erkek, sol dişi)"
+    ],
+    "cpl_pogo_z": [
+      -8.0,
+      "Pogo cebi merkezi Z (kafa merkezine göre, alt yarı)"
+    ],
+    "cpl_pogo_pitch": [
+      2.54,
+      "Pogo pin aralığı (yalnız bilgi)"
+    ],
+    "cpl_arm_w": [
+      7.0,
+      "Kuplör kolu genişliği"
+    ],
+    "cpl_arm_h": [
+      6.0,
+      "Kuplör kolu yüksekliği"
+    ],
+    "cpl_eye_d": [
+      9.0,
+      "Kol pivot gözü çapı"
+    ],
+    "cpl_sock_d": [
+      10.0,
+      "Kafa arkasındaki kol yuvası derinliği"
+    ],
+    "cpl_arm_clear": [
+      0.15,
+      "Kol-yuva boşluğu (her yan)"
+    ],
+    "cpl_hpin_in": [
+      5.0,
+      "Kafa-kol Ø3 pimi (dikey), kafa arka yüzünden içeri"
+    ],
+    "cpl_hpin_d": [
+      3.0,
+      "Kafa-kol pimi deliği (kafada sıkı, kolda Ø3.2)"
+    ],
+    "cpl_rcv_depth": [
+      3.5,
+      "Karşı kafanın kilit pimi için üstteki kör delik derinliği (huni ve mıknatıs yuvasına ≥ 0.9 mm et)"
+    ],
+    "cpl_boss_d": [
+      8.0,
+      "Platform altı pivot göbeği çapı"
+    ],
+    "cpl_swing": [
+      12.0,
+      "Yatay salınım sınırı ± (derece); kiriş yuvası buna göre"
+    ],
+    "cpl_swing_loco": [
+      13.5,
+      "Lokomotif arka kiriş yuvası salınım sınırı ± (R750'de gereken açı coupling_calc.py'de)"
+    ],
+    "cpl_p_car": [
+      38.0,
+      "Kol pivotu, 250 vagon kiriş yüzünden içeri"
+    ],
+    "cpl_p_tender": [
+      6.0,
+      "Kol pivotu, tender kiriş yüzünden içeri (göz kiriş yuvasının içinde döner; şasi göbeği x=±45)"
+    ],
+    "cpl_p_loco": [
+      48.0,
+      "Kol pivotu, lokomotif arka kiriş yüzünden içeri (pivot gözü platform ek flanşına (x=-88) 1.5 mm)"
+    ],
+    "loco_rbuf_y": [
+      40.0,
+      "Lokomotif arka tamponları Y (kuplör salınımına yer; Faz 3: 30; 95 mm genişlikte kalır)"
+    ],
+    "tender_buf_y": [
+      36.0,
+      "Tender tamponları Y (Faz 3: 30; 90 mm genişlikte kalır)"
+    ],
+    "cpl_vplay": [
+      0.5,
+      "Kol üstü/altı düşey boşluk (kiriş yuvası ve kafa yuvası)"
+    ],
+    "cpl_tie_x0": [
+      -12.0,
+      "Kablo bağı yuvası 1 X (kafa yüzüne göre)"
+    ],
+    "cpl_tie_x1": [
+      -8.4,
+      "Kablo bağı yuvası 2 X (arada 2.2 mm köprü)"
+    ],
+    "cpl_tie_y": [
+      7.5,
+      "Kablo bağı yuvaları |Y| (kanal ortası)"
+    ],
+    "cpl_tie_w": [
+      1.4,
+      "Kablo bağı yuvası X genişliği (2.5 mm bağ yan yatar)"
+    ],
+    "cpl_tie_l": [
+      3.2,
+      "Kablo bağı yuvası Y boyu"
+    ],
+    "cpl_cable_y0": [
+      6.0,
+      "Kafa arkası kablo kanalı iç kenarı |Y| (her pogo cebine bir kanal; cepten dar: modül omuza dayanır)"
+    ],
+    "cpl_cable_y1": [
+      9.0,
+      "Kablo kanalı dış kenarı |Y|"
+    ],
+    "cpl_cable_z0": [
+      -12.0,
+      "Kablo kanalı alt kenarı Z (kafa merkezine göre; altında 3 mm kablo bağı köprüsü)"
+    ],
+    "cpl_cable_z1": [
+      -4.0,
+      "Kablo kanalı üst kenarı Z"
+    ],
+    "cpl_pogo_tol": [
+      0.5,
+      "Pogo pin-ped eşleşmesinde izin verilen yanal hata (VARSAYIM, modül seçilince güncellenecek)"
+    ],
+    "cpl_lug_gap": [
+      0.3,
+      "Kilit kulağı ile karşı kafa üstü arası düşey boşluk"
+    ],
+    "cpl_out_loco": [
+      22.0,
+      "Lokomotif arka kafa yüzü, kiriş dışından (13.5° salınımda kafa arka köşesi kirişe 2 mm)"
+    ],
+    "cpl_z": [
+      "cpl_z_rail - axle_h",
+      "Kuplör ekseni Z (aks merkezine göre)"
+    ],
+    "cpl_mag_front": [
+      "(cpl_cone_d/2 - (cpl_mag_d + cpl_mag_fit)/2 - cpl_mag_wall) * cpl_cone_l / ((cpl_cone_d - cpl_cone_tip)/2)",
+      "Koni tarafı mıknatıs yuvasının ön ucu X (koni içinde, koni eti ≥ cpl_mag_wall)"
+    ],
+    "cpl_L_car": [
+      "cpl_p_car + cpl_out - cpl_d + cpl_hpin_in",
+      "250 vagon kolu: pivot - kafa pimi arası"
+    ],
+    "cpl_L_tender": [
+      "cpl_p_tender + cpl_out - cpl_d + cpl_hpin_in",
+      "Tender kolu (kısa)"
+    ],
+    "cpl_L_loco": [
+      "cpl_p_loco + cpl_out_loco - cpl_d + cpl_hpin_in",
+      "Lokomotif kolu: pivot - kafa pimi arası"
+    ]
+  },
+  "car": {
+    "car_len": [
+      250.0,
+      "Standart vagon şasisi boyu (kiriş yüzleri arası)"
+    ],
+    "car_w": [
+      90.0,
+      "Standart vagon şasisi genişliği"
+    ],
+    "car_beam_bot": [
+      15.0,
+      "250 vagon kiriş alt kenarı Z (R750'de dönen boji tekerleği x ≤ 119; kol yuvası alttan açık çentik)"
+    ],
+    "car_bogie_x": [
+      75.0,
+      "Boji pivotları ± (docs/standart.md: 150 mm aralık)"
+    ],
+    "car_body_l": [
+      232.0,
+      "Gövde kabuğu boyu (detaylar dahil ≤ 236)"
+    ],
+    "car_body_w": [
+      80.0,
+      "Gövde kabuğu genişliği (tutamak/çerçeve dahil ≤ 86)"
+    ],
+    "car_buf_y": [
+      38.0,
+      "250 vagon tampon Y (kuplör salınımına yer)"
+    ],
+    "car_step_x": [
+      102.0,
+      "Basamaklar X ± (platform eteğinde, kapıların altında)"
+    ],
+    "car_bus_x": [
+      106.0,
+      "TrenBus kablo geçişi X ± (platformda, kuplör kolunun üstünde)"
+    ],
+    "car_bus_y": [
+      0.0,
+      "TrenBus kablo geçişi Y"
+    ],
+    "car_bus_d": [
+      8.0,
+      "TrenBus kablo geçişi çapı"
+    ],
+    "sj_wire_d": [
+      5.0,
+      "Pabuç kablosu platform deliği"
+    ],
+    "car_aux_x": [
+      45.4,
+      "Aksesuar vida delikleri X ± (radar kabini ön duvarı / kaidesi; Y = car_hole_y)"
+    ],
+    "rivet_d": [
+      1.6,
+      "Perçin çapı"
+    ],
+    "rivet_h": [
+      1.2,
+      "Perçin çıkıntısı (en az 1.2)"
+    ],
+    "band_ledge": [
+      1.2,
+      "Pencere bandı oluğu dış duvar kalınlığı"
+    ],
+    "sj_lb_xh": [
+      75.0,
+      "Şarj vagonu ışık çubuğu yarığı X ± yarı boy"
+    ],
+    "sj_lb_z": [
+      46.0,
+      "Işık çubuğu yarığı merkezi Z"
+    ],
+    "sj_lb_h": [
+      4.2,
+      "Işık çubuğu yarığı yüksekliği (4.0 ışık borusu + 0.2)"
+    ],
+    "sj_shoe_lift": [
+      1.5,
+      "Şarj pabucu alt yüzü, serbestken ray üstünden yukarı (istasyon pedi bundan yüksek olmalı, VARSAYIM)"
+    ],
+    "sj_travel": [
+      3.0,
+      "Pabuç yay stroku"
+    ],
+    "car_buf_z": [
+      20.0,
+      "250 vagon tampon ekseni Z (kiriş z 15..29 içinde)"
+    ],
+    "cbuf_hole_d": [
+      5.3,
+      "250 vagon kirişinde ayrı tampon pimi deliği (tampon ayrı basılır; şasi 250 mm tablaya sığsın diye)"
+    ],
+    "cbuf_spig_d": [
+      5.0,
+      "Ayrı tampon pimi çapı"
+    ],
+    "step_x_half": [
+      7.0,
+      "Basamak X yarı boy"
+    ],
+    "step_z": [
+      10.0,
+      "Basamak alt yüzü Z"
+    ],
+    "cbuf_stock_d": [
+      8.0,
+      "Ayrı tampon gövdesi çapı (250 vagon, lokomotif arka)"
+    ],
+    "cbuf_head_d": [
+      12.0,
+      "Ayrı tampon başı çapı"
+    ],
+    "cbuf_len": [
+      8.0,
+      "Tampon çıkıntısı (kiriş yüzünden)"
+    ],
+    "sj_x": [
+      25.0,
+      "Şarj pabucu yuvaları X ± (Y = 0; bojiler arasında, raylar arasında). Delikler bütün 250 şasilerde"
+    ],
+    "sj_hole_y": [
+      7.0,
+      "Pabuç yuvası vida delikleri |Y| (platform üstünden M3, yuvada kılavuz)"
+    ],
+    "sj_wire_y": [
+      14.0,
+      "Pabuç kablosu platform deliği Y"
+    ],
+    "car_hole_x": [
+      "car_body_l/2 - wall_t - cab_rib_w/2",
+      "Gövde vidası X ±"
+    ],
+    "car_hole_y": [
+      "car_body_w/2 - wall_t - cab_rib_w/2",
+      "Gövde vidası Y ±"
+    ],
+    "car_aux2_x": [
+      "-gz_x0 - wall_t - cab_rib_w/2",
+      "Gözlem gövdesi balkon ucu vidaları X ± (Y = car_hole_y)"
+    ]
+  },
+  "car_family": {
+    "y5_wall_top": [
+      97.0,
+      "Yolcu 250 yan duvar üstü Z"
+    ],
+    "y5_crown": [
+      107.0,
+      "Yolcu 250 çatı yayı tepesi Z (çatı + havalandırma ray üstü ≤ 135)"
+    ],
+    "y5_win_w": [
+      18.0,
+      "Yolcu pencere genişliği"
+    ],
+    "y5_win_z0": [
+      58.0,
+      "Yolcu pencere alt kenarı"
+    ],
+    "y5_win_z1": [
+      84.0,
+      "Yolcu pencere üst kenarı"
+    ],
+    "y5_win_pitch": [
+      22.5,
+      "Yolcu pencere aralığı (8 pencere)"
+    ],
+    "y5_door_x": [
+      99.0,
+      "Yolcu yan kapı merkezi X ±"
+    ],
+    "y5_door_w": [
+      14.0,
+      "Yolcu yan kapı genişliği"
+    ],
+    "y5_groove_z": [
+      53.0,
+      "Pencere bandı oluğu alt kenarı Z"
+    ],
+    "y5_band_xh": [
+      88.5,
+      "Yolcu pencere bandı X ± yarı boy"
+    ],
+    "band_t": [
+      1.0,
+      "Şeffaf pencere bandı kalınlığı (şeffaf PETG)"
+    ],
+    "band_gap": [
+      0.2,
+      "Band-oluk boşluğu (her yan)"
+    ],
+    "en_wall_top": [
+      98.0,
+      "Enerji 250 yan duvar üstü"
+    ],
+    "en_crown": [
+      104.0,
+      "Enerji 250 çatı tepesi"
+    ],
+    "rd_wall_top": [
+      90.0,
+      "Radar 250 kabin duvar üstü"
+    ],
+    "rd_crown": [
+      98.0,
+      "Radar 250 kabin çatı tepesi"
+    ],
+    "rd_cab_x1": [
+      -40.0,
+      "Radar kabini ön duvarı X"
+    ],
+    "rd_x": [
+      50.0,
+      "Radar tablası ekseni X"
+    ],
+    "rd_tab_d": [
+      60.0,
+      "Dönen tabla çapı"
+    ],
+    "rd_plate_top": [
+      62.0,
+      "Radar kaidesi üst yüzü Z (plaka 2.4; N20 altında asılı)"
+    ],
+    "rd_cd": [
+      33.15,
+      "Tabla dişlisi (m1 z56) - pinyon (m1 z10) eksen mesafesi (+0.15 boşluk); motor 45° köşegende"
+    ],
+    "sj_wall_top": [
+      60.0,
+      "Şarj 250 alçak kasa duvar üstü"
+    ],
+    "sj_crown": [
+      64.0,
+      "Şarj 250 çatı tepesi"
+    ],
+    "ss_wall_top": [
+      96.0,
+      "Ses 250 yan duvar üstü"
+    ],
+    "ss_crown": [
+      105.0,
+      "Ses 250 çatı tepesi (düdük dahil ray üstü ≤ 135)"
+    ],
+    "ss_spk_z": [
+      62.0,
+      "40 mm hoparlör ekseni Z"
+    ],
+    "gz_wall_top": [
+      90.0,
+      "Gözlem 250 yan duvar üstü"
+    ],
+    "gz_crown": [
+      98.0,
+      "Gözlem 250 çatı tepesi"
+    ],
+    "gz_x0": [
+      -94.0,
+      "Gözlem kapalı gövde başı X (arkası -116..-94 balkon)"
+    ],
+    "gz_dome_x": [
+      10.0,
+      "Gözlem kubbesi merkezi X"
+    ],
+    "gz_dome_top": [
+      113.0,
+      "Gözlem kubbesi tepesi Z (ray üstü ≤ 135)"
+    ],
+    "gz_groove_z": [
+      48.0,
+      "Gözlem pencere bandı oluğu alt kenarı Z"
+    ],
+    "gz_band_x0": [
+      -80.0,
+      "Gözlem pencere bandı başı X"
+    ],
+    "gz_band_x1": [
+      102.0,
+      "Gözlem pencere bandı sonu X"
+    ],
+    "band_lip": [
+      3.5,
+      "Pencere bandı alt oluk dudağı yüksekliği"
+    ],
+    "rd_k_x": [
+      36.0,
+      "Radar kaidesi X yarı boy"
+    ],
+    "rd_k_y": [
+      38.0,
+      "Radar kaidesi Y yarı genişlik (vida kaburgaları y = ±34.6 içinde)"
+    ],
+    "rd_z_gear": [
+      56,
+      "Tabla dişlisi diş sayısı (m1, Ø58 dış; tabla diski Ø60 üstünde)"
+    ],
+    "rd_z_pin": [
+      10,
+      "Pinyon diş sayısı (m1)"
+    ],
+    "n20_w": [
+      12.0,
+      "N20 motor/redüktör genişliği (VARSAYIM, ölç)"
+    ],
+    "n20_h": [
+      10.0,
+      "N20 kalınlığı (VARSAYIM)"
+    ],
+    "n20_len": [
+      25.5,
+      "N20 redüktör + motor boyu, mil hariç (VARSAYIM)"
+    ],
+    "n20_shaft": [
+      3.0,
+      "N20 D mil çapı (2.5 düz yüz, VARSAYIM)"
+    ],
+    "n20_screw_s": [
+      9.0,
+      "N20 redüktör ön yüzü M1.6 vida aralığı (VARSAYIM)"
+    ],
+    "ss_card_w": [
+      32.0,
+      "Amfi kartı genişliği (VARSAYIM: MAX98357/PAM8403 sınıfı, 1.6 mm PCB)"
+    ],
+    "ss_spk_d": [
+      40.0,
+      "Hoparlör çapı (40 mm, VARSAYIM)"
+    ],
+    "gz_dome_l": [
+      26.0,
+      "Gözlem kubbesi X yarı boy"
+    ],
+    "gz_dome_w": [
+      24.0,
+      "Gözlem kubbesi Y yarı genişlik"
+    ],
+    "gz_dome_side": [
+      108.0,
+      "Gözlem kubbesi yan duvar üstü Z"
+    ],
+    "gz_win_w": [
+      28.0,
+      "Gözlem geniş pencere genişliği (5 pencere/yan)"
+    ],
+    "gz_win_pitch": [
+      37.0,
+      "Gözlem pencere aralığı"
+    ],
+    "gz_win_xc": [
+      11.0,
+      "Gözlem pencere dizisi merkezi X"
+    ],
+    "gz_win_z0": [
+      52.0,
+      "Gözlem pencere alt kenarı"
+    ],
+    "gz_win_z1": [
+      78.0,
+      "Gözlem pencere üst kenarı"
+    ],
+    "gz_rail_x": [
+      -118.0,
+      "Gözlem balkon korkuluğu dış yüzü X (gövde parçası 234 boy)"
+    ],
+    "gz_rail_h": [
+      28.0,
+      "Balkon korkuluğu yüksekliği (platform üstünden)"
+    ],
+    "rd_bore": [
+      5.4,
+      "Tabla/anten merkez kablo kanalı (Ø5 kablo)"
+    ],
+    "rd_gear_w": [
+      6.0,
+      "Tabla dişlisi genişliği (kaide üstünden 0.5 yukarıda başlar)"
+    ],
+    "rd_disc_t": [
+      2.0,
+      "Tabla diski kalınlığı (dişlinin üstünde, Ø60)"
+    ],
+    "rd_pin_w": [
+      5.0,
+      "Pinyon genişliği"
+    ],
+    "rd_spig_d": [
+      10.0,
+      "Kaide üstündeki sabit göbek (tabla bunun üstünde döner)"
+    ],
+    "rd_tab_bore": [
+      10.4,
+      "Tabla merkez deliği"
+    ],
+    "n20_shaft_l": [
+      8.0,
+      "N20 mil boyu (VARSAYIM; pinyon üstü tabla diskinin altında kalmalı)"
+    ],
+    "rd_pin_bore": [
+      2.9,
+      "Pinyon mil deliği (N20 D mili Ø3, sıkı; D düzlüğü modellenmedi)"
+    ],
+    "rd_dish_pin_z": [
+      101.5,
+      "Çanak anten eğim pimi ekseni Z (tabla merkezinin üstünde)"
+    ],
+    "rd_lamp_x": [
+      -78.0,
+      "Radar kabini çatı uyarı lambası X"
+    ],
+    "sj_hold": [
+      10.0,
+      "Pabuç yuvası X/Y yarı ölçü (20 × 20)"
+    ],
+    "sj_hold_bot": [
+      -4.0,
+      "Pabuç yuvası alt yüzü Z (ray üstünden ≈17)"
+    ],
+    "sj_rod_d": [
+      5.0,
+      "Pabuç mili çapı"
+    ],
+    "sj_bore": [
+      5.4,
+      "Yuva kılavuz deliği (mil)"
+    ],
+    "sj_chamber": [
+      7.4,
+      "Yuva üst odası (M3 pul Ø7 + yay)"
+    ],
+    "sj_step_z": [
+      10.0,
+      "Oda tabanı Z: serbest konumda mil üstü + pul buraya oturur"
+    ],
+    "sj_pad_x": [
+      14.0,
+      "Pabuç temas yüzü X"
+    ],
+    "sj_pad_y": [
+      10.0,
+      "Pabuç temas yüzü Y"
+    ],
+    "sj_pad_t": [
+      2.5,
+      "Pabuç kalınlığı"
+    ],
+    "sj_contact_t": [
+      0.5,
+      "Pabuç altı pirinç/bakır temas sacı cebi derinliği"
+    ],
+    "rd_dish_d": [
+      44.0,
+      "Çanak anten ağız çapı"
+    ],
+    "rd_dish_sag": [
+      8.0,
+      "Çanak derinliği"
+    ],
+    "rd_dish_t": [
+      1.6,
+      "Çanak et kalınlığı"
+    ],
+    "rd_tilt": [
+      -10.0,
+      "Montajda çanak yukarı eğimi (Y ekseni, derece; yalnız görsel)"
+    ],
+    "y5_R": [
+      "((car_body_w/2)*(car_body_w/2) + (y5_crown - y5_wall_top)*(y5_crown - y5_wall_top)) / (2*(y5_crown - y5_wall_top))",
+      "y5 çatı yayı yarıçapı"
+    ],
+    "en_R": [
+      "((car_body_w/2)*(car_body_w/2) + (en_crown - en_wall_top)*(en_crown - en_wall_top)) / (2*(en_crown - en_wall_top))",
+      "en çatı yayı yarıçapı"
+    ],
+    "rd_R": [
+      "((car_body_w/2)*(car_body_w/2) + (rd_crown - rd_wall_top)*(rd_crown - rd_wall_top)) / (2*(rd_crown - rd_wall_top))",
+      "rd çatı yayı yarıçapı"
+    ],
+    "sj_R": [
+      "((car_body_w/2)*(car_body_w/2) + (sj_crown - sj_wall_top)*(sj_crown - sj_wall_top)) / (2*(sj_crown - sj_wall_top))",
+      "sj çatı yayı yarıçapı"
+    ],
+    "ss_R": [
+      "((car_body_w/2)*(car_body_w/2) + (ss_crown - ss_wall_top)*(ss_crown - ss_wall_top)) / (2*(ss_crown - ss_wall_top))",
+      "ss çatı yayı yarıçapı"
+    ],
+    "gz_R": [
+      "((car_body_w/2)*(car_body_w/2) + (gz_crown - gz_wall_top)*(gz_crown - gz_wall_top)) / (2*(gz_crown - gz_wall_top))",
+      "gz çatı yayı yarıçapı"
+    ],
+    "y5_band_z1": [
+      "y5_crown - y5_R + sqrt(y5_R*y5_R - (car_body_w/2 - wall_t)*(car_body_w/2 - wall_t)) - roof_tab_h - 0.5 mm",
+      "Yolcu pencere bandı üst kenarı Z (çatı dillerinin 0.5 altında; band üstten oluğa indirilir, çatı tutar)"
+    ],
+    "gz_band_z1": [
+      "gz_crown - gz_R + sqrt(gz_R*gz_R - (car_body_w/2 - wall_t)*(car_body_w/2 - wall_t)) - roof_tab_h - 0.5 mm",
+      "Gözlem pencere bandı üst kenarı Z"
+    ]
   }
 }

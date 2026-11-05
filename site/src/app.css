@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Libre Franklin Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Libre Franklin Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, "SF Mono", Menlo, monospace;
+  --color-paper: #fbf7e9;
+  --color-surface: #f4eedb;
+  --color-ink: #2b2616;
+  --color-muted: #665c40;
+  --color-ember: #c98a0b;
+  --color-sage: #ece3c6;
+  --color-acid: #e8c75f;
+  --color-coal: #3a3320;
+  --color-coal-ink: #fbf7e9;
+  --color-wheel: #b3262a;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Anatomy plakası dili: ince kontur, köşe etiketleri, mono ölçü yazısı, keskin köşe. */
+:root {
+  --ground: #efe6c8;
+  --plate: #faf5e4;
+  --ink: #2b2616;
+  --mid: #6e6448;
+  --muted: #665c40;
+  --hair: #d6caa3;
+  --hair-strong: #b0a37a;
+  --blue: #9a6a06;
+  --signal: #e9b824;
+  --signal-ink: #2b2616;
+  --red: #b3262a;
+  --mono: "JetBrains Mono Variable", ui-monospace, "SF Mono", Menlo, monospace;
+  --margin: clamp(16px, 3vw, 40px);
+  --header: 48px;
+  --sidebar: 0px;
+  --line: var(--hair);
+  --line-soft: #e4dabb;
+  --panel: var(--plate);
+  --radius: 0px;
+  --step-small: 0.8125rem;
+  --step-body: 0.875rem;
+  --step-lead: 1rem;
+  --step-head: clamp(1.5rem, 1.2rem + 1vw, 2.125rem);
+  --step-display: clamp(2rem, 1.4rem + 1.6vw, 2.75rem);
+  --t-press: 120ms;
+  --t-hover: 160ms;
+  --t-ui: 220ms;
+  color-scheme: light;
+}
+
+html { font-family: var(--font-display); background: var(--ground); color: var(--ink); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+body { font-size: var(--step-body); line-height: 1.55; }
+h1,h2,h3,h4 { font-family: var(--font-display); font-weight: 600; letter-spacing: -.02em; line-height: 1.15; text-wrap: balance; }
+p { text-wrap: pretty; }
+button,a,input,select { -webkit-tap-highlight-color: transparent; }
+button:not(:disabled),summary { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .45; }
+::selection { background: #f3dc8c; color: #2b2616; }
+:focus-visible { outline: 1.5px solid var(--blue); outline-offset: 3px; }
+input,textarea { caret-color: var(--blue); }
+* { scrollbar-width: thin; scrollbar-color: #c4b78f transparent; }
+
+.wrap { padding-inline: var(--margin); }
+.grid-12 { display: grid; grid-template-columns: repeat(12,minmax(0,1fr)); column-gap: 24px; }
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* Mono etiket: Anatomy köşe yazısı */
+.label { font-family: var(--mono); font-size: 10.5px; line-height: 1.3; letter-spacing: .08em; text-transform: uppercase; color: var(--mid); font-weight: 450; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; letter-spacing: 0; }
+
+/* Çizim plakası: 1px kontur ve dört köşe etiketi */
+.plate { position: relative; background: var(--plate); box-shadow: 0 0 0 1px var(--hair); }
+.plate > .corner { position: absolute; z-index: 1; font-family: var(--mono); font-size: 10.5px; line-height: 1; letter-spacing: .08em; text-transform: uppercase; color: var(--mid); white-space: nowrap; padding: 9px 11px; pointer-events: none; }
+.plate > .corner[data-at="tl"] { top: 0; left: 0; }
+.plate > .corner[data-at="tr"] { top: 0; right: 0; }
+.plate > .corner[data-at="bl"] { bottom: 0; left: 0; }
+.plate > .corner[data-at="br"] { bottom: 0; right: 0; }
+.plate > .corner :is(a, button, input, select) { pointer-events: auto; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 34px; padding: 0 14px; background: var(--signal); border: 1px solid var(--ink); color: var(--signal-ink); font-family: var(--font-display); font-size: 13px; font-weight: 550; line-height: 1; text-decoration: none; transition: background-color var(--t-hover), color var(--t-hover), transform var(--t-press); }
+.btn:hover { background: #f2c94a; }
+.btn:active { transform: translateY(1px); }
+.btn[data-tone="ink"] { background: var(--ink); color: #faf5e4; }
+.btn[data-tone="ink"]:hover { background: #4a4230; }
+.btn[data-tone="paper"] { background: transparent; color: var(--ink); border-color: var(--hair-strong); }
+.btn[data-tone="paper"]:hover { background: #fff; border-color: var(--ink); color: var(--ink); }
+
+/* Segment seçici: Anatomy sekmesi */
+.seg { display: inline-flex; box-shadow: 0 0 0 1px var(--hair); background: var(--plate); }
+.seg button { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--mid); padding: 0 12px; min-height: 30px; border-right: 1px solid var(--hair); transition: color var(--t-hover), background-color var(--t-hover); }
+.seg button:last-child { border-right: 0; }
+.seg button:hover:not(:disabled):not(.active):not([aria-pressed="true"]) { color: var(--ink); background: #fff; }
+.seg button.active,.seg button[aria-pressed="true"] { background: var(--ink); color: var(--signal); }
+
+.link { text-decoration: underline; text-underline-offset: .22em; text-decoration-color: var(--hair-strong); }
+.link:hover { color: var(--blue); text-decoration-color: currentColor; }
+.arrow-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 550; color: var(--ink); }
+.arrow-link::after { content: "→" / ""; font-family: var(--mono); transition: transform var(--t-hover) var(--ease-out); }
+.arrow-link:hover { color: var(--blue); }
+.arrow-link:hover::after { transform: translateX(3px); }
+
+.pill { display: inline-flex; align-items: center; gap: 6px; padding: 3px 7px; box-shadow: 0 0 0 1px var(--hair); font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--mid); }
+.pill.proto { color: #7a5420; box-shadow: 0 0 0 1px #dcc59b; background: #fbf5e8; }
+
+.section-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 18px; }
+.section-head h2 { font-size: 20px; }
+.page-title { font-size: var(--step-head); margin: 6px 0 10px; }
+.page-lead { color: var(--muted); max-width: 62ch; font-size: 14px; }
+.icon { width: 16px; height: 16px; flex: none; }
+.rule { height: 1px; background: var(--hair); border: 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-rise] { animation: arrive 420ms var(--ease-out) both; animation-delay: calc(var(--i,0)*50ms); }
+  @keyframes arrive { from { opacity: .3; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
+@media (max-width: 680px) { .grid-12 { column-gap: 14px; } .plate > .corner { font-size: 9.5px; padding: 8px 9px; } }

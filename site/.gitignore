@@ -1,0 +1,8 @@
+node_modules/
+dist/
+public/models/
+public/figures/
+src/lib/generated/
+test-results/
+playwright-report/
+.taste-skill/

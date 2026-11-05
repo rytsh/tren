@@ -21,7 +21,9 @@ CLI = os.environ.get(
 )
 
 RAW = json.loads((ROOT / "params.json").read_text())
-UNITS = {"tread_taper": "", "curve_angle": "deg", "z_wheel": "", "pressure_ang": "deg"}
+UNITS = {"tread_taper": "", "curve_angle": "deg", "z_wheel": "", "pressure_ang": "deg",
+         "cpl_swing": "deg", "cpl_swing_loco": "deg", "rd_z_gear": "", "rd_z_pin": "",
+         "rd_tilt": "deg"}
 P = {}          # name -> (value, comment)
 for group, items in RAW.items():
     if group.startswith("_"):
@@ -31,7 +33,7 @@ for group, items in RAW.items():
 def _eval_derived():
     """Türetilmiş (ifade) parametrelerin sayısal değerini Python tarafında da hesapla."""
     vals = {k: v for k, (v, _) in P.items() if not isinstance(v, str)}
-    env = dict(vals, pi=math.pi, mm=1.0)
+    env = dict(vals, pi=math.pi, mm=1.0, sqrt=math.sqrt)
     for k, (v, _) in P.items():
         if isinstance(v, str):
             vals[k] = env[k] = eval(v.replace(" mm", ""), {"__builtins__": {}}, env)
