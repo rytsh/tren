@@ -1,0 +1,53 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 2756.669564967473,
+      "bbox": {
+        "max": [
+          90.99989165196176,
+          4.99999609069046,
+          5.5000000000000036
+        ],
+        "min": [
+          -4.999891651961765,
+          -4.999996090690461,
+          0.0
+        ]
+      },
+      "center_of_mass": [
+        42.99999999999996,
+        1.6452252038047645e-14,
+        2.75000000018267
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 16,
+      "face_types": {
+        "cylinder": 4,
+        "plane": 4
+      },
+      "faces": 8,
+      "kernel": {
+        "edges": 30,
+        "faces": 12,
+        "shells": 1,
+        "vertices": 20
+      },
+      "mass_g": 5.352115624818715,
+      "material": "Default",
+      "name": "KDrawbarT",
+      "vertices": 12,
+      "volume_mm3": 4148.92684094474
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 2756.669564967473,
+    "edges": 16,
+    "faces": 8,
+    "mass_g": 5.352115624818715,
+    "open_bodies_skipped": 0,
+    "vertices": 12,
+    "volume_mm3": 4148.92684094474
+  }
+}

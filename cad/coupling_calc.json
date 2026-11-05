@@ -84,6 +84,44 @@
       "clear_above_buffer_top_mm": 38.4,
       "clear_above_fork_top_mm": 34.4,
       "clear_above_flange_top_mm": 39.9
+    },
+    "tender-car250": {
+      "straight": {
+        "pin_to_pin": 86.0,
+        "beam_gap_center": 40.0,
+        "buffer_head_gap_inner": 25.3,
+        "buffer_head_gap_outer": 25.3,
+        "bar_angle_to_rear_car_deg": 0.0,
+        "bar_angle_to_front_car_deg": 0.0
+      },
+      "R750": {
+        "pin_to_pin": 86.0,
+        "beam_gap_center": 41.34,
+        "buffer_head_gap_inner": 14.04,
+        "buffer_head_gap_outer": 38.88,
+        "bar_angle_to_rear_car_deg": 11.42,
+        "bar_angle_to_front_car_deg": 6.61
+      },
+      "notch_limit_deg": 12.0
+    },
+    "car250-car250": {
+      "straight": {
+        "pin_to_pin": 116.0,
+        "beam_gap_center": 40.0,
+        "buffer_head_gap_inner": 24.0,
+        "buffer_head_gap_outer": 24.0,
+        "bar_angle_to_rear_car_deg": 0.0,
+        "bar_angle_to_front_car_deg": 0.0
+      },
+      "R750": {
+        "pin_to_pin": 116.0,
+        "beam_gap_center": 41.4,
+        "buffer_head_gap_inner": 11.17,
+        "buffer_head_gap_outer": 40.23,
+        "bar_angle_to_rear_car_deg": 11.02,
+        "bar_angle_to_front_car_deg": 11.02
+      },
+      "notch_limit_deg": 12.0
     }
   }
 }

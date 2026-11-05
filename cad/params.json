@@ -1,5 +1,5 @@
 {
-  "_note": "Ortak tasarım parametreleri (mm). Tüm parçalar buradan türetilir; SolidCraft tasarımlarına kullanıcı parametresi olarak yazılır. Değerler VARSAYIMDIR, baskı testleriyle doğrulanacak.",
+  "_note": "Ortak tasarım parametreleri (mm). Tüm parçalar buradan türetilir; SolidCraft tasarımlarına kullanıcı parametresi olarak yazılır. Değerler VARSAYIMDIR, baskı testleriyle doğrulanacak. Faz 4b: T45 otomatik kuplör kaldırıldı; araçlar çeki koluyla bağlanır, TrenBus (BAT+, CAN-H, CAN-L, GND) 4 pinli ara kabloyla geçer.",
   "track": {
     "track_gauge": [
       45.0,
@@ -1086,260 +1086,6 @@
       "Lokomotif arka konnektör yüzü X (MODELLENMEDİ; hesap için kabin arka yüzü varsayıldı)"
     ]
   },
-  "coupler": {
-    "cpl_z_rail": [
-      39.0,
-      "T45 kuplör ekseni, ray üstünden (BÜTÜN araçlarda aynı)"
-    ],
-    "cpl_out": [
-      20.0,
-      "Kafa yüzü, kiriş dış yüzünden dışarı (iki 250 vagon kuplör yüzleri arası 250 + 2·20 = 290)"
-    ],
-    "cpl_w": [
-      38.0,
-      "Kafa genişliği (Y)"
-    ],
-    "cpl_h": [
-      30.0,
-      "Kafa yüksekliği (Z)"
-    ],
-    "cpl_d": [
-      14.0,
-      "Kafa derinliği (X, yüzden arkaya)"
-    ],
-    "cpl_ch": [
-      3.0,
-      "Kafa arka dikey köşe pahı (salınımda kiriş payı)"
-    ],
-    "cpl_cone_d": [
-      13.0,
-      "Koni taban çapı (yüzde); mıknatıs koninin içine kadar girer"
-    ],
-    "cpl_cone_tip": [
-      7.0,
-      "Koni uç çapı"
-    ],
-    "cpl_cone_l": [
-      5.0,
-      "Koni boyu (yüzden dışarı)"
-    ],
-    "cpl_cone_y": [
-      11.0,
-      "Koni (yüzden bakınca sağ, +Y yerel) / huni (sol) ekseninin merkezden yanal uzaklığı"
-    ],
-    "cpl_cone_z": [
-      6.0,
-      "Koni/huni ekseni Z (kafa merkezine göre, üst yarı)"
-    ],
-    "cpl_clear": [
-      0.3,
-      "Koni-huni radyal boşluğu ve huni derinlik payı"
-    ],
-    "cpl_mag_d": [
-      10.0,
-      "Neodim mıknatıs çapı (Ø10×3, VARSAYIM)"
-    ],
-    "cpl_mag_t": [
-      3.0,
-      "Mıknatıs kalınlığı"
-    ],
-    "cpl_mag_fit": [
-      0.1,
-      "Mıknatıs yuvası çap payı (sıkı geçme; baskı sonrası ayarlanacak, VARSAYIM)"
-    ],
-    "cpl_mag_wall": [
-      0.8,
-      "Huni dibi ile mıknatıs arası et"
-    ],
-    "cpl_lug_t": [
-      4.0,
-      "Kilit kulağı kalınlığı (Z, kafa üstünden yukarı)"
-    ],
-    "cpl_lug_l": [
-      7.0,
-      "Kilit kulağı yüzden çıkıntısı"
-    ],
-    "cpl_lug_w": [
-      6.0,
-      "Kilit kulağı genişliği (Y)"
-    ],
-    "cpl_lug_y": [
-      16.0,
-      "Kilit kulağı merkezi yanal uzaklık (koni tarafı); birleşince karşı kafanın huni tarafı üstüne biner"
-    ],
-    "cpl_pin_x": [
-      3.5,
-      "Kilit pimi deliği, yüzden uzaklık (kulakta yüzün önünde, cepte yüzün arkasında)"
-    ],
-    "cpl_pin_d": [
-      3.2,
-      "Ø3 kilit pimi deliği (geçme boşluklu)"
-    ],
-    "cpl_pogo_w": [
-      4.5,
-      "4-pin mıknatıslı pogo modül genişliği (VARSAYIM, ticari modül seçilmedi)"
-    ],
-    "cpl_pogo_h": [
-      12.0,
-      "Pogo modül yüksekliği (4 pin dikey, 2.54 aralık; VARSAYIM)"
-    ],
-    "cpl_pogo_d": [
-      6.0,
-      "Pogo modül derinliği (VARSAYIM)"
-    ],
-    "cpl_pogo_fit": [
-      0.2,
-      "Pogo cebi toplam payı"
-    ],
-    "cpl_pogo_y": [
-      7.5,
-      "Pogo cebi merkezi yanal uzaklık (sağ erkek, sol dişi)"
-    ],
-    "cpl_pogo_z": [
-      -8.0,
-      "Pogo cebi merkezi Z (kafa merkezine göre, alt yarı)"
-    ],
-    "cpl_pogo_pitch": [
-      2.54,
-      "Pogo pin aralığı (yalnız bilgi)"
-    ],
-    "cpl_arm_w": [
-      7.0,
-      "Kuplör kolu genişliği"
-    ],
-    "cpl_arm_h": [
-      6.0,
-      "Kuplör kolu yüksekliği"
-    ],
-    "cpl_eye_d": [
-      9.0,
-      "Kol pivot gözü çapı"
-    ],
-    "cpl_sock_d": [
-      10.0,
-      "Kafa arkasındaki kol yuvası derinliği"
-    ],
-    "cpl_arm_clear": [
-      0.15,
-      "Kol-yuva boşluğu (her yan)"
-    ],
-    "cpl_hpin_in": [
-      5.0,
-      "Kafa-kol Ø3 pimi (dikey), kafa arka yüzünden içeri"
-    ],
-    "cpl_hpin_d": [
-      3.0,
-      "Kafa-kol pimi deliği (kafada sıkı, kolda Ø3.2)"
-    ],
-    "cpl_rcv_depth": [
-      3.5,
-      "Karşı kafanın kilit pimi için üstteki kör delik derinliği (huni ve mıknatıs yuvasına ≥ 0.9 mm et)"
-    ],
-    "cpl_boss_d": [
-      8.0,
-      "Platform altı pivot göbeği çapı"
-    ],
-    "cpl_swing": [
-      12.0,
-      "Yatay salınım sınırı ± (derece); kiriş yuvası buna göre"
-    ],
-    "cpl_swing_loco": [
-      13.5,
-      "Lokomotif arka kiriş yuvası salınım sınırı ± (R750'de gereken açı coupling_calc.py'de)"
-    ],
-    "cpl_p_car": [
-      38.0,
-      "Kol pivotu, 250 vagon kiriş yüzünden içeri"
-    ],
-    "cpl_p_tender": [
-      6.0,
-      "Kol pivotu, tender kiriş yüzünden içeri (göz kiriş yuvasının içinde döner; şasi göbeği x=±45)"
-    ],
-    "cpl_p_loco": [
-      48.0,
-      "Kol pivotu, lokomotif arka kiriş yüzünden içeri (pivot gözü platform ek flanşına (x=-88) 1.5 mm)"
-    ],
-    "loco_rbuf_y": [
-      40.0,
-      "Lokomotif arka tamponları Y (kuplör salınımına yer; Faz 3: 30; 95 mm genişlikte kalır)"
-    ],
-    "tender_buf_y": [
-      36.0,
-      "Tender tamponları Y (Faz 3: 30; 90 mm genişlikte kalır)"
-    ],
-    "cpl_vplay": [
-      0.5,
-      "Kol üstü/altı düşey boşluk (kiriş yuvası ve kafa yuvası)"
-    ],
-    "cpl_tie_x0": [
-      -12.0,
-      "Kablo bağı yuvası 1 X (kafa yüzüne göre)"
-    ],
-    "cpl_tie_x1": [
-      -8.4,
-      "Kablo bağı yuvası 2 X (arada 2.2 mm köprü)"
-    ],
-    "cpl_tie_y": [
-      7.5,
-      "Kablo bağı yuvaları |Y| (kanal ortası)"
-    ],
-    "cpl_tie_w": [
-      1.4,
-      "Kablo bağı yuvası X genişliği (2.5 mm bağ yan yatar)"
-    ],
-    "cpl_tie_l": [
-      3.2,
-      "Kablo bağı yuvası Y boyu"
-    ],
-    "cpl_cable_y0": [
-      6.0,
-      "Kafa arkası kablo kanalı iç kenarı |Y| (her pogo cebine bir kanal; cepten dar: modül omuza dayanır)"
-    ],
-    "cpl_cable_y1": [
-      9.0,
-      "Kablo kanalı dış kenarı |Y|"
-    ],
-    "cpl_cable_z0": [
-      -12.0,
-      "Kablo kanalı alt kenarı Z (kafa merkezine göre; altında 3 mm kablo bağı köprüsü)"
-    ],
-    "cpl_cable_z1": [
-      -4.0,
-      "Kablo kanalı üst kenarı Z"
-    ],
-    "cpl_pogo_tol": [
-      0.5,
-      "Pogo pin-ped eşleşmesinde izin verilen yanal hata (VARSAYIM, modül seçilince güncellenecek)"
-    ],
-    "cpl_lug_gap": [
-      0.3,
-      "Kilit kulağı ile karşı kafa üstü arası düşey boşluk"
-    ],
-    "cpl_out_loco": [
-      22.0,
-      "Lokomotif arka kafa yüzü, kiriş dışından (13.5° salınımda kafa arka köşesi kirişe 2 mm)"
-    ],
-    "cpl_z": [
-      "cpl_z_rail - axle_h",
-      "Kuplör ekseni Z (aks merkezine göre)"
-    ],
-    "cpl_mag_front": [
-      "(cpl_cone_d/2 - (cpl_mag_d + cpl_mag_fit)/2 - cpl_mag_wall) * cpl_cone_l / ((cpl_cone_d - cpl_cone_tip)/2)",
-      "Koni tarafı mıknatıs yuvasının ön ucu X (koni içinde, koni eti ≥ cpl_mag_wall)"
-    ],
-    "cpl_L_car": [
-      "cpl_p_car + cpl_out - cpl_d + cpl_hpin_in",
-      "250 vagon kolu: pivot - kafa pimi arası"
-    ],
-    "cpl_L_tender": [
-      "cpl_p_tender + cpl_out - cpl_d + cpl_hpin_in",
-      "Tender kolu (kısa)"
-    ],
-    "cpl_L_loco": [
-      "cpl_p_loco + cpl_out_loco - cpl_d + cpl_hpin_in",
-      "Lokomotif kolu: pivot - kafa pimi arası"
-    ]
-  },
   "car": {
     "car_len": [
       250.0,
@@ -1367,7 +1113,7 @@
     ],
     "car_buf_y": [
       38.0,
-      "250 vagon tampon Y (kuplör salınımına yer)"
+      "250 vagon tampon Y"
     ],
     "car_step_x": [
       102.0,
@@ -1375,7 +1121,7 @@
     ],
     "car_bus_x": [
       106.0,
-      "TrenBus kablo geçişi X ± (platformda, kuplör kolunun üstünde)"
+      "TrenBus kablo geçişi X ± (platformda, gövde alın duvarı yuvasının arkasında)"
     ],
     "car_bus_y": [
       0.0,
@@ -1990,6 +1736,68 @@
     "sj_hub_z0": [
       "fp_z - sv_drop - sv_tab_t - sv_tab_z + sv_shaft_top",
       "Göbek alt ucu Z = servo mil/kol üstü (türetilmiş, ≈32.6)"
+    ]
+  },
+  "coupler": {
+    "dbc_gap": [
+      40.0,
+      "250 vagon kiriş dış yüzleri arası (R750'de tampon başı iç payı ≈ 11 mm, coupling_calc)"
+    ],
+    "dbc_pivot_in": [
+      38.0,
+      "250 vagon çeki kolu pivotu, kiriş dış yüzünden içeri (kol pivotta döner, vagonu çevirmez)"
+    ],
+    "dbc_w": [
+      8.0,
+      "250 vagon çeki kolu genişliği"
+    ],
+    "dbc_t": [
+      5.5,
+      "Çeki kolu kalınlığı"
+    ],
+    "dbc_eye_d": [
+      10.0,
+      "Çeki kolu uç gözü çapı"
+    ],
+    "dbc_z": [
+      16.0,
+      "Çeki kolu alt yüzü Z, aks ekseninden (boji yan levhası üstü 12, tekerlekler |y| ≥ 20'de)"
+    ],
+    "dbc_boss_d": [
+      9.0,
+      "Platform altı çeki kolu pivot göbeği çapı"
+    ],
+    "dbc_swing": [
+      12.0,
+      "Kiriş altı kol çentiği salınım sınırı ± (derece); R750'de gereken ≈ 11.4"
+    ],
+    "bus_conn_w": [
+      12.4,
+      "250 vagon TrenBus konnektör yuvası genişliği (4-pin JST-XH sınıfı 4P, VARSAYIM)"
+    ],
+    "bus_conn_h": [
+      6.2,
+      "TrenBus konnektör yuvası yüksekliği (VARSAYIM)"
+    ],
+    "bus_conn_d": [
+      8.0,
+      "TrenBus konnektör yuvası derinliği (VARSAYIM)"
+    ],
+    "bus_conn_z": [
+      42.0,
+      "TrenBus konnektör ekseni Z, aks ekseninden (gövde alın duvarında; yuva tutucusu platform üstünden ≥ 2 mm ve 45° destekli)"
+    ],
+    "bus_jumper_len": [
+      80.0,
+      "250 vagonlar arası ara kablo boyu (konnektör yüzleri arası, servis döngüsü dahil, VARSAYIM)"
+    ],
+    "dbc_L_car": [
+      "dbc_gap + 2*dbc_pivot_in",
+      "250-250 çeki kolu pim aralığı (türetilmiş, 116)"
+    ],
+    "dbc_L_tender": [
+      "dbc_gap + dbc_pivot_in + fork_pin_in",
+      "Tender-250 çeki kolu pim aralığı (tender çatal pimi → vagon pivotu, türetilmiş, 86)"
     ]
   }
 }

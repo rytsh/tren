@@ -2235,528 +2235,6 @@
   {
    "command": "parameters.add",
    "params": {
-    "name": "cpl_z_rail",
-    "expression": "39.0 mm",
-    "unit": "mm",
-    "comment": "T45 kuplör ekseni, ray üstünden (BÜTÜN araçlarda aynı)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_out",
-    "expression": "20.0 mm",
-    "unit": "mm",
-    "comment": "Kafa yüzü, kiriş dış yüzünden dışarı (iki 250 vagon kuplör yüzleri arası 250 + 2·20 = 290)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_w",
-    "expression": "38.0 mm",
-    "unit": "mm",
-    "comment": "Kafa genişliği (Y)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_h",
-    "expression": "30.0 mm",
-    "unit": "mm",
-    "comment": "Kafa yüksekliği (Z)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_d",
-    "expression": "14.0 mm",
-    "unit": "mm",
-    "comment": "Kafa derinliği (X, yüzden arkaya)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_ch",
-    "expression": "3.0 mm",
-    "unit": "mm",
-    "comment": "Kafa arka dikey köşe pahı (salınımda kiriş payı)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_cone_d",
-    "expression": "13.0 mm",
-    "unit": "mm",
-    "comment": "Koni taban çapı (yüzde); mıknatıs koninin içine kadar girer"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_cone_tip",
-    "expression": "7.0 mm",
-    "unit": "mm",
-    "comment": "Koni uç çapı"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_cone_l",
-    "expression": "5.0 mm",
-    "unit": "mm",
-    "comment": "Koni boyu (yüzden dışarı)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_cone_y",
-    "expression": "11.0 mm",
-    "unit": "mm",
-    "comment": "Koni (yüzden bakınca sağ, +Y yerel) / huni (sol) ekseninin merkezden yanal uzaklığı"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_cone_z",
-    "expression": "6.0 mm",
-    "unit": "mm",
-    "comment": "Koni/huni ekseni Z (kafa merkezine göre, üst yarı)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_clear",
-    "expression": "0.3 mm",
-    "unit": "mm",
-    "comment": "Koni-huni radyal boşluğu ve huni derinlik payı"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_mag_d",
-    "expression": "10.0 mm",
-    "unit": "mm",
-    "comment": "Neodim mıknatıs çapı (Ø10×3, VARSAYIM)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_mag_t",
-    "expression": "3.0 mm",
-    "unit": "mm",
-    "comment": "Mıknatıs kalınlığı"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_mag_fit",
-    "expression": "0.1 mm",
-    "unit": "mm",
-    "comment": "Mıknatıs yuvası çap payı (sıkı geçme; baskı sonrası ayarlanacak, VARSAYIM)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_mag_wall",
-    "expression": "0.8 mm",
-    "unit": "mm",
-    "comment": "Huni dibi ile mıknatıs arası et"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_lug_t",
-    "expression": "4.0 mm",
-    "unit": "mm",
-    "comment": "Kilit kulağı kalınlığı (Z, kafa üstünden yukarı)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_lug_l",
-    "expression": "7.0 mm",
-    "unit": "mm",
-    "comment": "Kilit kulağı yüzden çıkıntısı"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_lug_w",
-    "expression": "6.0 mm",
-    "unit": "mm",
-    "comment": "Kilit kulağı genişliği (Y)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_lug_y",
-    "expression": "16.0 mm",
-    "unit": "mm",
-    "comment": "Kilit kulağı merkezi yanal uzaklık (koni tarafı); birleşince karşı kafanın huni tarafı üstüne biner"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_pin_x",
-    "expression": "3.5 mm",
-    "unit": "mm",
-    "comment": "Kilit pimi deliği, yüzden uzaklık (kulakta yüzün önünde, cepte yüzün arkasında)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_pin_d",
-    "expression": "3.2 mm",
-    "unit": "mm",
-    "comment": "Ø3 kilit pimi deliği (geçme boşluklu)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_pogo_w",
-    "expression": "4.5 mm",
-    "unit": "mm",
-    "comment": "4-pin mıknatıslı pogo modül genişliği (VARSAYIM, ticari modül seçilmedi)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_pogo_h",
-    "expression": "12.0 mm",
-    "unit": "mm",
-    "comment": "Pogo modül yüksekliği (4 pin dikey, 2.54 aralık; VARSAYIM)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_pogo_d",
-    "expression": "6.0 mm",
-    "unit": "mm",
-    "comment": "Pogo modül derinliği (VARSAYIM)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_pogo_fit",
-    "expression": "0.2 mm",
-    "unit": "mm",
-    "comment": "Pogo cebi toplam payı"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_pogo_y",
-    "expression": "7.5 mm",
-    "unit": "mm",
-    "comment": "Pogo cebi merkezi yanal uzaklık (sağ erkek, sol dişi)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_pogo_z",
-    "expression": "-8.0 mm",
-    "unit": "mm",
-    "comment": "Pogo cebi merkezi Z (kafa merkezine göre, alt yarı)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_pogo_pitch",
-    "expression": "2.54 mm",
-    "unit": "mm",
-    "comment": "Pogo pin aralığı (yalnız bilgi)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_arm_w",
-    "expression": "7.0 mm",
-    "unit": "mm",
-    "comment": "Kuplör kolu genişliği"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_arm_h",
-    "expression": "6.0 mm",
-    "unit": "mm",
-    "comment": "Kuplör kolu yüksekliği"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_eye_d",
-    "expression": "9.0 mm",
-    "unit": "mm",
-    "comment": "Kol pivot gözü çapı"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_sock_d",
-    "expression": "10.0 mm",
-    "unit": "mm",
-    "comment": "Kafa arkasındaki kol yuvası derinliği"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_arm_clear",
-    "expression": "0.15 mm",
-    "unit": "mm",
-    "comment": "Kol-yuva boşluğu (her yan)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_hpin_in",
-    "expression": "5.0 mm",
-    "unit": "mm",
-    "comment": "Kafa-kol Ø3 pimi (dikey), kafa arka yüzünden içeri"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_hpin_d",
-    "expression": "3.0 mm",
-    "unit": "mm",
-    "comment": "Kafa-kol pimi deliği (kafada sıkı, kolda Ø3.2)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_rcv_depth",
-    "expression": "3.5 mm",
-    "unit": "mm",
-    "comment": "Karşı kafanın kilit pimi için üstteki kör delik derinliği (huni ve mıknatıs yuvasına ≥ 0.9 mm et)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_boss_d",
-    "expression": "8.0 mm",
-    "unit": "mm",
-    "comment": "Platform altı pivot göbeği çapı"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_swing",
-    "expression": "12.0 deg",
-    "unit": "deg",
-    "comment": "Yatay salınım sınırı ± (derece); kiriş yuvası buna göre"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_swing_loco",
-    "expression": "13.5 deg",
-    "unit": "deg",
-    "comment": "Lokomotif arka kiriş yuvası salınım sınırı ± (R750'de gereken açı coupling_calc.py'de)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_p_car",
-    "expression": "38.0 mm",
-    "unit": "mm",
-    "comment": "Kol pivotu, 250 vagon kiriş yüzünden içeri"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_p_tender",
-    "expression": "6.0 mm",
-    "unit": "mm",
-    "comment": "Kol pivotu, tender kiriş yüzünden içeri (göz kiriş yuvasının içinde döner; şasi göbeği x=±45)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_p_loco",
-    "expression": "48.0 mm",
-    "unit": "mm",
-    "comment": "Kol pivotu, lokomotif arka kiriş yüzünden içeri (pivot gözü platform ek flanşına (x=-88) 1.5 mm)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "loco_rbuf_y",
-    "expression": "40.0 mm",
-    "unit": "mm",
-    "comment": "Lokomotif arka tamponları Y (kuplör salınımına yer; Faz 3: 30; 95 mm genişlikte kalır)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "tender_buf_y",
-    "expression": "36.0 mm",
-    "unit": "mm",
-    "comment": "Tender tamponları Y (Faz 3: 30; 90 mm genişlikte kalır)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_vplay",
-    "expression": "0.5 mm",
-    "unit": "mm",
-    "comment": "Kol üstü/altı düşey boşluk (kiriş yuvası ve kafa yuvası)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_tie_x0",
-    "expression": "-12.0 mm",
-    "unit": "mm",
-    "comment": "Kablo bağı yuvası 1 X (kafa yüzüne göre)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_tie_x1",
-    "expression": "-8.4 mm",
-    "unit": "mm",
-    "comment": "Kablo bağı yuvası 2 X (arada 2.2 mm köprü)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_tie_y",
-    "expression": "7.5 mm",
-    "unit": "mm",
-    "comment": "Kablo bağı yuvaları |Y| (kanal ortası)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_tie_w",
-    "expression": "1.4 mm",
-    "unit": "mm",
-    "comment": "Kablo bağı yuvası X genişliği (2.5 mm bağ yan yatar)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_tie_l",
-    "expression": "3.2 mm",
-    "unit": "mm",
-    "comment": "Kablo bağı yuvası Y boyu"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_cable_y0",
-    "expression": "6.0 mm",
-    "unit": "mm",
-    "comment": "Kafa arkası kablo kanalı iç kenarı |Y| (her pogo cebine bir kanal; cepten dar: modül omuza dayanır)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_cable_y1",
-    "expression": "9.0 mm",
-    "unit": "mm",
-    "comment": "Kablo kanalı dış kenarı |Y|"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_cable_z0",
-    "expression": "-12.0 mm",
-    "unit": "mm",
-    "comment": "Kablo kanalı alt kenarı Z (kafa merkezine göre; altında 3 mm kablo bağı köprüsü)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_cable_z1",
-    "expression": "-4.0 mm",
-    "unit": "mm",
-    "comment": "Kablo kanalı üst kenarı Z"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_pogo_tol",
-    "expression": "0.5 mm",
-    "unit": "mm",
-    "comment": "Pogo pin-ped eşleşmesinde izin verilen yanal hata (VARSAYIM, modül seçilince güncellenecek)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_lug_gap",
-    "expression": "0.3 mm",
-    "unit": "mm",
-    "comment": "Kilit kulağı ile karşı kafa üstü arası düşey boşluk"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_out_loco",
-    "expression": "22.0 mm",
-    "unit": "mm",
-    "comment": "Lokomotif arka kafa yüzü, kiriş dışından (13.5° salınımda kafa arka köşesi kirişe 2 mm)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
     "name": "car_len",
     "expression": "250.0 mm",
     "unit": "mm",
@@ -4080,6 +3558,123 @@
   {
    "command": "parameters.add",
    "params": {
+    "name": "dbc_gap",
+    "expression": "40.0 mm",
+    "unit": "mm",
+    "comment": "250 vagon kiriş dış yüzleri arası (R750'de tampon başı iç payı ≈ 11 mm, coupling_calc)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_pivot_in",
+    "expression": "38.0 mm",
+    "unit": "mm",
+    "comment": "250 vagon çeki kolu pivotu, kiriş dış yüzünden içeri (kol pivotta döner, vagonu çevirmez)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_w",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "250 vagon çeki kolu genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_t",
+    "expression": "5.5 mm",
+    "unit": "mm",
+    "comment": "Çeki kolu kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_eye_d",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Çeki kolu uç gözü çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_z",
+    "expression": "16.0 mm",
+    "unit": "mm",
+    "comment": "Çeki kolu alt yüzü Z, aks ekseninden (boji yan levhası üstü 12, tekerlekler |y| ≥ 20'de)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_boss_d",
+    "expression": "9.0 mm",
+    "unit": "mm",
+    "comment": "Platform altı çeki kolu pivot göbeği çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_swing",
+    "expression": "12.0 deg",
+    "unit": "deg",
+    "comment": "Kiriş altı kol çentiği salınım sınırı ± (derece); R750'de gereken ≈ 11.4"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bus_conn_w",
+    "expression": "12.4 mm",
+    "unit": "mm",
+    "comment": "250 vagon TrenBus konnektör yuvası genişliği (4-pin JST-XH sınıfı 4P, VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bus_conn_h",
+    "expression": "6.2 mm",
+    "unit": "mm",
+    "comment": "TrenBus konnektör yuvası yüksekliği (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bus_conn_d",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "TrenBus konnektör yuvası derinliği (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bus_conn_z",
+    "expression": "42.0 mm",
+    "unit": "mm",
+    "comment": "TrenBus konnektör ekseni Z, aks ekseninden (gövde alın duvarında; yuva tutucusu platform üstünden ≥ 2 mm ve 45° destekli)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bus_jumper_len",
+    "expression": "80.0 mm",
+    "unit": "mm",
+    "comment": "250 vagonlar arası ara kablo boyu (konnektör yüzleri arası, servis döngüsü dahil, VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
     "name": "motor_face_x",
     "expression": "wheelbase/2 - worm_len/2 - worm_hub_len - bulk_t - 0.5 mm",
     "unit": "mm",
@@ -4251,51 +3846,6 @@
   {
    "command": "parameters.add",
    "params": {
-    "name": "cpl_z",
-    "expression": "cpl_z_rail - axle_h",
-    "unit": "mm",
-    "comment": "Kuplör ekseni Z (aks merkezine göre)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_mag_front",
-    "expression": "(cpl_cone_d/2 - (cpl_mag_d + cpl_mag_fit)/2 - cpl_mag_wall) * cpl_cone_l / ((cpl_cone_d - cpl_cone_tip)/2)",
-    "unit": "mm",
-    "comment": "Koni tarafı mıknatıs yuvasının ön ucu X (koni içinde, koni eti ≥ cpl_mag_wall)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_L_car",
-    "expression": "cpl_p_car + cpl_out - cpl_d + cpl_hpin_in",
-    "unit": "mm",
-    "comment": "250 vagon kolu: pivot - kafa pimi arası"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_L_tender",
-    "expression": "cpl_p_tender + cpl_out - cpl_d + cpl_hpin_in",
-    "unit": "mm",
-    "comment": "Tender kolu (kısa)"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
-    "name": "cpl_L_loco",
-    "expression": "cpl_p_loco + cpl_out_loco - cpl_d + cpl_hpin_in",
-    "unit": "mm",
-    "comment": "Lokomotif kolu: pivot - kafa pimi arası"
-   }
-  },
-  {
-   "command": "parameters.add",
-   "params": {
     "name": "car_hole_x",
     "expression": "car_body_l/2 - wall_t - cab_rib_w/2",
     "unit": "mm",
@@ -4426,6 +3976,24 @@
     "expression": "fp_z - sv_drop - sv_tab_t - sv_tab_z + sv_shaft_top",
     "unit": "mm",
     "comment": "Göbek alt ucu Z = servo mil/kol üstü (türetilmiş, ≈32.6)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_L_car",
+    "expression": "dbc_gap + 2*dbc_pivot_in",
+    "unit": "mm",
+    "comment": "250-250 çeki kolu pim aralığı (türetilmiş, 116)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_L_tender",
+    "expression": "dbc_gap + dbc_pivot_in + fork_pin_in",
+    "unit": "mm",
+    "comment": "Tender-250 çeki kolu pim aralığı (tender çatal pimi → vagon pivotu, türetilmiş, 86)"
    }
   },
   {
@@ -4783,14 +4351,158 @@
    "params": {
     "length": "(-car_body_l/2 + wall_t + 1 mm) - (-car_body_l/2 - 1 mm)",
     "width": "(12 mm) - (-12 mm)",
-    "height": "((fp_z + fp_t) + 26 mm) - ((fp_z + fp_t) + 6 mm)",
+    "height": "(sj_wall_top - 4 mm) - (bus_conn_z + 12 mm)",
     "corner": [
      "-car_body_l/2 - 1 mm",
      "-12 mm",
-     "(fp_z + fp_t) + 6 mm"
+     "bus_conn_z + 12 mm"
     ],
     "operation": "cut",
     "name": "SJEndDoor",
+    "targets": [
+     "SjBody"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "((car_body_l/2 - 1 * (wall_t - 0.5 mm))) - ((car_body_l/2 - 1 * (wall_t + hold_d)))",
+    "width": "(bus_conn_w/2 + hold_wall) - (-bus_conn_w/2 - hold_wall)",
+    "height": "(bus_conn_z + bus_conn_h/2 + conn_key_h + hold_wall) - ((fp_z + fp_t))",
+    "corner": [
+     "(car_body_l/2 - 1 * (wall_t + hold_d))",
+     "-bus_conn_w/2 - hold_wall",
+     "(fp_z + fp_t)"
+    ],
+    "operation": "join",
+    "name": "SJFBusHolder",
+    "targets": [
+     "SjBody"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "((car_body_l/2 + 1 * 1 mm)) - ((car_body_l/2 - 1 * bus_conn_d))",
+    "width": "(bus_conn_w/2) - (-bus_conn_w/2)",
+    "height": "(bus_conn_z + bus_conn_h/2) - (bus_conn_z - bus_conn_h/2)",
+    "corner": [
+     "(car_body_l/2 - 1 * bus_conn_d)",
+     "-bus_conn_w/2",
+     "bus_conn_z - bus_conn_h/2"
+    ],
+    "operation": "cut",
+    "name": "SJFBusPocket",
+    "targets": [
+     "SjBody"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "((car_body_l/2 + 1 * 1 mm)) - ((car_body_l/2 - 1 * bus_conn_d))",
+    "width": "(conn_key_w/2) - (-conn_key_w/2)",
+    "height": "(bus_conn_z + bus_conn_h/2 + conn_key_h) - (bus_conn_z + bus_conn_h/2 - 0.5 mm)",
+    "corner": [
+     "(car_body_l/2 - 1 * bus_conn_d)",
+     "-conn_key_w/2",
+     "bus_conn_z + bus_conn_h/2 - 0.5 mm"
+    ],
+    "operation": "cut",
+    "name": "SJFBusKey",
+    "targets": [
+     "SjBody"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "(((car_body_l/2 - 1 * bus_conn_d) + 1 * 0.5 mm)) - ((car_body_l/2 - 1 * (wall_t + hold_d + 1 mm)))",
+    "width": "(conn_wire_w/2) - (-conn_wire_w/2)",
+    "height": "(bus_conn_z + conn_wire_h/2) - (bus_conn_z - conn_wire_h/2)",
+    "corner": [
+     "(car_body_l/2 - 1 * (wall_t + hold_d + 1 mm))",
+     "-conn_wire_w/2",
+     "bus_conn_z - conn_wire_h/2"
+    ],
+    "operation": "cut",
+    "name": "SJFBusWire",
+    "targets": [
+     "SjBody"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "((-car_body_l/2 - -1 * (wall_t + hold_d))) - ((-car_body_l/2 - -1 * (wall_t - 0.5 mm)))",
+    "width": "(bus_conn_w/2 + hold_wall) - (-bus_conn_w/2 - hold_wall)",
+    "height": "(bus_conn_z + bus_conn_h/2 + conn_key_h + hold_wall) - ((fp_z + fp_t))",
+    "corner": [
+     "(-car_body_l/2 - -1 * (wall_t - 0.5 mm))",
+     "-bus_conn_w/2 - hold_wall",
+     "(fp_z + fp_t)"
+    ],
+    "operation": "join",
+    "name": "SJBBusHolder",
+    "targets": [
+     "SjBody"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "((-car_body_l/2 - -1 * bus_conn_d)) - ((-car_body_l/2 + -1 * 1 mm))",
+    "width": "(bus_conn_w/2) - (-bus_conn_w/2)",
+    "height": "(bus_conn_z + bus_conn_h/2) - (bus_conn_z - bus_conn_h/2)",
+    "corner": [
+     "(-car_body_l/2 + -1 * 1 mm)",
+     "-bus_conn_w/2",
+     "bus_conn_z - bus_conn_h/2"
+    ],
+    "operation": "cut",
+    "name": "SJBBusPocket",
+    "targets": [
+     "SjBody"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "((-car_body_l/2 - -1 * bus_conn_d)) - ((-car_body_l/2 + -1 * 1 mm))",
+    "width": "(conn_key_w/2) - (-conn_key_w/2)",
+    "height": "(bus_conn_z + bus_conn_h/2 + conn_key_h) - (bus_conn_z + bus_conn_h/2 - 0.5 mm)",
+    "corner": [
+     "(-car_body_l/2 + -1 * 1 mm)",
+     "-conn_key_w/2",
+     "bus_conn_z + bus_conn_h/2 - 0.5 mm"
+    ],
+    "operation": "cut",
+    "name": "SJBBusKey",
+    "targets": [
+     "SjBody"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "((-car_body_l/2 - -1 * (wall_t + hold_d + 1 mm))) - (((-car_body_l/2 - -1 * bus_conn_d) + -1 * 0.5 mm))",
+    "width": "(conn_wire_w/2) - (-conn_wire_w/2)",
+    "height": "(bus_conn_z + conn_wire_h/2) - (bus_conn_z - conn_wire_h/2)",
+    "corner": [
+     "((-car_body_l/2 - -1 * bus_conn_d) + -1 * 0.5 mm)",
+     "-conn_wire_w/2",
+     "bus_conn_z - conn_wire_h/2"
+    ],
+    "operation": "cut",
+    "name": "SJBBusWire",
     "targets": [
      "SjBody"
     ]

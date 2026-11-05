@@ -1,0 +1,17 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "KDrawbar"
+    ],
+    "translate": [
+     "-58.0000 mm",
+     "-0.0000 mm",
+     "-0.0000 mm"
+    ]
+   }
+  }
+ ]
+}

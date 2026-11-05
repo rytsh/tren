@@ -58,14 +58,14 @@
       {:else}
         <div class="art anat">{#key model.anatomy}<AnatomyFigure id={model.anatomy ?? "worm-drive"} title="{model.name}: mekanizma" stageOnly />{/key}</div>
       {/if}
-      <div class="corner drawing-caption" data-at="bl"><strong>{view === "model" ? model.name : model.anatomy === "coupler" ? "T45 kuplör" : model.anatomy === "charging-station" ? "Döner şarj kolları" : "Sonsuz vida tahriki"}</strong> · {view === "model" ? `${model.length} × ${model.width} mm` : model.anatomy === "coupler" ? "güç + veri · temsili" : model.anatomy === "charging-station" ? "istasyon şarjı · temsili" : "30:1 · temsili"}</div>
+      <div class="corner drawing-caption" data-at="bl"><strong>{view === "model" ? model.name : model.anatomy === "coupler" ? "Çeki kolu + ara kablo" : model.anatomy === "charging-station" ? "Döner şarj kolları" : "Sonsuz vida tahriki"}</strong> · {view === "model" ? `${model.length} × ${model.width} mm` : model.anatomy === "coupler" ? "güç + veri · temsili" : model.anatomy === "charging-station" ? "istasyon şarjı · temsili" : "30:1 · temsili"}</div>
       <span class="corner" data-at="br">{lit && view === "model" ? `Işık: ${model.lights} · temsili` : "Açıklayıcı çizim · ölçeksiz"}</span>
     </div>
 
     <aside class="plate parts">
       <span class="corner" data-at="tl">Parçalar</span>
       <span class="corner" data-at="tr">{model.name}</span>
-      {#if !hasBody(model.id)}<p class="pending"><span class="label">Gövde CAD'i sırada</span>Ortak 250 mm şasi, boji ve T45 kuplör dosyaları hazır; bu vagonun gövdesi henüz modellenmedi.</p>{/if}
+      {#if !hasBody(model.id)}<p class="pending"><span class="label">Gövde CAD'i sırada</span>Ortak 250 mm şasi, boji ve çeki kolu dosyaları hazır; bu vagonun gövdesi henüz modellenmedi.</p>{/if}
       <ol>
         {#each featured as p, i}
           <li>
@@ -130,9 +130,9 @@
     {/each}
   </ol>
   <a href="/kilavuz?bolum=kuplor" use:link class="wire">
-    <span class="label">Standart · T45</span>
-    <span>Her araç aynı otomatik kuplörü taşır: koni–huni hizalama, mıknatıslı tutma ve 8 pogo temasla BAT+, CAN-H, CAN-L, GND. Tasarım önerisi; temas ve akım henüz test edilmedi.</span>
-    <span class="arrow-link">Kuplör ve TrenBus</span>
+    <span class="label">Standart · bağlantı</span>
+    <span>Araçlar tek parça çeki koluyla bağlanır; BAT+, CAN-H, CAN-L ve GND alın duvarlarındaki 4 pinli yuvalara takılan kısa ara kabloyla geçer. Tasarım önerisi; konnektör ve akım henüz test edilmedi.</span>
+    <span class="arrow-link">Bağlantı ve TrenBus</span>
   </a>
 </section>
 <Footer />

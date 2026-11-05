@@ -97,7 +97,7 @@ test("Anatomy gerçek mekanizma görünümünü açar", async ({page}) => {
   await expect(page.locator(".drawing-caption strong")).toHaveText("Sonsuz vida tahriki");
 });
 
-test("vagon anatomisi T45 kuplör figürünü plakanın içinde açar", async ({page}) => {
+test("vagon anatomisi bağlantı figürünü plakanın içinde açar", async ({page}) => {
   await page.goto("/#/lokomotif?model=yolcu-250");
   await page.getByRole("button",{name:"Anatomy",exact:true}).click();
   const frame=page.frameLocator('iframe[title="Yolcu 250: mekanizma"]');

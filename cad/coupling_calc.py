@@ -67,6 +67,40 @@ def straight_place(s_arc, x_local, y_local):
     return s_arc + x_local, y_local
 
 
+def car250(out, R):
+    """250 vagon ailesi (Faz 4b): araç merkezi iki boji pivotunun ortası; çeki kolu pimleri
+    250 vagonda kiriş yüzünden dbc_pivot_in içeride, tenderde çatal pimi."""
+    k2 = V["car_len"] / 2
+    piv = k2 - V["dbc_pivot_in"]
+    t2 = V["t_len"] / 2
+    rows = {
+        "tender-car250": (-t2, -t2 + V["fork_pin_in"], k2, piv, V["dbc_L_tender"], V["buf_y"], V["buf_len"], V["car_buf_y"], V["cbuf_len"]),
+        "car250-car250": (-k2, -piv, k2, piv, V["dbc_L_car"], V["car_buf_y"], V["cbuf_len"], V["car_buf_y"], V["cbuf_len"]),
+    }
+    for nm, (f_beam, fp, r_beam, rp, pitch, by_f, bl_f, by_r, bl_r) in rows.items():
+        res = {}
+        for key, rad in (("straight", None), ("R750", R)):
+            if rad is None:
+                d = rp + pitch - fp
+                pl = lambda s_, x, y: straight_place(s_, x, y)
+            else:
+                d = solve_spacing(rad, fp, rp, pitch)
+                pl = lambda s_, x, y, rad=rad: place(rad, s_, x, y)
+            dist = lambda xa, xb, ya, yb: math.dist(pl(d, xa, ya), pl(0.0, xb, yb))
+            a, b = pl(d, fp, 0.0), pl(0.0, rp, 0.0)
+            bar = math.degrees(math.atan2(b[1] - a[1], b[0] - a[0]))
+            res[key] = {
+                "pin_to_pin": round(dist(fp, rp, 0.0, 0.0), 2),
+                "beam_gap_center": round(dist(f_beam, r_beam, 0.0, 0.0), 2),
+                "buffer_head_gap_inner": round(dist(f_beam - bl_f, r_beam + bl_r, by_f, by_r), 2),
+                "buffer_head_gap_outer": round(dist(f_beam - bl_f, r_beam + bl_r, -by_f, -by_r), 2),
+                "bar_angle_to_rear_car_deg": round(abs(((bar - 180) + 180) % 360 - 180), 2),
+                "bar_angle_to_front_car_deg": round(abs(((bar - 180 - math.degrees(d / rad if rad else 0)) + 180) % 360 - 180), 2),
+            }
+        res["notch_limit_deg"] = V["dbc_swing"]
+        out["pairs"][nm] = res
+
+
 def main():
     veh = vehicles()
     gap = V["couple_gap"]
@@ -121,9 +155,15 @@ def main():
         res["clear_above_fork_top_mm"] = round(V["conn_z"] - sag - V["fp_z"] - V["fp_t"], 1)
         res["clear_above_flange_top_mm"] = round(V["conn_z"] - sag - (V["wheel_d"] / 2 + V["flange_h"]), 1)
         out["pairs"][nm] = res
+    car250(out, V["curve_radius"])
     (ROOT / "coupling_calc.json").write_text(json.dumps(out, indent=2, ensure_ascii=False))
     for nm, r in out["pairs"].items():
         st, cu = r["straight"], r["R750"]
+        if "jumper_len_mm" not in r:
+            print(f"{nm}: pim {st['pin_to_pin']}/{cu['pin_to_pin']} | tampon başı iç {st['buffer_head_gap_inner']}"
+                  f"->{cu['buffer_head_gap_inner']} dış {cu['buffer_head_gap_outer']} | kol açısı "
+                  f"{cu['bar_angle_to_front_car_deg']}°/{cu['bar_angle_to_rear_car_deg']}° (çentik ±{r['notch_limit_deg']}°)")
+            continue
         print(f"{nm}: pim {st['pin_to_pin']}/{cu['pin_to_pin']} | tampon başı iç {st['buffer_head_gap_inner']}"
               f"->{cu['buffer_head_gap_inner']} dış {cu['buffer_head_gap_outer']} | konnektör yüzleri "
               f"{st['connector_face_dist']}->{cu['connector_face_dist']} | kablo payı {r['jumper_slack_min_mm']} | "

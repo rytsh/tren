@@ -3,7 +3,7 @@
   import Topbar from "../lib/components/Topbar.svelte";
   import Footer from "../lib/components/Footer.svelte";
   import AnatomyFigure from "../lib/components/AnatomyFigure.svelte";
-    const tabs = [{ id: "mekanik", name: "İlk montaj" }, { id: "ray", name: "Ray bağlantısı" }, { id: "kuplor", name: "Kuplör ve TrenBus" }, { id: "elektrik", name: "Vagon elektriği" }, { id: "sarj", name: "Otomatik şarj" }];
+    const tabs = [{ id: "mekanik", name: "İlk montaj" }, { id: "ray", name: "Ray bağlantısı" }, { id: "kuplor", name: "Bağlantı ve TrenBus" }, { id: "elektrik", name: "Vagon elektriği" }, { id: "sarj", name: "Otomatik şarj" }];
   const asked = new URLSearchParams(router.querystring ?? "").get("bolum");
   let section = $state(tabs.some((t) => t.id === asked) ? asked! : "mekanik");
   const pins = [
@@ -15,7 +15,7 @@
   const roles = [
     ["Besler", "BD 0-4-0, Tender 160, Enerji 250", "Pil paketi ideal diyot ve akım sınırıyla (öneri 2 A) BAT+ hattına bağlanır."],
     ["Tüketir", "Yolcu, Radar, Ses, Gözlem 250", "Her araç girişinde PTC/eFuse (öneri 1 A) ve kendi 5 V / 3,3 V regülatörü."],
-    ["Ayrı devre", "Şarj 250", "İstasyon şarjı kendi döner kollarından; şarj akımı kuplör pinlerinden geçmez."],
+    ["Ayrı devre", "Şarj 250", "İstasyon şarjı kendi döner kollarından; şarj akımı TrenBus'tan geçmez."],
   ];
   const steps = [
     ["Tolerans kuponunu bas", "4 mm çelik aksı Ø3,8–4,2 deliklerde; 684ZZ rulmanı Ø9,0–9,3 yuvalarda dene. Sıkı geçme tekerlekte, rahat dönme rulmanda olmalı."],
@@ -61,11 +61,11 @@
     <div class="diagram"><AnatomyFigure id="track-joint" title="Geçmeli rayın montajı" /></div>
     <div class="text-row"><h2>Bir dil, bir yuva</h2><p>200 mm modüller iki yönde takılabilir. Dil boynu 6 mm, ucu 9 mm; her yüzde 0,2 mm boşluk. Dil yukarıdan oturur; yandan zorlayarak geçirme. Ek yerinde raylar arasında 0,5 mm genleşme aralığı bırakılır.</p></div>
   {:else if section === "kuplor"}
-    <div class="diagram"><AnatomyFigure id="coupler" title="T45 kuplör: güç ve veri" /></div>
-    <div class="text-row"><h2>Bir kafa, iki iş.</h2><p>Her aracın iki ucunda aynı cinsiyetsiz kafa var. Kafanın yüzündeki koni karşı kafanın hunisine girer, arkadaki iki Ø10 mıknatıs araçları birbirine çeker ve temasları bastırır. Ağır tren ya da eğim için iki kafanın üstündeki delikten Ø3 kilit pimi düşürülür. Kafanın altında yan yana iki 4 pinli mıknatıslı pogo modülü var; karşı tarafta tersi geldiği için her sinyal iki paralel temastan geçer. Kablo kuvvet taşımaz: kafanın arkasında bir gerilim alıcıya bağlanır.</p></div>
+    <div class="diagram"><AnatomyFigure id="coupler" title="Vagon bağlantısı: çeki kolu ve ara kablo" /></div>
+    <div class="text-row"><h2>Kol çeker, kablo konuşur.</h2><p>Bağlantı iki ayrı iş: çekmeyi tek parça bir çeki kolu, güç ve veriyi elle takılan kısa bir kablo yapar. Her 250 vagonun ön pivotunda 116 mm'lik bir kol vardır; öndeki aracın arka pivot göbeğine alttan bir M3 pimle (pulla, sıkılmadan) bağlanır ve virajda döner. Lokomotif ile tender arasında 44 mm'lik eski kol, tender ile ilk 250 vagon arasında 86 mm'lik kol kullanılır. Güç ve CAN, alın duvarlarındaki 4 pinli yuvalara takılan 80 mm'lik ara kabloyla geçer; kablo kuvvet taşımaz, yuvanın arkasında kablo bağıyla tutulur.</p></div>
     <div class="pins">
       <div class="plate pin-table">
-        <span class="corner" data-at="tl">Pin sırası · yüzden bakınca</span>
+        <span class="corner" data-at="tl">Pin sırası · yuva, kutuplama kanalı üstte</span>
         <ol>{#each pins as p}<li data-tone={p.tone}><span class="mono">{p.n}</span><b>{p.name}</b><span>{p.detail}</span></li>{/each}</ol>
       </div>
       <div class="plate pin-table">
@@ -74,28 +74,28 @@
       </div>
     </div>
     <div class="notes">
-      <article><h3>Her araçta</h3><ul><li>Araç düğümü: mikrodenetleyici (ör. ESP32-C3) + 3,3 V CAN alıcı-verici (ör. SN65HVD230).</li><li>Lokomotif periyodik durum (hız, yön, pil) yayınlar; araçlar kalp atışı ve kendi telemetrisini gönderir.</li><li>Sonlandırma: lokomotifte sabit 120 Ω, son araçta arka kuplör boşsa düğümün açtığı 120 Ω.</li><li>Araç sırası kalp atışlarından çıkarılır; ışık, ses, radar komutla açılır.</li></ul></article>
-      <article><h3>Henüz doğrulanmadı</h3><ul><li>Mıknatıs tutuşu ve kilit pimi olmadan çekme kuvveti.</li><li>Pogo temas direnci, akım değeri ve titreşimde kopma.</li><li>R750 ve S-virajda kafa açısı (hedef ±12° içinde).</li><li>CAN hattının uzun trende ve motor gürültüsünde davranışı.</li></ul></article>
+      <article><h3>Her araçta</h3><ul><li>Araç düğümü: mikrodenetleyici (ör. ESP32-C3) + 3,3 V CAN alıcı-verici (ör. SN65HVD230).</li><li>Lokomotif periyodik durum (hız, yön, pil) yayınlar; araçlar kalp atışı ve kendi telemetrisini gönderir.</li><li>Sonlandırma: lokomotifte sabit 120 Ω, son araçta arka yuva boşsa düğümün açtığı 120 Ω.</li><li>Araç sırası kalp atışlarından çıkarılır; ışık, ses, radar komutla açılır.</li></ul></article>
+      <article><h3>Henüz doğrulanmadı</h3><ul><li>Konnektör tipi (JST-XH 4P varsayıldı), kablo kesiti ve akım değeri.</li><li>R750 ve S-virajda kol açısı (hesap ≈ 11°, çentik ±12°) ve tampon payı (≈ 11 mm).</li><li>Ara kablonun virajda gerilmeden ve raya sarkmadan kalması.</li><li>CAN hattının uzun trende ve motor gürültüsünde davranışı.</li></ul></article>
     </div>
-    <p class="safety"><span class="label">Durum</span>T45 bir tasarım önerisidir. Ölçüler <a class="link" href="https://github.com/rytsh/tren/blob/main/docs/standart.md">docs/standart.md</a> ve <code>cad/params.json</code> içinde; hiçbir parça basılıp denenmedi.</p>
+    <p class="safety"><span class="label">Durum</span>Önceki T45 otomatik kuplörü (koni-huni, mıknatıs, pogo) bu ölçekte fazla parça ve hassas hizalama istediği için bırakıldı. Bağlantı bir tasarım önerisidir. Ölçüler <a class="link" href="https://github.com/rytsh/tren/blob/main/docs/standart.md">docs/standart.md</a> ve <code>cad/params.json</code> içinde; hiçbir parça basılıp denenmedi.</p>
   {:else if section === "elektrik"}
     <div class="electrical-head">
-      <div><span class="pill proto">Tasarım önerisi · fiziksel test yok</span><h2>Aynı hat, ışıklı vagonlar.</h2><p class="lead">Işık, ses, radar ve ek pil artık ayrı kablolarla değil, kuplörün içinden geçen TrenBus ile bağlanır: BAT+ güç verir, CAN hangi vagonun ne yapacağını söyler. Çatı altında 12 mm LED şerit yüzeyi ve iç kablo bağlama noktaları kalır.</p></div>
+      <div><span class="pill proto">Tasarım önerisi · fiziksel test yok</span><h2>Aynı hat, ışıklı vagonlar.</h2><p class="lead">Işık, ses, radar ve ek pil tek bir 4 damarlı TrenBus hattıyla bağlanır; vagonlar arasında kısa ara kablolar takılır. BAT+ güç verir, CAN hangi vagonun ne yapacağını söyler. Çatı altında 12 mm LED şerit yüzeyi ve iç kablo bağlama noktaları kalır.</p></div>
       <div class="plate"><span class="corner" data-at="tl">Şekil — Yolcu 250 · ışık açık</span><img src="figures/car-yolcu-lit.svg" alt="Işıkları yanan yolcu vagonu" width="800" height="500" /></div>
     </div>
     <div class="plate connection" aria-label="Planlanan aksesuar hattı: tender, konektör, yolcu vagonu">
       <span class="corner" data-at="tl">Şema — aksesuar hattı</span>
       <div><strong>Tender</strong><span class="label">BAT+ besler</span></div>
-      <span class="cable"><i></i><span class="label">T45 · 4 hat × 2 temas</span><i></i></span>
+      <span class="cable"><i></i><span class="label">ara kablo · 4 hat</span><i></i></span>
       <div><strong>Yolcu 250</strong><span class="label">ışık · CAN düğümü</span></div>
-      <span class="cable"><i></i><span class="label">T45</span><i></i></span>
+      <span class="cable"><i></i><span class="label">ara kablo</span><i></i></span>
       <div><strong>Radar 250</strong><span class="label">anten · uyarı</span></div>
     </div>
     <div class="notes">
-      <article><h3>Seçilenler (öneri)</h3><ul><li>Hat gerilimi: doğrudan 2S pil, 6,0–8,4 V; her araç kendi regülatörüyle düşürür.</li><li>Besleyici başına akım sınırı 2 A, tüketici girişinde 1 A PTC/eFuse.</li><li>Veri: CAN 2.0, 125 kbit/s, araç başına bir düğüm.</li><li>Rayda elektrik yok; şarj akımı kuplörden geçmez.</li></ul></article>
-      <article><h3>Henüz doğrulanmayanlar</h3><ul><li>Pogo modül seçimi, temas direnci ve su koruması.</li><li>Uzun trende BAT+ gerilim düşümü ve toplam ışık yükü.</li><li>Önceki 2-pin aksesuar yuvaları T45'e geçince kaldırılacak.</li><li>R750 ve S-virajda gerçek kuplör ve kablo testi.</li></ul></article>
+      <article><h3>Seçilenler (öneri)</h3><ul><li>Hat gerilimi: doğrudan 2S pil, 6,0–8,4 V; her araç kendi regülatörüyle düşürür.</li><li>Besleyici başına akım sınırı 2 A, tüketici girişinde 1 A PTC/eFuse.</li><li>Veri: CAN 2.0, 125 kbit/s, araç başına bir düğüm.</li><li>Rayda elektrik yok; şarj akımı TrenBus'tan geçmez.</li></ul></article>
+      <article><h3>Henüz doğrulanmayanlar</h3><ul><li>Konnektör seçimi, temas direnci ve su koruması.</li><li>Uzun trende BAT+ gerilim düşümü ve toplam ışık yükü.</li><li>Tenderdeki 2-pin aksesuar yuvası 4 pinli TrenBus yuvasına çevrilecek.</li><li>R750 ve S-virajda gerçek kol ve kablo testi.</li></ul></article>
     </div>
-    <p class="safety"><span class="label">Uyarı</span>Önceki 220 mm vagon hesabında R750'de tampon boşluğu 3,2 mm'ye düşüyordu. 250 mm şaside yan tamponlar yalnız görseldir ve geride durur; mesafeyi T45 kafası belirler. Yeni hesap CAD tarafında yapılıyor.</p>
+    <p class="safety"><span class="label">Uyarı</span>250 mm vagonlar virajda uçlarından daha çok dışa açılır. Kirişler arası 40 mm seçildi: R750'de iç taraftaki tampon başları arasında ≈ 11 mm kalır (<code>cad/coupling_calc.py</code>, düzlemsel hesap). Aralık daralırsa tamponlar virajda çarpışır.</p>
     <p class="safety"><span class="label">Uyarı</span>2S Li-ion paket tam doluyken 8,4 V olur. Gerilim doğrulanmadan LED şerit veya 5 V modül doğrudan bağlanmamalı.</p>
   {:else}
     <div class="diagram"><AnatomyFigure id="charging-station" title="Planlanan otomatik şarj istasyonu" /></div>

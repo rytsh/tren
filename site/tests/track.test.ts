@@ -31,7 +31,7 @@ describe("CAD kaynaklı parça listesi", () => {
     expect(PARTS.length).toBeGreaterThanOrEqual(27);
     expect(PARTS.every(p => p.file?.stl && p.file?.step && p.volume_mm3! > 0)).toBe(true);
   });
-  it("bir lokomotif, bir tender ve iki vagon 24 tekerlek gerektirir", () => {
+  it("bir lokomotif, bir tender ve iki 250 vagon 24 tekerlek gerektirir", () => {
     const result=billOf(counts([]),{"bd-040":1,"tender-160":1,"yolcu-250":2});
     expect(result.find(l=>l.key==="tekerlek_test_d42")?.qty).toBe(24);
   });
@@ -41,12 +41,19 @@ describe("CAD kaynaklı parça listesi", () => {
     expect(result.find(l=>l.key==="sarj_istasyon")?.qty).toBe(2); expect(result.find(l=>l.key==="st_strip")?.qty).toBe(4);
     expect(result.filter(l=>l.group==="araç")).toHaveLength(0);
   });
-  it("250 vagonlar T45 kuplör ve ortak şasi alır, eski 220 vagon parçası almaz", () => {
+  it("250 vagonlar çeki kolu ve ortak şasi alır, eski 220 vagon parçası almaz", () => {
     const result=billOf(counts([]),{"sarj-250":1,"radar-250":1});
-    expect(result.find(l=>l.key==="kuplor_kafa")?.qty).toBe(4); expect(result.find(l=>l.key==="tekerlek_test_d42")?.qty).toBe(16);
+    expect(result.find(l=>l.key==="ceki_kolu_250")?.qty).toBe(2); expect(result.find(l=>l.key==="ceki_kolu_tender_250")).toBeUndefined();
+    expect(result.find(l=>l.key==="bus_jumper")?.qty).toBe(2); expect(result.find(l=>l.key==="tekerlek_test_d42")?.qty).toBe(16);
     expect(result.find(l=>l.key==="vagon_platform_250")?.qty).toBe(1); expect(result.find(l=>l.key==="sarj_platform")?.qty).toBe(1);
     expect(result.find(l=>l.key==="sarj_kol")?.qty).toBe(1); expect(result.find(l=>l.key==="servo_mg90s")?.qty).toBe(1);
     expect(result.find(l=>l.key==="vagon_govde")).toBeUndefined(); expect(result.find(l=>l.key==="ceki_kolu")).toBeUndefined();
+  });
+  it("tam trende ilk 250 vagon tendere 86 mm kolla bağlanır", () => {
+    const result=billOf(counts([]),{"bd-040":1,"tender-160":1,"yolcu-250":2,"sarj-250":1});
+    expect(result.find(l=>l.key==="ceki_kolu")?.qty).toBe(1);
+    expect(result.find(l=>l.key==="ceki_kolu_tender_250")?.qty).toBe(1);
+    expect(result.find(l=>l.key==="ceki_kolu_250")?.qty).toBe(2);
   });
   it("boş hatta satın alma veya kütle eklemez", () => {
     const result=billOf(counts([]),{}); expect(result).toHaveLength(0); expect(filament(result).grams).toBe(0);

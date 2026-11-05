@@ -478,7 +478,7 @@
     },
     {
       "id": "ceki_kolu",
-      "name_tr": "Çeki kolu (44 mm pim aralığı)",
+      "name_tr": "Çeki kolu 44 mm (lokomotif–tender)",
       "phase": 3,
       "file": {
         "stl": "out/stl/ceki_kolu.stl",
@@ -496,10 +496,10 @@
       "bodies": 1,
       "fits_x2d": true,
       "qty_per_loco": 1,
-      "qty_per_tender": 1,
+      "qty_per_tender": 0,
       "qty_per_coach": 0,
       "qty_per_straight_track": 0,
-      "notes_tr": "Lokomotif-tender arası 1, tender arkasına 1 (eski 220 vagon veya T45 adaptörü gelene kadar); 250 vagonlar T45 kuplör kullanır",
+      "notes_tr": "Lokomotif arka çatalından tender ön çatalına; trende 1. Tender arkasına ceki_kolu_tender_250 gelir",
       "qty_by_model": {
         "yolcu-250": 0,
         "enerji-250": 0,
@@ -756,15 +756,15 @@
         90.0,
         17.0
       ],
-      "volume_mm3": 81573.4,
-      "mass_g_petg": 103.6,
+      "volume_mm3": 81532.6,
+      "mass_g_petg": 103.5,
       "bodies": 1,
       "fits_x2d": true,
       "qty_per_loco": 0,
       "qty_per_tender": 0,
       "qty_per_coach": 0,
       "qty_per_straight_track": 0,
-      "notes_tr": "Ters basılır; boji pivotları ±75, iki uçta kuplör kolu göbeği ve kiriş altı kol çentiği, TrenBus geçişleri",
+      "notes_tr": "Ters basılır; boji pivotları ±75, iki uçta çeki kolu pivot göbeği (M3) ve kiriş altı kol çentiği, TrenBus kablo geçişleri",
       "qty_by_model": {
         "yolcu-250": 1,
         "enerji-250": 1,
@@ -807,70 +807,62 @@
       }
     },
     {
-      "id": "kuplor_kafa",
-      "name_tr": "T45 kuplör kafası",
+      "id": "ceki_kolu_250",
+      "name_tr": "250 vagon çeki kolu (116 mm pim aralığı)",
       "phase": 4,
       "file": {
-        "stl": "out/stl/kuplor_kafa.stl",
-        "3mf": "out/3mf/kuplor_kafa.3mf",
-        "step": "out/step/kuplor_kafa.step",
-        "design": "designs/kuplor_kafa.sc"
+        "stl": "out/stl/ceki_kolu_250.stl",
+        "3mf": "out/3mf/ceki_kolu_250.3mf",
+        "step": "out/step/ceki_kolu_250.step",
+        "design": "designs/ceki_kolu_250.sc"
       },
       "bbox_mm": [
-        21.0,
-        38.0,
-        34.3
+        126.0,
+        10.0,
+        5.5
       ],
-      "volume_mm3": 13732.4,
-      "mass_g_petg": 17.4,
+      "volume_mm3": 5468.9,
+      "mass_g_petg": 6.9,
       "bodies": 1,
       "fits_x2d": true,
       "qty_per_loco": 0,
       "qty_per_tender": 0,
       "qty_per_coach": 0,
       "qty_per_straight_track": 0,
-      "notes_tr": "Arka yüzü yatakta; 2× Ø10×3 mıknatıs, 2× 4-pin pogo modülü, Ø3 kilit pimi (docs/standart.md §2)",
+      "notes_tr": "Düz yatakta; iki uç M3 pimle platform altındaki pivot göbeklerine. Vagon başına 1 (öndeki araca)",
       "qty_by_model": {
-        "yolcu-250": 2,
-        "enerji-250": 2,
-        "radar-250": 2,
-        "sarj-250": 2,
-        "ses-250": 2,
-        "gozlem-250": 2
+        "yolcu-250": 1,
+        "enerji-250": 1,
+        "radar-250": 1,
+        "sarj-250": 1,
+        "ses-250": 1,
+        "gozlem-250": 1
       }
     },
     {
-      "id": "kuplor_kolu",
-      "name_tr": "T45 kuplör kolu (250 vagon)",
+      "id": "ceki_kolu_tender_250",
+      "name_tr": "Tender–250 çeki kolu (86 mm pim aralığı)",
       "phase": 4,
       "file": {
-        "stl": "out/stl/kuplor_kolu.stl",
-        "3mf": "out/3mf/kuplor_kolu.3mf",
-        "step": "out/step/kuplor_kolu.step",
-        "design": "designs/kuplor_kolu.sc"
+        "stl": "out/stl/ceki_kolu_tender_250.stl",
+        "3mf": "out/3mf/ceki_kolu_tender_250.3mf",
+        "step": "out/step/ceki_kolu_tender_250.step",
+        "design": "designs/ceki_kolu_tender_250.sc"
       },
       "bbox_mm": [
-        56.5,
-        9.0,
-        6.0
+        96.0,
+        10.0,
+        5.5
       ],
-      "volume_mm3": 2295.3,
-      "mass_g_petg": 2.9,
+      "volume_mm3": 4148.9,
+      "mass_g_petg": 5.3,
       "bodies": 1,
       "fits_x2d": true,
       "qty_per_loco": 0,
       "qty_per_tender": 0,
       "qty_per_coach": 0,
       "qty_per_straight_track": 0,
-      "notes_tr": "Düz yatakta; pivot M3, kafaya Ø3 pim",
-      "qty_by_model": {
-        "yolcu-250": 2,
-        "enerji-250": 2,
-        "radar-250": 2,
-        "sarj-250": 2,
-        "ses-250": 2,
-        "gozlem-250": 2
-      }
+      "notes_tr": "Tenderin arka çeki çatalından ilk 250 vagonun ön pivotuna; trende 1"
     },
     {
       "id": "sarj_platform",
@@ -887,8 +879,8 @@
         90.0,
         17.0
       ],
-      "volume_mm3": 80674.7,
-      "mass_g_petg": 102.5,
+      "volume_mm3": 80633.9,
+      "mass_g_petg": 102.4,
       "bodies": 1,
       "fits_x2d": true,
       "qty_per_loco": 0,
@@ -915,15 +907,15 @@
         80.0,
         47.0
       ],
-      "volume_mm3": 64255.3,
-      "mass_g_petg": 81.6,
+      "volume_mm3": 69600.5,
+      "mass_g_petg": 88.4,
       "bodies": 1,
       "fits_x2d": true,
       "qty_per_loco": 0,
       "qty_per_tender": 0,
       "qty_per_coach": 0,
       "qty_per_straight_track": 0,
-      "notes_tr": "Alt yüzü yatakta; +y yanında kol cebi (kol göbeği tavandaki yuvaya yandan girer), ışık çubuğu yarığı",
+      "notes_tr": "Alt yüzü yatakta; +y yanında kol cebi (kol göbeği tavandaki yuvaya yandan girer), ışık çubuğu yarığı, iki alın duvarında 4 pinli TrenBus yuvası",
       "qty_by_model": {
         "sarj-250": 1
       }
@@ -1382,35 +1374,22 @@
       }
     },
     {
-      "id": "cpl_magnet",
-      "name_tr": "Neodim mıknatıs Ø10×3 mm (N52)",
-      "spec": "Kafa başına 2: koni tarafı N, huni tarafı S yüzü dışa; bütün araçlarda aynı (docs/standart.md §2)",
+      "id": "dbc_pin",
+      "name_tr": "M3×20 vida + 2 pul (çeki kolu pimi)",
+      "spec": "Vagon başına 1 (ön pivot; arka pivota arkadaki vagonun kolu gelir). Sıkılmaz, kol serbest dönmeli",
       "qty_by_model": {
-        "yolcu-250": 4,
-        "enerji-250": 4,
-        "radar-250": 4,
-        "sarj-250": 4,
-        "ses-250": 4,
-        "gozlem-250": 4
+        "yolcu-250": 1,
+        "enerji-250": 1,
+        "radar-250": 1,
+        "sarj-250": 1,
+        "ses-250": 1,
+        "gozlem-250": 1
       }
     },
     {
-      "id": "cpl_pogo",
-      "name_tr": "4-pin mıknatıslı pogo konektör, 2,54 mm (erkek + dişi)",
-      "spec": "Kafa başına 1 çift (sağ erkek, sol dişi). Modül seçilmedi, cep ölçüsü VARSAYIM",
-      "qty_by_model": {
-        "yolcu-250": 2,
-        "enerji-250": 2,
-        "radar-250": 2,
-        "sarj-250": 2,
-        "ses-250": 2,
-        "gozlem-250": 2
-      }
-    },
-    {
-      "id": "cpl_pivot",
-      "name_tr": "M3×16 cıvata + 2 pul (kuplör kolu pivotu)",
-      "spec": "Platform altındaki göbeğe; sıkılmaz, kol serbest dönmeli",
+      "id": "bus_conn",
+      "name_tr": "TrenBus 4 pinli kutuplu konnektör (JST-XH 4P sınıfı, VARSAYIM)",
+      "spec": "Gövde alın duvarlarındaki yuvalara (her uçta 1); pin sırası BAT+, CAN-H, CAN-L, GND",
       "qty_by_model": {
         "yolcu-250": 2,
         "enerji-250": 2,
@@ -1421,22 +1400,9 @@
       }
     },
     {
-      "id": "cpl_headpin",
-      "name_tr": "Ø3 × 22 mm çelik pim (kafa-kol)",
-      "spec": "Kafada sıkı, kolda boşluklu",
-      "qty_by_model": {
-        "yolcu-250": 2,
-        "enerji-250": 2,
-        "radar-250": 2,
-        "sarj-250": 2,
-        "ses-250": 2,
-        "gozlem-250": 2
-      }
-    },
-    {
-      "id": "cpl_lockpin",
-      "name_tr": "Ø3 × 12 mm kilit pimi",
-      "spec": "Ağır trende iki kafanın kulak deliklerine düşürülür (isteğe bağlı)",
+      "id": "bus_jumper",
+      "name_tr": "TrenBus ara kablosu 80 mm, 4 damar 26 AWG, iki ucu fişli",
+      "spec": "Araç başına 1 (öndeki araca); tender için ayrıca 1 (tender yuvası 2-pin: AÇIK KARAR)",
       "qty_by_model": {
         "yolcu-250": 1,
         "enerji-250": 1,
@@ -1448,8 +1414,8 @@
     },
     {
       "id": "trenbus_cable",
-      "name_tr": "TrenBus kablosu 4 damar silikon 26 AWG",
-      "spec": "Kuplörden kuplöre ~400 mm; kablo bağıyla kafa arkasında gerilim alıcıya",
+      "name_tr": "TrenBus iç kablosu 4 damar silikon 26 AWG",
+      "spec": "Gövde içinde yuvadan yuvaya ~300 mm; araç düğümüne dallanır",
       "qty_by_model": {
         "yolcu-250": 1,
         "enerji-250": 1,

@@ -4,12 +4,12 @@
    "command": "solid.move",
    "params": {
     "bodies": [
-     "CplArm"
+     "KDrawbarT"
     ],
     "translate": [
-     "-23.7500 mm",
-     "-0.0000 mm",
-     "3.0000 mm"
+     "-43.0000 mm",
+     "0.0000 mm",
+     "-0.0000 mm"
     ]
    }
   }

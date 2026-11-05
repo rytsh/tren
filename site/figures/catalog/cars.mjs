@@ -1,4 +1,4 @@
-// The 250 mm car family (docs/standart.md): one shared underframe with two bogies and two T45 couplers,
+// The 250 mm car family (docs/standart.md): one shared underframe with two bogies, a drawbar and two TrenBus sockets,
 // and six bodies. Explanatory catalog drawings, not production geometry. Lit parts carry classes
 // (tc-glass, tc-lamp, tc-led, tc-glow) so the page can switch them on with `.tcat.lit`.
 import * as k from "../../anatomy/kit/iso-kit.mjs";
@@ -22,7 +22,7 @@ export function makeCar(api, kind) {
   const C = CAR;
   const glow = [];
 
-  // ── underframe: bogies, frame, beams, T45 couplers ──
+  // ── underframe: bogies, frame, beams, drawbar ──
   for (const bx of [-C.bogie, C.bogie]) {
     for (const x of [bx - C.wb / 2, bx + C.wb / 2]) wheelset(Sc, x, { spokes: 8, prefix: "bogie.wheel" });
     for (const y of [-19, 13]) box("bogie.side", [bx - 32, y, Z(-9)], [bx + 32, y + 6, Z(11)], { tone: "hi" }, { r: 2, extra: y > 0 ? Ln([bx - 24, bx + 24].map((x) => circleY(P, y + 6, x, AXLE_H, 4.5)).join("") + rectY(P, y + 6, bx - 10, bx + 10, Z(-6), Z(8), 2), { tone: "mid" }) + Dots([bx - 28, bx - 14, bx + 14, bx + 28].map((x) => at([x, y + 6, Z(7)])), { size: 0.45, tone: "hi" }) : "" });
@@ -47,29 +47,17 @@ export function makeCar(api, kind) {
       disc("buffer.rod", F, 4.5, 5.2, 2.6, { tone: "hi" });
       disc("buffer.head", F, 5.2, 6.8, 6.4, { tone: "hi" }, { bevel: 0.4 });
     }
-    // T45 coupler: arm in a beam pocket, head with cone/funnel and two pogo strips
-    const zc = Z(20);
-    box("coupler.arm", [sign > 0 ? face : face - 10, -4, zc - 2.5], [sign > 0 ? face + 10 : face, 4, zc + 2.5], { tone: "hi" }, { r: 0.5, steps: 2 });
-    const hx0 = sign > 0 ? face + 10 : face - 16, hx1 = hx0 + 6;
-    const fx = sign > 0 ? hx1 : hx0;
-    box("coupler.head", [hx0, -13, zc - 9], [hx1, 13, zc + 9], { tone: "hi", className: "tc-signal" }, {
-      r: 1.6, bevel: 0.5,
-      extra: sign > 0
-        ? `<path class="tc-hole" d="${circleX(P, fx, -6, zc + 3, 3.2, 28)}"/>` +
-          Ln(circleX(P, fx, 6, zc + 3, 4.2, 28), { tone: "hi" }) +
-          `<path class="tc-hole" d="${rectX(P, fx, -10, -1.5, zc - 7, zc - 3, 0.8)}"/><path class="tc-hole" d="${rectX(P, fx, 1.5, 10, zc - 7, zc - 3, 0.8)}"/>` +
-          Dots([-8.6, -6.2, -3.8, -1.4 + 0].map((y) => at([fx, y + 0.4, zc - 5])), { size: 0.6, tone: "lit" }) +
-          Dots([2.6, 5, 7.4, 9.8].map((y) => at([fx, y - 0.4, zc - 5])), { size: 0.6, tone: "lit" }) +
-          Dots([at([(hx0 + hx1) / 2, 0, zc + 9])], { size: 0.9, tone: "hi" })
-        : Dots([at([(hx0 + hx1) / 2, 0, zc + 9])], { size: 0.9, tone: "hi" }),
-    });
+    // drawbar: on the front pivot under the deck, out through the beam notch to the eye; the rear end carries only
+    // the boss the next car's drawbar pins to. TrenBus socket on the body end wall (4 pins, the jumper plugs in).
+    const zb = Z(16);
     if (sign > 0) {
-      const cone = G.frameOf([fx, 6, zc + 3], [1, 0, 0], [0, 1, 0], [0, 0, 1]);
-      Sc.turned("coupler.cone", cone, [[0, 4.2], [3.2, 3.2, 1], [5.6, 1.4, 1]], { tone: "hi", className: "tc-signal" });
+      box("drawbar", [face - 38, -4, zb], [face + 34, 4, zb + 5.5], { tone: "hi", className: "tc-signal" }, {
+        r: 0.6, steps: 2,
+        extra: Dots([at([face + 30, 0, zb + 5.5])], { size: 0.9, tone: "hi" }),
+      });
+      disc("drawbar.eye", alongZ([face + 34, 0, 0]), zb, zb + 5.5, 5, { tone: "hi", className: "tc-signal" }, { extra: `<path class="tc-hole" d="${k.ring(face + 34, 0, 1.7, zb + 5.5, P, 20)}"/>` });
     }
-    // cable from the head into the beam, held by a tie
-    const back = sign > 0 ? face - 2 : face + 2;
-    Sc.cable(`bus${sign}`, [[sign > 0 ? hx0 : hx1, 0, zc - 9.5], [sign > 0 ? face + 3 : face - 3, 0, zc - 11], [back, 0, Z(12)]], 0.9, { tone: "hi", ends: [false, true] });
+    disc("drawbar.boss", alongZ([face - sign * 38, 0, 0]), zb + 5.5, Z(26), 4.5, { tone: "hi" });
   }
 
   // ── body ──
@@ -113,7 +101,7 @@ export function makeCar(api, kind) {
     handles([-99, -117 + 0, 99, 117].filter((x) => Math.abs(x) < 118));
     steps([-108, 108]);
     xs.forEach((x) => glowAt([x, C.half, Z(74)], 22));
-    label = "Yolcu 250: sekiz pencereli, iki kapılı yolcu vagonu; çatı altında LED şerit, iki bojide kırmızı tekerlekler, iki uçta T45 kuplör.";
+    label = "Yolcu 250: sekiz pencereli, iki kapılı yolcu vagonu; çatı altında LED şerit, iki bojide kırmızı tekerlekler, önde çeki kolu.";
   } else if (kind === "enerji") {
     const ribs = Ln(Array.from({ length: 11 }, (_, i) => C.x0 + 10 + i * 21.6).map((x) => k.pathOf([at([x, C.half, C.z0 + 3]), at([x, C.half, Z(96)])])).join(""), { tone: "mid" });
     const louvres = Ln([-60, 60].map((cx) => Array.from({ length: 6 }, (_, i) => k.pathOf([at([cx - 16, C.half, Z(54) + i * 5]), at([cx + 16, C.half, Z(54) + i * 5])])).join("")).join(""), { tone: "hi" }) + Ln([-60, 60].map((cx) => rectY(P, C.half, cx - 18, cx + 18, Z(51), Z(82), 1.5)).join(""), { tone: "mid" });

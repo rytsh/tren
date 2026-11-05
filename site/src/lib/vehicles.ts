@@ -3,8 +3,9 @@ import { param } from "./params";
 /**
  * Araçların hat önizlemesindeki ölçüleri: hepsi cad/params.json'dan. Yerel eksen: x araç boyu
  * (araç merkezi 0), yükseklik zeminden. `pivots`, aracın ray eksenine oturduğu noktalardır:
- * 0-4-0 için iki dingil, bojili vagon için iki boji pivotu. `front`/`rear` bağlantı noktasıdır:
- * eski çeki kolu pimi ya da T45 kuplör yüzü.
+ * 0-4-0 için iki dingil, bojili vagon için iki boji pivotu. `front`/`rear` çeki kolu pimleridir:
+ * lokomotif/tender çatal pimi ya da 250 vagonun platform altındaki pivotu. Araçlar arası
+ * mesafe kol boyundan gelir (linkGap).
  */
 export interface VehicleGeometry {
   /** CAD montaj 3MF'i (cad/out/3mf). */
@@ -14,8 +15,8 @@ export interface VehicleGeometry {
   pivots: [number, number];
   front: number;
   rear: number;
-  /** Bağlantı türü: çeki kolu (eski Faz 3 araçları) veya T45 kuplör. */
-  link: "drawbar" | "t45";
+  /** Pim türü: lokomotif/tender çeki çatalı veya 250 vagon pivotu. */
+  link: "fork" | "pivot";
   /** Gövdesi henüz modellenmemiş 250 vagon için ölçülü taslak gövde. */
   sketch?: CarSketch;
   /** Montajda açık modellenen şarj kolu: önizlemede kapatılır. */
@@ -48,7 +49,7 @@ const z = (axleZ: number) => axleZ + AXLE_H + param("tie_t") + param("rail_h");
 const DB = param("fork_pin_in");
 const LOCO_REAR_PIN = param("cab_x0") + DB;
 const TENDER_PIN = param("t_len") / 2 - DB;
-const CAR_FACE = param("car_len") / 2 + param("cpl_out");
+const CAR_PIN = param("car_len") / 2 - param("dbc_pivot_in");
 const CAR_PIV = param("car_bogie_x");
 const BODY_L = param("car_body_l");
 const BODY_W = param("car_body_w");
@@ -68,15 +69,15 @@ const car250 = (file: string, more: Partial<VehicleGeometry> = {}): VehicleGeome
   file,
   cadCentreX: param("track_len"),
   pivots: [-CAR_PIV, CAR_PIV],
-  front: CAR_FACE,
-  rear: -CAR_FACE,
-  link: "t45",
+  front: CAR_PIN,
+  rear: -CAR_PIN,
+  link: "pivot",
   ...more,
 });
 
 export const VEHICLES: Record<string, VehicleGeometry> = {
-  "bd-040": { file: "lokomotif_montaj", cadCentreX: param("track_len") / 2, pivots: [-param("wheelbase") / 2, param("wheelbase") / 2], front: param("loco_len") / 2, rear: LOCO_REAR_PIN, link: "drawbar" },
-  "tender-160": { file: "tender_montaj", cadCentreX: param("track_len") / 2, pivots: [-param("wheelbase") / 2, param("wheelbase") / 2], front: TENDER_PIN, rear: -TENDER_PIN, link: "drawbar" },
+  "bd-040": { file: "lokomotif_montaj", cadCentreX: param("track_len") / 2, pivots: [-param("wheelbase") / 2, param("wheelbase") / 2], front: param("loco_len") / 2, rear: LOCO_REAR_PIN, link: "fork" },
+  "tender-160": { file: "tender_montaj", cadCentreX: param("track_len") / 2, pivots: [-param("wheelbase") / 2, param("wheelbase") / 2], front: TENDER_PIN, rear: -TENDER_PIN, link: "fork" },
   "yolcu-250": car250("sasi250_montaj", { sketch: sketch("y5_wall_top", "y5_crown", 0x2f5a2a) }),
   "sarj-250": car250("sarj250_montaj", { arm: { mesh: "SjArm", x: param("sj_px"), y: param("sj_py"), swing: param("sj_swing") } }),
   "enerji-250": car250("sasi250_montaj", { sketch: sketch("en_wall_top", "en_crown", 0x6f7f5c) }),
@@ -101,11 +102,9 @@ export const VEHICLES: Record<string, VehicleGeometry> = {
 
 export const vehicleOf = (id: string) => VEHICLES[id] ?? VEHICLES["yolcu-250"];
 
-/** Arka arkaya iki aracın bağlantı noktaları (öndekinin `rear`, arkadakinin `front`) arası ray boyu mesafe. */
+/** Arka arkaya iki aracı bağlayan çeki kolunun pim aralığı (öndekinin `rear` pimi → arkadakinin `front` pimi). */
 export function linkGap(ahead: VehicleGeometry, behind: VehicleGeometry) {
-  if (ahead.link === "t45" && behind.link === "t45") return 0; // kuplör yüzleri birbirine değer
-  if (ahead.link === "drawbar" && behind.link === "drawbar") return param("db_pitch"); // çeki kolu pimleri arası
-  // Lokomotif ve tender henüz T45 taşımıyor (çeki çatalı); geçiş adaptörü tasarlanmadı.
-  // Önizlemede kirişler arası couple_gap kabul edilir: T45 yüzünden çatal pimine.
-  return param("couple_gap") - param("cpl_out") + param("fork_pin_in");
+  if (ahead.link === "pivot" && behind.link === "pivot") return param("dbc_L_car");
+  if (ahead.link === "fork" && behind.link === "fork") return param("db_pitch");
+  return param("dbc_L_tender");
 }

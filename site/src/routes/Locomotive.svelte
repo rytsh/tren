@@ -44,10 +44,10 @@
     <aside class="plate specs">
       <span class="corner" data-at="tl">Künye</span>
       <p class="desc">{model.description}</p>
-      {#if model.anatomy === "coupler"}<p class="desc">Anatomy sekmesi bu vagonun iki ucundaki T45 kuplörü gösterir; vagonun kendi ayrıştırması henüz yok.</p>{/if}
+      {#if model.anatomy === "coupler"}<p class="desc">Anatomy sekmesi 250 vagonların ortak bağlantısını (çeki kolu ve TrenBus ara kablosu) gösterir; vagonun kendi ayrıştırması henüz yok.</p>{/if}
       {#if model.anatomy === "charging-station"}<p class="desc">Anatomy sekmesi vagonun istasyonda kollarını açıp şarj olmasını gösterir. 3D montajda kollar açık konumdadır; istasyon tutucusu ayrı bir parçadır (Hat tasarla sayfasında istasyon rayının yanında görünür).</p>{/if}
       {#if !model.anatomy}<p class="desc">Bu modelin Anatomy ayrıştırması henüz yok.{model.assembly ? " Çizim ve 3D CAD montajı kullanılabilir." : ""}</p>{/if}
-      {#if !hasBody(model.id)}<p class="desc pending"><span class="label">Gövde CAD'i sırada</span> 3D sekmesi ve parça dosyaları ortak 250 mm şasiyi (boji, platform, T45 kuplör) gösterir; gövde henüz modellenmedi, çizim açıklayıcıdır.</p>{/if}
+      {#if !hasBody(model.id)}<p class="desc pending"><span class="label">Gövde CAD'i sırada</span> 3D sekmesi ve parça dosyaları ortak 250 mm şasiyi (boji, platform, çeki kolu) gösterir; gövde henüz modellenmedi, çizim açıklayıcıdır.</p>{/if}
       <dl>
         <div><dt>Uzunluk</dt><dd>{model.length} mm</dd></div>
         <div><dt>Genişlik</dt><dd>{model.width} mm</dd></div>
@@ -76,7 +76,7 @@
       <div class="section-head"><div><span class="label">Not</span><h2>Üretmeden önce</h2></div></div>
       <p>Önce tolerans kuponunu bas. Aks ve rulman ölçüleri yazıcıya göre değişebilir. Hiçbir model fiziksel olarak denenmedi.</p>
       <h3>Vagonlar arası elektrik</h3>
-      <p>Ortak, sökülebilir bir aksesuar bağlantısı planlanıyor. Kablo çekme kuvvetini taşımaz; kuplör ve boji hareketinden ayrı yönlendirilir. Besleme gerilimi ve konektör henüz seçilmedi.</p>
+      <p>Ortak, sökülebilir bir aksesuar bağlantısı planlanıyor. Kablo çekme kuvvetini taşımaz; çeki kolu ve boji hareketinden ayrı yönlendirilir. Konektör tipi ve kablo kesiti henüz seçilmedi.</p>
       <a href="/kilavuz?bolum=elektrik" use:link class="arrow-link">Mekanik hazırlık ve açık kararlar</a>
     </section>
   </div>

@@ -95,6 +95,17 @@ export function billOf(trackCounts: Record<PieceKind, number>, consist: Consist)
     add(part.id, (part.qty_per_station ?? 0) * trackCounts.station, "ray");
     add(part.id, vehicleQty(part, consist), "araç");
   }
+  // Trendeki ilk 250 vagon tendere bağlanır: onun kolu 116 mm değil, 86 mm tender kolu olur.
+  const cars250 = Object.entries(consist).filter(([m, n]) => m.endsWith("-250") && n > 0).reduce((s, [, n]) => s + n, 0);
+  if (cars250 > 0 && (consist["tender-160"] ?? 0) > 0) {
+    const long = lines.find((l) => l.key === "ceki_kolu_250");
+    if (long) {
+      long.massG -= long.massG / long.qty;
+      long.qty -= 1;
+      if (!long.qty) lines.splice(lines.indexOf(long), 1);
+    }
+    add("ceki_kolu_tender_250", 1, "araç");
+  }
   const pieces = Object.values(trackCounts).reduce((a, b) => a + b, 0);
   for (const hw of HARDWARE) {
     const qty = vehicleQty(hw, consist) + (hw.qty_per_track_piece ?? 0) * pieces + (hw.qty_per_station ?? 0) * trackCounts.station;

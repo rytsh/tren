@@ -310,13 +310,18 @@ ray üstü z = 13).
 
 ---
 
-# Faz 4 — 250 vagon ortak şasisi, T45 kuplör ve Şarj 250
+# Faz 4 — 250 vagon ortak şasisi, çeki kolu ve Şarj 250
 
-Kaynak: `docs/standart.md` §1–2 (ölçü, T45) ve §5 (döner şarj kolları). Parametreler `params.json` → `car`, `coupler`, `car_family` (`sj_*`, `sv_*`). Bütün ölçüler **VARSAYIM**; hiçbir parça basılmadı.
+Kaynak: `docs/standart.md` §1–2 (ölçü, bağlantı) ve §5 (döner şarj kolları).
+
+**Faz 4b (6 Kasım 2026):** İlk denenen T45 otomatik kuplörü (`kuplor_kafa`, `kuplor_kolu`: koni–huni, iki mıknatıs, iki pogo modülü, kilit kulağı) kaldırıldı; bu ölçekte fazla parça, ince duvar ve hassas hizalama istiyordu. Yerine tek parça çeki kolu (`ceki_kolu_250`, `ceki_kolu_tender_250`) ve gövde alın duvarlarında 4 pinli TrenBus yuvası geldi; elektrik elle takılan ara kabloyla geçer.
+
+Parametreler `params.json` → `car`, `coupler`, `car_family` (`sj_*`, `sv_*`). Bütün ölçüler **VARSAYIM**; hiçbir parça basılmadı.
 
 ```bash
-python3 cad/build.py vagon_platform_250 tampon_250 kuplor_kafa kuplor_kolu \
+python3 cad/build.py vagon_platform_250 tampon_250 ceki_kolu_250 ceki_kolu_tender_250 \
   sarj_platform sarj_govde sarj_cati sarj_kol sarj_istasyon sarj250_montaj sasi250_montaj
+python3 cad/coupling_calc.py
 python3 cad/parts_manifest.py
 ```
 
@@ -326,12 +331,12 @@ python3 cad/parts_manifest.py
 
 | Dosya | Ölçü (mm) | Not |
 |---|---|---|
-| `vagon_platform_250` | 250 × 90 × 17 | Ortak 250 platformu (Şarj hariç bütün 250 vagonlar). Boji pivot göbekleri ±75, iki uçta kuplör kolu pivot göbeği (kiriş yüzünden 38 içeride) ve kiriş altı kol çentiği (±12° salınım), tampon pim delikleri, Ø8 TrenBus geçişleri |
+| `vagon_platform_250` | 250 × 90 × 17 | Ortak 250 platformu (Şarj hariç bütün 250 vagonlar). Boji pivot göbekleri ±75, iki uçta çeki kolu pivot göbeği (Ø9, M3 kılavuz; kiriş yüzünden 38 içeride) ve kiriş altı kol çentiği (±12°), tampon pim delikleri, Ø8 TrenBus geçişleri |
 | `tampon_250` | 12 × 12 × 12 | Ayrı basılır (platform 250 tablaya sığsın diye); pim kirişe yapıştırılır, araç başına 4 |
-| `kuplor_kafa` | 21 × 38 × 34 | T45: koni (sağ) + huni (sol, 0.3 boşluk), 2× Ø10×3 mıknatıs yuvası (koni içinde / huni dibinin arkasında), 2× pogo cebi (alt yarı) ve arkalarında kablo kanalı, kilit kulağı (Ø3.2) ve karşı kafa için kör pim deliği, arkada kol yuvası + dikey Ø3 kafa pimi |
-| `kuplor_kolu` | 56.5 × 9 × 6 | Pivot M3 (platform göbeğine), kafaya Ø3 pim; pivot–pim 49 |
+| `ceki_kolu_250` | 126 × 10 × 5.5 | 250–250 çeki kolu: iki göz, M3 delikleri, pim aralığı 116 (kirişler arası 40 + 2 × 38). Vagon başına 1, ön pivotta |
+| `ceki_kolu_tender_250` | 96 × 10 × 5.5 | Tender arka çatalı → ilk 250 vagonun ön pivotu, pim aralığı 86; trende 1 |
 | `sarj_platform` | 250 × 90 × 17 | Ortak platform + platform altında 2 servo kulak pedi (M2) ve servo/göbek açıklığı |
-| `sarj_govde` | 232 × 80 × 47 | Alçak kasa (duvar 70, tepe 76 aks ekseninden; ray üstü ≈ 97). +y yanında 35 (boy) × 10 (derinlik) × 27 (yükseklik) kol cebi: içi kapalı kutu, tavanda göbek için dışa açık U yuvası (göbek yandan kaydırılır), tabanda servo kolu dönüş açıklığı; ışık çubuğu yarığı (Ø4 ışık borusu), alın kapısı |
+| `sarj_govde` | 232 × 80 × 47 | Alçak kasa (duvar 70, tepe 76 aks ekseninden; ray üstü ≈ 97). +y yanında 35 (boy) × 10 (derinlik) × 27 (yükseklik) kol cebi: içi kapalı kutu, tavanda göbek için dışa açık U yuvası (göbek yandan kaydırılır), tabanda servo kolu dönüş açıklığı; ışık çubuğu yarığı (Ø4 ışık borusu), iki alın duvarında 4 pinli TrenBus yuvası (12.4 × 6.2 × 8, kutuplama kanalı üstte; tutucu platformdan yükselir), arka uçta alın kapısı |
 | `sarj_cati` | 236 × 84 × 14 | Yay çatı + iki yerleştirme dili |
 | `sarj_kol` | 8 × 26 × 29 | **Tek parça**: Ø8 dikey göbek + alt (−) ve üst (+) kol (22 mm), uçlarda pabuç tutucu ve 0.8 mm yaprak yay şerit yuvası, kol üstünde tel kanalı, göbek içinde Ø3 tel deliği, altta servo kolu yuvası |
 | `sarj_istasyon` | 102 × 98 × 28 | Taban plakası (traverslerle aynı zeminde, 2× M3) + iki direk + üst üste iki taşıyıcı; ray tarafında 6×1 pirinç lama cebi (lama 0.5 dışarı taşar), direklerde lama ucu bükme yarığı, arkada tel kanalı. Lama yüzü ray ekseninden 59.5; lama eksenleri zeminden 72 (−) ve 90 (+) |
@@ -349,14 +354,22 @@ python3 cad/parts_manifest.py
 ## Doğrulananlar (SolidCraft 0.30.1, gerçekten ölçülen)
 
 - Her basılabilir parça tek gövde ve kapalı; `parts.json` → `fits_x2d` hepsi için doğru (en uzunu 250 mm platform).
-- `inspect.interference`, `sarj250_montaj`'da 20 gövde arasında (kasa, çatı, platform, kollar, servo, istasyon, bojiler, tamponlar, kuplörler, tekerlekler): **0 çakışma**. Kollar 90° kapatılınca (kapalı konum) kol–kasa–platform–servo–çatı: **0 çakışma**.
-- Kuplör kafası yüzü kiriş dış yüzünden 20 mm önde; iki 250 vagon arası kuplör yüzleri değdiğinde kirişler arası 40 mm, araç adımı 290 mm.
+- `sarj250_montaj` Faz 4b ile yeniden üretildi (çeki kolu + TrenBus yuvaları): açık kol 18 gövde, kapalı kol 5 gövde, ikisi de **0 çakışma**.
+
+## Bağlantı hesabı (`coupling_calc.py`, düzlemsel)
+
+| Çift | Pim aralığı | Tampon başı iç payı düz → R750 | Kol açısı R750 (öndeki / arkadaki araca) |
+|---|---|---|---|
+| tender – 250 | 86 | 25.3 → 14.0 mm | 6.6° / 11.4° |
+| 250 – 250 | 116 | 24.0 → 11.2 mm | 11.0° / 11.0° |
+
+Kiriş altı çentiği ±12°: R750'de yeterli, S-virajda ve ray hatasında pay az. TrenBus yuvaları arası 51–59 mm (düz ve R750), ara kablo 80 mm.
 
 ## Doğrulanmayanlar / açık kararlar
 
-- Servo, pogo modülü, mıknatıs ve yaprak yay ölçüleri seçilmedi; yuvalar varsayım. Servo kolu yuvası tek kollu kısa servo koluna göre.
+- Servo ve yaprak yay ölçüleri seçilmedi; yuvalar varsayım. Servo kolu yuvası tek kollu kısa servo koluna göre.
 - Yay baskısının temas direnci, açık havada pirinç oksitlenmesi ve 8.4 V / 1 A için kesit denenmedi.
-- Kuplör kafasının mıknatıs tutuşu ve pogo hizası (±0.5 mm) baskıyla denenmedi; R750'de kuplör açısı yalnız düzlemsel hesap (`coupling_calc.py`) — 250 vagon için yeniden hesaplanmalı.
-- Lokomotif ve tender henüz T45 taşımıyor (çeki çatalı). Tender ile ilk 250 vagon arasında geçiş adaptörü tasarlanmadı.
+- Çeki kolu ve pivot göbeği baskıyla denenmedi; M3 vida plastik göbekte zamanla gevşeyebilir (kontra somun veya ısıyla gömme somun düşünülebilir).
+- TrenBus konnektörü seçilmedi (JST-XH 4P varsayıldı). Tenderin 2-pin aksesuar yuvası 4 pinli yuvaya çevrilmedi; lokomotifte yuva yok.
 - Yolcu, Enerji, Radar, Ses ve Gözlem 250 gövdeleri modellenmedi; parametreleri (`y5_*`, `en_*`, `rd_*`, `ss_*`, `gz_*`) hazır.
 - Faz 3'ün 220 mm yolcu vagonu (`vagon_platform`, `vagon_govde`, `vagon_cati`) eski prototip olarak durur; katalog modellerinin adetlerine sayılmaz.

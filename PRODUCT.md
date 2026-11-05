@@ -22,7 +22,7 @@ Tek bir trenin tanıtımından ziyade zamanla birçok lokomotif, vagon ve ray mo
 
 - 45 mm açıklıklı tamamen plastik ray, bataryalı 0-4-0 lokomotif; raylardan elektrik alınmaz.
 - 200 mm düz ray, R750 / 15° viraj; parametrik SolidCraft CAD, STL/3MF/STEP.
-- Lokomotif, tender, ortak 250 vagon şasisi (T45 kuplör dahil) ve Şarj 250 (döner kol + istasyon tutucusu) CAD prototipleri mevcut; diğer 250 vagon gövdeleri sırada. Fiziksel baskı ve çalışma doğrulaması yok.
+- Lokomotif, tender, ortak 250 vagon şasisi (çeki kolu dahil) ve Şarj 250 (döner kol + istasyon tutucusu) CAD prototipleri mevcut; diğer 250 vagon gövdeleri sırada. Fiziksel baskı ve çalışma doğrulaması yok.
 - Statik site: dosya indirme, yerel model inceleme, tarayıcıda hat tasarımı. Hesap, ödeme veya bulut kayıt servisi yok.
 - Vagonlar arası aksesuar elektriği ve aydınlatma planlanıyor; mekanik kablo geçişi hazırlanıyor. Aksesuar gerilimi, konektör ve akım sınırı henüz seçilmedi.
 - Şarj istasyonunun mekaniği (döner kollar, lama tutucusu) CAD'de; elektronik kontrol, şarj devresi ve emniyet davranışları plan aşamasında, çalışan donanım gibi sunulmaz.
@@ -40,7 +40,7 @@ Kullanıcı önceki turuncu afiş/uzun tanıtım sayfasını reddetti. 4 Kasım 
 1. Önce model ve montaj, sonra tanıtım metni.
 2. Sayılar CAD'den; doğrulanmayan özellikler açıkça prototip/plan.
 3. Çoklu model kataloğu ve ortak parça standardı büyümeye hazır olmalı.
-4. Mekanik kuplör yük taşır; elektrik kablosu ayrı servis payıyla yönlendirilir.
+4. Çeki kolu yük taşır; elektrik ara kablosu ayrı servis payıyla yönlendirilir.
 
 ## Revizyon · 5 Kasım 2026
 
@@ -52,4 +52,5 @@ Kullanıcı önceki turuncu afiş/uzun tanıtım sayfasını reddetti. 4 Kasım 
 ## Revizyon · 6 Kasım 2026
 
 - Şarj 250 yan cebinden kapı gibi açılan üst (+) / alt (−) iki kolla istasyondaki iki pirinç lamaya basar (kullanıcı fikri); kapalıyken kollar gövdeden taşmaz. Alt pabuçlar ve çatı kolu kaldırıldı.
-- Hat tasarlayıcısında araçlar gerçek pivotlarına oturur ve T45/çeki kolu ölçüsüyle dizilir; gövdesi gelmeyen 250 vagonlar gerçek ortak şasi üstünde ölçülü taslak gövdeyle gösterilir ve "Gövde sırada" işaretlenir.
+- Hat tasarlayıcısında araçlar gerçek pivotlarına oturur ve çeki kolu ölçüsüyle dizilir; gövdesi gelmeyen 250 vagonlar gerçek ortak şasi üstünde ölçülü taslak gövdeyle gösterilir ve "Gövde sırada" işaretlenir.
+- Vagonlar arası T45 otomatik kuplörü bırakıldı (kullanıcı: "fazla küçükçe"); araçlar tek parça çeki koluyla, TrenBus 4 pinli ara kabloyla bağlanır.

@@ -2,11 +2,11 @@
 
 # Tren
 
-45 mm plastik ray üzerinde çalışan, 3D baskıyla üretilebilir, bataryalı model demiryolu. Lokomotif, tender, ortak 250 mm şasili vagon ailesi, ray ve ortak parçalar SolidCraft ile parametrik modellenir; bütün araçlar aynı **T45 otomatik kuplörü** ve onun içinden geçen **TrenBus** (güç + CAN veri) hattını paylaşır.
+45 mm plastik ray üzerinde çalışan, 3D baskıyla üretilebilir, bataryalı model demiryolu. Lokomotif, tender, ortak 250 mm şasili vagon ailesi, ray ve ortak parçalar SolidCraft ile parametrik modellenir; araçlar tek parça **çeki koluyla** bağlanır; güç ve CAN verisi (**TrenBus**) vagonlar arasında elle takılan 4 pinli kısa bir ara kabloyla geçer.
 
-**Durum:** dijital prototip. CAD dosyaları üretilmiştir; hiçbir parça fiziksel olarak basılıp denenmemiştir. Kuplör temasları, elektronik kontrol ve otomatik şarj henüz uygulanmış donanım değildir.
+**Durum:** dijital prototip. CAD dosyaları üretilmiştir; hiçbir parça fiziksel olarak basılıp denenmemiştir. TrenBus konnektörü, elektronik kontrol ve otomatik şarj henüz uygulanmış donanım değildir.
 
-CAD'i hazır olanlar: BD 0-4-0, Tender 160, ortak 250 vagon şasisi (platform, boji, tampon, T45 kuplör kafası ve kolu), **Şarj 250** (döner şarj kolu, kasa, çatı) ve istasyon kontak tutucusu. Diğer beş 250 vagonun gövdesi sırada.
+CAD'i hazır olanlar: BD 0-4-0, Tender 160, ortak 250 vagon şasisi (platform, boji, tampon, çeki kolu), **Şarj 250** (döner şarj kolu, kasa, çatı) ve istasyon kontak tutucusu. Diğer beş 250 vagonun gövdesi sırada.
 
 ## Araç ailesi
 
@@ -21,7 +21,7 @@ CAD'i hazır olanlar: BD 0-4-0, Tender 160, ortak 250 vagon şasisi (platform, b
 | Ses 250 | hoparlör, düdük | tüketir |
 | Gözlem 250 | kamera kubbesi, balkon | tüketir |
 
-Ölçü, kuplör ve hat standardı: [docs/standart.md](docs/standart.md).
+Ölçü, bağlantı ve hat standardı: [docs/standart.md](docs/standart.md).
 
 ## Web atölyesi
 
@@ -58,8 +58,8 @@ SolidCraft CLI `PATH`'te aranır (`solidcraft-cli`); `SOLIDCRAFT_CLI` ile deği�
 
 ## Ortak standart ve açık işler
 
-200 mm düz ray, R750 / 15° viraj, 45 mm ray açıklığı, 4 mm aks, 250 × 90 mm vagon şasisi. Elektrik raylardan alınmaz. Kuplör pinleri: BAT+, CAN-H, CAN-L, GND, her biri iki paralel temasla. Şarj kontakları bu hattan ayrıdır: Şarj 250 iki döner kolla istasyondaki üst (+) ve alt (−) pirinç lamaya basar (`docs/standart.md` §5).
+200 mm düz ray, R750 / 15° viraj, 45 mm ray açıklığı, 4 mm aks, 250 × 90 mm vagon şasisi. Elektrik raylardan alınmaz. TrenBus pinleri: BAT+, CAN-H, CAN-L, GND (alın duvarındaki 4 pinli yuva + ara kablo). Şarj kontakları bu hattan ayrıdır: Şarj 250 iki döner kolla istasyondaki üst (+) ve alt (−) pirinç lamaya basar (`docs/standart.md` §5).
 
-Öncelikli fiziksel doğrulamalar: tolerans kuponu, ray ekleri, sonsuz vida kavraması, T45 kuplörün mıknatıs tutuşu ve pogo temasları, R750'de kuplör açısı ve boji hareketi. Sonsuz vida tek başına güvenilir bir park freni kabul edilmez.
+Öncelikli fiziksel doğrulamalar: tolerans kuponu, ray ekleri, sonsuz vida kavraması, çeki kolu pivotu ve TrenBus konnektörü, R750'de kol açısı (≈ 11°) ve boji hareketi. Sonsuz vida tek başına güvenilir bir park freni kabul edilmez.
 
 Logo: [Lucide `train-track`](https://lucide.dev/icons/train-track) (ISC). Anatomy kiti MIT lisanslıdır; kaynak ve lisans `site/anatomy/` altında korunur. Projenin kendi lisansı [`LICENSE`](LICENSE) dosyasındadır.
