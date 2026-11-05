@@ -1,0 +1,17 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "CplArm"
+    ],
+    "translate": [
+     "-23.7500 mm",
+     "-0.0000 mm",
+     "3.0000 mm"
+    ]
+   }
+  }
+ ]
+}

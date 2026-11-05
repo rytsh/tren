@@ -3,7 +3,7 @@
   import Topbar from "../lib/components/Topbar.svelte";
   import Footer from "../lib/components/Footer.svelte";
   import AnatomyFigure from "../lib/components/AnatomyFigure.svelte";
-  import { MODELS, modelById, modelParts, partCount, partImage, qtyOf, hasCad, type ModelId } from "../lib/catalog";
+  import { MODELS, modelById, modelParts, partCount, partImage, qtyOf, hasCad, hasBody, type ModelId } from "../lib/catalog";
   import { PARTS } from "../lib/bom";
 
   let selected = $state<ModelId>("bd-040");
@@ -58,14 +58,14 @@
       {:else}
         <div class="art anat">{#key model.anatomy}<AnatomyFigure id={model.anatomy ?? "worm-drive"} title="{model.name}: mekanizma" stageOnly />{/key}</div>
       {/if}
-      <div class="corner drawing-caption" data-at="bl"><strong>{view === "model" ? model.name : model.anatomy === "coupler" ? "T45 kuplör" : "Sonsuz vida tahriki"}</strong> · {view === "model" ? `${model.length} × ${model.width} mm` : model.anatomy === "coupler" ? "güç + veri · temsili" : "30:1 · temsili"}</div>
+      <div class="corner drawing-caption" data-at="bl"><strong>{view === "model" ? model.name : model.anatomy === "coupler" ? "T45 kuplör" : model.anatomy === "charging-station" ? "Döner şarj kolları" : "Sonsuz vida tahriki"}</strong> · {view === "model" ? `${model.length} × ${model.width} mm` : model.anatomy === "coupler" ? "güç + veri · temsili" : model.anatomy === "charging-station" ? "istasyon şarjı · temsili" : "30:1 · temsili"}</div>
       <span class="corner" data-at="br">{lit && view === "model" ? `Işık: ${model.lights} · temsili` : "Açıklayıcı çizim · ölçeksiz"}</span>
     </div>
 
     <aside class="plate parts">
       <span class="corner" data-at="tl">Parçalar</span>
       <span class="corner" data-at="tr">{model.name}</span>
-      {#if !hasCad(model.id)}<p class="pending"><span class="label">CAD hazırlanıyor</span>Bu vagonun parça dosyaları henüz üretilmedi. Ortak 250 mm şasi, boji ve T45 kuplör kullanır.</p>{/if}
+      {#if !hasBody(model.id)}<p class="pending"><span class="label">Gövde CAD'i sırada</span>Ortak 250 mm şasi, boji ve T45 kuplör dosyaları hazır; bu vagonun gövdesi henüz modellenmedi.</p>{/if}
       <ol>
         {#each featured as p, i}
           <li>
@@ -96,7 +96,7 @@
     {#each catalog as m, i}
       <article class="plate model-card" data-rise style="--i:{i}">
         <span class="corner" data-at="tl">Şekil {pad(MODELS.indexOf(m) + 2)}</span>
-        <span class="corner" data-at="tr"><span class="pill" class:proto={hasCad(m.id)}>{hasCad(m.id) ? "Prototip" : "CAD sırada"}</span></span>
+        <span class="corner" data-at="tr"><span class="pill" class:proto={hasBody(m.id)}>{hasBody(m.id) ? "Prototip" : "Gövde sırada"}</span></span>
         <a href={`/lokomotif?model=${m.id}`} use:link class="card-art" tabindex="-1" aria-hidden="true"><img src={img(m)} alt="" width="800" height="500" loading="lazy" /></a>
         <div class="card-body">
           <div class="name"><h3>{m.name}</h3><span class="mono">{m.length} × {m.width}</span></div>

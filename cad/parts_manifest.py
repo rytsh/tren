@@ -31,16 +31,59 @@ PRINTED = {
     "lok_buhar_domu": ("Buhar domu", 3, 1, 0, 0, 0, "Tepesi yatakta; pirinç renk"),
     "lok_kum_domu": ("Kum domu", 3, 1, 0, 0, 0, "Tepesi yatakta; ön şasi vidasının üstünde"),
     "lok_emniyet_ventili": ("Emniyet ventili", 3, 1, 0, 0, 0, "Tepesi yatakta; pirinç renk"),
-    "ceki_kolu": ("Çeki kolu (44 mm pim aralığı)", 3, 1, 0, 1, 0, "Araçlar arası; loko-tender için 1, her vagon arkasına 1"),
+    "ceki_kolu": ("Çeki kolu (44 mm pim aralığı)", 3, 1, 1, 0, 0, "Lokomotif-tender arası 1, tender arkasına 1 (eski 220 vagon veya T45 adaptörü gelene kadar); 250 vagonlar T45 kuplör kullanır"),
     "tender_sasi": ("Tender şasisi (motorsuz 0-4-0)", 3, 0, 1, 0, 0, "Yan levha yatakta, 4× 684ZZ"),
     "tender_platform": ("Tender platformu", 3, 0, 1, 0, 0, "Ters basılır; iki uçta çeki çatalı"),
     "tender_depo": ("Tender su deposu (pil bölmesi)", 3, 0, 1, 0, 0, "Ters (üstü yatakta) basılır; ön/arka 2-pin aksesuar konnektörü yuvası (ölçüler VARSAYIM), 3 iç kablo kelepçesi, Ø8 ana güç deliği"),
     "tender_kapak": ("Tender kömür kapağı", 3, 0, 1, 0, 0, "Alt yüzü yatakta; pil erişimi"),
     "vagon_boji": ("Vagon bojisi", 3, 0, 0, 2, 0, "Yan levha yatakta, 4× 684ZZ"),
-    "vagon_platform": ("Vagon platformu", 3, 0, 0, 1, 0, "Ters basılır; iki uçta çeki çatalı"),
-    "vagon_govde": ("Vagon kasası", 3, 0, 0, 1, 0, "Alt yüzü yatakta, çatısız; ön/arka 2-pin aksesuar konnektörü yuvası (VARSAYIM), 3 iç kablo kelepçesi, alın kapısı 68'e alçaltıldı"),
-    "vagon_cati": ("Vagon çatısı", 3, 0, 0, 1, 0, "Ucu yatakta (200 mm yükseklik < 260); iç tepede 12 mm düz LED şerit yüzeyi, +y dilinde kablo çentiği"),
+    "vagon_platform": ("Yolcu 220 platformu (Faz 3 prototipi)", 3, 0, 0, 1, 0, "Ters basılır; iki uçta çeki çatalı. 250 vagon ailesinden önceki prototip"),
+    "vagon_govde": ("Yolcu 220 kasası (Faz 3 prototipi)", 3, 0, 0, 1, 0, "Alt yüzü yatakta, çatısız; ön/arka 2-pin aksesuar konnektörü yuvası (VARSAYIM), 3 iç kablo kelepçesi, alın kapısı 68'e alçaltıldı"),
+    "vagon_cati": ("Yolcu 220 çatısı (Faz 3 prototipi)", 3, 0, 0, 1, 0, "Ucu yatakta (200 mm yükseklik < 260); iç tepede 12 mm düz LED şerit yüzeyi, +y dilinde kablo çentiği"),
 }
+
+# Faz 4: 250 vagon ailesi ve Şarj 250. Adetler site catalog.ts model id'lerine göre (qty_by_model).
+# Bütün 250 vagonlar ortak 250 şasiyi kullanır; gövdesi henüz modellenmemiş vagonlar yalnız şasi
+# parçalarını alır. Faz 3'ün 220 mm yolcu vagonu (vagon_platform/govde/cati, çeki kolu) hiçbir
+# katalog modeline sayılmaz: eski prototip olarak listede kalır.
+CARS_250 = ("yolcu-250", "enerji-250", "radar-250", "sarj-250", "ses-250", "gozlem-250")
+LEGACY_220 = {m: 0 for m in CARS_250}
+PLAIN_250 = tuple(m for m in CARS_250 if m != "sarj-250")
+BY_MODEL = {
+    "tekerlek_test_d42": {m: 8 for m in CARS_250},
+    "pul_aks_4mm": {m: 8 for m in CARS_250},
+    "vagon_boji": {m: 2 for m in CARS_250},
+    "vagon_platform_250": {m: 1 for m in PLAIN_250},
+    "tampon_250": {m: 4 for m in CARS_250},
+    "kuplor_kafa": {m: 2 for m in CARS_250},
+    "kuplor_kolu": {m: 2 for m in CARS_250},
+    "sarj_platform": {"sarj-250": 1},
+    "sarj_govde": {"sarj-250": 1},
+    "sarj_cati": {"sarj-250": 1},
+    "sarj_kol": {"sarj-250": 1},
+    "vagon_platform": LEGACY_220,
+    "vagon_govde": LEGACY_220,
+    "vagon_cati": LEGACY_220,
+    # Lokomotif-tender arası çeki kolu kalır; tender ile ilk 250 vagon arasında da (T45 adaptörü yok)
+    "ceki_kolu": {m: 0 for m in CARS_250},
+}
+PRINTED.update({
+    "vagon_platform_250": ("250 vagon platformu (ortak şasi)", 4, 0, 0, 0, 0,
+                           "Ters basılır; boji pivotları ±75, iki uçta kuplör kolu göbeği ve kiriş altı kol çentiği, TrenBus geçişleri"),
+    "tampon_250": ("250 vagon tamponu", 4, 0, 0, 0, 0, "Ucu yatakta; pimi kirişteki Ø5.3 deliğe yapıştırılır"),
+    "kuplor_kafa": ("T45 kuplör kafası", 4, 0, 0, 0, 0,
+                    "Arka yüzü yatakta; 2× Ø10×3 mıknatıs, 2× 4-pin pogo modülü, Ø3 kilit pimi (docs/standart.md §2)"),
+    "kuplor_kolu": ("T45 kuplör kolu (250 vagon)", 4, 0, 0, 0, 0, "Düz yatakta; pivot M3, kafaya Ø3 pim"),
+    "sarj_platform": ("Şarj 250 platformu", 4, 0, 0, 0, 0,
+                      "Ters basılır; ortak 250 platformu + platform altında servo pedleri (2× M2) ve servo açıklığı"),
+    "sarj_govde": ("Şarj 250 kasası", 4, 0, 0, 0, 0,
+                   "Alt yüzü yatakta; +y yanında kol cebi (kol göbeği tavandaki yuvaya yandan girer), ışık çubuğu yarığı"),
+    "sarj_cati": ("Şarj 250 çatısı", 4, 0, 0, 0, 0, "Ucu yatakta"),
+    "sarj_kol": ("Şarj 250 döner kolu (üst + / alt −)", 4, 0, 0, 0, 0,
+                 "Yan yatırılır; göbek içinden iki tel iner, uçlarda yaprak yay şerit yuvası, altta servo kolu yuvası"),
+    "sarj_istasyon": ("Şarj istasyonu kontak tutucusu", 4, 0, 0, 0, 0,
+                      "Arka yüzü yatakta; iki pirinç lama ön yüzdeki ceplere, uçları direk yarığına bükülür. İstasyon rayı başına 1"),
+})
 
 # id, ad, loko, tender, vagon, ray parçası, özellik
 HARDWARE = [
@@ -75,6 +118,51 @@ HARDWARE = [
     ("led_strip", "LED şerit (vagon iç aydınlatması)", 0, 0, 1, 0, "Genişlik ≤ 12 mm VARSAYIM; gerilimi aksesuar hattı kararına bağlı (AÇIK KARAR)"),
 ]
 
+# Faz 4 donanımı: model id'sine göre adet (qty_by_model) ve istasyon rayı başına adet.
+# id, ad, {model: adet}, istasyon rayı başına, özellik
+HARDWARE_BY_MODEL = [
+    ("bearing_684zz", "684ZZ rulman", {m: 8 for m in CARS_250}, 0, "4×9×4 mm"),
+    ("axle_4mm", "Çelik aks Ø4 × 55 mm", {m: 4 for m in CARS_250}, 0, "Gümüş çelik/paslanmaz, h6"),
+    ("screw_m3x20", "M3×20 vida (plastiğe)", {m: 2 for m in CARS_250}, 0, "Boji pivotu (alttan, gevşek)"),
+    ("screw_m3x8", "M3×8 vida (plastiğe)", {m: 4 for m in CARS_250}, 0, "Kasa → platform (platform altından)"),
+    ("nut_m3_lock", "M3 kontra (nylon) somun", {m: 2 for m in CARS_250}, 0, "Boji pivotu kilidi (isteğe bağlı)"),
+    ("cpl_magnet", "Neodim mıknatıs Ø10×3 mm (N52)", {m: 4 for m in CARS_250}, 0,
+     "Kafa başına 2: koni tarafı N, huni tarafı S yüzü dışa; bütün araçlarda aynı (docs/standart.md §2)"),
+    ("cpl_pogo", "4-pin mıknatıslı pogo konektör, 2,54 mm (erkek + dişi)", {m: 2 for m in CARS_250}, 0,
+     "Kafa başına 1 çift (sağ erkek, sol dişi). Modül seçilmedi, cep ölçüsü VARSAYIM"),
+    ("cpl_pivot", "M3×16 cıvata + 2 pul (kuplör kolu pivotu)", {m: 2 for m in CARS_250}, 0,
+     "Platform altındaki göbeğe; sıkılmaz, kol serbest dönmeli"),
+    ("cpl_headpin", "Ø3 × 22 mm çelik pim (kafa-kol)", {m: 2 for m in CARS_250}, 0, "Kafada sıkı, kolda boşluklu"),
+    ("cpl_lockpin", "Ø3 × 12 mm kilit pimi", {m: 1 for m in CARS_250}, 0, "Ağır trende iki kafanın kulak deliklerine düşürülür (isteğe bağlı)"),
+    ("trenbus_cable", "TrenBus kablosu 4 damar silikon 26 AWG", {m: 1 for m in CARS_250}, 0,
+     "Kuplörden kuplöre ~400 mm; kablo bağıyla kafa arkasında gerilim alıcıya"),
+    ("node_esp32c3", "Araç düğümü: ESP32-C3 + SN65HVD230 CAN alıcı-verici", {m: 1 for m in CARS_250}, 0,
+     "docs/standart.md §3 (öneri, doğrulanmadı)"),
+    ("servo_mg90s", "Mikro servo MG90S (metal dişli) VARSAYIM", {"sarj-250": 1}, 0,
+     "Kol göbeği servo kısa koluna yapıştırılır; 2× M2 ile platform altındaki pedlere"),
+    ("screw_m2x8", "M2×8 vida (plastiğe)", {"sarj-250": 2}, 0, "Servo kulakları"),
+    ("sj_leaf", "Fosfor bronz / pirinç şerit 5×0,3 mm, 20 mm", {"sarj-250": 2}, 0,
+     "Kol uçlarındaki yuvaya yapıştırılır, dışarı yay gibi kıvrılır; telleri lehimlenir"),
+    ("sj_wire", "Silikon tel 2×0,5 mm² (kırmızı/siyah), 150 mm", {"sarj-250": 1}, 0,
+     "Kol üstü kanaldan göbek deliğine, servo yanından şarj kartına; dönüşe yetecek gevşeklik"),
+    ("sj_battery", "2S Li-ion paket + BMS (şarj vagonu kendi paketi)", {"sarj-250": 1}, 0, "docs/standart.md §5 (öneri)"),
+    ("sj_charger", "2S şarj kartı + ters kutup koruması + sigorta", {"sarj-250": 1}, 0, "Kol temasından pakete; ölçüler AÇIK KARAR"),
+    ("sj_lightpipe", "Işık borusu Ø4 / LED çubuğu (10 kademe)", {"sarj-250": 1}, 0, "Kasa yanındaki yarığa"),
+    ("hall_a3144_car", "A3144 hall sensörü (vagon altı)", {"sarj-250": 1}, 0, "Yaklaşma ve durma mıknatıslarını görür"),
+    ("st_strip", "İstasyon pirinç lama 6×1 mm, 100 mm", {}, 2, "Üst (+) ve alt (−); uçları direk yarığına 90° bükülür"),
+    ("st_magnet", "Neodim mıknatıs 6×3 mm (istasyon işareti)", {}, 2, "Yaklaşma ve durma; traversler arasına"),
+    ("st_screw", "M3×16 vida + dübel (istasyon tabanı)", {}, 2, "Tutucuyu zemine sabitler"),
+    ("screw_m3x25", "M3×25 vida (çeki pimi)", LEGACY_220, 0, "Çatal başına 1; 250 vagonlarda çatal yok (T45)"),
+    ("acc_conn", "Aksesuar hattı 2-pin kutuplu konnektör çifti (VARSAYIM: JST-XH 2P sınıfı)", LEGACY_220, 0,
+     "Faz 3 aksesuar hattı; 250 vagonlarda TrenBus kuplörde"),
+    ("acc_jumper", "Aksesuar ara kablosu 70 mm (2×0.35 mm² silikon, VARSAYIM)", LEGACY_220, 0, "Faz 3 aksesuar hattı"),
+    ("cable_tie_25", "Kablo bağı 2.5 mm", {m: 2 for m in CARS_250}, 0, "Kuplör kafası arkasında TrenBus kablosu gerilim alıcısı"),
+    ("led_strip", "LED şerit (vagon iç aydınlatması)", {"yolcu-250": 1, "gozlem-250": 1}, 0,
+     "Genişlik ≤ 12 mm VARSAYIM; 5 V, araç düğümünden"),
+    ("st_supply", "İstasyon şarj beslemesi (USB-C PD → 8,4 V CC/CV) + röle/MOSFET", {}, 1,
+     "Raylar temas doğrulanana kadar enerjisiz; AÇIK KARAR"),
+]
+
 
 def bbox(part):
     f = ROOT / "out" / f"{part}.measure.json"
@@ -101,9 +189,21 @@ def main():
             "fits_x2d": bool(bb and sorted(bb)[2] <= 260 and sorted(bb)[1] <= 256),
             "qty_per_loco": ql, "qty_per_tender": qt, "qty_per_coach": qc,
             "qty_per_straight_track": qtr, "notes_tr": note,
+            **({"qty_by_model": BY_MODEL[pid]} if pid in BY_MODEL else {}),
+            **({"qty_per_station": 1} if pid == "sarj_istasyon" else {}),
         })
     hw = [{"id": i, "name_tr": n, "qty_per_loco": ql, "qty_per_tender": qt, "qty_per_coach": qc,
            "qty_per_track_piece": qtr, "spec": s} for i, n, ql, qt, qc, qtr, s in HARDWARE]
+    by_id = {h["id"]: h for h in hw}
+    for i, n, by_model, per_station, s in HARDWARE_BY_MODEL:
+        h = by_id.get(i)
+        if h is None:
+            h = by_id[i] = {"id": i, "name_tr": n, "spec": s}
+            hw.append(h)
+        if by_model:
+            h["qty_by_model"] = by_model
+        if per_station:
+            h["qty_per_station"] = per_station
     out = {
         "_note": "build.py + parts_manifest.py ile üretilir. bbox tasarım yönündedir (mm); "
                  "kütle PETG 1.27 g/cm3 ile %100 dolu hacimden hesaplanır (gerçek baskı daha hafif). "
@@ -115,7 +215,7 @@ def main():
         "review_assemblies": [
             {"id": a, "file_3mf": f"out/3mf/{a}.3mf", "print": False,
              "notes_tr": "İnceleme amaçlı (BASILMAZ): dünya koordinatında renkli montaj, ray hariç"}
-            for a in ("lokomotif_montaj", "tender_montaj", "vagon_montaj")
+            for a in ("lokomotif_montaj", "tender_montaj", "vagon_montaj", "sarj250_montaj", "sasi250_montaj")
             if (ROOT / "out" / "3mf" / f"{a}.3mf").exists()],
         "hardware": hw,
     }

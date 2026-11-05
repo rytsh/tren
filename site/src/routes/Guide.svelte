@@ -24,6 +24,12 @@
     ["Motor ve aktarmayı dene", "Önce güç vermeden elde kontrol et. Baskı sonsuz vidasının kavraması ve motor ölçüleri doğrulanmadı. Kendinden kilitlenme park freni sayılmaz."],
     ["Gövdeyi sökülebilir tut", "Platform şasiye M3 vidalarla, kazan ve kabin platforma takılır. İç parçalara ulaşmak için kalıcı yapıştırma yapma."],
   ];
+  const charge = [
+    ["sarj_kol", "tek parça göbek + üst (+) ve alt (−) kol"],
+    ["sarj_govde", "kol cebi ve ışık çubuğu yarığı olan alçak kasa"],
+    ["sarj_platform", "ortak 250 platformu + servo pedleri"],
+    ["sarj_istasyon", "rayın yanına konan iki lamalı kontak tutucusu"],
+  ];
   const print = [["Nozul / katman", "0,4 / 0,2 mm"], ["Nozul", "Üretici profili · örn. 250 °C"], ["Tabla", "70–80 °C · Textured PEI"], ["Raylar", "3 duvar · %20 gyroid"], ["Tekerlekler", "4 duvar · %40"], ["Şasi", "4 duvar · %30"]];
 </script>
 
@@ -93,7 +99,12 @@
     <p class="safety"><span class="label">Uyarı</span>2S Li-ion paket tam doluyken 8,4 V olur. Gerilim doğrulanmadan LED şerit veya 5 V modül doğrudan bağlanmamalı.</p>
   {:else}
     <div class="diagram"><AnatomyFigure id="charging-station" title="Planlanan otomatik şarj istasyonu" /></div>
-    <div class="text-row"><h2>Önce bağlantı, sonra enerji.</h2><p>İstasyonun pinleri normalde enerjisiz kalacak; konum ve kontak doğrulanınca uygun CC/CV şarj devreye girecek. Motor şarj sırasında devre dışı olacak. Figür bir davranış açıklamasıdır; çalışan şarj donanımı veya onaylanmış devre değildir. İlk prototip manuel şarj kullanacak.</p></div>
+    <div class="text-row"><h2>Önce bağlantı, sonra enerji.</h2><p>Şarj 250 durur, tek servo iki kolu cebinden kapı gibi çevirir; yaprak yaylı uçlar istasyondaki üst (+) ve alt (−) pirinç lamaya 1,5 mm bastırır. Lamalar temas doğrulanana kadar enerjisiz kalır, sonra uygun CC/CV şarj devreye girer. Şarj bitince kollar cebe döner ve gövdeden taşmaz; vagon ancak o zaman kalkar. Figür bir davranış açıklamasıdır; çalışan şarj donanımı veya onaylanmış devre değildir. İlk prototip manuel şarj kullanacak.</p></div>
+    <div class="notes">
+      <article><h3>Basılacaklar</h3><ul>{#each charge as [file, note]}<li><a class="link" href={`models/${file}.stl`} download><code>{file}</code></a> {note}</li>{/each}</ul></article>
+      <article><h3>Montaj sırası</h3><ol class="charge-steps"><li>Servoyu platformun altındaki iki pede M2 ile vidala; mil yukarı, cebin altına gelir.</li><li>Yaprak yay şeritleri kol uçlarındaki yarığa yapıştır, dışa kıvır; telleri lehimleyip kol üstü kanaldan göbek deliğine indir.</li><li>Kolu servo merkezdeyken açık konumda (dışa dik) servo koluna oturt; kasayı platforma takarken göbeği cep tavanındaki yuvaya yandan kaydır.</li><li>İstasyon tutucusunu rayın yanına M3 ile sabitle; lamaları ceplere yerleştir, uçlarını direk yarığına bük.</li><li>Önce enerjisiz dene: kol açıkken iki pabuç da lamaya basmalı, kapalıyken kol gövdeden taşmamalı. Multimetreyle + ve − arasında kısa devre olmadığını ölç.</li></ol></article>
+    </div>
+    <p class="safety"><span class="label">Uyarı</span>Kol, servo ve lama ölçüleri varsayımdır; açık havada pirinç oksitlenir ve temas direnci artar. Lamalara besleme bağlamadan önce ters kutup koruması, sigorta ve "temas yoksa enerji yok" mantığı kurulmalıdır.</p>
   {/if}
 </div>
 <Footer />
@@ -133,6 +144,10 @@
   .notes ul { margin-top: 8px; display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
   .notes li { position: relative; padding-left: 14px; }
   .notes li::before { content: ""; position: absolute; left: 0; top: .65em; width: 6px; height: 1px; background: var(--red); }
+  .charge-steps { margin-top: 8px; display: grid; gap: 6px; font-size: 13px; color: var(--muted); counter-reset: s; }
+  .charge-steps li { counter-increment: s; padding-left: 22px; }
+  .charge-steps li::before { content: counter(s, decimal-leading-zero); left: 0; top: 0; width: auto; height: auto; background: none; font-family: var(--mono); font-size: 10.5px; color: #998d6a; }
+  .notes code { font-family: var(--mono); font-size: 12px; }
   .safety { display: flex; align-items: baseline; gap: 12px; margin-top: 14px; padding: 10px 14px; border-left: 2px solid #c79a3d; background: #fbf5e8; font-size: 13px; color: #5e4419; }
   .safety .label { color: #7a5420; flex: none; }
   .pins { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }

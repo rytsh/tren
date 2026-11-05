@@ -83,7 +83,15 @@
       "qty_per_tender": 4,
       "qty_per_coach": 8,
       "qty_per_straight_track": 0,
-      "notes_tr": "Arka yüz yatakta basılır; aksa sıkı geçme"
+      "notes_tr": "Arka yüz yatakta basılır; aksa sıkı geçme",
+      "qty_by_model": {
+        "yolcu-250": 8,
+        "enerji-250": 8,
+        "radar-250": 8,
+        "sarj-250": 8,
+        "ses-250": 8,
+        "gozlem-250": 8
+      }
     },
     {
       "id": "pul_aks_4mm",
@@ -108,7 +116,15 @@
       "qty_per_tender": 4,
       "qty_per_coach": 8,
       "qty_per_straight_track": 0,
-      "notes_tr": "Tekerlek-rulman arası; hazır M4 pul da olur"
+      "notes_tr": "Tekerlek-rulman arası; hazır M4 pul da olur",
+      "qty_by_model": {
+        "yolcu-250": 8,
+        "enerji-250": 8,
+        "radar-250": 8,
+        "sarj-250": 8,
+        "ses-250": 8,
+        "gozlem-250": 8
+      }
     },
     {
       "id": "sasi_test_040",
@@ -480,10 +496,18 @@
       "bodies": 1,
       "fits_x2d": true,
       "qty_per_loco": 1,
-      "qty_per_tender": 0,
-      "qty_per_coach": 1,
+      "qty_per_tender": 1,
+      "qty_per_coach": 0,
       "qty_per_straight_track": 0,
-      "notes_tr": "Araçlar arası; loko-tender için 1, her vagon arkasına 1"
+      "notes_tr": "Lokomotif-tender arası 1, tender arkasına 1 (eski 220 vagon veya T45 adaptörü gelene kadar); 250 vagonlar T45 kuplör kullanır",
+      "qty_by_model": {
+        "yolcu-250": 0,
+        "enerji-250": 0,
+        "radar-250": 0,
+        "sarj-250": 0,
+        "ses-250": 0,
+        "gozlem-250": 0
+      }
     },
     {
       "id": "tender_sasi",
@@ -608,11 +632,19 @@
       "qty_per_tender": 0,
       "qty_per_coach": 2,
       "qty_per_straight_track": 0,
-      "notes_tr": "Yan levha yatakta, 4× 684ZZ"
+      "notes_tr": "Yan levha yatakta, 4× 684ZZ",
+      "qty_by_model": {
+        "yolcu-250": 2,
+        "enerji-250": 2,
+        "radar-250": 2,
+        "sarj-250": 2,
+        "ses-250": 2,
+        "gozlem-250": 2
+      }
     },
     {
       "id": "vagon_platform",
-      "name_tr": "Vagon platformu",
+      "name_tr": "Yolcu 220 platformu (Faz 3 prototipi)",
       "phase": 3,
       "file": {
         "stl": "out/stl/vagon_platform.stl",
@@ -633,11 +665,19 @@
       "qty_per_tender": 0,
       "qty_per_coach": 1,
       "qty_per_straight_track": 0,
-      "notes_tr": "Ters basılır; iki uçta çeki çatalı"
+      "notes_tr": "Ters basılır; iki uçta çeki çatalı. 250 vagon ailesinden önceki prototip",
+      "qty_by_model": {
+        "yolcu-250": 0,
+        "enerji-250": 0,
+        "radar-250": 0,
+        "sarj-250": 0,
+        "ses-250": 0,
+        "gozlem-250": 0
+      }
     },
     {
       "id": "vagon_govde",
-      "name_tr": "Vagon kasası",
+      "name_tr": "Yolcu 220 kasası (Faz 3 prototipi)",
       "phase": 3,
       "file": {
         "stl": "out/stl/vagon_govde.stl",
@@ -658,11 +698,19 @@
       "qty_per_tender": 0,
       "qty_per_coach": 1,
       "qty_per_straight_track": 0,
-      "notes_tr": "Alt yüzü yatakta, çatısız; ön/arka 2-pin aksesuar konnektörü yuvası (VARSAYIM), 3 iç kablo kelepçesi, alın kapısı 68'e alçaltıldı"
+      "notes_tr": "Alt yüzü yatakta, çatısız; ön/arka 2-pin aksesuar konnektörü yuvası (VARSAYIM), 3 iç kablo kelepçesi, alın kapısı 68'e alçaltıldı",
+      "qty_by_model": {
+        "yolcu-250": 0,
+        "enerji-250": 0,
+        "radar-250": 0,
+        "sarj-250": 0,
+        "ses-250": 0,
+        "gozlem-250": 0
+      }
     },
     {
       "id": "vagon_cati",
-      "name_tr": "Vagon çatısı",
+      "name_tr": "Yolcu 220 çatısı (Faz 3 prototipi)",
       "phase": 3,
       "file": {
         "stl": "out/stl/vagon_cati.stl",
@@ -683,7 +731,284 @@
       "qty_per_tender": 0,
       "qty_per_coach": 1,
       "qty_per_straight_track": 0,
-      "notes_tr": "Ucu yatakta (200 mm yükseklik < 260); iç tepede 12 mm düz LED şerit yüzeyi, +y dilinde kablo çentiği"
+      "notes_tr": "Ucu yatakta (200 mm yükseklik < 260); iç tepede 12 mm düz LED şerit yüzeyi, +y dilinde kablo çentiği",
+      "qty_by_model": {
+        "yolcu-250": 0,
+        "enerji-250": 0,
+        "radar-250": 0,
+        "sarj-250": 0,
+        "ses-250": 0,
+        "gozlem-250": 0
+      }
+    },
+    {
+      "id": "vagon_platform_250",
+      "name_tr": "250 vagon platformu (ortak şasi)",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/vagon_platform_250.stl",
+        "3mf": "out/3mf/vagon_platform_250.3mf",
+        "step": "out/step/vagon_platform_250.step",
+        "design": "designs/vagon_platform_250.sc"
+      },
+      "bbox_mm": [
+        250.0,
+        90.0,
+        17.0
+      ],
+      "volume_mm3": 81573.4,
+      "mass_g_petg": 103.6,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ters basılır; boji pivotları ±75, iki uçta kuplör kolu göbeği ve kiriş altı kol çentiği, TrenBus geçişleri",
+      "qty_by_model": {
+        "yolcu-250": 1,
+        "enerji-250": 1,
+        "radar-250": 1,
+        "ses-250": 1,
+        "gozlem-250": 1
+      }
+    },
+    {
+      "id": "tampon_250",
+      "name_tr": "250 vagon tamponu",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/tampon_250.stl",
+        "3mf": "out/3mf/tampon_250.3mf",
+        "step": "out/step/tampon_250.step",
+        "design": "designs/tampon_250.sc"
+      },
+      "bbox_mm": [
+        12.0,
+        12.0,
+        12.0
+      ],
+      "volume_mm3": 606.3,
+      "mass_g_petg": 0.8,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ucu yatakta; pimi kirişteki Ø5.3 deliğe yapıştırılır",
+      "qty_by_model": {
+        "yolcu-250": 4,
+        "enerji-250": 4,
+        "radar-250": 4,
+        "sarj-250": 4,
+        "ses-250": 4,
+        "gozlem-250": 4
+      }
+    },
+    {
+      "id": "kuplor_kafa",
+      "name_tr": "T45 kuplör kafası",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/kuplor_kafa.stl",
+        "3mf": "out/3mf/kuplor_kafa.3mf",
+        "step": "out/step/kuplor_kafa.step",
+        "design": "designs/kuplor_kafa.sc"
+      },
+      "bbox_mm": [
+        21.0,
+        38.0,
+        34.3
+      ],
+      "volume_mm3": 13732.4,
+      "mass_g_petg": 17.4,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Arka yüzü yatakta; 2× Ø10×3 mıknatıs, 2× 4-pin pogo modülü, Ø3 kilit pimi (docs/standart.md §2)",
+      "qty_by_model": {
+        "yolcu-250": 2,
+        "enerji-250": 2,
+        "radar-250": 2,
+        "sarj-250": 2,
+        "ses-250": 2,
+        "gozlem-250": 2
+      }
+    },
+    {
+      "id": "kuplor_kolu",
+      "name_tr": "T45 kuplör kolu (250 vagon)",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/kuplor_kolu.stl",
+        "3mf": "out/3mf/kuplor_kolu.3mf",
+        "step": "out/step/kuplor_kolu.step",
+        "design": "designs/kuplor_kolu.sc"
+      },
+      "bbox_mm": [
+        56.5,
+        9.0,
+        6.0
+      ],
+      "volume_mm3": 2295.3,
+      "mass_g_petg": 2.9,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Düz yatakta; pivot M3, kafaya Ø3 pim",
+      "qty_by_model": {
+        "yolcu-250": 2,
+        "enerji-250": 2,
+        "radar-250": 2,
+        "sarj-250": 2,
+        "ses-250": 2,
+        "gozlem-250": 2
+      }
+    },
+    {
+      "id": "sarj_platform",
+      "name_tr": "Şarj 250 platformu",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/sarj_platform.stl",
+        "3mf": "out/3mf/sarj_platform.3mf",
+        "step": "out/step/sarj_platform.step",
+        "design": "designs/sarj_platform.sc"
+      },
+      "bbox_mm": [
+        250.0,
+        90.0,
+        17.0
+      ],
+      "volume_mm3": 80674.7,
+      "mass_g_petg": 102.5,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ters basılır; ortak 250 platformu + platform altında servo pedleri (2× M2) ve servo açıklığı",
+      "qty_by_model": {
+        "sarj-250": 1
+      }
+    },
+    {
+      "id": "sarj_govde",
+      "name_tr": "Şarj 250 kasası",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/sarj_govde.stl",
+        "3mf": "out/3mf/sarj_govde.3mf",
+        "step": "out/step/sarj_govde.step",
+        "design": "designs/sarj_govde.sc"
+      },
+      "bbox_mm": [
+        232.0,
+        80.0,
+        47.0
+      ],
+      "volume_mm3": 64255.3,
+      "mass_g_petg": 81.6,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Alt yüzü yatakta; +y yanında kol cebi (kol göbeği tavandaki yuvaya yandan girer), ışık çubuğu yarığı",
+      "qty_by_model": {
+        "sarj-250": 1
+      }
+    },
+    {
+      "id": "sarj_cati",
+      "name_tr": "Şarj 250 çatısı",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/sarj_cati.stl",
+        "3mf": "out/3mf/sarj_cati.3mf",
+        "step": "out/step/sarj_cati.step",
+        "design": "designs/sarj_cati.sc"
+      },
+      "bbox_mm": [
+        236.0,
+        84.0,
+        13.7
+      ],
+      "volume_mm3": 54092.9,
+      "mass_g_petg": 68.7,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ucu yatakta",
+      "qty_by_model": {
+        "sarj-250": 1
+      }
+    },
+    {
+      "id": "sarj_kol",
+      "name_tr": "Şarj 250 döner kolu (üst + / alt −)",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/sarj_kol.stl",
+        "3mf": "out/3mf/sarj_kol.3mf",
+        "step": "out/step/sarj_kol.step",
+        "design": "designs/sarj_kol.sc"
+      },
+      "bbox_mm": [
+        8.0,
+        26.0,
+        29.4
+      ],
+      "volume_mm3": 2538.8,
+      "mass_g_petg": 3.2,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Yan yatırılır; göbek içinden iki tel iner, uçlarda yaprak yay şerit yuvası, altta servo kolu yuvası",
+      "qty_by_model": {
+        "sarj-250": 1
+      }
+    },
+    {
+      "id": "sarj_istasyon",
+      "name_tr": "Şarj istasyonu kontak tutucusu",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/sarj_istasyon.stl",
+        "3mf": "out/3mf/sarj_istasyon.3mf",
+        "step": "out/step/sarj_istasyon.step",
+        "design": "designs/sarj_istasyon.sc"
+      },
+      "bbox_mm": [
+        102.0,
+        27.5,
+        98.0
+      ],
+      "volume_mm3": 31101.2,
+      "mass_g_petg": 39.5,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Arka yüzü yatakta; iki pirinç lama ön yüzdeki ceplere, uçları direk yarığına bükülür. İstasyon rayı başına 1",
+      "qty_per_station": 1
     }
   ],
   "review_assemblies": [
@@ -704,6 +1029,18 @@
       "file_3mf": "out/3mf/vagon_montaj.3mf",
       "print": false,
       "notes_tr": "İnceleme amaçlı (BASILMAZ): dünya koordinatında renkli montaj, ray hariç"
+    },
+    {
+      "id": "sarj250_montaj",
+      "file_3mf": "out/3mf/sarj250_montaj.3mf",
+      "print": false,
+      "notes_tr": "İnceleme amaçlı (BASILMAZ): dünya koordinatında renkli montaj, ray hariç"
+    },
+    {
+      "id": "sasi250_montaj",
+      "file_3mf": "out/3mf/sasi250_montaj.3mf",
+      "print": false,
+      "notes_tr": "İnceleme amaçlı (BASILMAZ): dünya koordinatında renkli montaj, ray hariç"
     }
   ],
   "hardware": [
@@ -714,7 +1051,15 @@
       "qty_per_tender": 4,
       "qty_per_coach": 8,
       "qty_per_track_piece": 0,
-      "spec": "4×9×4 mm"
+      "spec": "4×9×4 mm",
+      "qty_by_model": {
+        "yolcu-250": 8,
+        "enerji-250": 8,
+        "radar-250": 8,
+        "sarj-250": 8,
+        "ses-250": 8,
+        "gozlem-250": 8
+      }
     },
     {
       "id": "axle_4mm",
@@ -723,7 +1068,15 @@
       "qty_per_tender": 2,
       "qty_per_coach": 4,
       "qty_per_track_piece": 0,
-      "spec": "Gümüş çelik/paslanmaz, h6"
+      "spec": "Gümüş çelik/paslanmaz, h6",
+      "qty_by_model": {
+        "yolcu-250": 4,
+        "enerji-250": 4,
+        "radar-250": 4,
+        "sarj-250": 4,
+        "ses-250": 4,
+        "gozlem-250": 4
+      }
     },
     {
       "id": "motor_370",
@@ -768,7 +1121,15 @@
       "qty_per_tender": 2,
       "qty_per_coach": 2,
       "qty_per_track_piece": 0,
-      "spec": "Tender platform → şasi (alttan), vagon boji pivotu (alttan, gevşek)"
+      "spec": "Tender platform → şasi (alttan), vagon boji pivotu (alttan, gevşek)",
+      "qty_by_model": {
+        "yolcu-250": 2,
+        "enerji-250": 2,
+        "radar-250": 2,
+        "sarj-250": 2,
+        "ses-250": 2,
+        "gozlem-250": 2
+      }
     },
     {
       "id": "screw_m3x8",
@@ -777,7 +1138,15 @@
       "qty_per_tender": 4,
       "qty_per_coach": 4,
       "qty_per_track_piece": 0,
-      "spec": "Kazan 4, kabin 4 / depo 4 / kasa 4 (platform altından)"
+      "spec": "Kazan 4, kabin 4 / depo 4 / kasa 4 (platform altından)",
+      "qty_by_model": {
+        "yolcu-250": 4,
+        "enerji-250": 4,
+        "radar-250": 4,
+        "sarj-250": 4,
+        "ses-250": 4,
+        "gozlem-250": 4
+      }
     },
     {
       "id": "screw_m3x10_nut",
@@ -795,7 +1164,15 @@
       "qty_per_tender": 2,
       "qty_per_coach": 2,
       "qty_per_track_piece": 0,
-      "spec": "Çatal başına 1; çeki kolu bunun üstünde döner"
+      "spec": "Çatal başına 1; çeki kolu bunun üstünde döner",
+      "qty_by_model": {
+        "yolcu-250": 0,
+        "enerji-250": 0,
+        "radar-250": 0,
+        "sarj-250": 0,
+        "ses-250": 0,
+        "gozlem-250": 0
+      }
     },
     {
       "id": "nut_m3_lock",
@@ -804,7 +1181,15 @@
       "qty_per_tender": 0,
       "qty_per_coach": 2,
       "qty_per_track_piece": 0,
-      "spec": "Boji pivotu kilidi (isteğe bağlı; boji serbest dönmeli)"
+      "spec": "Boji pivotu kilidi (isteğe bağlı; boji serbest dönmeli)",
+      "qty_by_model": {
+        "yolcu-250": 2,
+        "enerji-250": 2,
+        "radar-250": 2,
+        "sarj-250": 2,
+        "ses-250": 2,
+        "gozlem-250": 2
+      }
     },
     {
       "id": "screw_m3_track",
@@ -930,7 +1315,15 @@
       "qty_per_tender": 2,
       "qty_per_coach": 2,
       "qty_per_track_piece": 0,
-      "spec": "Her uçta 1 yuva; yuva 10.4×6.2×8 mm VARSAYIM. Akım değeri ve tip AÇIK KARAR"
+      "spec": "Her uçta 1 yuva; yuva 10.4×6.2×8 mm VARSAYIM. Akım değeri ve tip AÇIK KARAR",
+      "qty_by_model": {
+        "yolcu-250": 0,
+        "enerji-250": 0,
+        "radar-250": 0,
+        "sarj-250": 0,
+        "ses-250": 0,
+        "gozlem-250": 0
+      }
     },
     {
       "id": "acc_jumper",
@@ -939,7 +1332,15 @@
       "qty_per_tender": 1,
       "qty_per_coach": 1,
       "qty_per_track_piece": 0,
-      "spec": "Araç başına 1 (arkadaki araca); iki ucu fişli"
+      "spec": "Araç başına 1 (arkadaki araca); iki ucu fişli",
+      "qty_by_model": {
+        "yolcu-250": 0,
+        "enerji-250": 0,
+        "radar-250": 0,
+        "sarj-250": 0,
+        "ses-250": 0,
+        "gozlem-250": 0
+      }
     },
     {
       "id": "acc_fuse",
@@ -957,7 +1358,15 @@
       "qty_per_tender": 3,
       "qty_per_coach": 3,
       "qty_per_track_piece": 0,
-      "spec": "İç kelepçe tünellerinden; çekme yükünü konnektörden alır"
+      "spec": "İç kelepçe tünellerinden; çekme yükünü konnektörden alır",
+      "qty_by_model": {
+        "yolcu-250": 2,
+        "enerji-250": 2,
+        "radar-250": 2,
+        "sarj-250": 2,
+        "ses-250": 2,
+        "gozlem-250": 2
+      }
     },
     {
       "id": "led_strip",
@@ -966,7 +1375,190 @@
       "qty_per_tender": 0,
       "qty_per_coach": 1,
       "qty_per_track_piece": 0,
-      "spec": "Genişlik ≤ 12 mm VARSAYIM; gerilimi aksesuar hattı kararına bağlı (AÇIK KARAR)"
+      "spec": "Genişlik ≤ 12 mm VARSAYIM; gerilimi aksesuar hattı kararına bağlı (AÇIK KARAR)",
+      "qty_by_model": {
+        "yolcu-250": 1,
+        "gozlem-250": 1
+      }
+    },
+    {
+      "id": "cpl_magnet",
+      "name_tr": "Neodim mıknatıs Ø10×3 mm (N52)",
+      "spec": "Kafa başına 2: koni tarafı N, huni tarafı S yüzü dışa; bütün araçlarda aynı (docs/standart.md §2)",
+      "qty_by_model": {
+        "yolcu-250": 4,
+        "enerji-250": 4,
+        "radar-250": 4,
+        "sarj-250": 4,
+        "ses-250": 4,
+        "gozlem-250": 4
+      }
+    },
+    {
+      "id": "cpl_pogo",
+      "name_tr": "4-pin mıknatıslı pogo konektör, 2,54 mm (erkek + dişi)",
+      "spec": "Kafa başına 1 çift (sağ erkek, sol dişi). Modül seçilmedi, cep ölçüsü VARSAYIM",
+      "qty_by_model": {
+        "yolcu-250": 2,
+        "enerji-250": 2,
+        "radar-250": 2,
+        "sarj-250": 2,
+        "ses-250": 2,
+        "gozlem-250": 2
+      }
+    },
+    {
+      "id": "cpl_pivot",
+      "name_tr": "M3×16 cıvata + 2 pul (kuplör kolu pivotu)",
+      "spec": "Platform altındaki göbeğe; sıkılmaz, kol serbest dönmeli",
+      "qty_by_model": {
+        "yolcu-250": 2,
+        "enerji-250": 2,
+        "radar-250": 2,
+        "sarj-250": 2,
+        "ses-250": 2,
+        "gozlem-250": 2
+      }
+    },
+    {
+      "id": "cpl_headpin",
+      "name_tr": "Ø3 × 22 mm çelik pim (kafa-kol)",
+      "spec": "Kafada sıkı, kolda boşluklu",
+      "qty_by_model": {
+        "yolcu-250": 2,
+        "enerji-250": 2,
+        "radar-250": 2,
+        "sarj-250": 2,
+        "ses-250": 2,
+        "gozlem-250": 2
+      }
+    },
+    {
+      "id": "cpl_lockpin",
+      "name_tr": "Ø3 × 12 mm kilit pimi",
+      "spec": "Ağır trende iki kafanın kulak deliklerine düşürülür (isteğe bağlı)",
+      "qty_by_model": {
+        "yolcu-250": 1,
+        "enerji-250": 1,
+        "radar-250": 1,
+        "sarj-250": 1,
+        "ses-250": 1,
+        "gozlem-250": 1
+      }
+    },
+    {
+      "id": "trenbus_cable",
+      "name_tr": "TrenBus kablosu 4 damar silikon 26 AWG",
+      "spec": "Kuplörden kuplöre ~400 mm; kablo bağıyla kafa arkasında gerilim alıcıya",
+      "qty_by_model": {
+        "yolcu-250": 1,
+        "enerji-250": 1,
+        "radar-250": 1,
+        "sarj-250": 1,
+        "ses-250": 1,
+        "gozlem-250": 1
+      }
+    },
+    {
+      "id": "node_esp32c3",
+      "name_tr": "Araç düğümü: ESP32-C3 + SN65HVD230 CAN alıcı-verici",
+      "spec": "docs/standart.md §3 (öneri, doğrulanmadı)",
+      "qty_by_model": {
+        "yolcu-250": 1,
+        "enerji-250": 1,
+        "radar-250": 1,
+        "sarj-250": 1,
+        "ses-250": 1,
+        "gozlem-250": 1
+      }
+    },
+    {
+      "id": "servo_mg90s",
+      "name_tr": "Mikro servo MG90S (metal dişli) VARSAYIM",
+      "spec": "Kol göbeği servo kısa koluna yapıştırılır; 2× M2 ile platform altındaki pedlere",
+      "qty_by_model": {
+        "sarj-250": 1
+      }
+    },
+    {
+      "id": "screw_m2x8",
+      "name_tr": "M2×8 vida (plastiğe)",
+      "spec": "Servo kulakları",
+      "qty_by_model": {
+        "sarj-250": 2
+      }
+    },
+    {
+      "id": "sj_leaf",
+      "name_tr": "Fosfor bronz / pirinç şerit 5×0,3 mm, 20 mm",
+      "spec": "Kol uçlarındaki yuvaya yapıştırılır, dışarı yay gibi kıvrılır; telleri lehimlenir",
+      "qty_by_model": {
+        "sarj-250": 2
+      }
+    },
+    {
+      "id": "sj_wire",
+      "name_tr": "Silikon tel 2×0,5 mm² (kırmızı/siyah), 150 mm",
+      "spec": "Kol üstü kanaldan göbek deliğine, servo yanından şarj kartına; dönüşe yetecek gevşeklik",
+      "qty_by_model": {
+        "sarj-250": 1
+      }
+    },
+    {
+      "id": "sj_battery",
+      "name_tr": "2S Li-ion paket + BMS (şarj vagonu kendi paketi)",
+      "spec": "docs/standart.md §5 (öneri)",
+      "qty_by_model": {
+        "sarj-250": 1
+      }
+    },
+    {
+      "id": "sj_charger",
+      "name_tr": "2S şarj kartı + ters kutup koruması + sigorta",
+      "spec": "Kol temasından pakete; ölçüler AÇIK KARAR",
+      "qty_by_model": {
+        "sarj-250": 1
+      }
+    },
+    {
+      "id": "sj_lightpipe",
+      "name_tr": "Işık borusu Ø4 / LED çubuğu (10 kademe)",
+      "spec": "Kasa yanındaki yarığa",
+      "qty_by_model": {
+        "sarj-250": 1
+      }
+    },
+    {
+      "id": "hall_a3144_car",
+      "name_tr": "A3144 hall sensörü (vagon altı)",
+      "spec": "Yaklaşma ve durma mıknatıslarını görür",
+      "qty_by_model": {
+        "sarj-250": 1
+      }
+    },
+    {
+      "id": "st_strip",
+      "name_tr": "İstasyon pirinç lama 6×1 mm, 100 mm",
+      "spec": "Üst (+) ve alt (−); uçları direk yarığına 90° bükülür",
+      "qty_per_station": 2
+    },
+    {
+      "id": "st_magnet",
+      "name_tr": "Neodim mıknatıs 6×3 mm (istasyon işareti)",
+      "spec": "Yaklaşma ve durma; traversler arasına",
+      "qty_per_station": 2
+    },
+    {
+      "id": "st_screw",
+      "name_tr": "M3×16 vida + dübel (istasyon tabanı)",
+      "spec": "Tutucuyu zemine sabitler",
+      "qty_per_station": 2
+    },
+    {
+      "id": "st_supply",
+      "name_tr": "İstasyon şarj beslemesi (USB-C PD → 8,4 V CC/CV) + röle/MOSFET",
+      "spec": "Raylar temas doğrulanana kadar enerjisiz; AÇIK KARAR",
+      "qty_per_station": 1
     }
   ]
 }

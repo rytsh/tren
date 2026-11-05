@@ -3,32 +3,17 @@ import { ThreeMFLoader } from "three/examples/jsm/loaders/3MFLoader.js";
 
 export type AssemblyStyle = "workshop" | "cad";
 
-const SPECS: Record<string, { file: string; length: number; kind: string }> = {
-  "bd-040": { file: "lokomotif_montaj", length: 300, kind: "loco" },
-  "tender-160": { file: "tender_montaj", length: 160, kind: "tender" },
-  "yolcu-250": { file: "yolcu250_montaj", length: 250, kind: "car" },
-  "enerji-250": { file: "enerji250_montaj", length: 250, kind: "car" },
-  "radar-250": { file: "radar250_montaj", length: 250, kind: "car" },
-  "sarj-250": { file: "sarj250_montaj", length: 250, kind: "car" },
-  "ses-250": { file: "ses250_montaj", length: 250, kind: "car" },
-  "gozlem-250": { file: "gozlem250_montaj", length: 250, kind: "car" },
-};
-/** Araç montajı; vagon dosyası henüz yoksa eski yolcu vagonu montajı yedek olarak kullanılır. */
-export function vehicleSpec(id: string) {
-  const spec = SPECS[id] ?? SPECS["yolcu-250"];
-  return { ...spec, fallback: spec.kind === "car" ? "vagon_montaj" : undefined };
-}
-
 /** CAD renklerini sitenin Anatomy tonlarına çevirir: açık mavi-gri gövde, kırmızı tekerlek, pirinç detay. */
 function workshopColour(name: string, cad: THREE.Color) {
   const hex = cad.getHex();
   if (/^wheel/i.test(name) || hex === 0xc0201a) return 0xb3443c;
+  if (/^sjarm/i.test(name)) return 0xc9a052;
   if (hex === 0xb8892c) return 0xc9a052;
   if (hex === 0xd8b000) return 0xd9bd62;
-  if (/axle|shaft|worm|motor/i.test(name)) return 0xbdb08a;
+  if (/axle|shaft|worm|motor|servo/i.test(name)) return 0xbdb08a;
   if (/body/i.test(name)) return 0xece3c6;
   if (/roof|lid/i.test(name)) return 0xd9cda8;
-  if (/frame|bogie/i.test(name)) return 0xa3966f;
+  if (/frame|bogie|deck|buffer/i.test(name)) return 0xa3966f;
   return 0xf5efdc;
 }
 
@@ -40,10 +25,11 @@ export interface LoadedAssembly {
 
 /**
  * Gerçek CAD montaj 3MF'ini yükler. Z-yukarı CAD eksenini Three.js Y-yukarı eksenine çevirir,
- * araç boyunca X'te ortalar ve ray üstü yüksekliğini korur. Tekerlekler kendi merkezlerine
- * taşınır ki dönebilsinler.
+ * araç boyunca X'te ortalar ve ray üstü yüksekliğini korur. `centre` verilirse (araç merkezi,
+ * CAD dünya X/Y) kutu yerine o kullanılır: yana açılan şarj kolu aracı kaydırmasın. Tekerlekler
+ * kendi merkezlerine taşınır ki dönebilsinler.
  */
-export async function loadAssembly(file: string, style: AssemblyStyle = "workshop"): Promise<LoadedAssembly> {
+export async function loadAssembly(file: string, style: AssemblyStyle = "workshop", centre?: { x: number; y: number }): Promise<LoadedAssembly> {
   const response = await fetch(`models/3mf/${file}.3mf`);
   if (!response.ok) throw new Error(`${file}.3mf bulunamadı`);
   const root = new ThreeMFLoader().parse(await response.arrayBuffer());
@@ -52,8 +38,8 @@ export async function loadAssembly(file: string, style: AssemblyStyle = "worksho
   root.traverse((o) => { if (o instanceof THREE.Mesh) sources.push(o); });
   const box = new THREE.Box3();
   for (const m of sources) box.expandByObject(m);
-  const centreX = (box.min.x + box.max.x) / 2;
-  const centreY = (box.min.y + box.max.y) / 2;
+  const centreX = centre?.x ?? (box.min.x + box.max.x) / 2;
+  const centreY = centre?.y ?? (box.min.y + box.max.y) / 2;
   const toScene = new THREE.Matrix4().makeRotationX(-Math.PI / 2);
   const group = new THREE.Group();
   const geometries: THREE.BufferGeometry[] = [];

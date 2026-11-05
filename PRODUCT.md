@@ -22,10 +22,10 @@ Tek bir trenin tanıtımından ziyade zamanla birçok lokomotif, vagon ve ray mo
 
 - 45 mm açıklıklı tamamen plastik ray, bataryalı 0-4-0 lokomotif; raylardan elektrik alınmaz.
 - 200 mm düz ray, R750 / 15° viraj; parametrik SolidCraft CAD, STL/3MF/STEP.
-- Lokomotif, tender, yolcu vagonu CAD prototipleri mevcut. Fiziksel baskı ve çalışma doğrulaması yok.
+- Lokomotif, tender, ortak 250 vagon şasisi (T45 kuplör dahil) ve Şarj 250 (döner kol + istasyon tutucusu) CAD prototipleri mevcut; diğer 250 vagon gövdeleri sırada. Fiziksel baskı ve çalışma doğrulaması yok.
 - Statik site: dosya indirme, yerel model inceleme, tarayıcıda hat tasarımı. Hesap, ödeme veya bulut kayıt servisi yok.
 - Vagonlar arası aksesuar elektriği ve aydınlatma planlanıyor; mekanik kablo geçişi hazırlanıyor. Aksesuar gerilimi, konektör ve akım sınırı henüz seçilmedi.
-- Şarj istasyonu, elektronik kontrol ve emniyet davranışları plan aşamasında; çalışan donanım gibi sunulmaz.
+- Şarj istasyonunun mekaniği (döner kollar, lama tutucusu) CAD'de; elektronik kontrol, şarj devresi ve emniyet davranışları plan aşamasında, çalışan donanım gibi sunulmaz.
 
 ## Brand Commitments
 
@@ -48,3 +48,8 @@ Kullanıcı önceki turuncu afiş/uzun tanıtım sayfasını reddetti. 4 Kasım 
 - Palet maviden sıcak kum/krem + işaret sarısına çevrildi (kullanıcı isteği).
 - Standart vagon 250 × 90 mm; altı vagon tipi (yolcu, enerji, radar, şarj, ses, gözlem). Hepsi T45 otomatik kuplör ve TrenBus (BAT+, CAN-H, CAN-L, GND) kullanır: `docs/standart.md`. Önceki "2-pin aksesuar hattı" bunun yerine geçti.
 - Yeni vagonların çizimleri hazır; CAD dosyaları üretilene kadar "CAD sırada" olarak işaretlenir ve indirme/3D sunulmaz.
+
+## Revizyon · 6 Kasım 2026
+
+- Şarj 250 yan cebinden kapı gibi açılan üst (+) / alt (−) iki kolla istasyondaki iki pirinç lamaya basar (kullanıcı fikri); kapalıyken kollar gövdeden taşmaz. Alt pabuçlar ve çatı kolu kaldırıldı.
+- Hat tasarlayıcısında araçlar gerçek pivotlarına oturur ve T45/çeki kolu ölçüsüyle dizilir; gövdesi gelmeyen 250 vagonlar gerçek ortak şasi üstünde ölçülü taslak gövdeyle gösterilir ve "Gövde sırada" işaretlenir.

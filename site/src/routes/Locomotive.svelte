@@ -1,6 +1,6 @@
 <script lang="ts">
   import { router, link } from "svelte-spa-router";
-  import { modelById, modelParts, partCount, qtyOf, hasCad } from "../lib/catalog";
+  import { modelById, modelParts, partCount, qtyOf, hasCad, hasBody } from "../lib/catalog";
   import Topbar from "../lib/components/Topbar.svelte";
   import AnatomyFigure from "../lib/components/AnatomyFigure.svelte";
   import ModelViewer from "../lib/components/ModelViewer.svelte";
@@ -45,8 +45,9 @@
       <span class="corner" data-at="tl">Künye</span>
       <p class="desc">{model.description}</p>
       {#if model.anatomy === "coupler"}<p class="desc">Anatomy sekmesi bu vagonun iki ucundaki T45 kuplörü gösterir; vagonun kendi ayrıştırması henüz yok.</p>{/if}
+      {#if model.anatomy === "charging-station"}<p class="desc">Anatomy sekmesi vagonun istasyonda kollarını açıp şarj olmasını gösterir. 3D montajda kollar açık konumdadır; istasyon tutucusu ayrı bir parçadır (Hat tasarla sayfasında istasyon rayının yanında görünür).</p>{/if}
       {#if !model.anatomy}<p class="desc">Bu modelin Anatomy ayrıştırması henüz yok.{model.assembly ? " Çizim ve 3D CAD montajı kullanılabilir." : ""}</p>{/if}
-      {#if !hasCad(model.id)}<p class="desc pending"><span class="label">CAD hazırlanıyor</span> Parça dosyaları ve 3D montaj henüz üretilmedi; bu sayfadaki çizim açıklayıcıdır.</p>{/if}
+      {#if !hasBody(model.id)}<p class="desc pending"><span class="label">Gövde CAD'i sırada</span> 3D sekmesi ve parça dosyaları ortak 250 mm şasiyi (boji, platform, T45 kuplör) gösterir; gövde henüz modellenmedi, çizim açıklayıcıdır.</p>{/if}
       <dl>
         <div><dt>Uzunluk</dt><dd>{model.length} mm</dd></div>
         <div><dt>Genişlik</dt><dd>{model.width} mm</dd></div>

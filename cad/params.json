@@ -1385,10 +1385,6 @@
       8.0,
       "TrenBus kablo geçişi çapı"
     ],
-    "sj_wire_d": [
-      5.0,
-      "Pabuç kablosu platform deliği"
-    ],
     "car_aux_x": [
       45.4,
       "Aksesuar vida delikleri X ± (radar kabini ön duvarı / kaidesi; Y = car_hole_y)"
@@ -1405,10 +1401,6 @@
       1.2,
       "Pencere bandı oluğu dış duvar kalınlığı"
     ],
-    "sj_lb_xh": [
-      75.0,
-      "Şarj vagonu ışık çubuğu yarığı X ± yarı boy"
-    ],
     "sj_lb_z": [
       46.0,
       "Işık çubuğu yarığı merkezi Z"
@@ -1416,14 +1408,6 @@
     "sj_lb_h": [
       4.2,
       "Işık çubuğu yarığı yüksekliği (4.0 ışık borusu + 0.2)"
-    ],
-    "sj_shoe_lift": [
-      1.5,
-      "Şarj pabucu alt yüzü, serbestken ray üstünden yukarı (istasyon pedi bundan yüksek olmalı, VARSAYIM)"
-    ],
-    "sj_travel": [
-      3.0,
-      "Pabuç yay stroku"
     ],
     "car_buf_z": [
       20.0,
@@ -1457,18 +1441,6 @@
       8.0,
       "Tampon çıkıntısı (kiriş yüzünden)"
     ],
-    "sj_x": [
-      25.0,
-      "Şarj pabucu yuvaları X ± (Y = 0; bojiler arasında, raylar arasında). Delikler bütün 250 şasilerde"
-    ],
-    "sj_hole_y": [
-      7.0,
-      "Pabuç yuvası vida delikleri |Y| (platform üstünden M3, yuvada kılavuz)"
-    ],
-    "sj_wire_y": [
-      14.0,
-      "Pabuç kablosu platform deliği Y"
-    ],
     "car_hole_x": [
       "car_body_l/2 - wall_t - cab_rib_w/2",
       "Gövde vidası X ±"
@@ -1480,6 +1452,14 @@
     "car_aux2_x": [
       "-gz_x0 - wall_t - cab_rib_w/2",
       "Gözlem gövdesi balkon ucu vidaları X ± (Y = car_hole_y)"
+    ],
+    "sj_lb_x0": [
+      26.0,
+      "Şarj vagonu ışık çubuğu yarığı başı X (kol cebinin önünde)"
+    ],
+    "sj_lb_x1": [
+      104.0,
+      "Işık çubuğu yarığı sonu X"
     ]
   },
   "car_family": {
@@ -1568,12 +1548,12 @@
       "Tabla dişlisi (m1 z56) - pinyon (m1 z10) eksen mesafesi (+0.15 boşluk); motor 45° köşegende"
     ],
     "sj_wall_top": [
-      60.0,
-      "Şarj 250 alçak kasa duvar üstü"
+      70.0,
+      "Şarj 250 alçak kasa duvar üstü Z (cep ve iki kol sığsın diye 60'tan yükseltildi; çatı dili cep tavanının üstünde kalır)"
     ],
     "sj_crown": [
-      64.0,
-      "Şarj 250 çatı tepesi"
+      76.0,
+      "Şarj 250 çatı tepesi Z (ray üstü ≈ 97)"
     ],
     "ss_wall_top": [
       96.0,
@@ -1747,46 +1727,6 @@
       -78.0,
       "Radar kabini çatı uyarı lambası X"
     ],
-    "sj_hold": [
-      10.0,
-      "Pabuç yuvası X/Y yarı ölçü (20 × 20)"
-    ],
-    "sj_hold_bot": [
-      -4.0,
-      "Pabuç yuvası alt yüzü Z (ray üstünden ≈17)"
-    ],
-    "sj_rod_d": [
-      5.0,
-      "Pabuç mili çapı"
-    ],
-    "sj_bore": [
-      5.4,
-      "Yuva kılavuz deliği (mil)"
-    ],
-    "sj_chamber": [
-      7.4,
-      "Yuva üst odası (M3 pul Ø7 + yay)"
-    ],
-    "sj_step_z": [
-      10.0,
-      "Oda tabanı Z: serbest konumda mil üstü + pul buraya oturur"
-    ],
-    "sj_pad_x": [
-      14.0,
-      "Pabuç temas yüzü X"
-    ],
-    "sj_pad_y": [
-      10.0,
-      "Pabuç temas yüzü Y"
-    ],
-    "sj_pad_t": [
-      2.5,
-      "Pabuç kalınlığı"
-    ],
-    "sj_contact_t": [
-      0.5,
-      "Pabuç altı pirinç/bakır temas sacı cebi derinliği"
-    ],
     "rd_dish_d": [
       44.0,
       "Çanak anten ağız çapı"
@@ -1802,6 +1742,206 @@
     "rd_tilt": [
       -10.0,
       "Montajda çanak yukarı eğimi (Y ekseni, derece; yalnız görsel)"
+    ],
+    "sj_pk_x0": [
+      -18.0,
+      "Kol cebi arka ucu X (+y yan duvarında; kapalı kolun yay ucuna 4 mm pay)"
+    ],
+    "sj_pk_x1": [
+      17.0,
+      "Kol cebi ön ucu X"
+    ],
+    "sj_pk_y": [
+      30.0,
+      "Kol cebi dip yüzü Y (dış yüz car_body_w/2)"
+    ],
+    "sj_pk_z0": [
+      33.0,
+      "Kol cebi tabanı Z"
+    ],
+    "sj_pk_z1": [
+      60.0,
+      "Kol cebi tavanı Z"
+    ],
+    "sj_px": [
+      12.0,
+      "Kol mili ekseni X"
+    ],
+    "sj_py": [
+      35.0,
+      "Kol mili ekseni Y (kapalı kol gövde dış yüzünün içinde kalır)"
+    ],
+    "sj_hub_d": [
+      8.0,
+      "Kol göbeği (dikey boru) çapı; iki kol ve göbek tek baskı"
+    ],
+    "sj_hub_bore": [
+      3.0,
+      "Göbek içi kablo kanalı (iki pabuç teli aşağı iner)"
+    ],
+    "sj_hub_z1": [
+      62.0,
+      "Göbek üst ucu Z (cep tavanındaki U yuvasında döner)"
+    ],
+    "sj_slot_w": [
+      8.4,
+      "Cep tavanındaki göbek yuvası genişliği (göbek dışarıdan yana kaydırılarak takılır)"
+    ],
+    "sj_arm_len": [
+      22.0,
+      "Mil ekseninden kol ucuna (pabuç yuvası ucu)"
+    ],
+    "sj_arm_w": [
+      8.0,
+      "Kol genişliği (göbek çapına eşit; yan yatırılıp desteksiz basılır)"
+    ],
+    "sj_arm_t": [
+      4.0,
+      "Kol kalınlığı (Z)"
+    ],
+    "sj_lo_z": [
+      36.0,
+      "Alt kol (−) alt yüzü Z"
+    ],
+    "sj_up_z": [
+      54.0,
+      "Üst kol (+) alt yüzü Z (tutucu üstü cep tavanının 1 mm altı)"
+    ],
+    "sj_hold_l": [
+      5.0,
+      "Kol ucundaki pabuç tutucu boyu"
+    ],
+    "sj_hold_w": [
+      8.0,
+      "Pabuç tutucu genişliği"
+    ],
+    "sj_hold_h": [
+      6.0,
+      "Pabuç tutucu yüksekliği (kolun ±1 mm üstü/altı)"
+    ],
+    "sj_strip_w": [
+      5.0,
+      "Pirinç/fosfor bronz yaprak yay şerit genişliği (VARSAYIM 5×0.3 mm)"
+    ],
+    "sj_strip_slot": [
+      0.8,
+      "Şerit yuvası genişliği (0.3 mm şerit + yapıştırıcı)"
+    ],
+    "sj_strip_in": [
+      4.0,
+      "Şerit yuvası derinliği (tutucuya)"
+    ],
+    "sj_shoe_out": [
+      4.0,
+      "Kıvrılmış şeridin kol ucundan dışarı çıkıntısı (serbest)"
+    ],
+    "sj_travel": [
+      1.5,
+      "Şerit yay stroku: istasyon rayı bu kadar bastırır"
+    ],
+    "sj_groove": [
+      1.2,
+      "Kol üstü tel kanalı genişliği ve derinliği"
+    ],
+    "sj_swing": [
+      90.0,
+      "Servo dönüşü: kapalı (−X) → açık (+Y), derece"
+    ],
+    "sv_len": [
+      22.8,
+      "Mikro servo gövde boyu (MG90S/SG90 sınıfı, VARSAYIM)"
+    ],
+    "sv_w": [
+      12.2,
+      "Servo gövde genişliği (VARSAYIM)"
+    ],
+    "sv_h": [
+      22.5,
+      "Servo gövde yüksekliği, mil hariç (VARSAYIM)"
+    ],
+    "sv_hole_s": [
+      27.8,
+      "Servo kulak delikleri arası (VARSAYIM)"
+    ],
+    "sv_tab_z": [
+      15.9,
+      "Servo kulak alt yüzü, gövde altından (VARSAYIM)"
+    ],
+    "sv_tab_t": [
+      2.5,
+      "Servo kulak kalınlığı (VARSAYIM)"
+    ],
+    "sv_tab_span": [
+      32.5,
+      "Servo kulaklar dahil boy (VARSAYIM)"
+    ],
+    "sv_shaft_off": [
+      5.9,
+      "Servo mili, gövdenin bir ucundan (VARSAYIM)"
+    ],
+    "sv_shaft_top": [
+      26.5,
+      "Servo mil ucu (kol oturma yüzü), gövde altından (VARSAYIM)"
+    ],
+    "m2_tap": [
+      1.6,
+      "M2 vida (plastiğe) pilot deliği"
+    ],
+    "sj_st_len": [
+      90.0,
+      "İstasyon kontak rayı boyu (vagon ±40 mm kayık dursa da temas)"
+    ],
+    "sj_st_bar_h": [
+      10.0,
+      "İstasyon ray taşıyıcısı yüksekliği (Z)"
+    ],
+    "sj_st_bar_t": [
+      8.0,
+      "Ray taşıyıcısı kalınlığı (Y; arka yüz baskıda yatağa oturur)"
+    ],
+    "sj_st_strip_w": [
+      6.0,
+      "İstasyon pirinç lama genişliği (VARSAYIM 6×1 mm)"
+    ],
+    "sj_st_strip_t": [
+      1.0,
+      "Pirinç lama kalınlığı"
+    ],
+    "sj_st_proud": [
+      0.5,
+      "Lama yüzünün plastik yüzden öne çıkıntısı (pabuç plastiğe değmez)"
+    ],
+    "sj_st_post_w": [
+      6.0,
+      "İstasyon direği X genişliği"
+    ],
+    "sj_st_base_t": [
+      3.0,
+      "İstasyon taban plakası kalınlığı (traverslerle aynı zemine oturur)"
+    ],
+    "sj_st_base_y0": [
+      40.0,
+      "Taban plakası iç kenarı Y (travers ucu tie_len/2 = 33)"
+    ],
+    "sj_horn_r": [
+      6.5,
+      "Servo kolu (kısa tek kol) dönüş yarıçapı; cep tabanında bu kadar yer açılır (VARSAYIM)"
+    ],
+    "sj_horn_w": [
+      4.2,
+      "Göbek altındaki servo kolu yuvası genişliği (kol yapıştırılır, VARSAYIM)"
+    ],
+    "sj_horn_t": [
+      1.6,
+      "Servo kolu yuvası derinliği"
+    ],
+    "sv_drop": [
+      1.5,
+      "Servo kulakları platform altından bu kadar aşağıda (iki ped); servo üstü platform üstünü geçmez"
+    ],
+    "sv_pad_d": [
+      4.4,
+      "Servo kulak pedi çapı (M2 pilot delikli)"
     ],
     "y5_R": [
       "((car_body_w/2)*(car_body_w/2) + (y5_crown - y5_wall_top)*(y5_crown - y5_wall_top)) / (2*(y5_crown - y5_wall_top))",
@@ -1834,6 +1974,22 @@
     "gz_band_z1": [
       "gz_crown - gz_R + sqrt(gz_R*gz_R - (car_body_w/2 - wall_t)*(car_body_w/2 - wall_t)) - roof_tab_h - 0.5 mm",
       "Gözlem pencere bandı üst kenarı Z"
+    ],
+    "sj_st_face": [
+      "sj_py + sj_arm_len + sj_shoe_out - sj_travel",
+      "İstasyon lama yüzü Y, ray ekseninden (türetilmiş, ≈59.5)"
+    ],
+    "sj_st_z_lo": [
+      "tie_t + rail_h + axle_h + sj_lo_z + sj_arm_t/2",
+      "Alt (−) lama ekseni Z, zeminden (türetilmiş; ray üstünden ≈59)"
+    ],
+    "sj_st_z_up": [
+      "tie_t + rail_h + axle_h + sj_up_z + sj_arm_t/2",
+      "Üst (+) lama ekseni Z, zeminden (türetilmiş; ray üstünden ≈78)"
+    ],
+    "sj_hub_z0": [
+      "fp_z - sv_drop - sv_tab_t - sv_tab_z + sv_shaft_top",
+      "Göbek alt ucu Z = servo mil/kol üstü (türetilmiş, ≈32.6)"
     ]
   }
 }

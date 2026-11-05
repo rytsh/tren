@@ -10,6 +10,7 @@ SolidCraft CLI yolu SOLIDCRAFT_CLI ortam değişkeniyle değiştirilebilir.
 import json
 import math
 import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -17,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 CLI = os.environ.get(
     "SOLIDCRAFT_CLI",
-    "/mnt/d/Tools/solidcraft/solidcraft-cli.exe",
+    shutil.which("solidcraft-cli") or "/mnt/d/Tools/solidcraft/solidcraft-cli.exe",
 )
 
 RAW = json.loads((ROOT / "params.json").read_text())
@@ -1250,6 +1251,347 @@ REAR_DOWN = lambda b: [c("solid.move", bodies=[b], axis=[0, 1, 0], angle="-90 de
 ON_SIDE = lambda b: [c("solid.move", bodies=[b], axis=[1, 0, 0], angle="-90 deg")]
 
 
+# --- 250 vagon ailesi: ortak şasi + T45 kuplör ----------------------------------------
+# Yerel eksen: x araç boyu, y yan (+y sol, istasyon tarafı), z = 0 aks ekseni (diğer
+# araçlar gibi). docs/standart.md §1-2, params → car, coupler, car_family.
+K2 = "(car_len/2)"                   # 250 vagon kiriş dış yüzü
+CPL_P = f"({K2} - cpl_p_car)"        # kuplör kolu pivotu
+
+
+def car_deck(name="KDeck"):
+    """250 vagon platformu: levha, etekler, iki kiriş, boji pivot göbekleri, gövde delikleri,
+    iki uçta kuplör kolu pivot göbeği ve kiriş altı kol çentiği, TrenBus kablo geçişleri.
+    Tamponlar ayrı basılır (car_buffer); kiriş yalnız pim deliği taşır."""
+    cmds = deck(name, f"-{K2}", K2, "car_w/2", "car_beam_bot", [(K2, 1), (f"-{K2}", -1)], "KD")
+    for s, sn in ((1, "F"), (-1, "B")):
+        cmds.append(vcyl("mount_boss_d", f"{s} * car_bogie_x", "0 mm", "plate_above", "fp_z + 0.5 mm",
+                         "join", name, f"KDPivot{sn}"))
+        cmds.append(vcyl("m3_tap", f"{s} * car_bogie_x", "0 mm", "plate_above", f"{FP_TOP} - 1 mm",
+                         "cut", name, f"KDPivotTap{sn}"))
+        xp = f"{s} * {CPL_P}"
+        cmds.append(vcyl("cpl_boss_d", xp, "0 mm", "cpl_z + cpl_arm_h/2 + cpl_vplay", "fp_z + 0.5 mm",
+                         "join", name, f"KDCplBoss{sn}"))
+        cmds.append(vcyl("m3_tap", xp, "0 mm", "cpl_z + cpl_arm_h/2 + cpl_vplay - 1 mm",
+                         f"{FP_TOP} - 1 mm", "cut", name, f"KDCplTap{sn}"))
+        # Kiriş altından kol çentiği: kol ±cpl_swing salınır
+        xf = f"{s} * {K2}"
+        x0, x1 = (f"{xf} - beam_t - 1 mm", f"{xf} + 1 mm") if s > 0 else (f"{xf} - 1 mm", f"{xf} + beam_t + 1 mm")
+        cmds.append(box(x0, x1, "-(cpl_arm_w/2 + cpl_p_car * tan(cpl_swing) + 1 mm)",
+                        "cpl_arm_w/2 + cpl_p_car * tan(cpl_swing) + 1 mm", "car_beam_bot - 1 mm",
+                        "cpl_z + cpl_arm_h/2 + cpl_vplay", "cut", name, f"KDCplNotch{sn}"))
+        for t, tn in ((1, "L"), (-1, "R")):
+            cmds.append(xcyl("cbuf_hole_d", f"{xf} - {s} * (beam_t + 1 mm)", f"{xf} + {s} * 1 mm",
+                             f"{t} * car_buf_y", "car_buf_z", "cut", name, f"KDBufHole{sn}{tn}")
+                        if s > 0 else
+                        xcyl("cbuf_hole_d", f"{xf} - 1 mm", f"{xf} + beam_t + 1 mm", f"{t} * car_buf_y",
+                             "car_buf_z", "cut", name, f"KDBufHole{sn}{tn}"))
+        cmds.append(vcyl("car_bus_d", f"{s} * car_bus_x", "car_bus_y", "fp_z - 1 mm", f"{FP_TOP} + 1 mm",
+                         "cut", name, f"KDBus{sn}"))
+    cmds += clear_holes(name, [(f"{sx} * car_hole_x", f"{sy} * car_hole_y") for sx in (1, -1)
+                               for sy in (1, -1)], "KD")
+    return cmds
+
+
+def car_buffer(name="KBuffer"):
+    """Ayrı basılan tampon: pim kirişteki deliğe girer (yapıştırılır). Eksen X, kiriş yüzü x=0."""
+    return [
+        xcyl("cbuf_spig_d", "-beam_t", "0 mm", "0 mm", "0 mm", "new", name, "KBufSpigot"),
+        xcyl("cbuf_stock_d", "0 mm", "cbuf_len - buf_head_t", "0 mm", "0 mm", "join", name, "KBufStock"),
+        xcyl("cbuf_head_d", "cbuf_len - buf_head_t", "cbuf_len", "0 mm", "0 mm", "join", name, "KBufHead"),
+    ]
+
+
+def coupler_head(name="CplHead"):
+    """T45 kafa (docs/standart.md §2). Yerel: yüz x = 0, gövde −x; y: yüzden bakınca sağ +y
+    (koni), z = 0 kafa merkezi. Koni + huni, iki Ø10×3 mıknatıs yuvası, iki pogo cebi
+    (sağ erkek, sol dişi), kilit kulağı ve karşı kafa için pim deliği, arkada kol yuvası."""
+    cmds = [
+        box("-cpl_d", "0 mm", "-cpl_w/2", "cpl_w/2", "-cpl_h/2", "cpl_h/2", "new", name, "CplBlock"),
+        # kilit kulağı (koni tarafı): kafa üstünden yükselen L parça (XZ çizimi, Y'de uzatılır),
+        # dil karşı kafanın huni tarafı üstüne uzanır
+        c("sketch.create", plane="XZ", offset="cpl_lug_y", name="CplLugSk"),
+        poly([("-cpl_d + 1 mm", "-(cpl_h/2 - 1 mm)"), ("-cpl_d + 5 mm", "-(cpl_h/2 - 1 mm)"),
+              ("-cpl_d + 5 mm", "-(cpl_h/2 + cpl_lug_gap)"), ("cpl_lug_l", "-(cpl_h/2 + cpl_lug_gap)"),
+              ("cpl_lug_l", "-(cpl_h/2 + cpl_lug_gap + cpl_lug_t)"),
+              ("-cpl_d + 1 mm", "-(cpl_h/2 + cpl_lug_gap + cpl_lug_t)")]),
+        c("sketch.finish"),
+        c("solid.extrude", distance="cpl_lug_w - 1 mm", direction="symmetric", operation="join", targets=[name],
+          name="CplLug"),
+        # koni (sağ, +y)
+        c("solid.cone", diameter="cpl_cone_d", top_diameter="cpl_cone_tip", height="cpl_cone_l",
+          base=["0 mm", "cpl_cone_y", "cpl_cone_z"], axis="X", operation="join", targets=[name],
+          name="CplCone"),
+        # huni (sol, −y): koninin negatifi + boşluk
+        c("solid.cone", diameter="cpl_cone_d + 2*cpl_clear", top_diameter="cpl_cone_tip + 2*cpl_clear",
+          height="-(cpl_cone_l + cpl_clear)", base=["0.01 mm", "-cpl_cone_y", "cpl_cone_z"], axis="X",
+          operation="cut", targets=[name], name="CplFunnel"),
+        # mıknatıs yuvaları: koni içinde (ön ucu cpl_mag_front), huni dibinin arkasında
+        xcyl("cpl_mag_d + cpl_mag_fit", "cpl_mag_front - cpl_mag_t", "cpl_mag_front", "cpl_cone_y",
+             "cpl_cone_z", "cut", name, "CplMagCone"),
+        xcyl("cpl_mag_d + cpl_mag_fit", "-(cpl_cone_l + cpl_clear + cpl_mag_wall + cpl_mag_t)",
+             "-(cpl_cone_l + cpl_clear + cpl_mag_wall)", "-cpl_cone_y", "cpl_cone_z", "cut", name,
+             "CplMagFunnel"),
+    ]
+    # Pogo cepleri ve arkalarındaki kablo kanalları
+    for s, sn in ((1, "M"), (-1, "F")):
+        y = f"{s} * cpl_pogo_y"
+        cmds.append(box("-cpl_pogo_d", "1 mm", f"{y} - (cpl_pogo_w + cpl_pogo_fit)/2",
+                        f"{y} + (cpl_pogo_w + cpl_pogo_fit)/2", "cpl_pogo_z - (cpl_pogo_h + cpl_pogo_fit)/2",
+                        "cpl_pogo_z + (cpl_pogo_h + cpl_pogo_fit)/2", "cut", name, f"CplPogo{sn}"))
+        y0, y1 = ("cpl_cable_y0", "cpl_cable_y1") if s > 0 else ("-cpl_cable_y1", "-cpl_cable_y0")
+        cmds.append(box("-cpl_d - 1 mm", "-cpl_pogo_d + 0.5 mm", y0, y1, "cpl_cable_z0", "cpl_cable_z1",
+                        "cut", name, f"CplCable{sn}"))
+    cmds += [
+        vcyl("cpl_pin_d", "cpl_pin_x", "cpl_lug_y", "cpl_h/2", "cpl_h/2 + cpl_lug_gap + cpl_lug_t + 1 mm",
+             "cut", name, "CplLugPin"),
+        # karşı kafanın pimi (huni tarafı üstü, yüzün arkasında kör delik)
+        vcyl("cpl_pin_d", "-cpl_pin_x", "-cpl_lug_y", "cpl_h/2 - cpl_rcv_depth", "cpl_h/2 + 1 mm",
+             "cut", name, "CplRcv"),
+        # arkada kol yuvası ve dikey kafa pimi
+        box("-cpl_d - 1 mm", "-cpl_d + cpl_sock_d", "-(cpl_arm_w/2 + cpl_arm_clear)",
+            "cpl_arm_w/2 + cpl_arm_clear", "-(cpl_arm_h/2 + cpl_vplay)", "cpl_arm_h/2 + cpl_vplay", "cut",
+            name, "CplSocket"),
+        vcyl("cpl_hpin_d", "-cpl_d + cpl_hpin_in", "0 mm", "-cpl_h/2 - 1 mm", "cpl_h/2 + 1 mm", "cut", name,
+             "CplHeadPin"),
+        c("solid.chamfer", edges=[[-V["cpl_d"], V["cpl_w"] / 2, -V["cpl_h"] / 4],
+                                  [-V["cpl_d"], -V["cpl_w"] / 2, -V["cpl_h"] / 4]],
+          distance="cpl_ch", body=name),
+    ]
+    return cmds
+
+
+def coupler_arm(name="CplArm"):
+    """Kuplör kolu: pivot gözü x = 0, kafa pimi x = cpl_L_car. Yerel z = 0 kol ekseni."""
+    return [
+        box("0 mm", "cpl_L_car + 3 mm", "-cpl_arm_w/2", "cpl_arm_w/2", "-cpl_arm_h/2", "cpl_arm_h/2", "new",
+            name, "CplArmBar"),
+        vcyl("cpl_eye_d", "0 mm", "0 mm", "-cpl_arm_h/2", "cpl_arm_h/2", "join", name, "CplArmEye"),
+        vcyl("m3_clear", "0 mm", "0 mm", "-cpl_arm_h/2 - 1 mm", "cpl_arm_h/2 + 1 mm", "cut", name,
+             "CplArmPivot"),
+        vcyl("cpl_hpin_d + 0.2 mm", "cpl_L_car", "0 mm", "-cpl_arm_h/2 - 1 mm", "cpl_arm_h/2 + 1 mm", "cut",
+             name, "CplArmHeadPin"),
+    ]
+
+
+def coupler_at(head, arm, s):
+    """Kafa ve kolu 250 vagonun s (+1 ön, −1 arka) ucuna yerleştir (aks ekseni z = 0)."""
+    face = f"{s} * ({K2} + cpl_out)"
+    piv = f"{s} * {CPL_P}"
+    cmds = []
+    if s < 0:
+        cmds += [c("solid.move", bodies=[head, arm], axis=[0, 0, 1], angle="180 deg")]
+    cmds += [c("solid.move", bodies=[head], translate=[face, "0 mm", "cpl_z"]),
+             c("solid.move", bodies=[arm], translate=[piv, "0 mm", "cpl_z"])]
+    return cmds
+
+
+# --- Şarj 250 ---------------------------------------------------------------------
+def sj_body(name="SjBody"):
+    """Şarj 250 alçak kasası: yay çatılı kabuk, +y yan duvarında kol cebi (göbek cep
+    tavanındaki yuvaya yandan kaydırılır), servo kolu için cep tabanında açıklık,
+    ışık çubuğu yarığı, alın kapısı ve vida kaburgaları."""
+    v = V
+    hw = "car_body_w/2"
+    wi = "(car_body_w/2 - wall_t)"
+    cmds = arch_body(name, "-car_body_l/2", "car_body_l/2", hw, FP_TOP, "sj_wall_top", "sj_crown", "SJ")
+    cmds.append(c("solid.shell", faces=[[0, 0, v["fp_z"] + v["fp_t"]], [0, 0, v["sj_crown"]]],
+                  thickness="wall_t", body=name))
+    cmds += side_ribs(name, ["car_hole_x", "-car_hole_x"], "car_hole_y", wi, FP_TOP, "cab_rib_h", "SJ")
+    # Cep: duvar kesilir, içine kapalı bir kutu (taban, tavan, dip, iki yan) eklenir
+    cmds += [
+        box("sj_pk_x0 - wall_t", "sj_pk_x1 + wall_t", "sj_pk_y - wall_t", f"{wi} + 0.5 mm",
+            "sj_pk_z0 - wall_t", "sj_pk_z1 + wall_t", "join", name, "SJPocketBox"),
+        box("sj_pk_x0", "sj_pk_x1", "sj_pk_y", f"{hw} + 1 mm", "sj_pk_z0", "sj_pk_z1", "cut", name,
+            "SJPocket"),
+        # tavanda göbek yuvası (dışarı açık U), tabanda göbek + servo kolu dönüş açıklığı
+        box("sj_px - sj_slot_w/2", "sj_px + sj_slot_w/2", "sj_py", f"{hw} + 1 mm", "sj_pk_z1 - 1 mm",
+            "sj_pk_z1 + wall_t + 1 mm", "cut", name, "SJHubSlotTop"),
+        vcyl("sj_slot_w", "sj_px", "sj_py", "sj_pk_z1 - 1 mm", "sj_pk_z1 + wall_t + 1 mm", "cut", name,
+             "SJHubSlotTopEnd"),
+        vcyl("2 * sj_horn_r + 1 mm", "sj_px", "sj_py", "sj_pk_z0 - wall_t - 1 mm", "sj_pk_z0 + 1 mm", "cut",
+             name, "SJHornOpen"),
+        # kol açıkken pabuç teli: tavanın arkasından gövdeye küçük delik
+        vcyl("3 mm", "sj_px", "sj_pk_y - wall_t - 2 mm", f"{FP_TOP} - 1 mm", "sj_pk_z0 - wall_t + 0.5 mm",
+             "cut", name, "SJWire"),
+        # ışık çubuğu yarığı (4 mm ışık borusu)
+        box("sj_lb_x0", "sj_lb_x1", f"{wi} - 1 mm", f"{hw} + 1 mm", "sj_lb_z - sj_lb_h/2", "sj_lb_z + sj_lb_h/2",
+            "cut", name, "SJLightBar"),
+        # alın kapısı (arka uç)
+        box("-car_body_l/2 - 1 mm", "-car_body_l/2 + wall_t + 1 mm", "-12 mm", "12 mm", f"{FP_TOP} + 6 mm",
+            f"{FP_TOP} + 26 mm", "cut", name, "SJEndDoor"),
+    ]
+    return cmds
+
+
+def sj_roof(name="SjRoof"):
+    return arch_roof(name, "-(car_body_l/2 + roof_over)", "car_body_l/2 + roof_over",
+                     "(car_body_w/2 + roof_over)", "sj_crown", "sj_R",
+                     "-(car_body_l/2 - wall_t - roof_clear)", "car_body_l/2 - wall_t - roof_clear",
+                     "(car_body_w/2 - wall_t)", "SJ")
+
+
+def sj_arm(name="SjArm"):
+    """Tek parça döner kol: dikey göbek (Ø sj_hub_d) + alt (−) ve üst (+) kol, uçlarda pabuç
+    tutucusu ve yaprak yay şerit yuvası, kol üstünde tel kanalı; göbek altında servo kolu
+    yuvası. Açık (dışarı, +y) konumda modellenir; yerel mil ekseni (0, 0)."""
+    cmds = [vcyl("sj_hub_d", "0 mm", "0 mm", "sj_hub_z0", "sj_hub_z1", "new", name, "SjHub"),
+            vcyl("sj_hub_bore", "0 mm", "0 mm", "sj_hub_z0 + sj_horn_t + 1 mm", "sj_hub_z1 + 1 mm", "cut", name,
+                 "SjHubBore")]
+    for z, zn in (("sj_lo_z", "Lo"), ("sj_up_z", "Up")):
+        tip = "sj_arm_len"
+        cmds += [
+            box("-sj_arm_w/2", "sj_arm_w/2", "0 mm", f"{tip} - sj_hold_l", z, f"{z} + sj_arm_t", "join", name,
+                f"SjArm{zn}"),
+            box("-sj_hold_w/2", "sj_hold_w/2", f"{tip} - sj_hold_l", tip, f"{z} + sj_arm_t/2 - sj_hold_h/2",
+                f"{z} + sj_arm_t/2 + sj_hold_h/2", "join", name, f"SjHold{zn}"),
+            # yaprak yay şeridi yuvası: uçtan içeri, düşey yarık
+            box("-sj_strip_w/2 - 0.1 mm", "sj_strip_w/2 + 0.1 mm", f"{tip} - sj_strip_in", f"{tip} + 1 mm",
+                f"{z} + sj_arm_t/2 - sj_strip_slot/2", f"{z} + sj_arm_t/2 + sj_strip_slot/2", "cut", name,
+                f"SjStrip{zn}"),
+            # tel kanalı: kol üstünde, göbek deliğine iner
+            box("-sj_groove/2", "sj_groove/2", "0 mm", f"{tip} - sj_strip_in", f"{z} + sj_arm_t - sj_groove",
+                f"{z} + sj_arm_t + 1 mm", "cut", name, f"SjGroove{zn}"),
+        ]
+    cmds.append(box("-sj_horn_w/2", "sj_horn_w/2", "-sj_horn_r", "sj_horn_r", "sj_hub_z0 - 1 mm",
+                    "sj_hub_z0 + sj_horn_t", "cut", name, "SjHornSlot"))
+    return cmds
+
+
+def sj_servo_dummy(name="SjServo"):
+    """Mikro servo yer tutucusu (BASILMAZ, montaj kontrolü). Mil (x = 0, y = 0) yukarı."""
+    zb = "(fp_z - sv_drop - sv_tab_t - sv_tab_z)"
+    x0 = "-sv_shaft_off"
+    return [
+        box(x0, f"{x0} + sv_len", "-sv_w/2", "sv_w/2", zb, f"{zb} + sv_h", "new", name, "SvBody"),
+        box(f"{x0} + sv_len/2 - sv_tab_span/2", f"{x0} + sv_len/2 + sv_tab_span/2", "-sv_w/2", "sv_w/2",
+            f"{zb} + sv_tab_z", f"{zb} + sv_tab_z + sv_tab_t", "join", name, "SvTabs"),
+        vcyl("4.8 mm", "0 mm", "0 mm", f"{zb} + sv_h", "sj_hub_z0", "join", name, "SvShaft"),
+    ]
+
+
+def sj_deck(name="SjDeck"):
+    """Şarj 250 platformu: ortak 250 platformu + servo kulak pedleri (platform altında,
+    kulaklar alttan M2 ile) ve servo gövdesi/göbek için platform açıklığı."""
+    cmds = car_deck(name)
+    sx, sy = "sj_px", "sj_py"
+    cx = f"({sx} - sv_shaft_off + sv_len/2)"
+    cmds.append(box(f"{sx} - sv_shaft_off - 0.5 mm", f"{sx} - sv_shaft_off + sv_len + 0.5 mm",
+                    f"{sy} - sv_w/2 - 0.5 mm", f"{sy} + sv_w/2 + 0.5 mm", "fp_z - valance_h - 1 mm",
+                    f"{FP_TOP} + 1 mm", "cut", name, "SjServoOpen"))
+    for s, sn in ((1, "A"), (-1, "B")):
+        x = f"{cx} + {s} * sv_hole_s/2"
+        cmds.append(vcyl("sv_pad_d", x, sy, "fp_z - sv_drop", "fp_z + 0.5 mm", "join", name, f"SjSvPad{sn}"))
+        cmds.append(vcyl("m2_tap", x, sy, "fp_z - sv_drop - 1 mm", "fp_z - 1 mm", "cut", name, f"SjSvTap{sn}"))
+    return cmds
+
+
+def sj_station(name="SjStation"):
+    """İstasyon kontak tutucusu: taban plakası (traverslerle aynı zeminde, 2× M3 ile bahçeye) +
+    iki direk + üst üste iki yalıtkan taşıyıcı; taşıyıcıların ray tarafı yüzünde pirinç lama
+    cebi, direklerde lama uçlarını büken yarık, arkada tel kanalı. Ray ekseni y = 0, zemin
+    z = 0, +y tarafına konur. Arka yüzü yatakta basılır. Lamalar ayrı (satın alınır)."""
+    face = "sj_st_face"
+    back = f"({face} + sj_st_bar_t)"
+    L2s = "(sj_st_len/2)"
+    cmds = [
+        box(f"-{L2s} - sj_st_post_w", f"{L2s} + sj_st_post_w", "sj_st_base_y0", back, "0 mm",
+            "sj_st_base_t", "new", name, "StBase"),
+    ]
+    for s, sn in ((1, "A"), (-1, "B")):
+        x0, x1 = (L2s, f"{L2s} + sj_st_post_w") if s > 0 else (f"-{L2s} - sj_st_post_w", f"-{L2s}")
+        cmds.append(box(x0, x1, face, back, "sj_st_base_t - 0.5 mm", "sj_st_z_up + sj_st_bar_h/2 + 3 mm",
+                        "join", name, f"StPost{sn}"))
+        cmds.append(vcyl("m3_clear", f"{s} * ({L2s} - 8 mm)", f"(sj_st_base_y0 + {face})/2", "-1 mm",
+                         "sj_st_base_t + 1 mm", "cut", name, f"StBaseHole{sn}"))
+    for z, zn in (("sj_st_z_lo", "Lo"), ("sj_st_z_up", "Up")):
+        cmds += [
+            box(f"-{L2s} - 0.5 mm", f"{L2s} + 0.5 mm", face, back, f"{z} - sj_st_bar_h/2", f"{z} + sj_st_bar_h/2",
+                "join", name, f"StBar{zn}"),
+            box(f"-{L2s} - 1 mm", f"{L2s} + 1 mm", f"{face} - 1 mm", f"{face} + sj_st_strip_t - sj_st_proud",
+                f"{z} - sj_st_strip_w/2 - 0.1 mm", f"{z} + sj_st_strip_w/2 + 0.1 mm", "cut", name,
+                f"StStripPocket{zn}"),
+            xcyl("2.2 mm", f"-{L2s} - sj_st_post_w - 1 mm", f"-{L2s} + 4 mm", f"{back} - 2.5 mm", z, "cut", name,
+                 f"StWire{zn}"),
+        ]
+    # Lama uçlarını kıvırıp sıkıştırmak için direklerde yarık (lama ucu 90° bükülür)
+    for s, sn in ((1, "A"), (-1, "B")):
+        for z, zn in (("sj_st_z_lo", "Lo"), ("sj_st_z_up", "Up")):
+            x0, x1 = (L2s, f"{L2s} + 1.2 mm") if s > 0 else (f"-{L2s} - 1.2 mm", f"-{L2s}")
+            cmds.append(box(x0, x1, f"{face} - 1 mm", f"{face} + 5 mm", f"{z} - sj_st_strip_w/2 - 0.1 mm",
+                            f"{z} + sj_st_strip_w/2 + 0.1 mm", "cut", name, f"StBend{sn}{zn}"))
+    return cmds
+
+
+def car_underframe(xc, deck_fn=car_deck, deck_name="KDeck"):
+    """250 vagon alt takımı (boji ×2, tekerlek ×8, aks ×4, platform, tampon ×4, kuplör ×2),
+    dünyada araç merkezi xc'de. Dönüş: (komutlar, gövde adları)."""
+    bx = "car_bogie_x"
+    cmds = bogie("Bogie")
+    cmds.append(c("solid.move", bodies=["Bogie"], copy=True))
+    w, _ = wheels_on(xc, [f"{bx} + bogie_wb/2", f"{bx} - bogie_wb/2", f"-{bx} + bogie_wb/2",
+                          f"-{bx} - bogie_wb/2"])
+    cmds += w
+    cmds += [c("solid.move", bodies=["Bogie"], translate=[bx, "0 mm", "0 mm"]),
+             c("solid.move", bodies=["Bogie (2)"], translate=[f"-{bx}", "0 mm", "0 mm"])]
+    cmds += deck_fn(deck_name)
+    bufs = []
+    for k, (s, t) in enumerate(((1, 1), (1, -1), (-1, 1), (-1, -1))):
+        nm = f"KBuffer{k}"
+        cmds += car_buffer(nm)
+        if s < 0:
+            cmds.append(c("solid.move", bodies=[nm], axis=[0, 0, 1], angle="180 deg"))
+        cmds.append(c("solid.move", bodies=[nm], translate=[f"{s} * {K2}", f"{t} * car_buf_y", "car_buf_z"]))
+        bufs.append(nm)
+    cpl = []
+    for s, sn in ((1, "F"), (-1, "B")):
+        h, a = f"CplHead{sn}", f"CplArm{sn}"
+        cmds += coupler_head(h) + coupler_arm(a) + coupler_at(h, a, s)
+        cpl += [h, a]
+    movers = ["Bogie", "Bogie (2)", deck_name] + bufs + cpl
+    return cmds, movers
+
+
+def car250_underframe():
+    """250 vagon ailesinin ortak alt takımı (inceleme montajı): gövdesi henüz modellenmemiş
+    vagonlar sitede bunun üstünde ölçülü taslak gövdeyle gösterilir."""
+    xc = "track_len"
+    cmds = tracks([1])
+    under, movers = car_underframe(xc)
+    cmds += under
+    cmds.append(c("solid.move", bodies=movers, translate=[xc, "0 mm", AXLE_Z]))
+    cmds += [c("appearance.assign", bodies=["Bogie", "Bogie (2)"], color="#202020"),
+             c("appearance.assign", bodies=["KDeck"] + [f"KBuffer{k}" for k in range(4)], color=BLACK),
+             c("appearance.assign", bodies=["CplHeadF", "CplHeadB"], color="#d8b000")]
+    return cmds
+
+
+def sarj_assembly():
+    """Şarj 250 inceleme montajı: düz ray üstünde vagon, kollar açık, istasyon tutucusu ile
+    (istasyon dünya koordinatında, ray zemini z = 0)."""
+    xc = "track_len"
+    cmds = tracks([1])
+    under, movers = car_underframe(xc, sj_deck, "SjDeck")
+    cmds += under
+    parts = [("SjBody", sj_body), ("SjRoof", sj_roof)]
+    for nm, fn in parts:
+        cmds += fn(nm)
+    cmds += sj_arm("SjArm") + sj_servo_dummy("SjServo")
+    cmds += [c("solid.move", bodies=["SjArm", "SjServo"], translate=["sj_px", "sj_py", "0 mm"])]
+    movers += [p for p, _ in parts] + ["SjArm", "SjServo"]
+    cmds.append(c("solid.move", bodies=movers, translate=[xc, "0 mm", AXLE_Z]))
+    cmds += sj_station("SjStation")
+    cmds.append(c("solid.move", bodies=["SjStation"], translate=[f"{xc} + sj_px", "0 mm", "0 mm"]))
+    cmds += [c("appearance.assign", bodies=["Bogie", "Bogie (2)", "SjServo"], color="#202020"),
+             c("appearance.assign", bodies=["SjDeck"], color=BLACK),
+             c("appearance.assign", bodies=["SjBody"], color="#d9cba0"),
+             c("appearance.assign", bodies=["SjRoof"], color="#8a8a8a"),
+             c("appearance.assign", bodies=["SjArm"], color=BRASS),
+             c("appearance.assign", bodies=["SjStation"], color="#e9b824"),
+             c("appearance.assign", bodies=["CplHeadF", "CplHeadB"], color="#d8b000")]
+    cmds += [c("appearance.assign", bodies=[f"KBuffer{k}" for k in range(4)], color=BLACK)]
+    return cmds
+
+
 PARTS = {
     # ad: (komutlar, gövdeler, baskı yönü komutları)
     "ray_duz_200": (straight_track, "Track", []),
@@ -1287,6 +1629,18 @@ PARTS = {
     "lokomotif_montaj": (loco_assembly, None, None),
     "tender_montaj": (tender_assembly, None, None),
     "vagon_montaj": (coach_assembly, None, None),
+    # Faz 4: 250 vagon ailesi ortak parçaları + Şarj 250
+    "vagon_platform_250": (car_deck, "KDeck", UPSIDE_DOWN("KDeck")),
+    "tampon_250": (car_buffer, "KBuffer", ON_END("KBuffer")),
+    "kuplor_kafa": (coupler_head, "CplHead", REAR_DOWN("CplHead")),
+    "kuplor_kolu": (coupler_arm, "CplArm", []),
+    "sarj_platform": (sj_deck, "SjDeck", UPSIDE_DOWN("SjDeck")),
+    "sarj_govde": (sj_body, "SjBody", []),
+    "sarj_cati": (sj_roof, "SjRoof", ON_END("SjRoof")),
+    "sarj_kol": (sj_arm, "SjArm", REAR_DOWN("SjArm")),
+    "sarj_istasyon": (sj_station, "SjStation", ON_SIDE("SjStation")),
+    "sarj250_montaj": (sarj_assembly, None, None),
+    "sasi250_montaj": (car250_underframe, None, None),
 }
 
 
@@ -1320,7 +1674,7 @@ def bed_drop(part, body, orient):
 # İnceleme amaçlı (BASILMAZ) renkli montaj 3MF'leri: dünya koordinatında, ray hariç.
 # Site 3B görüntüleyicisi için; parts_manifest.py bunları basılacak parça listesine almaz.
 REVIEW_3MF = {"lokomotif_montaj": ("Track",), "tender_montaj": ("Track",),
-              "vagon_montaj": ("Track",)}
+              "vagon_montaj": ("Track",), "sarj250_montaj": ("Track", "SjStation"), "sasi250_montaj": ("Track",)}
 
 
 def export_review_3mf(part):
@@ -1337,8 +1691,27 @@ def export_review_3mf(part):
         raise SystemExit(f"{part}: inceleme 3MF dışa aktarımı başarısız")
 
 
+# Tasarım yönünde (dünya koordinatı) ek 3MF: sitede hat önizlemesine yerleştirilen parçalar.
+IN_PLACE_3MF = {"sarj_istasyon": "sarj_istasyon_yerinde"}
+
+
+def export_in_place_3mf(part):
+    out = IN_PLACE_3MF[part]
+    ps = ROOT / "scripts" / f"{out}.json"
+    ps.write_text(json.dumps({"commands": [c("file.export", path=win(ROOT / "out" / "3mf" / f"{out}.3mf"),
+                                             format="3mf")]}, indent=1))
+    r = subprocess.run([CLI, "run", win(ps), "--in", win(ROOT / "designs" / f"{part}.sc"), "--quiet"],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        print(r.stdout[-2000:], r.stderr[-2000:])
+        raise SystemExit(f"{part}: yerinde 3MF dışa aktarımı başarısız")
+
+
 def win(p: Path) -> str:
-    return subprocess.check_output(["wslpath", "-w", str(p)], text=True).strip()
+    """CLI Windows'ta (WSL'den) çalışıyorsa Windows yolu, değilse yerel yol."""
+    if CLI.endswith(".exe") and shutil.which("wslpath"):
+        return subprocess.check_output(["wslpath", "-w", str(p)], text=True).strip()
+    return str(p)
 
 
 def run(part):
@@ -1372,6 +1745,8 @@ def run(part):
             raise SystemExit(f"{part}: baskı yönü başarısız")
     if part in REVIEW_3MF:
         export_review_3mf(part)
+    if part in IN_PLACE_3MF:
+        export_in_place_3mf(part)
     subprocess.run([CLI, "snapshot", "--in", win(ROOT / "designs" / f"{part}.sc"),
                     "--out", win(ROOT / "renders" / f"{part}.png"), "--view", "iso",
                     "--width", "1200", "--height", "700"], capture_output=True, text=True)

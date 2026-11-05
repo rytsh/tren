@@ -15,6 +15,8 @@ export interface PrintedPart {
   qty_per_straight_track?: number;
   qty_by_model?: Record<string, number>;
   qty_per_curve_track?: number;
+  /** İstasyon rayı başına (şarj istasyonu tutucusu). */
+  qty_per_station?: number;
   notes_tr?: string;
 }
 
@@ -26,6 +28,7 @@ export interface Hardware {
   qty_per_coach?: number;
   qty_per_track_piece?: number;
   qty_by_model?: Record<string, number>;
+  qty_per_station?: number;
   spec?: string;
 }
 
@@ -89,11 +92,12 @@ export function billOf(trackCounts: Record<PieceKind, number>, consist: Consist)
   for (const kind of Object.keys(trackCounts) as PieceKind[]) add(TRACK_PART[kind], trackCounts[kind], "ray");
   for (const part of PARTS) {
     if (part.id === "ray_duz_200" || part.id === "ray_viraj_r750_15") continue;
+    add(part.id, (part.qty_per_station ?? 0) * trackCounts.station, "ray");
     add(part.id, vehicleQty(part, consist), "araç");
   }
   const pieces = Object.values(trackCounts).reduce((a, b) => a + b, 0);
   for (const hw of HARDWARE) {
-    const qty = vehicleQty(hw, consist) + (hw.qty_per_track_piece ?? 0) * pieces;
+    const qty = vehicleQty(hw, consist) + (hw.qty_per_track_piece ?? 0) * pieces + (hw.qty_per_station ?? 0) * trackCounts.station;
     if (qty > 0) lines.push({ key: hw.id, name: hw.name_tr, qty, massG: 0, note: hw.spec, group: "satın alma" });
   }
   return lines;

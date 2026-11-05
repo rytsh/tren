@@ -307,3 +307,56 @@ altındadır. Kontrol edildi (zip içi `3D/3dmodel.model`):
 
 Koordinatlar ray modülüne göredir (lokomotif ve tender x = 100 merkezli, vagon x = 200 merkezli;
 ray üstü z = 13).
+
+---
+
+# Faz 4 — 250 vagon ortak şasisi, T45 kuplör ve Şarj 250
+
+Kaynak: `docs/standart.md` §1–2 (ölçü, T45) ve §5 (döner şarj kolları). Parametreler `params.json` → `car`, `coupler`, `car_family` (`sj_*`, `sv_*`). Bütün ölçüler **VARSAYIM**; hiçbir parça basılmadı.
+
+```bash
+python3 cad/build.py vagon_platform_250 tampon_250 kuplor_kafa kuplor_kolu \
+  sarj_platform sarj_govde sarj_cati sarj_kol sarj_istasyon sarj250_montaj sasi250_montaj
+python3 cad/parts_manifest.py
+```
+
+`build.py` artık macOS/Linux'ta da çalışır: `SOLIDCRAFT_CLI` verilmezse `PATH`'teki `solidcraft-cli` kullanılır; Windows yolu (`wslpath`) yalnız `.exe` CLI ile WSL'den çalışırken kullanılır.
+
+## Parçalar
+
+| Dosya | Ölçü (mm) | Not |
+|---|---|---|
+| `vagon_platform_250` | 250 × 90 × 17 | Ortak 250 platformu (Şarj hariç bütün 250 vagonlar). Boji pivot göbekleri ±75, iki uçta kuplör kolu pivot göbeği (kiriş yüzünden 38 içeride) ve kiriş altı kol çentiği (±12° salınım), tampon pim delikleri, Ø8 TrenBus geçişleri |
+| `tampon_250` | 12 × 12 × 12 | Ayrı basılır (platform 250 tablaya sığsın diye); pim kirişe yapıştırılır, araç başına 4 |
+| `kuplor_kafa` | 21 × 38 × 34 | T45: koni (sağ) + huni (sol, 0.3 boşluk), 2× Ø10×3 mıknatıs yuvası (koni içinde / huni dibinin arkasında), 2× pogo cebi (alt yarı) ve arkalarında kablo kanalı, kilit kulağı (Ø3.2) ve karşı kafa için kör pim deliği, arkada kol yuvası + dikey Ø3 kafa pimi |
+| `kuplor_kolu` | 56.5 × 9 × 6 | Pivot M3 (platform göbeğine), kafaya Ø3 pim; pivot–pim 49 |
+| `sarj_platform` | 250 × 90 × 17 | Ortak platform + platform altında 2 servo kulak pedi (M2) ve servo/göbek açıklığı |
+| `sarj_govde` | 232 × 80 × 47 | Alçak kasa (duvar 70, tepe 76 aks ekseninden; ray üstü ≈ 97). +y yanında 35 (boy) × 10 (derinlik) × 27 (yükseklik) kol cebi: içi kapalı kutu, tavanda göbek için dışa açık U yuvası (göbek yandan kaydırılır), tabanda servo kolu dönüş açıklığı; ışık çubuğu yarığı (Ø4 ışık borusu), alın kapısı |
+| `sarj_cati` | 236 × 84 × 14 | Yay çatı + iki yerleştirme dili |
+| `sarj_kol` | 8 × 26 × 29 | **Tek parça**: Ø8 dikey göbek + alt (−) ve üst (+) kol (22 mm), uçlarda pabuç tutucu ve 0.8 mm yaprak yay şerit yuvası, kol üstünde tel kanalı, göbek içinde Ø3 tel deliği, altta servo kolu yuvası |
+| `sarj_istasyon` | 102 × 98 × 28 | Taban plakası (traverslerle aynı zeminde, 2× M3) + iki direk + üst üste iki taşıyıcı; ray tarafında 6×1 pirinç lama cebi (lama 0.5 dışarı taşar), direklerde lama ucu bükme yarığı, arkada tel kanalı. Lama yüzü ray ekseninden 59.5; lama eksenleri zeminden 72 (−) ve 90 (+) |
+
+İnceleme 3MF'leri (BASILMAZ): `sarj250_montaj` (vagon, kollar açık; tasarımda istasyon tutucusu da var, 3MF'e ray ile birlikte alınmaz), `sasi250_montaj` (ortak alt takım; site gövdesi henüz yapılmamış 250 vagonları bunun üstünde ölçülü taslakla gösterir), `sarj_istasyon_yerinde` (tasarım yönünde tutucu, hat önizlemesi için).
+
+## Şarj kolu mekanizması
+
+- Tek mikro servo (MG90S sınıfı, ölçüler VARSAYIM) platformun altında, kulakları iki pede M2 ile. Mil yukarı bakar; kol göbeği servonun kısa koluna oturur (yuvaya yapıştırılır). Göbeğin üst ucu cep tavanındaki U yuvasında döner.
+- Kollar milden 22 mm, uçta yaprak yay şerit 4 mm dışarı kıvrılır. Açık konumda (90°) şerit ucu ray ekseninden 61; istasyon lama yüzü 59.5'te: **1.5 mm yay baskısı**.
+- Kapalıyken (servo −90°) kollar −x yönünde cebin içine yatar; kol ve göbek gövde dış yüzünün (y = 40) **içinde** kalır (kol dış kenarı y = 39). Kapalı kol ucu x = −10, cep arka duvarı x = −18: 8 mm pay.
+- Kutup: üst kol **+**, alt kol **−**. Kollar ve lamalar eksenden eksene 18 mm aralıklı; lama 6 mm, pabuç tutucusu 6 mm yüksek, aradaki boşluk 12 mm: bir pabuç iki lamaya birden değemez.
+- Tel: şerit ucuna lehim → kol üstü kanal → göbek deliği → servo yanından şarj kartına. Dönüş için göbek altında gevşek döngü bırakılır.
+
+## Doğrulananlar (SolidCraft 0.30.1, gerçekten ölçülen)
+
+- Her basılabilir parça tek gövde ve kapalı; `parts.json` → `fits_x2d` hepsi için doğru (en uzunu 250 mm platform).
+- `inspect.interference`, `sarj250_montaj`'da 20 gövde arasında (kasa, çatı, platform, kollar, servo, istasyon, bojiler, tamponlar, kuplörler, tekerlekler): **0 çakışma**. Kollar 90° kapatılınca (kapalı konum) kol–kasa–platform–servo–çatı: **0 çakışma**.
+- Kuplör kafası yüzü kiriş dış yüzünden 20 mm önde; iki 250 vagon arası kuplör yüzleri değdiğinde kirişler arası 40 mm, araç adımı 290 mm.
+
+## Doğrulanmayanlar / açık kararlar
+
+- Servo, pogo modülü, mıknatıs ve yaprak yay ölçüleri seçilmedi; yuvalar varsayım. Servo kolu yuvası tek kollu kısa servo koluna göre.
+- Yay baskısının temas direnci, açık havada pirinç oksitlenmesi ve 8.4 V / 1 A için kesit denenmedi.
+- Kuplör kafasının mıknatıs tutuşu ve pogo hizası (±0.5 mm) baskıyla denenmedi; R750'de kuplör açısı yalnız düzlemsel hesap (`coupling_calc.py`) — 250 vagon için yeniden hesaplanmalı.
+- Lokomotif ve tender henüz T45 taşımıyor (çeki çatalı). Tender ile ilk 250 vagon arasında geçiş adaptörü tasarlanmadı.
+- Yolcu, Enerji, Radar, Ses ve Gözlem 250 gövdeleri modellenmedi; parametreleri (`y5_*`, `en_*`, `rd_*`, `ss_*`, `gz_*`) hazır.
+- Faz 3'ün 220 mm yolcu vagonu (`vagon_platform`, `vagon_govde`, `vagon_cati`) eski prototip olarak durur; katalog modellerinin adetlerine sayılmaz.

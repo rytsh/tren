@@ -1,8 +1,9 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { loadAssembly, vehicleSpec, type LoadedAssembly } from "./cadAssembly";
+import { loadAssembly, type LoadedAssembly } from "./cadAssembly";
 import { param, RAIL_CENTRE, STRAIGHT } from "./params";
 import { closure, lengthOf, pointAlong, type Piece, type Pose } from "./track";
+import { VEHICLES, linkGap, vehicleOf, type CarSketch, type VehicleGeometry } from "./vehicles";
 
 const TIE_W = param("tie_w");
 const TIE_T = param("tie_t");
@@ -94,6 +95,22 @@ function sweep(shape: THREE.Shape, piece: Piece, offset: number, steps: number) 
 
 const TIE_GEOMETRY = new THREE.BoxGeometry(TIE_W, TIE_T, TIE_LEN);
 const END_TIE_GEOMETRY = new THREE.BoxGeometry(param("end_tie_w"), TIE_T, TIE_LEN);
+
+/**
+ * Şarj kolu montajda açık (+y) modellenir; seyirdeki trende kapalı gösterilir: göbek ekseni
+ * etrafında 90° döner, kol cebe girer (docs/standart.md §5). CAD +z ekseni sahnede +Y'dir.
+ */
+function stowArm(body: THREE.Object3D, arm: { mesh: string; x: number; y: number; swing: number }) {
+  const mesh = body.getObjectByName(arm.mesh);
+  if (!mesh || !mesh.parent) return;
+  const pivot = new THREE.Group();
+  pivot.position.set(arm.x, 0, -arm.y);
+  mesh.parent.add(pivot);
+  mesh.position.x -= arm.x;
+  mesh.position.z += arm.y;
+  pivot.add(mesh);
+  pivot.rotation.y = THREE.MathUtils.degToRad(arm.swing);
+}
 
 export interface SceneOptions {
   canvas: HTMLCanvasElement;
@@ -202,17 +219,20 @@ export class TrackScene {
   private loading = new Set<string>();
   private loaded: LoadedAssembly[] = [];
   private order: string[] = [];
+  private stationTemplate: THREE.Group | null = null;
   onTrainLoad?: (ok: boolean) => void;
 
   /**
-   * Hat önizlemesindeki araçlar, model sayfasındaki aynı CAD montaj 3MF dosyalarıdır. Montajı henüz
-   * üretilmemiş bir vagon, ortak 250 mm şasiyi paylaşan yolcu vagonu montajıyla gösterilir.
+   * Hat önizlemesindeki araçlar, model sayfasındaki aynı CAD montaj 3MF dosyalarıdır. Gövdesi henüz
+   * modellenmemiş 250 vagonlar, gerçek ortak 250 şasi montajının üstünde params.json ölçüleriyle
+   * çizilmiş sade bir taslak gövdeyle gösterilir.
    */
   private async ensure(file: string) {
     if (this.templates.has(file) || this.loading.has(file)) return;
     this.loading.add(file);
     try {
-      const assembly = await loadAssembly(file);
+      const geo = Object.values(VEHICLES).find((v) => v.file === file);
+      const assembly = await loadAssembly(file, "workshop", geo ? { x: geo.cadCentreX, y: 0 } : undefined);
       if (this.disposed) { assembly.dispose(); return; }
       this.templates.set(file, assembly.group);
       this.loaded.push(assembly);
@@ -226,26 +246,97 @@ export class TrackScene {
     }
   }
 
+  private async ensureStation() {
+    if (this.stationTemplate || this.loading.has("sarj_istasyon")) return;
+    this.loading.add("sarj_istasyon");
+    try {
+      const assembly = await loadAssembly("sarj_istasyon_yerinde", "workshop", { x: 0, y: 0 });
+      if (this.disposed) { assembly.dispose(); return; }
+      this.stationTemplate = assembly.group;
+      this.stationTemplate.traverse((o) => { o.userData.shared = true; });
+      this.loaded.push(assembly);
+      this.setPieces(this.pieces, this.selected);
+    } catch {
+      // istasyon tutucusu yoksa yalnız peron gösterilir
+    } finally {
+      this.loading.delete("sarj_istasyon");
+    }
+  }
+
+  private sketchCache = new Map<string, THREE.Group>();
+
+  /** Taslak gövde: kemerli kasa (+ radar tablası, kubbe gibi ekler), yarı saydam değil ama düz renk. */
+  private sketchBody(id: string, s: CarSketch) {
+    const cached = this.sketchCache.get(id);
+    if (cached) return cached;
+    const g = new THREE.Group();
+    const [x0, x1] = s.span ?? [-s.length / 2, s.length / 2];
+    const half = s.width / 2;
+    const rise = s.crown - s.wall;
+    const R = (half * half + rise * rise) / (2 * rise);
+    const shape = new THREE.Shape();
+    shape.moveTo(-half, s.floor);
+    shape.lineTo(half, s.floor);
+    shape.lineTo(half, s.wall);
+    for (let i = 1; i <= 16; i++) {
+      const y = half - (2 * half * i) / 16;
+      shape.lineTo(y, s.crown - R + Math.sqrt(R * R - y * y));
+    }
+    shape.lineTo(-half, s.floor);
+    const body = new THREE.ExtrudeGeometry(shape, { depth: x1 - x0, bevelEnabled: false });
+    body.rotateY(Math.PI / 2);
+    body.translate(x0, 0, 0);
+    const mat = new THREE.MeshStandardMaterial({ color: s.colour, roughness: 0.8 });
+    const mesh = new THREE.Mesh(body, mat);
+    mesh.castShadow = true;
+    g.add(mesh);
+    for (const e of s.extras ?? []) {
+      const m = new THREE.MeshStandardMaterial({ color: e.colour, roughness: 0.7 });
+      let geo: THREE.BufferGeometry;
+      if (e.kind === "cylinder") {
+        geo = new THREE.CylinderGeometry(e.r, e.r, e.z1 - e.z0, 32);
+        geo.translate(e.x, (e.z0 + e.z1) / 2, -e.y);
+      } else {
+        geo = new THREE.BoxGeometry(e.x1 - e.x0, e.z1 - e.z0, e.y1 - e.y0);
+        geo.translate((e.x0 + e.x1) / 2, (e.z0 + e.z1) / 2, -(e.y0 + e.y1) / 2);
+      }
+      const em = new THREE.Mesh(geo, m);
+      em.castShadow = true;
+      g.add(em);
+    }
+    g.userData.sketch = true;
+    this.sketchCache.set(id, g);
+    return g;
+  }
+
   /** Araç sırası, model id'leriyle: ["bd-040", "tender-160", "yolcu-250", ...]. */
   setConsist(order: string[]) {
     this.order = [...order];
     const key = order.join(",");
     if (key === this.consistKey) return;
     const vehicles: THREE.Object3D[] = [];
-    const pending: string[] = [];
-    const parts: [THREE.Group, number, string][] = [];
+    const pending = new Set<string>();
+    const parts: [THREE.Group, string][] = [];
     for (const id of order) {
-      const spec = vehicleSpec(id);
-      const file = this.templates.has(spec.file) ? spec.file : spec.fallback;
-      const template = file ? this.templates.get(file) : undefined;
-      if (!this.templates.has(spec.file)) pending.push(spec.file);
-      if (spec.fallback && !this.templates.has(spec.fallback)) pending.push(spec.fallback);
-      if (template) parts.push([template, spec.length, spec.kind]);
+      const geo = vehicleOf(id);
+      const template = this.templates.get(geo.file);
+      if (!template) pending.add(geo.file);
+      else parts.push([template, id]);
     }
     pending.forEach((f) => this.ensure(f));
-    this.consistKey = pending.length ? "" : key;
+    this.consistKey = pending.size ? "" : key;
     this.train.clear();
-    for (const [template, length, kind] of parts) { const car = template.clone(true); car.userData.vehicleLength = length; car.userData.kind = kind; this.train.add(car); vehicles.push(car); }
+    for (const [template, id] of parts) {
+      const geo = vehicleOf(id);
+      const car = new THREE.Group();
+      const body = template.clone(true);
+      car.add(body);
+      if (geo.sketch) car.add(this.sketchBody(id, geo.sketch).clone(true));
+      if (geo.arm) stowArm(body, geo.arm);
+      car.userData.geo = geo;
+      this.train.add(car);
+      vehicles.push(car);
+    }
     this.train.userData.vehicles = vehicles;
     this.train.userData.loco = vehicles[0] ?? null;
   }
@@ -256,6 +347,7 @@ export class TrackScene {
     for (const child of [...this.trackGroup.children]) {
       this.trackGroup.remove(child);
       child.traverse((o) => {
+        if (o.userData.shared) return;
         if ((o as THREE.Mesh).geometry && (o as THREE.Mesh).geometry !== TIE_GEOMETRY && (o as THREE.Mesh).geometry !== END_TIE_GEOMETRY) (o as THREE.Mesh).geometry.dispose();
       });
     }
@@ -283,16 +375,20 @@ export class TrackScene {
       }
       if (piece.kind === "station") {
         const p = pointAlong(piece, 0.5);
-        const platform = new THREE.Mesh(new THREE.BoxGeometry(STRAIGHT * 0.9, 40, 70), this.mats.station);
         const nx = -Math.sin(p.heading),
           ny = Math.cos(p.heading);
-        platform.position.set(p.x + nx * 95, 20, -(p.y + ny * 95));
+        // Peron, kontak tutucusunun arkasında; tutucu (CAD: sarj_istasyon) ray kenarında
+        const platform = new THREE.Mesh(new THREE.BoxGeometry(STRAIGHT * 0.9, 40, 64), this.mats.station);
+        platform.position.set(p.x + nx * 112, 20, -(p.y + ny * 112));
         platform.rotation.y = p.heading;
         platform.castShadow = platform.receiveShadow = true;
-        const post = new THREE.Mesh(new THREE.BoxGeometry(12, 70, 12), this.mats.loco);
-        post.position.set(p.x + nx * 55, 35, -(p.y + ny * 55));
-        post.rotation.y = p.heading;
-        g.add(platform, post);
+        g.add(platform);
+        if (this.stationTemplate) {
+          const holder = this.stationTemplate.clone(true);
+          holder.position.set(p.x, 0, -p.y);
+          holder.rotation.y = p.heading;
+          g.add(holder);
+        } else this.ensureStation();
       }
       this.trackGroup.add(g);
       this.pieceMeshes.set(piece.id, g);
@@ -373,21 +469,24 @@ export class TrackScene {
       }
       return pointAlong(this.pieces[this.pieces.length - 1], 1);
     };
-    const put = (obj: THREE.Object3D, centre: number, half: number) => {
-      const a = at(centre - half);
-      const b = at(centre + half);
+    const put = (obj: THREE.Object3D, s0: number, s1: number) => {
+      const a = at(s0);
+      const b = at(s1);
       obj.position.set((a.x + b.x) / 2, 0, -(a.y + b.y) / 2);
       obj.rotation.y = Math.atan2(b.y - a.y, b.x - a.x);
     };
-    let back = this.distance;
+    // Önde giden aracın merkezi `distance`'ta; her araç iki pivotunun (dingil ya da boji) ray
+    // eksenindeki noktalarına oturur, arkadaki araç bağlantı ölçüsü kadar geride başlar.
+    let centre = this.distance;
+    let ahead: VehicleGeometry | null = null;
     const spin = (this.speed * 1000 * dt) / 21;
-    vehicles.forEach((car,i) => {
-      const len=car.userData.vehicleLength as number;
-      if(i>0) back -= len/2 + 34;
-      put(car,back,car.userData.kind === "loco" ? 35 : len*.32);
-      back -= len/2;
-      if(this.running && !still) car.children.forEach(c => c.userData.wheel && (c.rotation.z -= spin));
-    });
+    for (const car of vehicles) {
+      const geo = car.userData.geo as VehicleGeometry;
+      if (ahead) centre += ahead.rear - linkGap(ahead, geo) - geo.front;
+      put(car, centre + geo.pivots[0], centre + geo.pivots[1]);
+      if (this.running && !still) car.traverse((c) => { if (c.userData.wheel) c.rotation.z -= spin; });
+      ahead = geo;
+    }
   }
 
   private loop = () => {
@@ -409,6 +508,7 @@ export class TrackScene {
   dispose() {
     this.disposed = true;
     this.loaded.forEach((a) => a.dispose());
+    this.sketchCache.forEach((g) => g.traverse((o) => { if (o instanceof THREE.Mesh) { o.geometry.dispose(); (o.material as THREE.Material).dispose(); } }));
     this.train.clear();
     cancelAnimationFrame(this.frame);
     this.observer.disconnect();

@@ -1,0 +1,31 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "SjStation"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "-90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "SjStation"
+    ],
+    "translate": [
+     "0.0000 mm",
+     "-49.0075 mm",
+     "67.5000 mm"
+    ]
+   }
+  }
+ ]
+}

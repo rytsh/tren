@@ -1,0 +1,53 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 57598.068393987734,
+      "bbox": {
+        "max": [
+          125.00000000000003,
+          45.0,
+          29.000000000000686
+        ],
+        "min": [
+          -125.00000000000007,
+          -45.0,
+          11.999999999999986
+        ]
+      },
+      "center_of_mass": [
+        -0.19493485957552015,
+        -0.3898697165969986,
+        26.435517873673472
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 124,
+      "face_types": {
+        "cylinder": 22,
+        "plane": 40
+      },
+      "faces": 62,
+      "kernel": {
+        "edges": 216,
+        "faces": 84,
+        "shells": 1,
+        "vertices": 144
+      },
+      "mass_g": 104.07041992002053,
+      "material": "Default",
+      "name": "SjDeck",
+      "vertices": 98,
+      "volume_mm3": 80674.74412404692
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 57598.068393987734,
+    "edges": 124,
+    "faces": 62,
+    "mass_g": 104.07041992002053,
+    "open_bodies_skipped": 0,
+    "vertices": 98,
+    "volume_mm3": 80674.74412404692
+  }
+}

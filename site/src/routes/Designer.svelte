@@ -272,7 +272,7 @@
       <h2>Bu hat için</h2>
       <p class="big tabular">{tr0.format(fil.withWaste / 1000 < 1 ? fil.withWaste : fil.withWaste / 1000)}<small>{fil.withWaste / 1000 < 1 ? " g" : " kg"}</small></p>
       <p>%100 dolu PETG hacmi, %8 ek payla. Gerçek filament miktarı, maliyet ve süre değildir; duvar, dolgu ve desteklere göre dilimleyiciden alınmalı.</p>
-      <p>İstasyon işareti şu an düz ray sayılır; şarj ünitesinin parçaları bu listede yok.</p>
+      <p>Her istasyon rayı bir düz ray, bir şarj kontak tutucusu, iki pirinç lama ve iki işaret mıknatısı sayılır. İstasyon şarj beslemesi seçilmedi.</p>
       <button class="btn" data-tone="ink" onclick={downloadCsv}>CSV indir</button>
     </div>
     <div class="table">

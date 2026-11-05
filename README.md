@@ -6,6 +6,8 @@
 
 **Durum:** dijital prototip. CAD dosyaları üretilmiştir; hiçbir parça fiziksel olarak basılıp denenmemiştir. Kuplör temasları, elektronik kontrol ve otomatik şarj henüz uygulanmış donanım değildir.
 
+CAD'i hazır olanlar: BD 0-4-0, Tender 160, ortak 250 vagon şasisi (platform, boji, tampon, T45 kuplör kafası ve kolu), **Şarj 250** (döner şarj kolu, kasa, çatı) ve istasyon kontak tutucusu. Diğer beş 250 vagonun gövdesi sırada.
+
 ## Araç ailesi
 
 | Model | Görev | TrenBus |
@@ -15,7 +17,7 @@
 | Yolcu 250 | iç aydınlatma | tüketir |
 | Enerji 250 | ek pil + gösterge | besler |
 | Radar 250 | dönen anten, mesafe sensörü | tüketir |
-| Şarj 250 | döner şarj kolları, şarj durumu | ayrı devre |
+| Şarj 250 | döner şarj kolları (CAD hazır), şarj durumu | ayrı devre |
 | Ses 250 | hoparlör, düdük | tüketir |
 | Gözlem 250 | kamera kubbesi, balkon | tüketir |
 
@@ -48,14 +50,15 @@ GitHub Pages iş akışı `.github/workflows/pages.yml` içinde. Henüz yayına 
 
 ```sh
 python3 cad/build.py ray_duz_200
+python3 cad/build.py sarj250_montaj
 python3 cad/parts_manifest.py
 ```
 
-SolidCraft CLI yolu ortamına bağlıdır; `SOLIDCRAFT_CLI` ile değiştirilebilir. Site derlemesi CLI çalıştırmaz, mevcut CAD çıktılarından beslenir.
+SolidCraft CLI `PATH`'te aranır (`solidcraft-cli`); `SOLIDCRAFT_CLI` ile değiştirilebilir, WSL'den Windows `.exe` de olur. Site derlemesi CLI çalıştırmaz, mevcut CAD çıktılarından beslenir.
 
 ## Ortak standart ve açık işler
 
-200 mm düz ray, R750 / 15° viraj, 45 mm ray açıklığı, 4 mm aks, 250 × 90 mm vagon şasisi. Elektrik raylardan alınmaz. Kuplör pinleri: BAT+, CAN-H, CAN-L, GND, her biri iki paralel temasla. Şarj kontakları bu hattan ayrıdır.
+200 mm düz ray, R750 / 15° viraj, 45 mm ray açıklığı, 4 mm aks, 250 × 90 mm vagon şasisi. Elektrik raylardan alınmaz. Kuplör pinleri: BAT+, CAN-H, CAN-L, GND, her biri iki paralel temasla. Şarj kontakları bu hattan ayrıdır: Şarj 250 iki döner kolla istasyondaki üst (+) ve alt (−) pirinç lamaya basar (`docs/standart.md` §5).
 
 Öncelikli fiziksel doğrulamalar: tolerans kuponu, ray ekleri, sonsuz vida kavraması, T45 kuplörün mıknatıs tutuşu ve pogo temasları, R750'de kuplör açısı ve boji hareketi. Sonsuz vida tek başına güvenilir bir park freni kabul edilmez.
 

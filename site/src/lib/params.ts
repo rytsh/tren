@@ -1,12 +1,15 @@
 import paramsJson from "./generated/params.json";
 
 type Group = Record<string, [number | string, string]>;
-const raw = paramsJson as unknown as Record<string, Group | string>;
+const raw = paramsJson as unknown as Record<string, Group | string> & { _values?: Record<string, number> };
 
+/** Bir parametrenin sayısal değeri; türetilmiş (ifade) parametreler assets.mjs'te çözülür. */
 export function param(name: string): number {
-  for (const group of Object.values(raw)) {
-    if (typeof group !== "object") continue;
-    const entry = group[name];
+  const solved = raw._values?.[name];
+  if (typeof solved === "number") return solved;
+  for (const [key, group] of Object.entries(raw)) {
+    if (key.startsWith("_") || typeof group !== "object") continue;
+    const entry = (group as Group)[name];
     if (entry && typeof entry[0] === "number") return entry[0];
   }
   throw new Error(`parametre yok: ${name}`);

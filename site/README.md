@@ -22,27 +22,28 @@ Görsel hazırlıkta ImageMagick `convert` ve `identify` kullanılır. GitHub Ac
 
 - `#/`: model atölyesi, büyük Anatomy çizimi, model parçaları ve katalog.
 - `#/modeller`: model türü ve arama filtresi.
-- `#/lokomotif?model=bd-040` (veya `tender-160`, `coach-220`): çizim, gerçek 3MF montajı ve Anatomy mekanizması.
+- `#/lokomotif?model=bd-040` (veya `tender-160`, `sarj-250`, `yolcu-250` …): çizim, gerçek 3MF montajı ve Anatomy mekanizması. Gövdesi henüz modellenmemiş 250 vagonlarda 3D sekmesi ortak 250 şasiyi gösterir.
 - `#/parcalar`: model filtreli STL / 3MF / STEP ve hazır bileşen tablosu.
-- `#/kilavuz`: ilk baskı, ray birleştirme, aksesuar elektriği, planlanan şarj.
+- `#/kilavuz`: ilk baskı, ray birleştirme, T45 kuplör ve TrenBus, döner kollu şarj (basılacaklar ve montaj sırası).
 - `#/tasarla`: 3D hat düzeni, hazır kapalı hatlar, modül ekleme/değiştirme/silme, tren adedi, yerel kayıt, URL paylaşımı ve CSV parça listesi.
 
 GitHub Pages `base: './'` ve hash router ile çalışır; alt sayfa yenilemesi sunucu rewrite istemez. `.github/workflows/pages.yml` `main` push ve elle tetikleme için hazırdır. **Bu dosyanın varlığı sitenin yayımlandığı anlamına gelmez.** Repo ayarlarında Pages kaynağı GitHub Actions seçilmeli ve workflow çalışmalıdır.
 
 ## Veri akışı
 
-`cad/params.json` ve `cad/parts.json` → `scripts/assets.mjs` → `src/lib/generated/` ve `public/models/`.
+`cad/params.json` ve `cad/parts.json` → `scripts/assets.mjs` → `src/lib/generated/` ve `public/models/`. `assets.mjs` türetilmiş (ifade) parametreleri de çözer (`params.json` → `_values`); sitedeki `param()` CAD ile aynı sayıları okur.
 
 `figures/` → Anatomy kiti → `public/figures/`. Katalog SVG'leri açıklayıcı çizimlerdir, üretim modeli değildir. Gerçek montajlar CAD'den dışa aktarılan `*_montaj.3mf` dosyalarından Three.js `ThreeMFLoader` ile okunur. Baskı yönündeki STL'ler web'de tahmini koordinatlarla tekrar birleştirilmez.
 
-Modeller `src/lib/catalog.ts` içinde tanımlı. Yeni model için katalog girdisi, Anatomy SVG'si, CAD 3MF montajı ve manifestoda ilgili parça adetleri eklenir. Henüz üretilmeyen modeller katalogda varmış gibi gösterilmez.
+Modeller `src/lib/catalog.ts` içinde tanımlı; hat önizlemesindeki yerleşim ölçüleri `src/lib/vehicles.ts`'te. Yeni model için katalog girdisi, Anatomy SVG'si, CAD 3MF montajı, `vehicles.ts` girdisi ve manifestoda `qty_by_model` adetleri eklenir. Gövdesi modellenmeyen araçlar "Gövde sırada" olarak işaretlenir.
 
 ## Doğruluk sınırları
 
 - Hiçbir parça basılmadı. CAD kontrolü fiziksel uyum, çekiş veya güvenli şarj kanıtı değildir.
 - `mass_g_petg`, CAD katı hacmi × 1,27 g/cm³. Filament tüketimi/süre/maliyet tahmini değildir; dolgu ve destekler için dilimleyici gerekir.
-- Hat tasarlayıcı görsel/geom­etrik yerleşim önizlemesidir; dinamik raydan çıkma, çarpışma, virajda kablo veya elektrik simülasyonu yapmaz. Araç görünümü şematiktir.
-- İstasyon işareti BOM'da düz ray sayılır, şarj donanımı üretilmiş parça gibi sayılmaz.
+- Hat tasarlayıcı görsel/geometrik yerleşim önizlemesidir; dinamik raydan çıkma, çarpışma, virajda kablo veya elektrik simülasyonu yapmaz.
+- Hat önizlemesindeki araçlar CAD montaj 3MF'leridir (`src/lib/vehicles.ts`). Her araç kendi dingil veya boji pivotlarına oturur; araç aralığı T45 kuplör yüzlerinden (250 vagonlar arası 0, adım 290 mm) veya çeki kolundan (44 mm pim aralığı) gelir. Gövdesi henüz modellenmemiş 250 vagonlar gerçek ortak şasi (`sasi250_montaj`) üstünde `params.json` ölçüleriyle çizilmiş sade gövdeyle gösterilir. Şarj 250'nin kolları seyirde kapalı gösterilir.
+- İstasyon rayı BOM'da bir düz ray, bir `sarj_istasyon` tutucusu, iki pirinç lama, iki işaret mıknatısı ve bir istasyon beslemesi sayılır. Besleme devresi seçilmedi.
 - Aksesuar hattı (ışıklı vagonlar) ve şarj kontakları ayrı tasarlanır. Gerilim, konektör, akım sınırı açık kararlardır. 2S paket tam dolu 8,4 V'tur.
 - Sonsuz vida geri sürüşü azaltabilir; sürtünme/baskı malzemesine bağlı kendinden kilitlenme, park freni garantisi değildir.
 

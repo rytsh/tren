@@ -1,0 +1,53 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 47673.85655645025,
+      "bbox": {
+        "max": [
+          117.99999999999987,
+          42.00000000000013,
+          78.40000000000006
+        ],
+        "min": [
+          -118.00000000000084,
+          -42.00000000028872,
+          64.71252801907383
+        ]
+      },
+      "center_of_mass": [
+        -2.293833950961528e-12,
+        6.534773578691027e-11,
+        74.24167323554067
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 52,
+      "face_types": {
+        "cylinder": 8,
+        "plane": 14
+      },
+      "faces": 22,
+      "kernel": {
+        "edges": 68,
+        "faces": 30,
+        "shells": 1,
+        "vertices": 40
+      },
+      "mass_g": 69.77982383047404,
+      "material": "Default",
+      "name": "SjRoof",
+      "vertices": 32,
+      "volume_mm3": 54092.886690289946
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 47673.85655645025,
+    "edges": 52,
+    "faces": 22,
+    "mass_g": 69.77982383047404,
+    "open_bodies_skipped": 0,
+    "vertices": 32,
+    "volume_mm3": 54092.886690289946
+  }
+}

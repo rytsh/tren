@@ -71,5 +71,21 @@ for (const sub of ["3mf", "step"]) {
 const manifest = join(CAD, "parts.json");
 writeFileSync(join(GEN, "parts.json"), existsSync(manifest) ? readFileSync(manifest, "utf8") : JSON.stringify({ parts: [], hardware: [] }));
 const params = JSON.parse(readFileSync(join(CAD, "params.json"), "utf8"));
+// Türetilmiş (ifade) parametrelerin sayısal değeri: CAD tarafı (build.py _eval_derived) ile aynı sıra ve kural.
+const values = {};
+for (const [group, items] of Object.entries(params)) {
+  if (group.startsWith("_")) continue;
+  for (const [name, [value]] of Object.entries(items)) if (typeof value === "number") values[name] = value;
+}
+for (const [group, items] of Object.entries(params)) {
+  if (group.startsWith("_")) continue;
+  for (const [name, [value]] of Object.entries(items)) {
+    if (typeof value !== "string") continue;
+    const expr = value.replaceAll(" mm", "");
+    const names = Object.keys(values);
+    values[name] = Function(...names, "sqrt", "tan", "pi", `return (${expr.replace(/tan\(([^)]*)\)/g, "tan(($1) * pi / 180)")});`)(...names.map((n) => values[n]), Math.sqrt, Math.tan, Math.PI);
+  }
+}
+params._values = values;
 writeFileSync(join(GEN, "params.json"), JSON.stringify(params, null, 1));
 console.log(`photos ${photos.length}, models ${models.length}`);

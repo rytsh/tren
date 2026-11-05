@@ -35,10 +35,18 @@ describe("CAD kaynaklı parça listesi", () => {
     const result=billOf(counts([]),{"bd-040":1,"tender-160":1,"yolcu-250":2});
     expect(result.find(l=>l.key==="tekerlek_test_d42")?.qty).toBe(24);
   });
-  it("istasyon şimdilik düz rayı sayar, hayali şarj parçası eklemez", () => {
-    const result=billOf({straight:3,station:1,curveLeft:12,curveRight:12},{});
-    expect(result.find(l=>l.key==="ray_duz_200")?.qty).toBe(4); expect(result.find(l=>l.key==="ray_viraj_r750_15")?.qty).toBe(24);
+  it("istasyon rayı düz ray ve şarj kontak tutucusu sayar, araç parçası eklemez", () => {
+    const result=billOf({straight:3,station:2,curveLeft:12,curveRight:12},{});
+    expect(result.find(l=>l.key==="ray_duz_200")?.qty).toBe(5); expect(result.find(l=>l.key==="ray_viraj_r750_15")?.qty).toBe(24);
+    expect(result.find(l=>l.key==="sarj_istasyon")?.qty).toBe(2); expect(result.find(l=>l.key==="st_strip")?.qty).toBe(4);
     expect(result.filter(l=>l.group==="araç")).toHaveLength(0);
+  });
+  it("250 vagonlar T45 kuplör ve ortak şasi alır, eski 220 vagon parçası almaz", () => {
+    const result=billOf(counts([]),{"sarj-250":1,"radar-250":1});
+    expect(result.find(l=>l.key==="kuplor_kafa")?.qty).toBe(4); expect(result.find(l=>l.key==="tekerlek_test_d42")?.qty).toBe(16);
+    expect(result.find(l=>l.key==="vagon_platform_250")?.qty).toBe(1); expect(result.find(l=>l.key==="sarj_platform")?.qty).toBe(1);
+    expect(result.find(l=>l.key==="sarj_kol")?.qty).toBe(1); expect(result.find(l=>l.key==="servo_mg90s")?.qty).toBe(1);
+    expect(result.find(l=>l.key==="vagon_govde")).toBeUndefined(); expect(result.find(l=>l.key==="ceki_kolu")).toBeUndefined();
   });
   it("boş hatta satın alma veya kütle eklemez", () => {
     const result=billOf(counts([]),{}); expect(result).toHaveLength(0); expect(filament(result).grams).toBe(0);

@@ -10,8 +10,9 @@ Bütün lokomotif ve vagonların uyması gereken ölçü, kuplör ve hat (bus) s
 | Standart vagon şasisi | **250 × 90 mm** | eski 220 mm yolcu vagonunun yerine; 256 mm tablaya düz sığar |
 | Gövde | ≤ 236 × 86 mm | çatı ayrı baskı |
 | Boji merkezleri | ±75 mm (150 mm aralık) | boji aks aralığı 48 mm; uç tekerlek x = 122,5 mm, kiriş yüzü 125 mm |
-| Kuplör yüzleri arası | şasi + 2 × kuplör çıkıntısı (CAD'de ölçülür, hedef ≈ 290 mm) | |
+| Kuplör yüzleri arası | 250 + 2 × 20 = **290 mm** (CAD'de ölçüldü, `sasi250_montaj`) | iki 250 vagon kuplör yüzleri değer; kirişler arası 40 mm |
 | Gövde yüksekliği | ≤ 135 mm ray üstü (çatı dahil), donanım (radar vb.) ≤ 160 mm | lokomotif bacası 155 mm |
+| Lokomotif ve tender bağlantısı | henüz çeki kolu (44 mm pim aralığı) | T45'e geçiş ve tender–250 vagon adaptörü tasarlanmadı |
 
 R750'de 150 mm boji aralığı: gövde ortası yaklaşık 3,8 mm içe, uçlar yaklaşık 6,7 mm dışa kayar (s²/8R). Kuplör bunu salınımla karşılar; yan tamponlar yalnız görseldir ve virajda birbirine değmeyecek kadar geride durur.
 
@@ -58,13 +59,23 @@ Hepsi ortak 250 mm şasi, iki boji ve iki T45 kuplörü kullanır; yalnız gövd
 
 ## 5. İstasyon şarjı: döner kollar
 
-**Durum: tasarım önerisi.** Kol, pabuç, servo ve istasyon rayı ölçüleri varsayımdır; temas direnci ve akım denenmedi.
+**Durum: tasarım önerisi, CAD'i üretildi** (`cad/README.md` Faz 4, `sarj250_montaj`). Servo, yaprak yay ve lama ölçüleri varsayımdır; temas direnci ve akım denenmedi.
 
-- **Vagon tarafı.** Şarj 250'nin yan gövdesinde 34 × 29 mm bir cep vardır. Cebin içinde dikey bir mil ve mile bağlı üst ve alt iki kol bulunur. Tek bir mikro servo (ör. MG90S) mili çeyrek tur döndürür, iki kol birlikte kapı gibi açılır. Kapalıyken kollar cebin içinde durur ve gövde yüzeyinden dışarı taşmaz.
-- **Kol ucu.** Milden uca ≈ 26 mm. Uçta 1,5 mm yay stroku olan bir pirinç pabuç bulunur (yaprak yay veya pogo pimi). Pabuç, istasyon rayına servo kuvvetiyle değil yayla bastırır.
-- **Kutup.** Üst kol **+**, alt kol **−**; araya düşey yalıtım payı ≥ 10 mm. Kol ucu, iki ray arasındaki boşluktan dar olmalıdır.
-- **İstasyon tarafı.** Ray kenarındaki iki yalıtkan direk arasında üst üste iki pirinç (veya fosfor bronz) ray uzanır, boyları 90 mm'dir. Ray yüzleri vagon merkez çizgisinden ≈ 65,5 mm uzaktadır. Raylar uzun olduğu için vagonun ±40 mm kayık durması temasa engel olmaz.
-- **Akış.** Mıknatıslar ve hall sensörüyle durulur, kollar açılır ve temas doğrulanana kadar raylar enerjisiz kalır. Şarj biter, kollar cebe döner. Vagon ancak kollar kapandıktan sonra kalkar (servo geri bildirimi veya cepte bir uç anahtarı, öneri).
+| | Değer | Parametre |
+|---|---|---|
+| Kol cebi | +y yan duvarında, 35 × 10 × 27 mm (boy × derinlik × yükseklik) | `sj_pk_*` |
+| Mil ekseni | x = 12, y = 35 (araç merkezinden) | `sj_px`, `sj_py` |
+| Kol boyu | milden tutucu ucuna 22 mm, yaprak yay +4 mm | `sj_arm_len`, `sj_shoe_out` |
+| Yay stroku | 1,5 mm (istasyon lamasının bastırdığı) | `sj_travel` |
+| Kutup | üst kol **+**, alt kol **−**; eksenler arası 18 mm | `sj_up_z`, `sj_lo_z` |
+| İstasyon lama yüzü | ray ekseninden 59,5 mm | `sj_st_face` |
+| Lama eksenleri | zeminden 72 mm (−) ve 90 mm (+) (ray üstünden ≈ 59 ve 77) | `sj_st_z_lo`, `sj_st_z_up` |
+| Lama boyu | 90 mm temas yüzü (6 × 1 mm pirinç, 100 mm kesilir) | `sj_st_len` |
+
+- **Vagon tarafı.** Tek parça döner kol: dikey göbek ve ona bağlı alt ve üst kol. Platform altındaki tek mikro servo (MG90S sınıfı) göbeği çeyrek tur döndürür, iki kol birlikte kapı gibi açılır. Kapalıyken kollar cebin içinde −x yönüne yatar ve gövde dış yüzünün içinde kalır.
+- **Kol ucu.** Tutucudaki yuvaya fosfor bronz/pirinç yaprak yay şerit (5 × 0,3 mm) yapıştırılır ve dışarı kıvrılır. Lamaya servo kuvvetiyle değil yayla bastırır; servo açık konumda durur.
+- **İstasyon tarafı.** `sarj_istasyon` tutucusu traverslerle aynı zemine oturur: iki direk ve üst üste iki taşıyıcı. Lamalar taşıyıcıların ray tarafındaki cebe girer, yüzleri plastiğin 0,5 mm önündedir; uçları direk yarığına bükülür. Lamalar 90 mm olduğu için vagonun ±40 mm kayık durması temasa engel olmaz.
+- **Akış.** Mıknatıslar ve hall sensörüyle durulur, kollar açılır ve temas doğrulanana kadar lamalar enerjisiz kalır. Şarj biter, kollar cebe döner. Vagon ancak kollar kapandıktan sonra kalkar (servo konumu veya cepte bir uç anahtarı, öneri).
 - **Koruma.** Vagon girişinde ters kutup koruması ve sigorta bulunur, BMS 2S paketi korur.
 
 ## 6. Görsel dil

@@ -1,0 +1,53 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 57000.630733677426,
+      "bbox": {
+        "max": [
+          115.99999999999994,
+          40.00000012431304,
+          76.0
+        ],
+        "min": [
+          -116.00000000000024,
+          -40.000000000000256,
+          29.0
+        ]
+      },
+      "center_of_mass": [
+        1.128462261309755,
+        0.4826897308071431,
+        49.92227840937816
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 166,
+      "face_types": {
+        "cylinder": 10,
+        "plane": 47
+      },
+      "faces": 57,
+      "kernel": {
+        "edges": 191,
+        "faces": 64,
+        "shells": 1,
+        "vertices": 126
+      },
+      "mass_g": 82.88939283828401,
+      "material": "Default",
+      "name": "SjBody",
+      "vertices": 112,
+      "volume_mm3": 64255.34328549148
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 57000.630733677426,
+    "edges": 166,
+    "faces": 57,
+    "mass_g": 82.88939283828401,
+    "open_bodies_skipped": 0,
+    "vertices": 112,
+    "volume_mm3": 64255.34328549148
+  }
+}

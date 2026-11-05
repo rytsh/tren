@@ -1,0 +1,53 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 18483.56892153063,
+      "bbox": {
+        "max": [
+          51.00000000000001,
+          67.49999999999999,
+          98.01499999999999
+        ],
+        "min": [
+          -51.00000000000004,
+          40.0,
+          -1.2444799327415286e-16
+        ]
+      },
+      "center_of_mass": [
+        0.10943965294229699,
+        60.956876733594726,
+        50.692679379581755
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 140,
+      "face_types": {
+        "cylinder": 4,
+        "plane": 47
+      },
+      "faces": 51,
+      "kernel": {
+        "edges": 162,
+        "faces": 55,
+        "shells": 1,
+        "vertices": 108
+      },
+      "mass_g": 40.1205523003134,
+      "material": "Default",
+      "name": "SjStation",
+      "vertices": 96,
+      "volume_mm3": 31101.20333357628
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 18483.56892153063,
+    "edges": 140,
+    "faces": 51,
+    "mass_g": 40.1205523003134,
+    "open_bodies_skipped": 0,
+    "vertices": 96,
+    "volume_mm3": 31101.20333357628
+  }
+}
