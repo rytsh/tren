@@ -6,7 +6,7 @@
 
 **Durum:** dijital prototip. CAD dosyaları üretilmiştir; hiçbir parça fiziksel olarak basılıp denenmemiştir. TrenBus konnektörü, elektronik kontrol ve otomatik şarj henüz uygulanmış donanım değildir.
 
-CAD'i hazır olanlar: BD 0-4-0, Tender 160, ortak 250 vagon şasisi (platform, boji, tampon, çeki kolu), **Şarj 250** (döner şarj kolu, kasa, çatı) ve istasyon kontak tutucusu. Diğer beş 250 vagonun gövdesi sırada.
+CAD'i hazır olanlar: BD 0-4-0, Tender 160, ortak 250 vagon şasisi (platform, boji, tampon, çeki kolu) ve altı 250 vagonun hepsi (Yolcu, Enerji, Radar, Şarj, Ses, Gözlem), şarj istasyonu kontak tutucusu.
 
 ## Araç ailesi
 
@@ -17,7 +17,7 @@ CAD'i hazır olanlar: BD 0-4-0, Tender 160, ortak 250 vagon şasisi (platform, b
 | Yolcu 250 | iç aydınlatma | tüketir |
 | Enerji 250 | ek pil + gösterge | besler |
 | Radar 250 | dönen anten, mesafe sensörü | tüketir |
-| Şarj 250 | döner şarj kolları (CAD hazır), şarj durumu | ayrı devre |
+| Şarj 250 | döner şarj kolları, şarj durumu | ayrı devre |
 | Ses 250 | hoparlör, düdük | tüketir |
 | Gözlem 250 | kamera kubbesi, balkon | tüketir |
 

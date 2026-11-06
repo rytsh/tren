@@ -3,7 +3,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { loadAssembly, type LoadedAssembly } from "./cadAssembly";
 import { param, RAIL_CENTRE, STRAIGHT } from "./params";
 import { closure, lengthOf, pointAlong, type Piece, type Pose } from "./track";
-import { VEHICLES, linkGap, vehicleOf, type CarSketch, type VehicleGeometry } from "./vehicles";
+import { VEHICLES, linkGap, vehicleOf, type VehicleGeometry } from "./vehicles";
 
 const TIE_W = param("tie_w");
 const TIE_T = param("tie_t");
@@ -223,9 +223,7 @@ export class TrackScene {
   onTrainLoad?: (ok: boolean) => void;
 
   /**
-   * Hat önizlemesindeki araçlar, model sayfasındaki aynı CAD montaj 3MF dosyalarıdır. Gövdesi henüz
-   * modellenmemiş 250 vagonlar, gerçek ortak 250 şasi montajının üstünde params.json ölçüleriyle
-   * çizilmiş sade bir taslak gövdeyle gösterilir.
+   * Hat önizlemesindeki araçlar, model sayfasındaki aynı CAD montaj 3MF dosyalarıdır.
    */
   private async ensure(file: string) {
     if (this.templates.has(file) || this.loading.has(file)) return;
@@ -263,52 +261,6 @@ export class TrackScene {
     }
   }
 
-  private sketchCache = new Map<string, THREE.Group>();
-
-  /** Taslak gövde: kemerli kasa (+ radar tablası, kubbe gibi ekler), yarı saydam değil ama düz renk. */
-  private sketchBody(id: string, s: CarSketch) {
-    const cached = this.sketchCache.get(id);
-    if (cached) return cached;
-    const g = new THREE.Group();
-    const [x0, x1] = s.span ?? [-s.length / 2, s.length / 2];
-    const half = s.width / 2;
-    const rise = s.crown - s.wall;
-    const R = (half * half + rise * rise) / (2 * rise);
-    const shape = new THREE.Shape();
-    shape.moveTo(-half, s.floor);
-    shape.lineTo(half, s.floor);
-    shape.lineTo(half, s.wall);
-    for (let i = 1; i <= 16; i++) {
-      const y = half - (2 * half * i) / 16;
-      shape.lineTo(y, s.crown - R + Math.sqrt(R * R - y * y));
-    }
-    shape.lineTo(-half, s.floor);
-    const body = new THREE.ExtrudeGeometry(shape, { depth: x1 - x0, bevelEnabled: false });
-    body.rotateY(Math.PI / 2);
-    body.translate(x0, 0, 0);
-    const mat = new THREE.MeshStandardMaterial({ color: s.colour, roughness: 0.8 });
-    const mesh = new THREE.Mesh(body, mat);
-    mesh.castShadow = true;
-    g.add(mesh);
-    for (const e of s.extras ?? []) {
-      const m = new THREE.MeshStandardMaterial({ color: e.colour, roughness: 0.7 });
-      let geo: THREE.BufferGeometry;
-      if (e.kind === "cylinder") {
-        geo = new THREE.CylinderGeometry(e.r, e.r, e.z1 - e.z0, 32);
-        geo.translate(e.x, (e.z0 + e.z1) / 2, -e.y);
-      } else {
-        geo = new THREE.BoxGeometry(e.x1 - e.x0, e.z1 - e.z0, e.y1 - e.y0);
-        geo.translate((e.x0 + e.x1) / 2, (e.z0 + e.z1) / 2, -(e.y0 + e.y1) / 2);
-      }
-      const em = new THREE.Mesh(geo, m);
-      em.castShadow = true;
-      g.add(em);
-    }
-    g.userData.sketch = true;
-    this.sketchCache.set(id, g);
-    return g;
-  }
-
   /** Araç sırası, model id'leriyle: ["bd-040", "tender-160", "yolcu-250", ...]. */
   setConsist(order: string[]) {
     this.order = [...order];
@@ -331,7 +283,6 @@ export class TrackScene {
       const car = new THREE.Group();
       const body = template.clone(true);
       car.add(body);
-      if (geo.sketch) car.add(this.sketchBody(id, geo.sketch).clone(true));
       if (geo.arm) stowArm(body, geo.arm);
       car.userData.geo = geo;
       this.train.add(car);
@@ -508,7 +459,6 @@ export class TrackScene {
   dispose() {
     this.disposed = true;
     this.loaded.forEach((a) => a.dispose());
-    this.sketchCache.forEach((g) => g.traverse((o) => { if (o instanceof THREE.Mesh) { o.geometry.dispose(); (o.material as THREE.Material).dispose(); } }));
     this.train.clear();
     cancelAnimationFrame(this.frame);
     this.observer.disconnect();

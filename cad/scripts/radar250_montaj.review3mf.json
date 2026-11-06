@@ -1,0 +1,39 @@
+{
+ "commands": [
+  {
+   "command": "file.export",
+   "params": {
+    "path": "/Users/rytsh/repo/tren/cad/out/3mf/radar250_montaj.3mf",
+    "format": "3mf",
+    "bodies": [
+     "Bogie",
+     "Bogie (2)",
+     "Wheel",
+     "Wheel (2)",
+     "Wheel (3)",
+     "Wheel (4)",
+     "Wheel (5)",
+     "Wheel (6)",
+     "Wheel (7)",
+     "Wheel (8)",
+     "Axle0",
+     "Axle1",
+     "Axle2",
+     "Axle3",
+     "KDeck",
+     "KBuffer0",
+     "KBuffer1",
+     "KBuffer2",
+     "KBuffer3",
+     "KDrawbar",
+     "RdBody",
+     "Roof250",
+     "RdBase",
+     "RdTable",
+     "RdMast",
+     "RdDish"
+    ]
+   }
+  }
+ ]
+}

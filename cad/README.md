@@ -373,3 +373,34 @@ Kiriş altı çentiği ±12°: R750'de yeterli, S-virajda ve ray hatasında pay 
 - TrenBus konnektörü seçilmedi (JST-XH 4P varsayıldı). Tender deposu da 4 pinli yuvaya çevrildi (Faz 4b); lokomotifte yuva yok, kablo kabin arka açıklığından girer.
 - Yolcu, Enerji, Radar, Ses ve Gözlem 250 gövdeleri modellenmedi; parametreleri (`y5_*`, `en_*`, `rd_*`, `ss_*`, `gz_*`) hazır.
 - Faz 3'ün 220 mm yolcu vagonu (`vagon_platform`, `vagon_govde`, `vagon_cati`) eski prototip olarak durur; katalog modellerinin adetlerine sayılmaz.
+
+---
+
+# Faz 4c — 250 vagon gövdeleri
+
+Ortak 250 şasinin üstüne beş vagonun gövdesi. Hepsi platforma 4× M3 (alttan, `car_hole_x/y`) ile vidalanır, iki alın duvarında (radarda yalnız arkada) 4 pinli TrenBus yuvası taşır, çatı ayrı basılır (yay kesit, iki yerleştirme dili). Ölçüler `params.json` → `car_family` (`y5_*`, `en_*`, `ss_*`, `gz_*`, `rd_*`).
+
+```bash
+python3 cad/build.py yolcu_govde yolcu_cati enerji_govde enerji_cati ses_govde ses_cati \
+  gozlem_govde gozlem_cati gozlem_kubbe radar_kabin radar_cati radar_kaide radar_tabla radar_direk radar_anten \
+  yolcu250_montaj enerji250_montaj ses250_montaj gozlem250_montaj radar250_montaj
+```
+
+| Vagon | Parçalar | Not |
+|---|---|---|
+| Yolcu 250 | `yolcu_govde`, `yolcu_cati` | 8 pencere (18 × 26, 22,5 aralık), iki yanda kapı izi ve kapı camı, şeffaf pencere bandı oluğu (1 mm band, iç dudak 3,5), iki alın kapısı, 3 iç kelepçe; çatıda LED yüzeyi |
+| Enerji 250 | `enerji_govde`, `enerji_cati` | Kapalı yük vagonu; iki yanda 5'er panjur yarığı, 24 × 8 gösterge yarığı, iç pil rafı (köprü) |
+| Ses 250 | `ses_govde`, `ses_cati` | İki yanda iki Ø40 hoparlör ızgarası (5 yarık) ve iç oturma halkası, kayar kapı izleri, amfi kartı kızağı |
+| Gözlem 250 | `gozlem_govde`, `gozlem_cati`, `gozlem_kubbe` | Kapalı gövde x = −94 … 116, arkası balkon (taban + korkuluk aynı parçada); 5 geniş pencere ve band oluğu; çatıda kubbe açıklığı; kubbe kesik piramit, tepede Ø10 kamera yuvası, altta yerleştirme yakası |
+| Radar 250 | `radar_kabin`, `radar_cati`, `radar_kaide`, `radar_tabla`, `radar_direk`, `radar_anten` | Kısa kabin (−116 … −40), açık platformda kaide (N20 motor cebi, sabit göbek), m1 z56 tabla dişlisi + Ø60 disk, direk (çatal + Ø2 eğim pimi), konik çanak |
+
+## Doğrulananlar
+
+- `inspect.interference`: beş montajın her birinde gövde, çatı, ekler, platform, bojiler, çeki kolu ve tamponlar arasında **0 çakışma** (radar ve gözlemde ilk denemede çıkan çatal–çanak ve çatı–kubbe çakışmaları düzeltildi).
+- Hepsi tek gövde, kapalı; X2D tablasına sığar (`parts.json` → `fits_x2d`).
+
+## Doğrulanmayanlar
+
+- Enerji pil rafı ve gözlem balkon tırabzanı köprü/çıkıntı: baskı yönü ve destek denenmedi.
+- Radar kaidesinin platforma bağlandığı iki vida deliği platformda yok (montajda delinir); N20 motor ve pinyon ölçüleri varsayım.
+- Pencere bandı oluğu toleransı (0,2 mm) ve şeffaf bandın çatı diliyle tutulması denenmedi.

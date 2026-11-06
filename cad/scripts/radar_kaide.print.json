@@ -1,0 +1,31 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "RdBase"
+    ],
+    "axis": [
+     1,
+     0,
+     0
+    ],
+    "angle": "180 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "RdBase"
+    ],
+    "translate": [
+     "-50.0000 mm",
+     "0.0000 mm",
+     "68.3000 mm"
+    ]
+   }
+  }
+ ]
+}

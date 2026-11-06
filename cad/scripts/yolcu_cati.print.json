@@ -1,0 +1,31 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Y5Roof"
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "angle": "90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "Y5Roof"
+    ],
+    "translate": [
+     "-100.8157 mm",
+     "0.0000 mm",
+     "118.0000 mm"
+    ]
+   }
+  }
+ ]
+}

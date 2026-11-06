@@ -1346,6 +1346,348 @@ def bus_socket(body, xf, sx, pre):
     ]
 
 
+# --- 250 vagon gövdeleri (Faz 4c) --------------------------------------------------------
+# Hepsi ortak 250 platformuna 4× M3 (car_hole_x/y) ile alttan vidalanır, iki alın duvarında 4 pinli
+# TrenBus yuvası taşır, yay çatı ayrı basılır (car250_roof). Ölçüler params → car_family.
+CW = "(car_body_w/2)"
+CWI = "(car_body_w/2 - wall_t)"
+
+
+def _shell(name, wall, crown, pre, x0, x1, xm):
+    v = V
+    cmds = arch_body(name, x0, x1, CW, FP_TOP, wall, crown, pre)
+    cmds.append(c("solid.shell", faces=[[xm, 0, v["fp_z"] + v["fp_t"]], [xm, 0, v[crown]]],
+                  thickness="wall_t", body=name))
+    return cmds
+
+
+def car250_roof(name, crown, R, pre, x0="-car_body_l/2", x1="car_body_l/2", led=False):
+    cmds = arch_roof(name, f"({x0}) - roof_over", f"({x1}) + roof_over", f"({CW} + roof_over)", crown, R,
+                     f"({x0}) + wall_t + roof_clear", f"({x1}) - wall_t - roof_clear", CWI, pre)
+    if led:
+        cmds += led_pad(name, f"({x0}) + wall_t + roof_clear", f"({x1}) - wall_t - roof_clear", crown, CWI, R, pre)
+    return cmds
+
+
+def window_band(name, z_groove, z_top, x_half, pre, xc="0 mm"):
+    """Şeffaf pencere bandı oluğu: iki yan duvarın içinde, pencerelerin arkasında. Band (band_t
+    şeffaf PETG) üstten oluğa indirilir, çatı dili üstünden tutar. Dış et band_ledge kalır."""
+    cmds = []
+    for s, sn in ((1, "L"), (-1, "R")):
+        yo = f"{s} * ({CW} - band_ledge)"
+        yi = f"{s} * ({CW} - band_ledge - band_t - 2*band_gap)"
+        y0, y1 = (yi, yo) if s > 0 else (yo, yi)
+        # oluk: dış et ile iç dudak arası, z_groove'tan yukarı
+        cmds.append(box(f"{xc} - {x_half}", f"{xc} + {x_half}", y0, y1, z_groove, f"{z_top} + 1 mm", "cut", name,
+                        f"{pre}Groove{sn}"))
+        # iç dudak: oluğun altında band oturur, iç yüzde band_lip yüksek
+        ylip0 = f"{s} * ({CW} - band_ledge - band_t - 2*band_gap - 1.2 mm)"
+        ya, yb = (ylip0, yi) if s > 0 else (yi, ylip0)
+        cmds.append(box(f"{xc} - {x_half}", f"{xc} + {x_half}", ya, yb, z_groove, f"{z_groove} + band_lip", "join",
+                        name, f"{pre}Lip{sn}"))
+    return cmds
+
+
+def side_cut(name, x0, x1, z0, z1, pre, both=True, r=None):
+    """Yan duvar(lar)da dikdörtgen açıklık (pencere, kapı camı, hoparlör)."""
+    ys = (f"-({CW} + 1 mm)", f"{CW} + 1 mm") if both else (f"{CWI} - 1 mm", f"{CW} + 1 mm")
+    return [box(x0, x1, ys[0], ys[1], z0, z1, "cut", name, pre)]
+
+
+def yolcu_body(name="Y5Body"):
+    """Yolcu 250: 8 pencere (y5_win_*), iki uçta yan kapı (y5_door_*), şeffaf pencere bandı oluğu,
+    iç kablo kelepçeleri, alın kapıları."""
+    cmds = _shell(name, "y5_wall_top", "y5_crown", "Y5", "-car_body_l/2", "car_body_l/2", 0)
+    cmds += side_ribs(name, ["car_hole_x", "-car_hole_x"], "car_hole_y", CWI, FP_TOP, "cab_rib_h", "Y5")
+    for i in range(8):
+        xc = f"({i} - 3.5) * y5_win_pitch"
+        cmds += side_cut(name, f"{xc} - y5_win_w/2", f"{xc} + y5_win_w/2", "y5_win_z0", "y5_win_z1", f"Y5Win{i}")
+    for s, sn in ((1, "F"), (-1, "B")):
+        x = f"{s} * y5_door_x"
+        cmds += side_cut(name, f"{x} - y5_door_w/2 + 2 mm", f"{x} + y5_door_w/2 - 2 mm", "y5_win_z0 + 6 mm",
+                         "y5_win_z1 - 2 mm", f"Y5DoorWin{sn}")
+        cmds += [box(f"{x} - y5_door_w/2", f"{x} + y5_door_w/2", f"{CW} - 0.6 mm", f"{CW} + 1 mm",
+                     f"{FP_TOP} + 2 mm", "y5_win_z1 + 4 mm", "cut", name, f"Y5DoorL{sn}"),
+                 box(f"{x} - y5_door_w/2", f"{x} + y5_door_w/2", f"-({CW} + 1 mm)", f"-({CW} - 0.6 mm)",
+                     f"{FP_TOP} + 2 mm", "y5_win_z1 + 4 mm", "cut", name, f"Y5DoorR{sn}")]
+    cmds += window_band(name, "y5_groove_z", "y5_band_z1", "y5_band_xh", "Y5")
+    cmds += bus_socket(name, "car_body_l/2", 1, "Y5F") + bus_socket(name, "-car_body_l/2", -1, "Y5B")
+    for s, sn in ((1, "F"), (-1, "B")):
+        xf = f"{s} * car_body_l/2"
+        x0, x1 = (f"{xf} - wall_t - 1 mm", f"{xf} + 1 mm") if s > 0 else (f"{xf} - 1 mm", f"{xf} + wall_t + 1 mm")
+        cmds.append(box(x0, x1, "-10 mm", "10 mm", "bus_conn_z + 12 mm", "y5_wall_top - 4 mm", "cut", name,
+                        f"Y5EndDoor{sn}"))
+    cmds += wall_clips(name, ["-70 mm", "0 mm", "70 mm"], CWI, "Y5")
+    return cmds
+
+
+def enerji_body(name="EnBody"):
+    """Enerji 250: kapalı yük vagonu. İç bölmede 2S paket + BMS rafı, yan duvarda 5 kademeli
+    gösterge yarığı, iki yanda panjur yarıkları (ısı), çatıda servis kapağı (ayrı parça değil:
+    açıklık + kapak oturma çıkıntısı)."""
+    cmds = _shell(name, "en_wall_top", "en_crown", "EN", "-car_body_l/2", "car_body_l/2", 0)
+    cmds += side_ribs(name, ["car_hole_x", "-car_hole_x"], "car_hole_y", CWI, FP_TOP, "cab_rib_h", "EN")
+    for cx, cn in (("-60 mm", "A"), ("60 mm", "B")):
+        for i in range(5):
+            z = f"{FP_TOP} + 12 mm + {i} * 6 mm"
+            cmds += side_cut(name, f"{cx} - 14 mm", f"{cx} + 14 mm", z, f"{z} + 2.2 mm", f"ENLouvre{cn}{i}")
+    cmds += [box("-12 mm", "12 mm", f"{CWI} - 1 mm", f"{CW} + 1 mm", f"{FP_TOP} + 22 mm", f"{FP_TOP} + 30 mm",
+                 "cut", name, "ENGauge")]
+    cmds += bus_socket(name, "car_body_l/2", 1, "ENF") + bus_socket(name, "-car_body_l/2", -1, "ENB")
+    # pil rafı: iki yan duvara bağlı köprü (desteksiz basılamaz: gövde ters basılırsa tavan olur;
+    # baskıda 45° köşebentlerle), 2S paket altına girer
+    cmds += [box("-40 mm", "40 mm", f"-({CWI} + 0.5 mm)", f"{CWI} + 0.5 mm", f"{FP_TOP} + 26 mm",
+                 f"{FP_TOP} + 28 mm", "join", name, "ENShelf")]
+    cmds += wall_clips(name, ["-90 mm", "90 mm"], CWI, "EN")
+    return cmds
+
+
+def ses_body(name="SsBody"):
+    """Ses 250: posta/bagaj vagonu. İki yanda Ø40 hoparlör açıklığı (ızgara kesikleri), içte
+    hoparlör halkası (ss_spk_d + 1, 2 mm derin) ve amfi kartı kızağı; kayar kapı izleri."""
+    cmds = _shell(name, "ss_wall_top", "ss_crown", "SS", "-car_body_l/2", "car_body_l/2", 0)
+    cmds += side_ribs(name, ["car_hole_x", "-car_hole_x"], "car_hole_y", CWI, FP_TOP, "cab_rib_h", "SS")
+    for cx, cn in (("-80 mm", "A"), ("80 mm", "B")):
+        for s, sn in ((1, "L"), (-1, "R")):
+            y0, y1 = (f"{CWI} - 2 mm", CWI) if s > 0 else (f"-{CWI}", f"-({CWI} - 2 mm)")
+            cmds.append(c("solid.cylinder", diameter="ss_spk_d + 5 mm", height="2 mm",
+                          base=[cx, (f"{CWI} - 2 mm" if s > 0 else f"-{CWI}"), "ss_spk_z"], axis="Y",
+                          operation="join", targets=[name], name=f"SSRing{cn}{sn}"))
+            del y0, y1
+        for i, dz in enumerate((-12, -6, 0, 6, 12)):
+            w = {0: 14, 1: 17, 2: 18, 3: 17, 4: 14}[i]
+            cmds += side_cut(name, f"{cx} - {w} mm", f"{cx} + {w} mm", f"ss_spk_z + {dz} mm - 1.1 mm",
+                             f"ss_spk_z + {dz} mm + 1.1 mm", f"SSGrille{cn}{i}")
+    for s, sn in ((1, "A"), (-1, "B")):
+        x = f"{s} * 30 mm"
+        cmds += [box(f"{x} - 22 mm", f"{x} + 22 mm", f"{CW} - 0.5 mm", f"{CW} + 1 mm", f"{FP_TOP} + 2 mm",
+                     "ss_wall_top - 6 mm", "cut", name, f"SSDoorL{sn}"),
+                 box(f"{x} - 22 mm", f"{x} + 22 mm", f"-({CW} + 1 mm)", f"-({CW} - 0.5 mm)", f"{FP_TOP} + 2 mm",
+                     "ss_wall_top - 6 mm", "cut", name, f"SSDoorR{sn}")]
+    cmds += [box("-ss_card_w/2 - 2 mm", "ss_card_w/2 + 2 mm", "-2 mm", "2 mm", FP_TOP, f"{FP_TOP} + 6 mm",
+                 "join", name, "SSCardRail"),
+             box("-ss_card_w/2 - 1 mm", "ss_card_w/2 + 1 mm", "-0.9 mm", "0.9 mm", f"{FP_TOP} + 2 mm",
+                 f"{FP_TOP} + 7 mm", "cut", name, "SSCardSlot")]
+    cmds += bus_socket(name, "car_body_l/2", 1, "SSF") + bus_socket(name, "-car_body_l/2", -1, "SSB")
+    cmds += wall_clips(name, ["-40 mm", "40 mm"], CWI, "SS")
+    return cmds
+
+
+def gozlem_body(name="GzBody"):
+    """Gözlem 250: kapalı gövde x = gz_x0 .. car_body_l/2, arkası balkon (platform üstünde
+    korkuluk). 5 geniş pencere (gz_win_*) ve pencere bandı oluğu, balkon tarafı cam alın duvarı
+    açıklığı. Kubbe ayrı parça (gozlem_kubbe)."""
+    cmds = _shell(name, "gz_wall_top", "gz_crown", "GZ", "gz_x0", "car_body_l/2", 30)
+    cmds += side_ribs(name, ["car_hole_x", "car_aux2_x"], "car_hole_y", CWI, FP_TOP, "cab_rib_h", "GZ")
+    for i in range(5):
+        xc = f"gz_win_xc + ({i} - 2) * gz_win_pitch"
+        cmds += side_cut(name, f"{xc} - gz_win_w/2", f"{xc} + gz_win_w/2", "gz_win_z0", "gz_win_z1", f"GZWin{i}")
+    cmds += window_band(name, "gz_groove_z", "gz_band_z1", "(gz_band_x1 - gz_band_x0)/2", "GZ",
+                        xc="(gz_band_x0 + gz_band_x1)/2")
+    # balkona bakan alın duvarında geniş cam açıklığı (kapı)
+    cmds.append(box("gz_x0 - 1 mm", "gz_x0 + wall_t + 1 mm", "-12 mm", "12 mm", "bus_conn_z + 10 mm",
+                    "gz_wall_top - 4 mm", "cut", name, "GZRearDoor"))
+    # kubbe açıklığı: kubbe tabanı buraya oturur
+    cmds.append(box("gz_dome_x - gz_dome_l + 2 mm", "gz_dome_x + gz_dome_l - 2 mm", "-(gz_dome_w - 2 mm)",
+                    "gz_dome_w - 2 mm", "gz_crown - 20 mm", "gz_crown + 5 mm", "cut", name, "GZDomeOpen"))
+    cmds += bus_socket(name, "car_body_l/2", 1, "GZF") + bus_socket(name, "gz_x0", -1, "GZB")
+    # balkon korkuluğu: platform kenarında üç dikme + tırabzan (aynı parça, gövdeye bağlı taban)
+    cmds += [box("-car_body_l/2", "gz_x0 + 0.5 mm", f"-{CW}", f"-({CW} - 2 mm)", FP_TOP, f"{FP_TOP} + gz_rail_h",
+                 "join", name, "GZRailR"),
+             box("-car_body_l/2", "gz_x0 + 0.5 mm", f"{CW} - 2 mm", CW, FP_TOP, f"{FP_TOP} + gz_rail_h",
+                 "join", name, "GZRailL"),
+             box("-car_body_l/2", "-car_body_l/2 + 2 mm", f"-{CW}", "-12 mm", FP_TOP, f"{FP_TOP} + gz_rail_h",
+                 "join", name, "GZRailEndR"),
+             box("-car_body_l/2", "-car_body_l/2 + 2 mm", "12 mm", CW, FP_TOP, f"{FP_TOP} + gz_rail_h",
+                 "join", name, "GZRailEndL"),
+             box("-car_body_l/2", "gz_x0 + 0.5 mm", f"-({CW} - 2 mm)", f"{CW} - 2 mm", FP_TOP, f"{FP_TOP} + 2 mm",
+                 "join", name, "GZBalconyFloor")]
+    for s, sn in ((1, "L"), (-1, "R")):
+        for k, x in enumerate(("-car_body_l/2 + 5 mm", "(-car_body_l/2 + gz_x0)/2")):
+            cmds.append(box(f"{x} - 3 mm", f"{x} + 3 mm", (f"{CW} - 1 mm" if s > 0 else f"-{CW}"),
+                            (CW if s > 0 else f"-({CW} - 1 mm)"), f"{FP_TOP} + 6 mm", f"{FP_TOP} + gz_rail_h - 4 mm",
+                            "cut", name, f"GZRailGap{sn}{k}"))
+    cmds += wall_clips(name, ["-40 mm", "40 mm"], CWI, "GZ")
+    return cmds
+
+
+def gozlem_dome(name="GzDome"):
+    """Gözlem kubbesi: gövde çatısındaki açıklığa oturan kesik piramit, içi boş, ön ve yanları
+    açık (şeffaf band yerine ayrı şeffaf baskı önerilir), tepede kamera yuvası Ø10."""
+    zb, zt = "gz_crown - 4 mm", "gz_dome_top"
+    return [
+        c("sketch.create", plane="XY", offset=zb, name="GzDomeSk"),
+        poly([("gz_dome_x - gz_dome_l", "-gz_dome_w"), ("gz_dome_x + gz_dome_l", "-gz_dome_w"),
+              ("gz_dome_x + gz_dome_l", "gz_dome_w"), ("gz_dome_x - gz_dome_l", "gz_dome_w")]),
+        c("sketch.finish"),
+        c("solid.extrude", distance=f"({zt}) - ({zb})", taper="-15 deg", operation="new", body_name=name,
+          name="GzDomeBody"),
+        c("solid.shell", faces=[[V["gz_dome_x"], 0, V["gz_crown"] - 4]], thickness="wall_t", body=name),
+        vcyl("10 mm", "gz_dome_x", "0 mm", f"{zt} - wall_t - 1 mm", f"{zt} + 1 mm", "cut", name, "GzCam"),
+        box("gz_dome_x - gz_dome_l + 2 mm", "gz_dome_x + gz_dome_l - 2 mm", "-(gz_dome_w - 2 mm)",
+            "gz_dome_w - 2 mm", f"{zb} - 6 mm", f"{zb} + 0.5 mm", "join", name, "GzDomeSpigot"),
+        box("gz_dome_x - gz_dome_l + 2 mm + wall_t", "gz_dome_x + gz_dome_l - 2 mm - wall_t",
+            "-(gz_dome_w - 2 mm - wall_t)", "gz_dome_w - 2 mm - wall_t", f"{zb} - 7 mm", f"{zb} + 1 mm", "cut",
+            name, "GzDomeSpigotIn"),
+    ]
+
+
+def radar_body(name="RdBody"):
+    """Radar 250: kısa kabin (−car_body_l/2 .. rd_cab_x1) + açık platform. Kabinde 3 pencere,
+    ön duvarda kapı; platformda tabla kaidesi (car_aux_x vidalarıyla). Tabla/anten ayrı."""
+    cmds = _shell(name, "rd_wall_top", "rd_crown", "RD", "-car_body_l/2", "rd_cab_x1", -80)
+    cmds += side_ribs(name, ["-car_hole_x", "rd_cab_x1 - wall_t - cab_rib_w/2"], "car_hole_y", CWI, FP_TOP,
+                      "cab_rib_h", "RD")
+    for i, xc in enumerate(("-92 mm", "-70 mm", "-48 mm")):
+        cmds += side_cut(name, f"{xc} - 8 mm", f"{xc} + 8 mm", "56 mm", "78 mm", f"RDWin{i}")
+    cmds.append(box("rd_cab_x1 - wall_t - 1 mm", "rd_cab_x1 + 1 mm", "-9 mm", "9 mm", "bus_conn_z + 10 mm",
+                    "rd_wall_top - 4 mm", "cut", name, "RDFrontDoor"))
+    cmds += bus_socket(name, "-car_body_l/2", -1, "RDB")
+    return cmds
+
+
+def radar_base(name="RdBase"):
+    """Radar kaidesi: platforma 2× M3 (car_aux_x, car_hole_y) ile vidalı, altı açık kutu. Üstünde
+    tabla göbeği (rd_spig_d) ve kablo deliği; içinde N20 motor cebi (motor üst plakaya M1.6 ile,
+    pinyon üstte). Tabla göbeğin üstünde döner."""
+    v = V
+    top = "rd_plate_top"
+    cmds = [
+        box("rd_x - rd_k_x", "rd_x + rd_k_x", "-rd_k_y", "rd_k_y", FP_TOP, top, "new", name, "RdBaseBox"),
+        c("solid.shell", faces=[[v["rd_x"], 0, v["fp_z"] + v["fp_t"]]], thickness="wall_t", body=name),
+        # sabit göbek: tabla dişlisinin deliğinde döner, diskin altında biter (disk üstüne oturur)
+        vcyl("rd_spig_d", "rd_x", "0 mm", f"{top} - 0.5 mm", f"{top} + 0.5 mm + rd_gear_w - 0.2 mm", "join", name,
+             "RdSpigot"),
+        vcyl("rd_bore", "rd_x", "0 mm", f"{FP_TOP} - 1 mm", f"{top} + rd_gear_w + 2 mm", "cut", name,
+             "RdSpigotBore"),
+    ]
+    # N20 pinyon mili: kaide üst plakasından geçer (tabla dişlisine rd_cd mesafede, 45° köşegende)
+    mx = f"rd_x + rd_cd * 0.7071"
+    my = "rd_cd * 0.7071"
+    cmds += [vcyl("n20_shaft + 1 mm", mx, my, f"{top} - wall_t - 1 mm", f"{top} + 1 mm", "cut", name, "RdShaftHole")]
+    for s_, sn in ((1, "A"), (-1, "B")):
+        cmds.append(vcyl("1.6 mm", f"{mx} + {s_} * n20_screw_s/2 * 0.7071", f"{my} - {s_} * n20_screw_s/2 * 0.7071",
+                         f"{top} - wall_t - 1 mm", f"{top} + 1 mm", "cut", name, f"RdN20Screw{sn}"))
+    # vida tırnakları: kaidenin iki yanında, platformdaki gövde deliği hizasında değil; kaide kendi
+    # iki M3 vidasıyla alttan platforma bağlanır (platformda delik montajda delinir, VARSAYIM)
+    for s_, sn in ((1, "A"), (-1, "B")):
+        x = f"rd_x + {s_} * (rd_k_x + 4 mm)"
+        cmds += [box(f"{x} - 4 mm", f"{x} + 4 mm", "-5 mm", "5 mm", FP_TOP, f"{FP_TOP} + 3 mm", "join", name, f"RdTab{sn}"),
+                 vcyl("m3_tap", x, "0 mm", f"{FP_TOP} - 1 mm", f"{FP_TOP} + 4 mm", "cut", name, f"RdTabTap{sn}")]
+    return cmds
+
+
+def radar_parts(name="RdTable"):
+    """Radar tablası: Ø60 disk + m1 z56 dişli + merkez göbek deliği + kablo kanalı."""
+    z0 = "rd_plate_top + 0.5 mm"
+    return [
+        c("sketch.create", plane="XY", offset=z0, name="RdGearSk"),
+        c("sketch.line", points=gear_outline(int(V["rd_z_gear"]), 1.0, V["pressure_ang"]), closed=True),
+        c("sketch.circle.center", center=[0, 0], diameter="rd_tab_bore"),
+        c("sketch.finish"),
+        c("solid.extrude", distance="rd_gear_w", operation="new", body_name=name, name="RdGear"),
+        vcyl("rd_tab_d", "0 mm", "0 mm", f"{z0} + rd_gear_w", f"{z0} + rd_gear_w + rd_disc_t", "join", name,
+             "RdDisc"),
+        vcyl("rd_bore", "0 mm", "0 mm", f"{z0} - 1 mm", f"{z0} + rd_gear_w + rd_disc_t + 1 mm", "cut", name,
+             "RdBore"),
+        c("solid.move", bodies=[name], translate=["rd_x", "0 mm", "0 mm"]),
+    ]
+
+
+def body250_assembly(body_fn, body, roof_fn, extra=()):
+    """250 vagon inceleme montajı: ortak alt takım + gövde + çatı (+ ekler)."""
+    xc = "track_len"
+    cmds = tracks([1])
+    under, movers = car_underframe(xc)
+    cmds += under + body_fn(body) + roof_fn()
+    names = [body, "Roof250"]
+    for nm, fn in extra:
+        cmds += fn(nm)
+        names.append(nm)
+    movers += names
+    cmds.append(c("solid.move", bodies=movers, translate=[xc, "0 mm", AXLE_Z]))
+    cmds += [c("appearance.assign", bodies=["Bogie", "Bogie (2)"], color="#202020"),
+             c("appearance.assign", bodies=["KDeck"] + [f"KBuffer{k}" for k in range(4)], color=BLACK),
+             c("appearance.assign", bodies=["KDrawbar"], color="#d8b000"),
+             c("appearance.assign", bodies=["Roof250"], color="#8a8a8a")]
+    return cmds
+
+
+ROOFS = {
+    "yolcu": lambda nm="Roof250": car250_roof(nm, "y5_crown", "y5_R", "Y5R", led=True),
+    "enerji": lambda nm="Roof250": car250_roof(nm, "en_crown", "en_R", "ENR"),
+    "ses": lambda nm="Roof250": car250_roof(nm, "ss_crown", "ss_R", "SSR", led=True),
+    "gozlem": lambda nm="Roof250": car250_roof(nm, "gz_crown", "gz_R", "GZR", x0="gz_x0", led=True) + [
+        box("gz_dome_x - gz_dome_l - 0.3 mm", "gz_dome_x + gz_dome_l + 0.3 mm", "-(gz_dome_w + 0.3 mm)",
+            "gz_dome_w + 0.3 mm", "gz_crown - 20 mm", "gz_crown + roof_t + 5 mm", "cut", nm, "GZRDomeOpen")],
+    "radar": lambda nm="Roof250": car250_roof(nm, "rd_crown", "rd_R", "RDR", x1="rd_cab_x1"),
+}
+
+
+def radar_dish(name="RdDish"):
+    """Çanak anten: Ø rd_dish_d, derinlik rd_dish_sag, et rd_dish_t (konik kabuk), arkada boru
+    sapı (çatal pimine), önde besleme çubuğu. Yerel: ağız +z, tepe orijinde."""
+    R, sag = "(rd_dish_d/2)", "rd_dish_sag"
+    return [
+        c("sketch.create", plane="XZ", name=f"{name}Sk"),
+        poly([("0 mm", "0 mm"), (R, f"-{sag}"), (R, f"-({sag} + rd_dish_t)"), ("0 mm", "-rd_dish_t")]),
+        c("sketch.finish"),
+        c("solid.revolve", axis="Z", operation="new", body_name=name, name=f"{name}Rev"),
+        vcyl("6 mm", "0 mm", "0 mm", "-12 mm", "0.5 mm", "join", name, f"{name}Boom"),
+        vcyl("1.6 mm", "0 mm", "0 mm", "rd_dish_t - 1 mm", f"{sag} + 4 mm", "join", name, f"{name}Feed"),
+    ]
+
+
+def radar_mast(name="RdMast"):
+    """Anten direği: tabla diskinin üstüne yapıştırılan boru (tablayla döner), içinden kablo geçer;
+    tepede çanak sapını tutan çatal ve Ø2 eğim pimi deliği."""
+    z0 = "(rd_plate_top + 0.5 mm + rd_gear_w + rd_disc_t)"
+    pz = "(rd_dish_pin_z + 2 mm)"
+    return [
+        vcyl("12 mm", "rd_x", "0 mm", z0, f"{z0} + 2 mm", "new", name, "RdMastFoot"),
+        vcyl("8 mm", "rd_x", "0 mm", f"{z0} + 2 mm", f"{pz} - 3 mm", "join", name, "RdMastTube"),
+        box("rd_x - 4 mm", "rd_x + 4 mm", "-5 mm", "5 mm", f"{pz} - 5 mm", f"{pz} + 7 mm", "join", name, "RdMastFork"),
+        box("rd_x - 5 mm", "rd_x + 5 mm", "-3.3 mm", "3.3 mm", f"{pz} - 4.5 mm", f"{pz} + 8 mm", "cut", name,
+            "RdMastForkSlot"),
+        c("solid.cylinder", diameter="2.2 mm", height="12 mm", base=["rd_x", "-6 mm", pz], axis="Y",
+          operation="cut", targets=[name], name="RdMastPin"),
+        vcyl("rd_bore - 0.4 mm", "rd_x", "0 mm", f"{z0} - 1 mm", f"{pz} - 4 mm", "cut", name, "RdMastBore"),
+    ]
+
+
+def radar_dish_placed(name="RdDish"):
+    """Çanak, direk çatalına Ø2 pimle takılı: ağız +x'e, pim ekseni etrafında rd_tilt eğik."""
+    return radar_dish(name) + [
+        c("solid.cylinder", diameter="2.2 mm", height="10 mm", base=["0 mm", "-5 mm", "-8 mm"], axis="Y",
+          operation="cut", targets=[name], name=f"{name}Pin"),
+        c("solid.move", bodies=[name], translate=["0 mm", "0 mm", "8 mm"]),
+        c("solid.move", bodies=[name], axis=[0, 1, 0], angle="90 deg"),
+        c("solid.move", bodies=[name], axis=[0, 1, 0], angle="rd_tilt"),
+        c("solid.move", bodies=[name], translate=["rd_x", "0 mm", "rd_dish_pin_z + 2 mm"]),
+    ]
+
+
+CAR250_BODIES = {
+    # ad: (gövde fonksiyonu, gövde adı, çatı anahtarı, ekler, renk)
+    "yolcu250_montaj": (yolcu_body, "Y5Body", "yolcu", (), "#2f5a2a"),
+    "enerji250_montaj": (enerji_body, "EnBody", "enerji", (), "#5f6f4c"),
+    "ses250_montaj": (ses_body, "SsBody", "ses", (), "#7a4f3a"),
+    "gozlem250_montaj": (gozlem_body, "GzBody", "gozlem", (("GzDome", gozlem_dome),), "#3f5a73"),
+    "radar250_montaj": (radar_body, "RdBody", "radar", (("RdBase", radar_base), ("RdTable", radar_parts),
+                                                       ("RdMast", radar_mast), ("RdDish", radar_dish_placed)),
+                        "#8c3a2e"),
+}
+
+
+def car250_body_assembly(key):
+    fn, body, roof, extra, colour = CAR250_BODIES[key]
+    cmds = body250_assembly(fn, body, ROOFS[roof], extra)
+    cmds.append(c("appearance.assign", bodies=[body], color=colour))
+    for nm, _ in extra:
+        cmds.append(c("appearance.assign", bodies=[nm], color="#d8b000" if nm in ("RdTable", "RdDish") else "#bcd3dc" if nm == "GzDome" else "#202020"))
+    return cmds
+
+
 # --- Şarj 250 ---------------------------------------------------------------------
 def sj_body(name="SjBody"):
     """Şarj 250 alçak kasası: yay çatılı kabuk, +y yan duvarında kol cebi (göbek cep
@@ -1602,6 +1944,27 @@ PARTS = {
     "sarj_istasyon": (sj_station, "SjStation", ON_SIDE("SjStation")),
     "sarj250_montaj": (sarj_assembly, None, None),
     "sasi250_montaj": (car250_underframe, None, None),
+    # Faz 4c: 250 vagon gövdeleri
+    "yolcu_govde": (lambda: yolcu_body("Y5Body"), "Y5Body", []),
+    "yolcu_cati": (lambda: ROOFS["yolcu"]("Y5Roof"), "Y5Roof", ON_END("Y5Roof")),
+    "enerji_govde": (lambda: enerji_body("EnBody"), "EnBody", []),
+    "enerji_cati": (lambda: ROOFS["enerji"]("EnRoof"), "EnRoof", ON_END("EnRoof")),
+    "ses_govde": (lambda: ses_body("SsBody"), "SsBody", []),
+    "ses_cati": (lambda: ROOFS["ses"]("SsRoof"), "SsRoof", ON_END("SsRoof")),
+    "gozlem_govde": (lambda: gozlem_body("GzBody"), "GzBody", []),
+    "gozlem_cati": (lambda: ROOFS["gozlem"]("GzRoof"), "GzRoof", ON_END("GzRoof")),
+    "gozlem_kubbe": (lambda: gozlem_dome("GzDome"), "GzDome", UPSIDE_DOWN("GzDome")),
+    "radar_kabin": (lambda: radar_body("RdBody"), "RdBody", []),
+    "radar_cati": (lambda: ROOFS["radar"]("RdRoof"), "RdRoof", ON_END("RdRoof")),
+    "radar_kaide": (lambda: radar_base("RdBase"), "RdBase", UPSIDE_DOWN("RdBase")),
+    "radar_tabla": (lambda: radar_parts("RdTable"), "RdTable", []),
+    "radar_direk": (lambda: radar_mast("RdMast"), "RdMast", []),
+    "radar_anten": (lambda: radar_dish("RdDish"), "RdDish", UPSIDE_DOWN("RdDish")),
+    "yolcu250_montaj": (lambda: car250_body_assembly("yolcu250_montaj"), None, None),
+    "enerji250_montaj": (lambda: car250_body_assembly("enerji250_montaj"), None, None),
+    "ses250_montaj": (lambda: car250_body_assembly("ses250_montaj"), None, None),
+    "gozlem250_montaj": (lambda: car250_body_assembly("gozlem250_montaj"), None, None),
+    "radar250_montaj": (lambda: car250_body_assembly("radar250_montaj"), None, None),
 }
 
 
@@ -1635,7 +1998,8 @@ def bed_drop(part, body, orient):
 # İnceleme amaçlı (BASILMAZ) renkli montaj 3MF'leri: dünya koordinatında, ray hariç.
 # Site 3B görüntüleyicisi için; parts_manifest.py bunları basılacak parça listesine almaz.
 REVIEW_3MF = {"lokomotif_montaj": ("Track",), "tender_montaj": ("Track",),
-              "vagon_montaj": ("Track",), "sarj250_montaj": ("Track", "SjStation"), "sasi250_montaj": ("Track",)}
+              "vagon_montaj": ("Track",), "sarj250_montaj": ("Track", "SjStation"), "sasi250_montaj": ("Track",),
+              **{f"{m}250_montaj": ("Track",) for m in ("yolcu", "enerji", "ses", "gozlem", "radar")}}
 
 
 def export_review_3mf(part):

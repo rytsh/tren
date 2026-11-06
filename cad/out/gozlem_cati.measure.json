@@ -1,0 +1,53 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 39601.15078067788,
+      "bbox": {
+        "max": [
+          117.99999999855011,
+          41.99999999634132,
+          100.39999999991919
+        ],
+        "min": [
+          -95.99999999999635,
+          -42.000000005457714,
+          84.9651483777688
+        ]
+      },
+      "center_of_mass": [
+        11.165889177930529,
+        -0.03940464111350417,
+        95.12971006680819
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 110,
+      "face_types": {
+        "cylinder": 12,
+        "plane": 30
+      },
+      "faces": 42,
+      "kernel": {
+        "edges": 128,
+        "faces": 50,
+        "shells": 1,
+        "vertices": 78
+      },
+      "mass_g": 59.4181346676876,
+      "material": "Default",
+      "name": "GzRoof",
+      "vertices": 69,
+      "volume_mm3": 46060.56950983535
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 39601.15078067788,
+    "edges": 110,
+    "faces": 42,
+    "mass_g": 59.4181346676876,
+    "open_bodies_skipped": 0,
+    "vertices": 69,
+    "volume_mm3": 46060.56950983535
+  }
+}

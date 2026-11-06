@@ -1,0 +1,54 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 3787.604550386782,
+      "bbox": {
+        "max": [
+          22.000000000000085,
+          22.0,
+          12.000000000000004
+        ],
+        "min": [
+          -22.0000000000001,
+          -22.0,
+          -12.000000000000018
+        ]
+      },
+      "center_of_mass": [
+        -9.1633739244649e-12,
+        -1.799039934229389e-9,
+        4.64412333134591
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 7,
+      "face_types": {
+        "cone": 2,
+        "cylinder": 3,
+        "plane": 3
+      },
+      "faces": 8,
+      "kernel": {
+        "edges": 33,
+        "faces": 16,
+        "shells": 1,
+        "vertices": 20
+      },
+      "mass_g": 3.6194327615558985,
+      "material": "Default",
+      "name": "RdDish",
+      "vertices": 7,
+      "volume_mm3": 2805.761830663487
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 3787.604550386782,
+    "edges": 7,
+    "faces": 8,
+    "mass_g": 3.6194327615558985,
+    "open_bodies_skipped": 0,
+    "vertices": 7,
+    "volume_mm3": 2805.761830663487
+  }
+}

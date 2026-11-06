@@ -1,0 +1,53 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 8350.110153849673,
+      "bbox": {
+        "max": [
+          79.99953668639714,
+          29.999291475736513,
+          70.5000000000481
+        ],
+        "min": [
+          20.000463313602804,
+          -29.999291475736495,
+          62.5
+        ]
+      },
+      "center_of_mass": [
+        50.000000000000604,
+        -1.8660198983407432e-12,
+        66.63793596929874
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 2358,
+      "face_types": {
+        "cylinder": 3,
+        "plane": 788
+      },
+      "faces": 791,
+      "kernel": {
+        "edges": 2370,
+        "faces": 794,
+        "shells": 1,
+        "vertices": 1580
+      },
+      "mass_g": 25.434015164960673,
+      "material": "Default",
+      "name": "RdTable",
+      "vertices": 1574,
+      "volume_mm3": 19716.29082555091
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 8350.110153849673,
+    "edges": 2358,
+    "faces": 791,
+    "mass_g": 25.434015164960673,
+    "open_bodies_skipped": 0,
+    "vertices": 1574,
+    "volume_mm3": 19716.29082555091
+  }
+}

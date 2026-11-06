@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-for(const [id,name,file] of [["bd-040","BD 0-4-0","lokomotif_montaj"],["tender-160","Tender 160","tender_montaj"],["sarj-250","Şarj 250","sarj250_montaj"],["radar-250","Radar 250","sasi250_montaj"]]) {
+for(const [id,name,file] of [["bd-040","BD 0-4-0","lokomotif_montaj"],["tender-160","Tender 160","tender_montaj"],["sarj-250","Şarj 250","sarj250_montaj"],["radar-250","Radar 250","radar250_montaj"],["gozlem-250","Gözlem 250","gozlem250_montaj"]]) {
   test(`${name}: gerçek 3MF montajı yüklenir`, async ({page}) => {
     const errors:string[]=[];
     page.on("pageerror",error=>errors.push(error.message));

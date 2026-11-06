@@ -1,0 +1,17 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "GzBody"
+    ],
+    "translate": [
+     "0.0002 mm",
+     "0.0001 mm",
+     "-28.9996 mm"
+    ]
+   }
+  }
+ ]
+}

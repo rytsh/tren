@@ -1,0 +1,31 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "RdRoof"
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "angle": "90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "RdRoof"
+    ],
+    "translate": [
+     "-92.6826 mm",
+     "-0.0000 mm",
+     "-38.0000 mm"
+    ]
+   }
+  }
+ ]
+}

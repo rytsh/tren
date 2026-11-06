@@ -977,6 +977,426 @@
       }
     },
     {
+      "id": "yolcu_govde",
+      "name_tr": "Yolcu 250 kasası",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/yolcu_govde.stl",
+        "3mf": "out/3mf/yolcu_govde.3mf",
+        "step": "out/step/yolcu_govde.step",
+        "design": "designs/yolcu_govde.sc"
+      },
+      "bbox_mm": [
+        232.0,
+        80.0,
+        78.0
+      ],
+      "volume_mm3": 79141.1,
+      "mass_g_petg": 100.5,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Alt yüzü yatakta; 8 pencere, iki yan kapı, şeffaf pencere bandı oluğu, iki alın kapısı ve TrenBus yuvası, 3 iç kelepçe",
+      "qty_by_model": {
+        "yolcu-250": 1
+      }
+    },
+    {
+      "id": "yolcu_cati",
+      "name_tr": "Yolcu 250 çatısı",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/yolcu_cati.stl",
+        "3mf": "out/3mf/yolcu_cati.3mf",
+        "step": "out/step/yolcu_cati.step",
+        "design": "designs/yolcu_cati.sc"
+      },
+      "bbox_mm": [
+        236.0,
+        84.0,
+        17.2
+      ],
+      "volume_mm3": 59454.7,
+      "mass_g_petg": 75.5,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ucu yatakta; iç tepede 12 mm LED şerit yüzeyi",
+      "qty_by_model": {
+        "yolcu-250": 1
+      }
+    },
+    {
+      "id": "enerji_govde",
+      "name_tr": "Enerji 250 kasası",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/enerji_govde.stl",
+        "3mf": "out/3mf/enerji_govde.3mf",
+        "step": "out/step/enerji_govde.step",
+        "design": "designs/enerji_govde.sc"
+      },
+      "bbox_mm": [
+        232.0,
+        80.0,
+        75.0
+      ],
+      "volume_mm3": 118959.0,
+      "mass_g_petg": 151.1,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Alt yüzü yatakta; iki yanda panjur yarıkları, gösterge yarığı, iç pil rafı (köprü: köşebentle veya köprüleme ayarıyla), TrenBus yuvaları",
+      "qty_by_model": {
+        "enerji-250": 1
+      }
+    },
+    {
+      "id": "enerji_cati",
+      "name_tr": "Enerji 250 çatısı",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/enerji_cati.stl",
+        "3mf": "out/3mf/enerji_cati.3mf",
+        "step": "out/step/enerji_cati.step",
+        "design": "designs/enerji_cati.sc"
+      },
+      "bbox_mm": [
+        236.0,
+        84.0,
+        13.7
+      ],
+      "volume_mm3": 54092.9,
+      "mass_g_petg": 68.7,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ucu yatakta",
+      "qty_by_model": {
+        "enerji-250": 1
+      }
+    },
+    {
+      "id": "ses_govde",
+      "name_tr": "Ses 250 kasası",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/ses_govde.stl",
+        "3mf": "out/3mf/ses_govde.3mf",
+        "step": "out/step/ses_govde.step",
+        "design": "designs/ses_govde.sc"
+      },
+      "bbox_mm": [
+        232.0,
+        80.0,
+        76.0
+      ],
+      "volume_mm3": 110323.0,
+      "mass_g_petg": 140.1,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Alt yüzü yatakta; iki yanda Ø40 hoparlör ızgarası ve iç halkası, kayar kapı izleri, amfi kartı kızağı, TrenBus yuvaları",
+      "qty_by_model": {
+        "ses-250": 1
+      }
+    },
+    {
+      "id": "ses_cati",
+      "name_tr": "Ses 250 çatısı",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/ses_cati.stl",
+        "3mf": "out/3mf/ses_cati.3mf",
+        "step": "out/step/ses_cati.step",
+        "design": "designs/ses_cati.sc"
+      },
+      "bbox_mm": [
+        236.0,
+        84.0,
+        16.3
+      ],
+      "volume_mm3": 59026.1,
+      "mass_g_petg": 75.0,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ucu yatakta; LED yüzeyi",
+      "qty_by_model": {
+        "ses-250": 1
+      }
+    },
+    {
+      "id": "gozlem_govde",
+      "name_tr": "Gözlem 250 kasası + balkon",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/gozlem_govde.stl",
+        "3mf": "out/3mf/gozlem_govde.3mf",
+        "step": "out/step/gozlem_govde.step",
+        "design": "designs/gozlem_govde.sc"
+      },
+      "bbox_mm": [
+        232.0,
+        80.0,
+        69.0
+      ],
+      "volume_mm3": 75337.8,
+      "mass_g_petg": 95.7,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Alt yüzü yatakta; 5 geniş pencere ve band oluğu, kubbe açıklığı, balkon tabanı ve korkuluk, TrenBus yuvaları",
+      "qty_by_model": {
+        "gozlem-250": 1
+      }
+    },
+    {
+      "id": "gozlem_cati",
+      "name_tr": "Gözlem 250 çatısı",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/gozlem_cati.stl",
+        "3mf": "out/3mf/gozlem_cati.3mf",
+        "step": "out/step/gozlem_cati.step",
+        "design": "designs/gozlem_cati.sc"
+      },
+      "bbox_mm": [
+        214.0,
+        84.0,
+        15.4
+      ],
+      "volume_mm3": 46060.6,
+      "mass_g_petg": 58.5,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ucu yatakta; kubbe açıklığı, LED yüzeyi",
+      "qty_by_model": {
+        "gozlem-250": 1
+      }
+    },
+    {
+      "id": "gozlem_kubbe",
+      "name_tr": "Gözlem kubbesi",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/gozlem_kubbe.stl",
+        "3mf": "out/3mf/gozlem_kubbe.3mf",
+        "step": "out/step/gozlem_kubbe.step",
+        "design": "designs/gozlem_kubbe.sc"
+      },
+      "bbox_mm": [
+        52.0,
+        48.0,
+        25.0
+      ],
+      "volume_mm3": 13507.1,
+      "mass_g_petg": 17.2,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Tepesi yatakta; şeffaf PETG önerilir, tepede Ø10 kamera yuvası",
+      "qty_by_model": {
+        "gozlem-250": 1
+      }
+    },
+    {
+      "id": "radar_kabin",
+      "name_tr": "Radar 250 kabini",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/radar_kabin.stl",
+        "3mf": "out/3mf/radar_kabin.3mf",
+        "step": "out/step/radar_kabin.step",
+        "design": "designs/radar_kabin.sc"
+      },
+      "bbox_mm": [
+        76.0,
+        80.0,
+        69.0
+      ],
+      "volume_mm3": 40560.9,
+      "mass_g_petg": 51.5,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Alt yüzü yatakta; 3 pencere, ön kapı, arka TrenBus yuvası",
+      "qty_by_model": {
+        "radar-250": 1
+      }
+    },
+    {
+      "id": "radar_cati",
+      "name_tr": "Radar 250 kabin çatısı",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/radar_cati.stl",
+        "3mf": "out/3mf/radar_cati.3mf",
+        "step": "out/step/radar_cati.step",
+        "design": "designs/radar_cati.sc"
+      },
+      "bbox_mm": [
+        80.0,
+        84.0,
+        15.4
+      ],
+      "volume_mm3": 18421.1,
+      "mass_g_petg": 23.4,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ucu yatakta",
+      "qty_by_model": {
+        "radar-250": 1
+      }
+    },
+    {
+      "id": "radar_kaide",
+      "name_tr": "Radar tabla kaidesi",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/radar_kaide.stl",
+        "3mf": "out/3mf/radar_kaide.3mf",
+        "step": "out/step/radar_kaide.step",
+        "design": "designs/radar_kaide.sc"
+      },
+      "bbox_mm": [
+        88.0,
+        76.0,
+        39.3
+      ],
+      "volume_mm3": 34869.9,
+      "mass_g_petg": 44.3,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ters basılır; sabit göbek, N20 mil ve vida delikleri, 2 vida tırnağı (platformda delik montajda delinir)",
+      "qty_by_model": {
+        "radar-250": 1
+      }
+    },
+    {
+      "id": "radar_tabla",
+      "name_tr": "Radar tablası (m1 z56 dişli + Ø60 disk)",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/radar_tabla.stl",
+        "3mf": "out/3mf/radar_tabla.3mf",
+        "step": "out/step/radar_tabla.step",
+        "design": "designs/radar_tabla.sc"
+      },
+      "bbox_mm": [
+        60.0,
+        60.0,
+        8.0
+      ],
+      "volume_mm3": 19716.3,
+      "mass_g_petg": 25.0,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Dişli yüzü yatakta; N20 pinyonu (m1 z10) ile",
+      "qty_by_model": {
+        "radar-250": 1
+      }
+    },
+    {
+      "id": "radar_direk",
+      "name_tr": "Radar anten direği",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/radar_direk.stl",
+        "3mf": "out/3mf/radar_direk.3mf",
+        "step": "out/step/radar_direk.step",
+        "design": "designs/radar_direk.sc"
+      },
+      "bbox_mm": [
+        12.0,
+        12.0,
+        40.0
+      ],
+      "volume_mm3": 1313.3,
+      "mass_g_petg": 1.7,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ayağı yatakta; tabla diskine yapıştırılır, içinden kablo geçer",
+      "qty_by_model": {
+        "radar-250": 1
+      }
+    },
+    {
+      "id": "radar_anten",
+      "name_tr": "Radar çanak anteni",
+      "phase": 4,
+      "file": {
+        "stl": "out/stl/radar_anten.stl",
+        "3mf": "out/3mf/radar_anten.3mf",
+        "step": "out/step/radar_anten.step",
+        "design": "designs/radar_anten.sc"
+      },
+      "bbox_mm": [
+        44.0,
+        44.0,
+        24.0
+      ],
+      "volume_mm3": 2805.8,
+      "mass_g_petg": 3.6,
+      "bodies": 1,
+      "fits_x2d": true,
+      "qty_per_loco": 0,
+      "qty_per_tender": 0,
+      "qty_per_coach": 0,
+      "qty_per_straight_track": 0,
+      "notes_tr": "Ağzı yatakta; Ø2 pimle direk çatalına",
+      "qty_by_model": {
+        "radar-250": 1
+      }
+    },
+    {
       "id": "sarj_istasyon",
       "name_tr": "Şarj istasyonu kontak tutucusu",
       "phase": 4,
@@ -1031,6 +1451,36 @@
     {
       "id": "sasi250_montaj",
       "file_3mf": "out/3mf/sasi250_montaj.3mf",
+      "print": false,
+      "notes_tr": "İnceleme amaçlı (BASILMAZ): dünya koordinatında renkli montaj, ray hariç"
+    },
+    {
+      "id": "yolcu250_montaj",
+      "file_3mf": "out/3mf/yolcu250_montaj.3mf",
+      "print": false,
+      "notes_tr": "İnceleme amaçlı (BASILMAZ): dünya koordinatında renkli montaj, ray hariç"
+    },
+    {
+      "id": "enerji250_montaj",
+      "file_3mf": "out/3mf/enerji250_montaj.3mf",
+      "print": false,
+      "notes_tr": "İnceleme amaçlı (BASILMAZ): dünya koordinatında renkli montaj, ray hariç"
+    },
+    {
+      "id": "ses250_montaj",
+      "file_3mf": "out/3mf/ses250_montaj.3mf",
+      "print": false,
+      "notes_tr": "İnceleme amaçlı (BASILMAZ): dünya koordinatında renkli montaj, ray hariç"
+    },
+    {
+      "id": "gozlem250_montaj",
+      "file_3mf": "out/3mf/gozlem250_montaj.3mf",
+      "print": false,
+      "notes_tr": "İnceleme amaçlı (BASILMAZ): dünya koordinatında renkli montaj, ray hariç"
+    },
+    {
+      "id": "radar250_montaj",
+      "file_3mf": "out/3mf/radar250_montaj.3mf",
       "print": false,
       "notes_tr": "İnceleme amaçlı (BASILMAZ): dünya koordinatında renkli montaj, ray hariç"
     }
@@ -1502,6 +1952,63 @@
       "spec": "Yaklaşma ve durma mıknatıslarını görür",
       "qty_by_model": {
         "sarj-250": 1
+      }
+    },
+    {
+      "id": "n20_motor",
+      "name_tr": "N20 redüktörlü motor (3 V/6 V, 30–60 dev/dk VARSAYIM) + m1 z10 pinyon",
+      "spec": "Kaide üst plakasına 2× M1.6; tabla dişlisine rd_cd = 33,15 mm",
+      "qty_by_model": {
+        "radar-250": 1
+      }
+    },
+    {
+      "id": "radar_pin",
+      "name_tr": "Ø2 × 12 mm çelik pim",
+      "spec": "Çanak eğim pimi",
+      "qty_by_model": {
+        "radar-250": 1
+      }
+    },
+    {
+      "id": "speaker_40",
+      "name_tr": "40 mm hoparlör (4–8 Ω)",
+      "spec": "İç halkaya yapıştırılır",
+      "qty_by_model": {
+        "ses-250": 2
+      }
+    },
+    {
+      "id": "amp_card",
+      "name_tr": "Ses kartı (MAX98357 I2S amfi veya DFPlayer Mini, VARSAYIM)",
+      "spec": "Kızağa dik takılır",
+      "qty_by_model": {
+        "ses-250": 1
+      }
+    },
+    {
+      "id": "band_clear",
+      "name_tr": "Şeffaf PETG pencere bandı (baskı) veya 1 mm şeffaf PET levha",
+      "spec": "Yan duvar oluğuna üstten indirilir; çatı tutar",
+      "qty_by_model": {
+        "yolcu-250": 2,
+        "gozlem-250": 2
+      }
+    },
+    {
+      "id": "camera_esp32",
+      "name_tr": "ESP32-CAM sınıfı kamera modülü (VARSAYIM)",
+      "spec": "Kubbe tepesindeki Ø10 yuvaya bakar",
+      "qty_by_model": {
+        "gozlem-250": 1
+      }
+    },
+    {
+      "id": "battery_2s_en",
+      "name_tr": "2S Li-ion paket + BMS + ideal diyot (enerji vagonu)",
+      "spec": "Pil rafına; TrenBus BAT+ besler",
+      "qty_by_model": {
+        "enerji-250": 1
       }
     },
     {

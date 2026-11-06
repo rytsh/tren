@@ -1,0 +1,53 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 1895.3953438099907,
+      "bbox": {
+        "max": [
+          55.99990733727943,
+          5.999858295147304,
+          110.50000000000007
+        ],
+        "min": [
+          44.00009266272054,
+          -5.999858295147308,
+          70.50000000000009
+        ]
+      },
+      "center_of_mass": [
+        49.99999999921947,
+        -4.51266657719789e-10,
+        88.21963363980778
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 37,
+      "face_types": {
+        "cylinder": 5,
+        "plane": 13
+      },
+      "faces": 18,
+      "kernel": {
+        "edges": 62,
+        "faces": 25,
+        "shells": 1,
+        "vertices": 40
+      },
+      "mass_g": 1.694217979109039,
+      "material": "Default",
+      "name": "RdMast",
+      "vertices": 27,
+      "volume_mm3": 1313.347270627162
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 1895.3953438099907,
+    "edges": 37,
+    "faces": 18,
+    "mass_g": 1.694217979109039,
+    "open_bodies_skipped": 0,
+    "vertices": 27,
+    "volume_mm3": 1313.347270627162
+  }
+}

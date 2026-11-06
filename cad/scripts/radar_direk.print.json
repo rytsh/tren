@@ -1,0 +1,17 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "RdMast"
+    ],
+    "translate": [
+     "-50.0000 mm",
+     "0.0000 mm",
+     "-70.5000 mm"
+    ]
+   }
+  }
+ ]
+}

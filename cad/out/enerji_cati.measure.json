@@ -1,0 +1,53 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 47673.856556693216,
+      "bbox": {
+        "max": [
+          117.99999999981046,
+          41.99999999999987,
+          106.40000000000002
+        ],
+        "min": [
+          -118.00000000000087,
+          -42.00000000057906,
+          92.71252801961441
+        ]
+      },
+      "center_of_mass": [
+        -3.117236120478396e-11,
+        -2.1345582393429888e-10,
+        102.24167323577325
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 58,
+      "face_types": {
+        "cylinder": 11,
+        "plane": 14
+      },
+      "faces": 25,
+      "kernel": {
+        "edges": 68,
+        "faces": 30,
+        "shells": 1,
+        "vertices": 40
+      },
+      "mass_g": 69.77982383074585,
+      "material": "Default",
+      "name": "EnRoof",
+      "vertices": 35,
+      "volume_mm3": 54092.88669050066
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 47673.856556693216,
+    "edges": 58,
+    "faces": 25,
+    "mass_g": 69.77982383074585,
+    "open_bodies_skipped": 0,
+    "vertices": 35,
+    "volume_mm3": 54092.88669050066
+  }
+}

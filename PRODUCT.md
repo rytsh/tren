@@ -22,7 +22,7 @@ Tek bir trenin tanıtımından ziyade zamanla birçok lokomotif, vagon ve ray mo
 
 - 45 mm açıklıklı tamamen plastik ray, bataryalı 0-4-0 lokomotif; raylardan elektrik alınmaz.
 - 200 mm düz ray, R750 / 15° viraj; parametrik SolidCraft CAD, STL/3MF/STEP.
-- Lokomotif, tender, ortak 250 vagon şasisi (çeki kolu dahil) ve Şarj 250 (döner kol + istasyon tutucusu) CAD prototipleri mevcut; diğer 250 vagon gövdeleri sırada. Fiziksel baskı ve çalışma doğrulaması yok.
+- Lokomotif, tender, ortak 250 vagon şasisi (çeki kolu dahil), altı 250 vagonun gövdeleri ve şarj istasyonu tutucusu CAD prototipi olarak mevcut. Fiziksel baskı ve çalışma doğrulaması yok.
 - Statik site: dosya indirme, yerel model inceleme, tarayıcıda hat tasarımı. Hesap, ödeme veya bulut kayıt servisi yok.
 - Vagonlar arası aksesuar elektriği ve aydınlatma planlanıyor; mekanik kablo geçişi hazırlanıyor. Aksesuar gerilimi, konektör ve akım sınırı henüz seçilmedi.
 - Şarj istasyonunun mekaniği (döner kollar, lama tutucusu) CAD'de; elektronik kontrol, şarj devresi ve emniyet davranışları plan aşamasında, çalışan donanım gibi sunulmaz.
@@ -54,3 +54,4 @@ Kullanıcı önceki turuncu afiş/uzun tanıtım sayfasını reddetti. 4 Kasım 
 - Şarj 250 yan cebinden kapı gibi açılan üst (+) / alt (−) iki kolla istasyondaki iki pirinç lamaya basar (kullanıcı fikri); kapalıyken kollar gövdeden taşmaz. Alt pabuçlar ve çatı kolu kaldırıldı.
 - Hat tasarlayıcısında araçlar gerçek pivotlarına oturur ve çeki kolu ölçüsüyle dizilir; gövdesi gelmeyen 250 vagonlar gerçek ortak şasi üstünde ölçülü taslak gövdeyle gösterilir ve "Gövde sırada" işaretlenir.
 - Vagonlar arası T45 otomatik kuplörü bırakıldı (kullanıcı: "fazla küçükçe"); araçlar tek parça çeki koluyla, TrenBus 4 pinli ara kabloyla bağlanır.
+- Altı 250 vagonun gövdeleri CAD'e alındı (Faz 4c); hat tasarlayıcısında artık hepsi gerçek montajla görünür.

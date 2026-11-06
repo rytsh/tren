@@ -54,7 +54,16 @@ Pin sırası (yuvada kutuplama kanalı üstte, soldan sağa):
 | `ses-250` | Ses vagonu | hoparlör, düdük ve anons | tüketir, CAN |
 | `gozlem-250` | Gözlem vagonu | kamera kubbesi, gözlem pencereleri | tüketir, CAN |
 
-Hepsi ortak 250 mm şasi, iki boji, bir çeki kolu ve iki TrenBus yuvası kullanır; yalnız gövde ve üst donanım değişir.
+Hepsi ortak 250 mm şasi, iki boji, bir çeki kolu ve iki TrenBus yuvası kullanır; yalnız gövde ve üst donanım değişir. Gövde CAD parçaları (`cad/README.md` Faz 4c):
+
+| id | Gövde parçaları | Üst yükseklik (ray üstü) |
+|---|---|---|
+| `yolcu-250` | `yolcu_govde`, `yolcu_cati` | ≈ 131 mm |
+| `enerji-250` | `enerji_govde`, `enerji_cati` | ≈ 128 mm |
+| `radar-250` | `radar_kabin`, `radar_cati`, `radar_kaide`, `radar_tabla`, `radar_direk`, `radar_anten` | çanak ≈ 147 mm |
+| `sarj-250` | `sarj_platform`, `sarj_govde`, `sarj_cati`, `sarj_kol` | ≈ 100 mm |
+| `ses-250` | `ses_govde`, `ses_cati` | ≈ 129 mm |
+| `gozlem-250` | `gozlem_govde`, `gozlem_cati`, `gozlem_kubbe` | kubbe ≈ 134 mm |
 
 ## 5. İstasyon şarjı: döner kollar
 

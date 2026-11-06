@@ -1,0 +1,31 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "EnRoof"
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "angle": "90 deg"
+   }
+  },
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "EnRoof"
+    ],
+    "translate": [
+     "-99.5563 mm",
+     "0.0000 mm",
+     "118.0000 mm"
+    ]
+   }
+  }
+ ]
+}

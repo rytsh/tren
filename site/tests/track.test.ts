@@ -48,6 +48,7 @@ describe("CAD kaynaklı parça listesi", () => {
     expect(result.find(l=>l.key==="vagon_platform_250")?.qty).toBe(1); expect(result.find(l=>l.key==="sarj_platform")?.qty).toBe(1);
     expect(result.find(l=>l.key==="sarj_kol")?.qty).toBe(1); expect(result.find(l=>l.key==="servo_mg90s")?.qty).toBe(1);
     expect(result.find(l=>l.key==="vagon_govde")).toBeUndefined(); expect(result.find(l=>l.key==="ceki_kolu")).toBeUndefined();
+    expect(result.find(l=>l.key==="radar_tabla")?.qty).toBe(1); expect(result.find(l=>l.key==="n20_motor")?.qty).toBe(1);
   });
   it("tam trende ilk 250 vagon tendere 86 mm kolla bağlanır", () => {
     const result=billOf(counts([]),{"bd-040":1,"tender-160":1,"yolcu-250":2,"sarj-250":1});

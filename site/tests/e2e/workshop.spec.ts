@@ -15,9 +15,8 @@ test("kütüphane türleri, arama, ışık, detay ve dosya indirme", async ({pag
   await page.getByRole("link",{name:"Modeli incele",exact:true}).click();
   await expect(page.getByRole("heading",{name:"Radar 250",exact:true})).toBeVisible();
   await expect(page.getByRole("button",{name:"Anatomy",exact:true})).toBeEnabled();
-  // gövdesi henüz yok: 3D sekmesi ortak 250 şasiyi açar, sayfa gövdenin sırada olduğunu söyler
   await expect(page.getByRole("button",{name:"3D model",exact:true})).toBeEnabled();
-  await expect(page.getByText("Gövde CAD'i sırada",{exact:false})).toBeVisible();
+  await expect(page.getByText("Gövde CAD'i sırada",{exact:false})).toHaveCount(0);
   await expect(page.getByText("Dönen anten",{exact:false}).first()).toBeVisible();
   await page.goto("/#/lokomotif?model=tender-160");
   await page.getByRole("link",{name:"Parça dosyaları",exact:true}).click();

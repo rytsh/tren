@@ -1,0 +1,17 @@
+{
+ "commands": [
+  {
+   "command": "solid.move",
+   "params": {
+    "bodies": [
+     "RdTable"
+    ],
+    "translate": [
+     "-50.0000 mm",
+     "-0.0000 mm",
+     "-62.5000 mm"
+    ]
+   }
+  }
+ ]
+}

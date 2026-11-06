@@ -1,0 +1,4166 @@
+{
+ "commands": [
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "track_gauge",
+    "expression": "45.0 mm",
+    "unit": "mm",
+    "comment": "Ray açıklığı (ray başlarının iç yüzleri arası)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "track_len",
+    "expression": "200.0 mm",
+    "unit": "mm",
+    "comment": "Düz ray modülü nominal uzunluğu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_gap",
+    "expression": "0.5 mm",
+    "unit": "mm",
+    "comment": "Ek yerinde toplam genleşme boşluğu (her uçta yarısı)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_head_w",
+    "expression": "5.0 mm",
+    "unit": "mm",
+    "comment": "Ray başı genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_head_h",
+    "expression": "2.5 mm",
+    "unit": "mm",
+    "comment": "Ray başı yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_web_w",
+    "expression": "3.0 mm",
+    "unit": "mm",
+    "comment": "Ray gövdesi (web) genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_foot_w",
+    "expression": "9.0 mm",
+    "unit": "mm",
+    "comment": "Ray tabanı / alt kiriş genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_h",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Ray yüksekliği (travers üstünden)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_top_ch",
+    "expression": "0.6 mm",
+    "unit": "mm",
+    "comment": "Ray başı üst köşe pahı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tie_len",
+    "expression": "66.0 mm",
+    "unit": "mm",
+    "comment": "Travers boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tie_w",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Travers genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tie_t",
+    "expression": "5.0 mm",
+    "unit": "mm",
+    "comment": "Travers kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tie_pitch",
+    "expression": "20.0 mm",
+    "unit": "mm",
+    "comment": "Travers aralığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "end_tie_w",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "Uç (bağlantı) traversi genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "joint_y",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "Kırlangıç kuyruğu bağlantısının eksenden uzaklığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dt_neck",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "Kırlangıç boyun genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dt_tip",
+    "expression": "9.0 mm",
+    "unit": "mm",
+    "comment": "Kırlangıç uç genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dt_len",
+    "expression": "7.0 mm",
+    "unit": "mm",
+    "comment": "Kırlangıç boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dt_clear",
+    "expression": "0.2 mm",
+    "unit": "mm",
+    "comment": "Kırlangıç yuva boşluğu (her yüz)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rail_end_ch",
+    "expression": "0.4 mm",
+    "unit": "mm",
+    "comment": "Ray ucu pahı (tekerlek takılmasın)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "curve_radius",
+    "expression": "750.0 mm",
+    "unit": "mm",
+    "comment": "Viraj yarıçapı (ray ekseni)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "curve_angle",
+    "expression": "15.0 deg",
+    "unit": "deg",
+    "comment": "Viraj modülü açısı (derece; 24 modül = tam daire)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "wheel_d",
+    "expression": "42.0 mm",
+    "unit": "mm",
+    "comment": "Yuvarlanma dairesi çapı (flanş kökünde)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "wheel_w",
+    "expression": "7.5 mm",
+    "unit": "mm",
+    "comment": "Tekerlek toplam genişliği (flanş dahil)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "flange_h",
+    "expression": "2.5 mm",
+    "unit": "mm",
+    "comment": "Flanş yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "flange_t",
+    "expression": "1.8 mm",
+    "unit": "mm",
+    "comment": "Flanş kalınlığı (ray başı köşe seviyesinde)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "flange_tip_w",
+    "expression": "0.7 mm",
+    "unit": "mm",
+    "comment": "Flanş tepesi düz kısmı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "root_ch",
+    "expression": "0.6 mm",
+    "unit": "mm",
+    "comment": "Flanş kökü pahı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "tread_taper",
+    "expression": "0.05",
+    "unit": "",
+    "comment": "Yuvarlanma yüzeyi konikliği (1:20)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "back_to_back",
+    "expression": "40.0 mm",
+    "unit": "mm",
+    "comment": "Tekerlek arka yüzleri arası (B)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "wheel_bore",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Tekerlek aks deliği (nominal; test kuponuyla ayarlanacak)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rim_t",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Jant kalınlığı (radyal)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "web_t",
+    "expression": "3.5 mm",
+    "unit": "mm",
+    "comment": "Tekerlek gövde (disk) kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "boss_d",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "Göbek çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "axle_d",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Çelik aks çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bearing_od",
+    "expression": "9.0 mm",
+    "unit": "mm",
+    "comment": "684ZZ rulman dış çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bearing_w",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "684ZZ rulman genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bearing_clear",
+    "expression": "0.1 mm",
+    "unit": "mm",
+    "comment": "Rulman yuvası çap boşluğu (nominal)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "spacer_t",
+    "expression": "1.0 mm",
+    "unit": "mm",
+    "comment": "Tekerlek-rulman arası pul kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "spacer_od",
+    "expression": "5.5 mm",
+    "unit": "mm",
+    "comment": "Pul dış çapı (yalnız iç bileziğe değer)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "spacer_id",
+    "expression": "4.3 mm",
+    "unit": "mm",
+    "comment": "Pul iç çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "wheelbase",
+    "expression": "70.0 mm",
+    "unit": "mm",
+    "comment": "Aks aralığı (0-4-0 rijit dingil mesafesi)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plate_t",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "Yan levha kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plate_len",
+    "expression": "130.0 mm",
+    "unit": "mm",
+    "comment": "Yan levha boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plate_above",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "Levhanın aks üstündeki yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plate_below",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Levhanın aks altındaki yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "xm_size",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Travers (crossmember) kesiti"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "xm_x",
+    "expression": "60.0 mm",
+    "unit": "mm",
+    "comment": "Crossmember konumu (merkezden; karşı dişliye yer bırakır)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "m3_clear",
+    "expression": "3.4 mm",
+    "unit": "mm",
+    "comment": "M3 geçiş deliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "m3_tap",
+    "expression": "2.6 mm",
+    "unit": "mm",
+    "comment": "M3 vida (plastiğe) pilot deliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gear_m",
+    "expression": "1.0 mm",
+    "unit": "mm",
+    "comment": "Modül (sonsuz vida eksenel modülü = karşı dişli modülü)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "z_wheel",
+    "expression": "30",
+    "unit": "",
+    "comment": "Karşı dişli diş sayısı (tek ağızlı vida: 30:1)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "pressure_ang",
+    "expression": "20.0 deg",
+    "unit": "deg",
+    "comment": "Basınç açısı (derece)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gear_w",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "Karşı dişli genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gear_hub_d",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Karşı dişli göbek çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gear_hub_len",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Göbek boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "worm_pd",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Sonsuz vida bölüm dairesi çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "worm_len",
+    "expression": "16.5 mm",
+    "unit": "mm",
+    "comment": "Sonsuz vida boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "worm_bore",
+    "expression": "2.2 mm",
+    "unit": "mm",
+    "comment": "Vida deliği (2.3 mil, sıkı geçme; kuponla doğrula)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "mesh_backlash",
+    "expression": "0.15 mm",
+    "unit": "mm",
+    "comment": "Eksenler arası ek boşluk"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "motor_d",
+    "expression": "24.4 mm",
+    "unit": "mm",
+    "comment": "RS/RF-370 motor gövde çapı (VARSAYIM, kumpasla doğrula)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "motor_len",
+    "expression": "30.5 mm",
+    "unit": "mm",
+    "comment": "Motor gövde boyu, mil ve arka burç hariç (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "motor_boss_d",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Ön burç çapı (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "motor_shaft_d",
+    "expression": "2.3 mm",
+    "unit": "mm",
+    "comment": "Mil çapı (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "motor_shaft_l",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Mil boyu, ön yüzden (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "motor_hole_s",
+    "expression": "17.0 mm",
+    "unit": "mm",
+    "comment": "Ön yüz M2.5 vida aralığı (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bulk_t",
+    "expression": "3.0 mm",
+    "unit": "mm",
+    "comment": "Motor perde levhası kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "worm_hub_d",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Sonsuz vida göbeği (motor miline geçen kısım) çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bulk_top",
+    "expression": "34.0 mm",
+    "unit": "mm",
+    "comment": "Perde üst kenarı (aks ekseninden)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "saddle_x0",
+    "expression": "-14.0 mm",
+    "unit": "mm",
+    "comment": "Arka motor yatağı başlangıcı (X)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "saddle_len",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Arka motor yatağı boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "m25_clear",
+    "expression": "2.8 mm",
+    "unit": "mm",
+    "comment": "M2.5 geçiş deliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "worm_hub_len",
+    "expression": "5.0 mm",
+    "unit": "mm",
+    "comment": "Vida göbeği boyu (bölme levhası deliğinden geçer)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bulk_bottom",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "Bölme levhası alt kenarı (karşı dişli dönüş çapının üstünde)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cradle_top",
+    "expression": "26.0 mm",
+    "unit": "mm",
+    "comment": "Motor yan duvarlarının üst kenarı (aks ekseninden)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gear_bore",
+    "expression": "3.9 mm",
+    "unit": "mm",
+    "comment": "Karşı dişli aks deliği (sıkı geçme + yapıştırıcı; kuponla doğrula)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "grub_tap",
+    "expression": "2.5 mm",
+    "unit": "mm",
+    "comment": "M3 set vidası pilot deliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "loco_len",
+    "expression": "300.0 mm",
+    "unit": "mm",
+    "comment": "Lokomotif boyu, tampon başları dahil"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "loco_w",
+    "expression": "95.0 mm",
+    "unit": "mm",
+    "comment": "Lokomotif genişliği (ana platform)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "loco_h",
+    "expression": "155.0 mm",
+    "unit": "mm",
+    "comment": "Lokomotif yüksekliği, ray üstünden baca tepesine"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "wall_t",
+    "expression": "2.4 mm",
+    "unit": "mm",
+    "comment": "Gövde kabuk et kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "fp_z",
+    "expression": "26.0 mm",
+    "unit": "mm",
+    "comment": "Ana platform (footplate) alt yüzü, aks ekseninden (flanş tepesi 23.5)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "fp_t",
+    "expression": "3.0 mm",
+    "unit": "mm",
+    "comment": "Ana platform kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "beam_t",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Tampon kirişi kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "beam_bot",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Tampon kirişi alt kenarı, aks ekseninden"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "valance_h",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "Platform kenar etek yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "valance_t",
+    "expression": "2.0 mm",
+    "unit": "mm",
+    "comment": "Platform kenar etek kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "buf_len",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Tampon boyu (kirişten)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "buf_stock_d",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Tampon gövde çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "buf_head_d",
+    "expression": "14.0 mm",
+    "unit": "mm",
+    "comment": "Tampon başı çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "buf_head_t",
+    "expression": "2.0 mm",
+    "unit": "mm",
+    "comment": "Tampon başı kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "buf_y",
+    "expression": "30.0 mm",
+    "unit": "mm",
+    "comment": "Tampon ekseni, merkezden"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "buf_z",
+    "expression": "18.0 mm",
+    "unit": "mm",
+    "comment": "Tampon/kanca yüksekliği, aks ekseninden (raydan ~39)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "body_boss_d",
+    "expression": "7.0 mm",
+    "unit": "mm",
+    "comment": "Gövde modülü vida dikmesi çapı (M3 pilot)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "body_boss_h",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Gövde modülü vida dikmesi yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "fork_pin_in",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Çeki pimi, tampon kirişi dış yüzünden içeri"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "fork_len",
+    "expression": "18.0 mm",
+    "unit": "mm",
+    "comment": "Çeki çatalı bloğu boyu (kiriş dış yüzünden içeri)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "fork_w",
+    "expression": "30.0 mm",
+    "unit": "mm",
+    "comment": "Çeki çatalı bloğu genişliği (boji tekerleğinden uzak)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "fork_zb",
+    "expression": "11.0 mm",
+    "unit": "mm",
+    "comment": "Çeki çatalı alt kenarı, aks ekseninden (alt çene 4.5 mm)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "fork_z0",
+    "expression": "15.5 mm",
+    "unit": "mm",
+    "comment": "Çeki yarığı alt"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "fork_z1",
+    "expression": "22.5 mm",
+    "unit": "mm",
+    "comment": "Çeki yarığı üst"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "db_w",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Çeki kolu genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "db_t",
+    "expression": "5.5 mm",
+    "unit": "mm",
+    "comment": "Çeki kolu kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "couple_gap",
+    "expression": "28.0 mm",
+    "unit": "mm",
+    "comment": "Araçlar arası kiriş-kiriş mesafesi (tek tip çeki kolu; R750'de tampon payı)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "boil_d",
+    "expression": "56.0 mm",
+    "unit": "mm",
+    "comment": "Kazan çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "boil_z",
+    "expression": "66.0 mm",
+    "unit": "mm",
+    "comment": "Kazan ekseni, aks ekseninden (raydan ~87)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "skirt_w",
+    "expression": "46.0 mm",
+    "unit": "mm",
+    "comment": "Kazan altı etek genişliği (motor perdesi ±19'u geçer)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "band_d",
+    "expression": "57.6 mm",
+    "unit": "mm",
+    "comment": "Kazan kuşağı çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "band_w",
+    "expression": "2.5 mm",
+    "unit": "mm",
+    "comment": "Kazan kuşağı genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sb_x0",
+    "expression": "95.0 mm",
+    "unit": "mm",
+    "comment": "Duman kutusu arka ucu (X)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sb_x1",
+    "expression": "128.0 mm",
+    "unit": "mm",
+    "comment": "Duman kutusu ön yüzü (X)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sb_d",
+    "expression": "62.0 mm",
+    "unit": "mm",
+    "comment": "Duman kutusu çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "saddle_w",
+    "expression": "52.0 mm",
+    "unit": "mm",
+    "comment": "Duman kutusu altlığı genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "lamp_d",
+    "expression": "14.0 mm",
+    "unit": "mm",
+    "comment": "Ön fener gövdesi çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "lamp_z",
+    "expression": "78.0 mm",
+    "unit": "mm",
+    "comment": "Ön fener ekseni, aks ekseninden (kapak düz yüzünde)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "led_d",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "LED kanalı (5 mm LED'in Ø5.8 flanşı geçer; LED içeriden lens yuvasına itilir)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "lens_d",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Fener camı/lens yuvası çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "lens_depth",
+    "expression": "2.0 mm",
+    "unit": "mm",
+    "comment": "Lens yuvası derinliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "chim_bore",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Baca ağzı çapı (15 mm derin)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dome_x",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Buhar domu X (kazan ortası)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sand_x",
+    "expression": "60.0 mm",
+    "unit": "mm",
+    "comment": "Kum domu X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "valve_x",
+    "expression": "-46.0 mm",
+    "unit": "mm",
+    "comment": "Emniyet ventili X (ateşlik üstü; -50..-60 aralığında SolidCraft kesimi başarısız)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cab_x1",
+    "expression": "-72.0 mm",
+    "unit": "mm",
+    "comment": "Kabin ön yüzü (X)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cab_w",
+    "expression": "86.0 mm",
+    "unit": "mm",
+    "comment": "Kabin genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cab_side_top",
+    "expression": "117.0 mm",
+    "unit": "mm",
+    "comment": "Kabin yan duvar üstü, aks ekseninden"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cab_crown",
+    "expression": "127.0 mm",
+    "unit": "mm",
+    "comment": "Kabin çatı yayı tepesi (çatı altı), aks ekseninden"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cab_win_d",
+    "expression": "16.0 mm",
+    "unit": "mm",
+    "comment": "Kabin ön (gözlük) pencere çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cab_win_y",
+    "expression": "30.0 mm",
+    "unit": "mm",
+    "comment": "Ön pencere Y"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cab_win_z",
+    "expression": "100.0 mm",
+    "unit": "mm",
+    "comment": "Ön pencere Z"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "side_win_x0",
+    "expression": "-124.0 mm",
+    "unit": "mm",
+    "comment": "Yan pencere arka kenarı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "side_win_x1",
+    "expression": "-92.0 mm",
+    "unit": "mm",
+    "comment": "Yan pencere ön kenarı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "side_win_z0",
+    "expression": "72.0 mm",
+    "unit": "mm",
+    "comment": "Yan pencere alt kenarı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "side_win_z1",
+    "expression": "104.0 mm",
+    "unit": "mm",
+    "comment": "Yan pencere üst kenarı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cab_rear_w",
+    "expression": "60.0 mm",
+    "unit": "mm",
+    "comment": "Kabin arka açıklığı genişliği (60 mm köprü)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cab_rear_z0",
+    "expression": "45.0 mm",
+    "unit": "mm",
+    "comment": "Kabin arka açıklığı alt kenarı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "roof_over",
+    "expression": "2.0 mm",
+    "unit": "mm",
+    "comment": "Çatı taşması"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cyl_d",
+    "expression": "22.0 mm",
+    "unit": "mm",
+    "comment": "Silindir çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cyl_y",
+    "expression": "34.0 mm",
+    "unit": "mm",
+    "comment": "Silindir ekseni Y"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cyl_z",
+    "expression": "16.5 mm",
+    "unit": "mm",
+    "comment": "Silindir ekseni Z (kapak üstü platform üstüyle hizalı)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cyl_x0",
+    "expression": "68.0 mm",
+    "unit": "mm",
+    "comment": "Silindir arka ucu X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cyl_len",
+    "expression": "34.0 mm",
+    "unit": "mm",
+    "comment": "Silindir boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "roof_t",
+    "expression": "2.4 mm",
+    "unit": "mm",
+    "comment": "Çatı kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dome_seat_d",
+    "expression": "28.0 mm",
+    "unit": "mm",
+    "comment": "Buhar domu taban çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sand_seat_d",
+    "expression": "22.0 mm",
+    "unit": "mm",
+    "comment": "Kum domu taban çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "valve_seat_d",
+    "expression": "18.0 mm",
+    "unit": "mm",
+    "comment": "Emniyet ventili taban çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "chim_seat_d",
+    "expression": "27.0 mm",
+    "unit": "mm",
+    "comment": "Baca taban çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "chim_seat_top",
+    "expression": "99.0 mm",
+    "unit": "mm",
+    "comment": "Baca tabanı üst kenarı (duman kutusu tepesi 97)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "fit_clear",
+    "expression": "0.15 mm",
+    "unit": "mm",
+    "comment": "Bilezik-yuva radyal boşluğu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cable_w",
+    "expression": "40.0 mm",
+    "unit": "mm",
+    "comment": "Kabin ön duvarı kablo geçişi genişliği (kazanın arkasında gizli)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cable_h",
+    "expression": "50.0 mm",
+    "unit": "mm",
+    "comment": "Kablo geçişi yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "boil_x0",
+    "expression": "-71.7 mm",
+    "unit": "mm",
+    "comment": "Kazan arka ucu (X); kabin ön duvarına 0.3 boşluk"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rib_w",
+    "expression": "5.0 mm",
+    "unit": "mm",
+    "comment": "Kazan iç vida kaburgası genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rib_h",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "Vida kaburgası yüksekliği (platform üstünden)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cab_rib_w",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "Kabin/depo/vagon iç vida kaburgası genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "boil_hole_xf",
+    "expression": "70.0 mm",
+    "unit": "mm",
+    "comment": "Kazan ön vidaları X (şasi levhası ucu 65'in önünde)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "boil_hole_xr",
+    "expression": "-68.0 mm",
+    "unit": "mm",
+    "comment": "Kazan arka vidaları X (şasi levhası ucu -65'in arkasında; alttan erişilir)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "door_d",
+    "expression": "40.0 mm",
+    "unit": "mm",
+    "comment": "Duman kutusu kapağı ön düz yüz çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "door_t",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Duman kutusu kapağı derinliği (45° konik: Ø60 → Ø40, desteksiz baskı)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "lamp_len",
+    "expression": "7.0 mm",
+    "unit": "mm",
+    "comment": "Fener gövdesi boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "lamp_spig_d",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Fener arka pimi çapı (kapaktaki deliğe girer)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "lamp_spig_l",
+    "expression": "2.5 mm",
+    "unit": "mm",
+    "comment": "Fener pimi boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "mount_boss_d",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Gövdeyi şasiye bağlayan dikme çapı (şasi traversine oturur)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cab_rear_z1",
+    "expression": "100.0 mm",
+    "unit": "mm",
+    "comment": "Kabin arka açıklığı üst kenarı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "band_x1",
+    "expression": "-35.0 mm",
+    "unit": "mm",
+    "comment": "Kazan kuşağı 1 X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "band_x2",
+    "expression": "35.0 mm",
+    "unit": "mm",
+    "comment": "Kazan kuşağı 2 X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "fork_slot_w",
+    "expression": "22.0 mm",
+    "unit": "mm",
+    "comment": "Çeki yarığı genişliği (kolun yanal dönüşü için)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "fp_split_x",
+    "expression": "-84.0 mm",
+    "unit": "mm",
+    "comment": "Ön/arka platform modülü ayrım çizgisi (X); kabin ön vidasından 6.6 mm geride"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "fp_open_x0",
+    "expression": "-50.0 mm",
+    "unit": "mm",
+    "comment": "Platform açıklığı arka ucu X (motor, perde, kablolar)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "fp_open_x1",
+    "expression": "46.0 mm",
+    "unit": "mm",
+    "comment": "Platform açıklığı ön ucu X (sonsuz vida 43.3'e kadar)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "fp_open_w",
+    "expression": "40.0 mm",
+    "unit": "mm",
+    "comment": "Platform açıklığı genişliği (Y)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sb_ring_w",
+    "expression": "2.5 mm",
+    "unit": "mm",
+    "comment": "Duman kutusu ön bileziği genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "spig_od",
+    "expression": "11.0 mm",
+    "unit": "mm",
+    "comment": "Dom/baca yerleştirme pimi çapı (kazandaki deliğe girer, yapıştırılır)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "spig_h",
+    "expression": "3.0 mm",
+    "unit": "mm",
+    "comment": "Yerleştirme pimi boyu (kazan yüzeyinden aşağı)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "jflange_w",
+    "expression": "60.0 mm",
+    "unit": "mm",
+    "comment": "Platform modülleri birleşim flanşı genişliği (Y)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "jflange_t",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Birleşim flanşı kalınlığı (X, her modülde)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "jflange_bot",
+    "expression": "17.0 mm",
+    "unit": "mm",
+    "comment": "Birleşim flanşı alt kenarı (aks ekseninden)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "jbolt_y",
+    "expression": "20.0 mm",
+    "unit": "mm",
+    "comment": "Flanş cıvataları Y (±)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "jbolt_z",
+    "expression": "21.5 mm",
+    "unit": "mm",
+    "comment": "Flanş cıvataları Z"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cab_rib_h",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Kabin/depo/vagon vida kaburgası yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sb_ring_d",
+    "expression": "64.0 mm",
+    "unit": "mm",
+    "comment": "Duman kutusu ön bileziği çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "roof_tab_h",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "Çatı yerleştirme dili yüksekliği (duvar içine iner)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "roof_tab_t",
+    "expression": "2.0 mm",
+    "unit": "mm",
+    "comment": "Çatı yerleştirme dili kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "roof_clear",
+    "expression": "0.3 mm",
+    "unit": "mm",
+    "comment": "Çatı dili - duvar boşluğu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "buf_hole_d",
+    "expression": "5.3 mm",
+    "unit": "mm",
+    "comment": "Tampon pimi deliği (kirişte)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "buf_spig_d",
+    "expression": "5.0 mm",
+    "unit": "mm",
+    "comment": "Tampon pimi çapı (kirişteki deliğe girer)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "door_clear",
+    "expression": "0.2 mm",
+    "unit": "mm",
+    "comment": "Duman kutusu kapağı pimi radyal boşluğu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "t_w",
+    "expression": "90.0 mm",
+    "unit": "mm",
+    "comment": "Tender genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "t_tank_x0",
+    "expression": "-70.0 mm",
+    "unit": "mm",
+    "comment": "Su deposu arka yüzü X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "t_tank_x1",
+    "expression": "70.0 mm",
+    "unit": "mm",
+    "comment": "Su deposu ön yüzü X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "t_tank_w",
+    "expression": "86.0 mm",
+    "unit": "mm",
+    "comment": "Su deposu genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "t_tank_top",
+    "expression": "92.0 mm",
+    "unit": "mm",
+    "comment": "Su deposu üst kenarı, aks ekseninden"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "ledge_w",
+    "expression": "2.0 mm",
+    "unit": "mm",
+    "comment": "Kapak oturma çıkıntısı genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "t_len",
+    "expression": "144.0 mm",
+    "unit": "mm",
+    "comment": "Tender kiriş dış yüzleri arası (+2×8 tampon = 160 toplam)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "t_xm_x",
+    "expression": "45.0 mm",
+    "unit": "mm",
+    "comment": "Tender şasisi travers konumu (çeki çatalına yer bırakır)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "t_plate_len",
+    "expression": "104.0 mm",
+    "unit": "mm",
+    "comment": "Tender şasi levhası boyu (çeki çatallarına yer bırakır)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "coal_open_x0",
+    "expression": "-8.0 mm",
+    "unit": "mm",
+    "comment": "Kömür/pil açıklığı arka kenarı X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "coal_open_x1",
+    "expression": "56.0 mm",
+    "unit": "mm",
+    "comment": "Kömür/pil açıklığı ön kenarı X (vida kaburgalarına çarpmaz)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "coal_open_w",
+    "expression": "72.0 mm",
+    "unit": "mm",
+    "comment": "Kömür/pil açıklığı genişliği (Y)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "lid_x0",
+    "expression": "-10.0 mm",
+    "unit": "mm",
+    "comment": "Kömür kapağı arka kenarı X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "lid_x1",
+    "expression": "58.0 mm",
+    "unit": "mm",
+    "comment": "Kömür kapağı ön kenarı X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "lid_w",
+    "expression": "76.0 mm",
+    "unit": "mm",
+    "comment": "Kömür kapağı genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "lid_t",
+    "expression": "2.5 mm",
+    "unit": "mm",
+    "comment": "Kömür kapağı plaka kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "lid_board_h",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Kömür tahtası yüksekliği (kapak üstünden)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "lid_board_t",
+    "expression": "1.6 mm",
+    "unit": "mm",
+    "comment": "Kömür tahtası kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "lid_plug_h",
+    "expression": "3.0 mm",
+    "unit": "mm",
+    "comment": "Kapak yerleştirme tapası yüksekliği (açıklığa iner)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "lid_clear",
+    "expression": "0.3 mm",
+    "unit": "mm",
+    "comment": "Tapa - açıklık boşluğu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "coping",
+    "expression": "1.0 mm",
+    "unit": "mm",
+    "comment": "Depo üst kenar pervazı taşması"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cable_d",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Ana güç kablosu deliği (pil → lokomotif, depo ön yüzü, z = platform+12). Aksesuar hattı konnektöründen ayrı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cable_y",
+    "expression": "20.0 mm",
+    "unit": "mm",
+    "comment": "Ana güç kablosu deliği Y (TrenBus yuvasının yanında)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "c_len",
+    "expression": "220.0 mm",
+    "unit": "mm",
+    "comment": "Vagon boyu, tampon başları dahil"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "c_w",
+    "expression": "90.0 mm",
+    "unit": "mm",
+    "comment": "Vagon genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "c_wall_top",
+    "expression": "100.0 mm",
+    "unit": "mm",
+    "comment": "Vagon yan duvar üstü, aks ekseninden"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "c_crown",
+    "expression": "110.0 mm",
+    "unit": "mm",
+    "comment": "Vagon çatı (iç yay) tepesi"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bogie_x",
+    "expression": "50.0 mm",
+    "unit": "mm",
+    "comment": "Boji pivotu X (±); iç tekerlek flanşları arası 5 mm"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bogie_wb",
+    "expression": "48.0 mm",
+    "unit": "mm",
+    "comment": "Boji dingil mesafesi (flanş Ø47'den büyük olmalı)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bogie_len",
+    "expression": "64.0 mm",
+    "unit": "mm",
+    "comment": "Boji yan levha boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "c_win_w",
+    "expression": "18.0 mm",
+    "unit": "mm",
+    "comment": "Vagon pencere genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "c_win_z0",
+    "expression": "60.0 mm",
+    "unit": "mm",
+    "comment": "Vagon pencere alt kenarı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "c_win_z1",
+    "expression": "86.0 mm",
+    "unit": "mm",
+    "comment": "Vagon pencere üst kenarı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "c_win_pitch",
+    "expression": "27.0 mm",
+    "unit": "mm",
+    "comment": "Vagon pencere aralığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "c_body_l",
+    "expression": "196.0 mm",
+    "unit": "mm",
+    "comment": "Vagon kasası boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "c_door_w",
+    "expression": "20.0 mm",
+    "unit": "mm",
+    "comment": "Vagon alın kapısı genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "c_door_z1",
+    "expression": "68.0 mm",
+    "unit": "mm",
+    "comment": "Vagon alın kapısı üst kenarı (Faz 3'te 88 idi; konnektör tutucusu kapının üstüne sığsın diye alçaltıldı)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "c_win_n",
+    "expression": "6 mm",
+    "unit": "mm",
+    "comment": "Yan pencere sayısı (her yan)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "c_beam_bot",
+    "expression": "13.0 mm",
+    "unit": "mm",
+    "comment": "Vagon tampon kirişi alt kenarı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "conn_w",
+    "expression": "10.4 mm",
+    "unit": "mm",
+    "comment": "Araçlar arası 2-pin kutuplu konnektör yuvası genişliği (Y). VARSAYIM: konnektör seçilmedi (JST-XH 2P / benzeri), seçince ölç ve güncelle"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "conn_h",
+    "expression": "6.2 mm",
+    "unit": "mm",
+    "comment": "Konnektör yuvası yüksekliği (Z). VARSAYIM"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "conn_d",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Konnektör yuvası derinliği, uç duvar dış yüzünden içeri. VARSAYIM"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "conn_key_w",
+    "expression": "3.0 mm",
+    "unit": "mm",
+    "comment": "Kutuplama kanalı genişliği (yuvanın üst kenarında, tek yönlü takılır)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "conn_key_h",
+    "expression": "1.2 mm",
+    "unit": "mm",
+    "comment": "Kutuplama kanalı derinliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "conn_wire_w",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "Yuva arkası tel çıkışı genişliği (omuz: konnektör içeri itilemez)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "conn_wire_h",
+    "expression": "3.0 mm",
+    "unit": "mm",
+    "comment": "Tel çıkışı yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "hold_wall",
+    "expression": "2.0 mm",
+    "unit": "mm",
+    "comment": "Konnektör tutucu bloğu et kalınlığı (yuva çevresi)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "hold_d",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Tutucu bloğun uç duvar iç yüzünden içeri boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "conn_y",
+    "expression": "0.0 mm",
+    "unit": "mm",
+    "comment": "Konnektör ekseni Y: araç ekseninde (araç ters çevrilse de iki uç karşılıklı gelir; virajda yanal uzama ~0)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "conn_z",
+    "expression": "84.0 mm",
+    "unit": "mm",
+    "comment": "Konnektör ekseni Z, aks ekseninden (raydan ~105; tampon üstü 25, çeki kolu üstü 22.5, boji/tekerlek üstü 23.5)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "clip_len",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "İç kablo kelepçesi boyu (X)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "clip_gap",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Kelepçe tüneli genişliği (duvardan), 2 tel + 2.5 mm kablo bağı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "clip_h",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Kelepçe tüneli yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "clip_bar",
+    "expression": "2.0 mm",
+    "unit": "mm",
+    "comment": "Kelepçe çubuğu kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "clip_z",
+    "expression": "42.0 mm",
+    "unit": "mm",
+    "comment": "Kelepçe tüneli ekseni Z (yan duvar iç yüzü, +y tarafı, pencerelerin altında)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "led_pad_w",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "Çatı altı LED şerit düz oturma yüzeyi genişliği (8 mm şerit VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "led_pad_t",
+    "expression": "1.5 mm",
+    "unit": "mm",
+    "comment": "LED yüzeyi, çatı yayı tepesinin altına iniş"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "roof_notch_w",
+    "expression": "5.0 mm",
+    "unit": "mm",
+    "comment": "Çatı dilinde LED kablosu geçiş çentiği genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "jumper_len",
+    "expression": "70.0 mm",
+    "unit": "mm",
+    "comment": "Araçlar arası kablo (servis döngüsü) uzunluğu, konnektör yüzleri arası; coupling_calc.py ile kontrol"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "clip_xs_tender",
+    "expression": "40.0 mm",
+    "unit": "mm",
+    "comment": "Tender iç kelepçeleri X (-40, 0, +40); vida kaburgaları ±64.6'dan uzak"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "clip_xs_coach",
+    "expression": "70.0 mm",
+    "unit": "mm",
+    "comment": "Vagon iç kelepçeleri X (-70, 0, +70)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plug_out",
+    "expression": "14.0 mm",
+    "unit": "mm",
+    "comment": "Takılı fişin uç yüzden dışarı çıkıntısı + kablo bükülme payı (VARSAYIM, konnektöre göre)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "plug_bend_r",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "Kablo en küçük bükülme yarıçapı (VARSAYIM, 2×0.35 mm² silikon kablo)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "car_len",
+    "expression": "250.0 mm",
+    "unit": "mm",
+    "comment": "Standart vagon şasisi boyu (kiriş yüzleri arası)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "car_w",
+    "expression": "90.0 mm",
+    "unit": "mm",
+    "comment": "Standart vagon şasisi genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "car_beam_bot",
+    "expression": "15.0 mm",
+    "unit": "mm",
+    "comment": "250 vagon kiriş alt kenarı Z (R750'de dönen boji tekerleği x ≤ 119; kol yuvası alttan açık çentik)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "car_bogie_x",
+    "expression": "75.0 mm",
+    "unit": "mm",
+    "comment": "Boji pivotları ± (docs/standart.md: 150 mm aralık)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "car_body_l",
+    "expression": "232.0 mm",
+    "unit": "mm",
+    "comment": "Gövde kabuğu boyu (detaylar dahil ≤ 236)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "car_body_w",
+    "expression": "80.0 mm",
+    "unit": "mm",
+    "comment": "Gövde kabuğu genişliği (tutamak/çerçeve dahil ≤ 86)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "car_buf_y",
+    "expression": "38.0 mm",
+    "unit": "mm",
+    "comment": "250 vagon tampon Y"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "car_step_x",
+    "expression": "102.0 mm",
+    "unit": "mm",
+    "comment": "Basamaklar X ± (platform eteğinde, kapıların altında)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "car_bus_x",
+    "expression": "106.0 mm",
+    "unit": "mm",
+    "comment": "TrenBus kablo geçişi X ± (platformda, gövde alın duvarı yuvasının arkasında)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "car_bus_y",
+    "expression": "0.0 mm",
+    "unit": "mm",
+    "comment": "TrenBus kablo geçişi Y"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "car_bus_d",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "TrenBus kablo geçişi çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "car_aux_x",
+    "expression": "45.4 mm",
+    "unit": "mm",
+    "comment": "Aksesuar vida delikleri X ± (radar kabini ön duvarı / kaidesi; Y = car_hole_y)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rivet_d",
+    "expression": "1.6 mm",
+    "unit": "mm",
+    "comment": "Perçin çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rivet_h",
+    "expression": "1.2 mm",
+    "unit": "mm",
+    "comment": "Perçin çıkıntısı (en az 1.2)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "band_ledge",
+    "expression": "1.2 mm",
+    "unit": "mm",
+    "comment": "Pencere bandı oluğu dış duvar kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_lb_z",
+    "expression": "46.0 mm",
+    "unit": "mm",
+    "comment": "Işık çubuğu yarığı merkezi Z"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_lb_h",
+    "expression": "4.2 mm",
+    "unit": "mm",
+    "comment": "Işık çubuğu yarığı yüksekliği (4.0 ışık borusu + 0.2)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "car_buf_z",
+    "expression": "20.0 mm",
+    "unit": "mm",
+    "comment": "250 vagon tampon ekseni Z (kiriş z 15..29 içinde)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cbuf_hole_d",
+    "expression": "5.3 mm",
+    "unit": "mm",
+    "comment": "250 vagon kirişinde ayrı tampon pimi deliği (tampon ayrı basılır; şasi 250 mm tablaya sığsın diye)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cbuf_spig_d",
+    "expression": "5.0 mm",
+    "unit": "mm",
+    "comment": "Ayrı tampon pimi çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "step_x_half",
+    "expression": "7.0 mm",
+    "unit": "mm",
+    "comment": "Basamak X yarı boy"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "step_z",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Basamak alt yüzü Z"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cbuf_stock_d",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Ayrı tampon gövdesi çapı (250 vagon, lokomotif arka)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cbuf_head_d",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "Ayrı tampon başı çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cbuf_len",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Tampon çıkıntısı (kiriş yüzünden)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_lb_x0",
+    "expression": "26.0 mm",
+    "unit": "mm",
+    "comment": "Şarj vagonu ışık çubuğu yarığı başı X (kol cebinin önünde)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_lb_x1",
+    "expression": "104.0 mm",
+    "unit": "mm",
+    "comment": "Işık çubuğu yarığı sonu X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "y5_wall_top",
+    "expression": "97.0 mm",
+    "unit": "mm",
+    "comment": "Yolcu 250 yan duvar üstü Z"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "y5_crown",
+    "expression": "107.0 mm",
+    "unit": "mm",
+    "comment": "Yolcu 250 çatı yayı tepesi Z (çatı + havalandırma ray üstü ≤ 135)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "y5_win_w",
+    "expression": "18.0 mm",
+    "unit": "mm",
+    "comment": "Yolcu pencere genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "y5_win_z0",
+    "expression": "58.0 mm",
+    "unit": "mm",
+    "comment": "Yolcu pencere alt kenarı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "y5_win_z1",
+    "expression": "84.0 mm",
+    "unit": "mm",
+    "comment": "Yolcu pencere üst kenarı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "y5_win_pitch",
+    "expression": "22.5 mm",
+    "unit": "mm",
+    "comment": "Yolcu pencere aralığı (8 pencere)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "y5_door_x",
+    "expression": "99.0 mm",
+    "unit": "mm",
+    "comment": "Yolcu yan kapı merkezi X ±"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "y5_door_w",
+    "expression": "14.0 mm",
+    "unit": "mm",
+    "comment": "Yolcu yan kapı genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "y5_groove_z",
+    "expression": "53.0 mm",
+    "unit": "mm",
+    "comment": "Pencere bandı oluğu alt kenarı Z"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "y5_band_xh",
+    "expression": "88.5 mm",
+    "unit": "mm",
+    "comment": "Yolcu pencere bandı X ± yarı boy"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "band_t",
+    "expression": "1.0 mm",
+    "unit": "mm",
+    "comment": "Şeffaf pencere bandı kalınlığı (şeffaf PETG)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "band_gap",
+    "expression": "0.2 mm",
+    "unit": "mm",
+    "comment": "Band-oluk boşluğu (her yan)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "en_wall_top",
+    "expression": "98.0 mm",
+    "unit": "mm",
+    "comment": "Enerji 250 yan duvar üstü"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "en_crown",
+    "expression": "104.0 mm",
+    "unit": "mm",
+    "comment": "Enerji 250 çatı tepesi"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_wall_top",
+    "expression": "90.0 mm",
+    "unit": "mm",
+    "comment": "Radar 250 kabin duvar üstü"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_crown",
+    "expression": "98.0 mm",
+    "unit": "mm",
+    "comment": "Radar 250 kabin çatı tepesi"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_cab_x1",
+    "expression": "-40.0 mm",
+    "unit": "mm",
+    "comment": "Radar kabini ön duvarı X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_x",
+    "expression": "50.0 mm",
+    "unit": "mm",
+    "comment": "Radar tablası ekseni X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_tab_d",
+    "expression": "60.0 mm",
+    "unit": "mm",
+    "comment": "Dönen tabla çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_plate_top",
+    "expression": "62.0 mm",
+    "unit": "mm",
+    "comment": "Radar kaidesi üst yüzü Z (plaka 2.4; N20 altında asılı)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_cd",
+    "expression": "33.15 mm",
+    "unit": "mm",
+    "comment": "Tabla dişlisi (m1 z56) - pinyon (m1 z10) eksen mesafesi (+0.15 boşluk); motor 45° köşegende"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_wall_top",
+    "expression": "70.0 mm",
+    "unit": "mm",
+    "comment": "Şarj 250 alçak kasa duvar üstü Z (cep ve iki kol sığsın diye 60'tan yükseltildi; çatı dili cep tavanının üstünde kalır)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_crown",
+    "expression": "76.0 mm",
+    "unit": "mm",
+    "comment": "Şarj 250 çatı tepesi Z (ray üstü ≈ 97)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "ss_wall_top",
+    "expression": "96.0 mm",
+    "unit": "mm",
+    "comment": "Ses 250 yan duvar üstü"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "ss_crown",
+    "expression": "105.0 mm",
+    "unit": "mm",
+    "comment": "Ses 250 çatı tepesi (düdük dahil ray üstü ≤ 135)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "ss_spk_z",
+    "expression": "62.0 mm",
+    "unit": "mm",
+    "comment": "40 mm hoparlör ekseni Z"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_wall_top",
+    "expression": "90.0 mm",
+    "unit": "mm",
+    "comment": "Gözlem 250 yan duvar üstü"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_crown",
+    "expression": "98.0 mm",
+    "unit": "mm",
+    "comment": "Gözlem 250 çatı tepesi"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_x0",
+    "expression": "-94.0 mm",
+    "unit": "mm",
+    "comment": "Gözlem kapalı gövde başı X (arkası -116..-94 balkon)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_dome_x",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Gözlem kubbesi merkezi X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_dome_top",
+    "expression": "113.0 mm",
+    "unit": "mm",
+    "comment": "Gözlem kubbesi tepesi Z (ray üstü ≤ 135)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_groove_z",
+    "expression": "48.0 mm",
+    "unit": "mm",
+    "comment": "Gözlem pencere bandı oluğu alt kenarı Z"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_band_x0",
+    "expression": "-80.0 mm",
+    "unit": "mm",
+    "comment": "Gözlem pencere bandı başı X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_band_x1",
+    "expression": "102.0 mm",
+    "unit": "mm",
+    "comment": "Gözlem pencere bandı sonu X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "band_lip",
+    "expression": "3.5 mm",
+    "unit": "mm",
+    "comment": "Pencere bandı alt oluk dudağı yüksekliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_k_x",
+    "expression": "36.0 mm",
+    "unit": "mm",
+    "comment": "Radar kaidesi X yarı boy"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_k_y",
+    "expression": "38.0 mm",
+    "unit": "mm",
+    "comment": "Radar kaidesi Y yarı genişlik (vida kaburgaları y = ±34.6 içinde)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_z_gear",
+    "expression": "56",
+    "unit": "",
+    "comment": "Tabla dişlisi diş sayısı (m1, Ø58 dış; tabla diski Ø60 üstünde)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_z_pin",
+    "expression": "10",
+    "unit": "",
+    "comment": "Pinyon diş sayısı (m1)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "n20_w",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "N20 motor/redüktör genişliği (VARSAYIM, ölç)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "n20_h",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "N20 kalınlığı (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "n20_len",
+    "expression": "25.5 mm",
+    "unit": "mm",
+    "comment": "N20 redüktör + motor boyu, mil hariç (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "n20_shaft",
+    "expression": "3.0 mm",
+    "unit": "mm",
+    "comment": "N20 D mil çapı (2.5 düz yüz, VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "n20_screw_s",
+    "expression": "9.0 mm",
+    "unit": "mm",
+    "comment": "N20 redüktör ön yüzü M1.6 vida aralığı (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "ss_card_w",
+    "expression": "32.0 mm",
+    "unit": "mm",
+    "comment": "Amfi kartı genişliği (VARSAYIM: MAX98357/PAM8403 sınıfı, 1.6 mm PCB)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "ss_spk_d",
+    "expression": "40.0 mm",
+    "unit": "mm",
+    "comment": "Hoparlör çapı (40 mm, VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_dome_l",
+    "expression": "26.0 mm",
+    "unit": "mm",
+    "comment": "Gözlem kubbesi X yarı boy"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_dome_w",
+    "expression": "24.0 mm",
+    "unit": "mm",
+    "comment": "Gözlem kubbesi Y yarı genişlik"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_dome_side",
+    "expression": "108.0 mm",
+    "unit": "mm",
+    "comment": "Gözlem kubbesi yan duvar üstü Z"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_win_w",
+    "expression": "28.0 mm",
+    "unit": "mm",
+    "comment": "Gözlem geniş pencere genişliği (5 pencere/yan)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_win_pitch",
+    "expression": "37.0 mm",
+    "unit": "mm",
+    "comment": "Gözlem pencere aralığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_win_xc",
+    "expression": "11.0 mm",
+    "unit": "mm",
+    "comment": "Gözlem pencere dizisi merkezi X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_win_z0",
+    "expression": "52.0 mm",
+    "unit": "mm",
+    "comment": "Gözlem pencere alt kenarı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_win_z1",
+    "expression": "78.0 mm",
+    "unit": "mm",
+    "comment": "Gözlem pencere üst kenarı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_rail_x",
+    "expression": "-118.0 mm",
+    "unit": "mm",
+    "comment": "Gözlem balkon korkuluğu dış yüzü X (gövde parçası 234 boy)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_rail_h",
+    "expression": "28.0 mm",
+    "unit": "mm",
+    "comment": "Balkon korkuluğu yüksekliği (platform üstünden)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_bore",
+    "expression": "5.4 mm",
+    "unit": "mm",
+    "comment": "Tabla/anten merkez kablo kanalı (Ø5 kablo)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_gear_w",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "Tabla dişlisi genişliği (kaide üstünden 0.5 yukarıda başlar)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_disc_t",
+    "expression": "2.0 mm",
+    "unit": "mm",
+    "comment": "Tabla diski kalınlığı (dişlinin üstünde, Ø60)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_pin_w",
+    "expression": "5.0 mm",
+    "unit": "mm",
+    "comment": "Pinyon genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_spig_d",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Kaide üstündeki sabit göbek (tabla bunun üstünde döner)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_tab_bore",
+    "expression": "10.4 mm",
+    "unit": "mm",
+    "comment": "Tabla merkez deliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "n20_shaft_l",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "N20 mil boyu (VARSAYIM; pinyon üstü tabla diskinin altında kalmalı)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_pin_bore",
+    "expression": "2.9 mm",
+    "unit": "mm",
+    "comment": "Pinyon mil deliği (N20 D mili Ø3, sıkı; D düzlüğü modellenmedi)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_dish_pin_z",
+    "expression": "101.5 mm",
+    "unit": "mm",
+    "comment": "Çanak anten eğim pimi ekseni Z (tabla merkezinin üstünde)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_lamp_x",
+    "expression": "-78.0 mm",
+    "unit": "mm",
+    "comment": "Radar kabini çatı uyarı lambası X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_dish_d",
+    "expression": "44.0 mm",
+    "unit": "mm",
+    "comment": "Çanak anten ağız çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_dish_sag",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Çanak derinliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_dish_t",
+    "expression": "1.6 mm",
+    "unit": "mm",
+    "comment": "Çanak et kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_tilt",
+    "expression": "-10.0 deg",
+    "unit": "deg",
+    "comment": "Montajda çanak yukarı eğimi (Y ekseni, derece; yalnız görsel)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_pk_x0",
+    "expression": "-18.0 mm",
+    "unit": "mm",
+    "comment": "Kol cebi arka ucu X (+y yan duvarında; kapalı kolun yay ucuna 4 mm pay)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_pk_x1",
+    "expression": "17.0 mm",
+    "unit": "mm",
+    "comment": "Kol cebi ön ucu X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_pk_y",
+    "expression": "30.0 mm",
+    "unit": "mm",
+    "comment": "Kol cebi dip yüzü Y (dış yüz car_body_w/2)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_pk_z0",
+    "expression": "33.0 mm",
+    "unit": "mm",
+    "comment": "Kol cebi tabanı Z"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_pk_z1",
+    "expression": "60.0 mm",
+    "unit": "mm",
+    "comment": "Kol cebi tavanı Z"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_px",
+    "expression": "12.0 mm",
+    "unit": "mm",
+    "comment": "Kol mili ekseni X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_py",
+    "expression": "35.0 mm",
+    "unit": "mm",
+    "comment": "Kol mili ekseni Y (kapalı kol gövde dış yüzünün içinde kalır)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_hub_d",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Kol göbeği (dikey boru) çapı; iki kol ve göbek tek baskı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_hub_bore",
+    "expression": "3.0 mm",
+    "unit": "mm",
+    "comment": "Göbek içi kablo kanalı (iki pabuç teli aşağı iner)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_hub_z1",
+    "expression": "62.0 mm",
+    "unit": "mm",
+    "comment": "Göbek üst ucu Z (cep tavanındaki U yuvasında döner)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_slot_w",
+    "expression": "8.4 mm",
+    "unit": "mm",
+    "comment": "Cep tavanındaki göbek yuvası genişliği (göbek dışarıdan yana kaydırılarak takılır)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_arm_len",
+    "expression": "22.0 mm",
+    "unit": "mm",
+    "comment": "Mil ekseninden kol ucuna (pabuç yuvası ucu)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_arm_w",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Kol genişliği (göbek çapına eşit; yan yatırılıp desteksiz basılır)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_arm_t",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Kol kalınlığı (Z)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_lo_z",
+    "expression": "36.0 mm",
+    "unit": "mm",
+    "comment": "Alt kol (−) alt yüzü Z"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_up_z",
+    "expression": "54.0 mm",
+    "unit": "mm",
+    "comment": "Üst kol (+) alt yüzü Z (tutucu üstü cep tavanının 1 mm altı)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_hold_l",
+    "expression": "5.0 mm",
+    "unit": "mm",
+    "comment": "Kol ucundaki pabuç tutucu boyu"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_hold_w",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Pabuç tutucu genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_hold_h",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "Pabuç tutucu yüksekliği (kolun ±1 mm üstü/altı)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_strip_w",
+    "expression": "5.0 mm",
+    "unit": "mm",
+    "comment": "Pirinç/fosfor bronz yaprak yay şerit genişliği (VARSAYIM 5×0.3 mm)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_strip_slot",
+    "expression": "0.8 mm",
+    "unit": "mm",
+    "comment": "Şerit yuvası genişliği (0.3 mm şerit + yapıştırıcı)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_strip_in",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Şerit yuvası derinliği (tutucuya)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_shoe_out",
+    "expression": "4.0 mm",
+    "unit": "mm",
+    "comment": "Kıvrılmış şeridin kol ucundan dışarı çıkıntısı (serbest)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_travel",
+    "expression": "1.5 mm",
+    "unit": "mm",
+    "comment": "Şerit yay stroku: istasyon rayı bu kadar bastırır"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_groove",
+    "expression": "1.2 mm",
+    "unit": "mm",
+    "comment": "Kol üstü tel kanalı genişliği ve derinliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_swing",
+    "expression": "90.0 mm",
+    "unit": "mm",
+    "comment": "Servo dönüşü: kapalı (−X) → açık (+Y), derece"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sv_len",
+    "expression": "22.8 mm",
+    "unit": "mm",
+    "comment": "Mikro servo gövde boyu (MG90S/SG90 sınıfı, VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sv_w",
+    "expression": "12.2 mm",
+    "unit": "mm",
+    "comment": "Servo gövde genişliği (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sv_h",
+    "expression": "22.5 mm",
+    "unit": "mm",
+    "comment": "Servo gövde yüksekliği, mil hariç (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sv_hole_s",
+    "expression": "27.8 mm",
+    "unit": "mm",
+    "comment": "Servo kulak delikleri arası (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sv_tab_z",
+    "expression": "15.9 mm",
+    "unit": "mm",
+    "comment": "Servo kulak alt yüzü, gövde altından (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sv_tab_t",
+    "expression": "2.5 mm",
+    "unit": "mm",
+    "comment": "Servo kulak kalınlığı (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sv_tab_span",
+    "expression": "32.5 mm",
+    "unit": "mm",
+    "comment": "Servo kulaklar dahil boy (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sv_shaft_off",
+    "expression": "5.9 mm",
+    "unit": "mm",
+    "comment": "Servo mili, gövdenin bir ucundan (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sv_shaft_top",
+    "expression": "26.5 mm",
+    "unit": "mm",
+    "comment": "Servo mil ucu (kol oturma yüzü), gövde altından (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "m2_tap",
+    "expression": "1.6 mm",
+    "unit": "mm",
+    "comment": "M2 vida (plastiğe) pilot deliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_st_len",
+    "expression": "90.0 mm",
+    "unit": "mm",
+    "comment": "İstasyon kontak rayı boyu (vagon ±40 mm kayık dursa da temas)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_st_bar_h",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "İstasyon ray taşıyıcısı yüksekliği (Z)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_st_bar_t",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "Ray taşıyıcısı kalınlığı (Y; arka yüz baskıda yatağa oturur)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_st_strip_w",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "İstasyon pirinç lama genişliği (VARSAYIM 6×1 mm)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_st_strip_t",
+    "expression": "1.0 mm",
+    "unit": "mm",
+    "comment": "Pirinç lama kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_st_proud",
+    "expression": "0.5 mm",
+    "unit": "mm",
+    "comment": "Lama yüzünün plastik yüzden öne çıkıntısı (pabuç plastiğe değmez)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_st_post_w",
+    "expression": "6.0 mm",
+    "unit": "mm",
+    "comment": "İstasyon direği X genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_st_base_t",
+    "expression": "3.0 mm",
+    "unit": "mm",
+    "comment": "İstasyon taban plakası kalınlığı (traverslerle aynı zemine oturur)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_st_base_y0",
+    "expression": "40.0 mm",
+    "unit": "mm",
+    "comment": "Taban plakası iç kenarı Y (travers ucu tie_len/2 = 33)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_horn_r",
+    "expression": "6.5 mm",
+    "unit": "mm",
+    "comment": "Servo kolu (kısa tek kol) dönüş yarıçapı; cep tabanında bu kadar yer açılır (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_horn_w",
+    "expression": "4.2 mm",
+    "unit": "mm",
+    "comment": "Göbek altındaki servo kolu yuvası genişliği (kol yapıştırılır, VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_horn_t",
+    "expression": "1.6 mm",
+    "unit": "mm",
+    "comment": "Servo kolu yuvası derinliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sv_drop",
+    "expression": "1.5 mm",
+    "unit": "mm",
+    "comment": "Servo kulakları platform altından bu kadar aşağıda (iki ped); servo üstü platform üstünü geçmez"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sv_pad_d",
+    "expression": "4.4 mm",
+    "unit": "mm",
+    "comment": "Servo kulak pedi çapı (M2 pilot delikli)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_gap",
+    "expression": "40.0 mm",
+    "unit": "mm",
+    "comment": "250 vagon kiriş dış yüzleri arası (R750'de tampon başı iç payı ≈ 11 mm, coupling_calc)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_pivot_in",
+    "expression": "38.0 mm",
+    "unit": "mm",
+    "comment": "250 vagon çeki kolu pivotu, kiriş dış yüzünden içeri (kol pivotta döner, vagonu çevirmez)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_w",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "250 vagon çeki kolu genişliği"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_t",
+    "expression": "5.5 mm",
+    "unit": "mm",
+    "comment": "Çeki kolu kalınlığı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_eye_d",
+    "expression": "10.0 mm",
+    "unit": "mm",
+    "comment": "Çeki kolu uç gözü çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_z",
+    "expression": "16.0 mm",
+    "unit": "mm",
+    "comment": "Çeki kolu alt yüzü Z, aks ekseninden (boji yan levhası üstü 12, tekerlekler |y| ≥ 20'de)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_boss_d",
+    "expression": "9.0 mm",
+    "unit": "mm",
+    "comment": "Platform altı çeki kolu pivot göbeği çapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_swing",
+    "expression": "12.0 deg",
+    "unit": "deg",
+    "comment": "Kiriş altı kol çentiği salınım sınırı ± (derece); R750'de gereken ≈ 11.4"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bus_conn_w",
+    "expression": "12.4 mm",
+    "unit": "mm",
+    "comment": "250 vagon TrenBus konnektör yuvası genişliği (4-pin JST-XH sınıfı 4P, VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bus_conn_h",
+    "expression": "6.2 mm",
+    "unit": "mm",
+    "comment": "TrenBus konnektör yuvası yüksekliği (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bus_conn_d",
+    "expression": "8.0 mm",
+    "unit": "mm",
+    "comment": "TrenBus konnektör yuvası derinliği (VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bus_conn_z",
+    "expression": "42.0 mm",
+    "unit": "mm",
+    "comment": "TrenBus konnektör ekseni Z, aks ekseninden (gövde alın duvarında; yuva tutucusu platform üstünden ≥ 2 mm ve 45° destekli)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "bus_jumper_len",
+    "expression": "80.0 mm",
+    "unit": "mm",
+    "comment": "250 vagonlar arası ara kablo boyu (konnektör yüzleri arası, servis döngüsü dahil, VARSAYIM)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "motor_face_x",
+    "expression": "wheelbase/2 - worm_len/2 - worm_hub_len - bulk_t - 0.5 mm",
+    "unit": "mm",
+    "comment": "Motor ön yüzü X (türetilmiş: vida aksın üstünde ortalanır)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "motor_z",
+    "expression": "(worm_pd + z_wheel*gear_m)/2 + mesh_backlash",
+    "unit": "mm",
+    "comment": "Motor/vida ekseni yüksekliği, aks ekseninden (türetilmiş)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "chim_x",
+    "expression": "(sb_x0 + sb_x1)/2",
+    "unit": "mm",
+    "comment": "Baca ekseni X (duman kutusu ortası)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cab_x0",
+    "expression": "-(loco_len/2 - buf_len)",
+    "unit": "mm",
+    "comment": "Kabin arka yüzü (X) = arka kiriş"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cab_R",
+    "expression": "(cab_w*cab_w/4 + (cab_crown - cab_side_top)*(cab_crown - cab_side_top)) / (2*(cab_crown - cab_side_top))",
+    "unit": "mm",
+    "comment": "Kabin çatı yayı yarıçapı (türetilmiş)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "axle_h",
+    "expression": "wheel_d/2 - (track_gauge/2 + rail_top_ch - back_to_back/2 - flange_t - root_ch) * tread_taper + 0.05 mm",
+    "unit": "mm",
+    "comment": "Aks ekseninin ray üstünden yüksekliği (türetilmiş, ~21.0)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cab_hole_xf",
+    "expression": "cab_x1 - wall_t - 3 mm",
+    "unit": "mm",
+    "comment": "Kabin ön vidaları X"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cab_hole_xr",
+    "expression": "cab_x0 + beam_t + 4 mm",
+    "unit": "mm",
+    "comment": "Kabin arka vidaları X (tampon kirişinden uzak)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "chim_h",
+    "expression": "loco_h - axle_h - chim_seat_top",
+    "unit": "mm",
+    "comment": "Baca yüksekliği (tepe = ray üstünden loco_h)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "boil_hole_y",
+    "expression": "skirt_w/2 - wall_t - rib_w/2",
+    "unit": "mm",
+    "comment": "Kazan vidaları Y (±, türetilmiş)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "cab_hole_y",
+    "expression": "cab_w/2 - wall_t - cab_rib_w/2",
+    "unit": "mm",
+    "comment": "Kabin vidaları Y (±, türetilmiş)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "seat_base",
+    "expression": "boil_z + 20 mm",
+    "unit": "mm",
+    "comment": "Dom/baca tabanı alt ucu (kazan yüzeyine göre semer kesilir)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "db_pitch",
+    "expression": "couple_gap + 2*fork_pin_in",
+    "unit": "mm",
+    "comment": "Çeki kolu pim aralığı (türetilmiş)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "t_hole_x",
+    "expression": "t_tank_x1 - wall_t - 3 mm",
+    "unit": "mm",
+    "comment": "Depo vidaları X (±)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "t_hole_y",
+    "expression": "t_tank_w/2 - wall_t - cab_rib_w/2",
+    "unit": "mm",
+    "comment": "Depo vidaları Y (±, türetilmiş)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "c_R",
+    "expression": "(c_w*c_w/4 + (c_crown - c_wall_top)*(c_crown - c_wall_top)) / (2*(c_crown - c_wall_top))",
+    "unit": "mm",
+    "comment": "Vagon çatı yayı yarıçapı (türetilmiş)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "c_hole_x",
+    "expression": "c_body_l/2 - wall_t - cab_rib_w/2",
+    "unit": "mm",
+    "comment": "Vagon kasası vidaları X (±, türetilmiş)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "c_hole_y",
+    "expression": "c_w/2 - wall_t - cab_rib_w/2",
+    "unit": "mm",
+    "comment": "Vagon kasası vidaları Y (±, türetilmiş)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "loco_conn_x",
+    "expression": "cab_x0",
+    "unit": "mm",
+    "comment": "Lokomotif arka konnektör yüzü X (MODELLENMEDİ; hesap için kabin arka yüzü varsayıldı)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "car_hole_x",
+    "expression": "car_body_l/2 - wall_t - cab_rib_w/2",
+    "unit": "mm",
+    "comment": "Gövde vidası X ±"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "car_hole_y",
+    "expression": "car_body_w/2 - wall_t - cab_rib_w/2",
+    "unit": "mm",
+    "comment": "Gövde vidası Y ±"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "car_aux2_x",
+    "expression": "-gz_x0 - wall_t - cab_rib_w/2",
+    "unit": "mm",
+    "comment": "Gözlem gövdesi balkon ucu vidaları X ± (Y = car_hole_y)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "y5_R",
+    "expression": "((car_body_w/2)*(car_body_w/2) + (y5_crown - y5_wall_top)*(y5_crown - y5_wall_top)) / (2*(y5_crown - y5_wall_top))",
+    "unit": "mm",
+    "comment": "y5 çatı yayı yarıçapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "en_R",
+    "expression": "((car_body_w/2)*(car_body_w/2) + (en_crown - en_wall_top)*(en_crown - en_wall_top)) / (2*(en_crown - en_wall_top))",
+    "unit": "mm",
+    "comment": "en çatı yayı yarıçapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "rd_R",
+    "expression": "((car_body_w/2)*(car_body_w/2) + (rd_crown - rd_wall_top)*(rd_crown - rd_wall_top)) / (2*(rd_crown - rd_wall_top))",
+    "unit": "mm",
+    "comment": "rd çatı yayı yarıçapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_R",
+    "expression": "((car_body_w/2)*(car_body_w/2) + (sj_crown - sj_wall_top)*(sj_crown - sj_wall_top)) / (2*(sj_crown - sj_wall_top))",
+    "unit": "mm",
+    "comment": "sj çatı yayı yarıçapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "ss_R",
+    "expression": "((car_body_w/2)*(car_body_w/2) + (ss_crown - ss_wall_top)*(ss_crown - ss_wall_top)) / (2*(ss_crown - ss_wall_top))",
+    "unit": "mm",
+    "comment": "ss çatı yayı yarıçapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_R",
+    "expression": "((car_body_w/2)*(car_body_w/2) + (gz_crown - gz_wall_top)*(gz_crown - gz_wall_top)) / (2*(gz_crown - gz_wall_top))",
+    "unit": "mm",
+    "comment": "gz çatı yayı yarıçapı"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "y5_band_z1",
+    "expression": "y5_crown - y5_R + sqrt(y5_R*y5_R - (car_body_w/2 - wall_t)*(car_body_w/2 - wall_t)) - roof_tab_h - 0.5 mm",
+    "unit": "mm",
+    "comment": "Yolcu pencere bandı üst kenarı Z (çatı dillerinin 0.5 altında; band üstten oluğa indirilir, çatı tutar)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "gz_band_z1",
+    "expression": "gz_crown - gz_R + sqrt(gz_R*gz_R - (car_body_w/2 - wall_t)*(car_body_w/2 - wall_t)) - roof_tab_h - 0.5 mm",
+    "unit": "mm",
+    "comment": "Gözlem pencere bandı üst kenarı Z"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_st_face",
+    "expression": "sj_py + sj_arm_len + sj_shoe_out - sj_travel",
+    "unit": "mm",
+    "comment": "İstasyon lama yüzü Y, ray ekseninden (türetilmiş, ≈59.5)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_st_z_lo",
+    "expression": "tie_t + rail_h + axle_h + sj_lo_z + sj_arm_t/2",
+    "unit": "mm",
+    "comment": "Alt (−) lama ekseni Z, zeminden (türetilmiş; ray üstünden ≈59)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_st_z_up",
+    "expression": "tie_t + rail_h + axle_h + sj_up_z + sj_arm_t/2",
+    "unit": "mm",
+    "comment": "Üst (+) lama ekseni Z, zeminden (türetilmiş; ray üstünden ≈78)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "sj_hub_z0",
+    "expression": "fp_z - sv_drop - sv_tab_t - sv_tab_z + sv_shaft_top",
+    "unit": "mm",
+    "comment": "Göbek alt ucu Z = servo mil/kol üstü (türetilmiş, ≈32.6)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_L_car",
+    "expression": "dbc_gap + 2*dbc_pivot_in",
+    "unit": "mm",
+    "comment": "250-250 çeki kolu pim aralığı (türetilmiş, 116)"
+   }
+  },
+  {
+   "command": "parameters.add",
+   "params": {
+    "name": "dbc_L_tender",
+    "expression": "dbc_gap + dbc_pivot_in + fork_pin_in",
+    "unit": "mm",
+    "comment": "Tender-250 çeki kolu pim aralığı (tender çatal pimi → vagon pivotu, türetilmiş, 86)"
+   }
+  },
+  {
+   "command": "sketch.create",
+   "params": {
+    "plane": "YZ",
+    "name": "Y5RRoofSk"
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "-((car_body_w/2) + roof_over)",
+      "(y5_crown - y5_R + sqrt((y5_R)*(y5_R) - (((car_body_w/2) + roof_over))*(((car_body_w/2) + roof_over))))"
+     ],
+     [
+      "-((car_body_w/2) + roof_over)",
+      "(y5_crown - y5_R + sqrt(((y5_R + roof_t))*((y5_R + roof_t)) - (((car_body_w/2) + roof_over))*(((car_body_w/2) + roof_over))))"
+     ]
+    ]
+   }
+  },
+  {
+   "command": "sketch.arc.three_point",
+   "params": {
+    "start": [
+     "-((car_body_w/2) + roof_over)",
+     "(y5_crown - y5_R + sqrt(((y5_R + roof_t))*((y5_R + roof_t)) - (((car_body_w/2) + roof_over))*(((car_body_w/2) + roof_over))))"
+    ],
+    "end": [
+     "((car_body_w/2) + roof_over)",
+     "(y5_crown - y5_R + sqrt(((y5_R + roof_t))*((y5_R + roof_t)) - (((car_body_w/2) + roof_over))*(((car_body_w/2) + roof_over))))"
+    ],
+    "through": [
+     "0 mm",
+     "y5_crown + roof_t"
+    ]
+   }
+  },
+  {
+   "command": "sketch.line",
+   "params": {
+    "points": [
+     [
+      "((car_body_w/2) + roof_over)",
+      "(y5_crown - y5_R + sqrt(((y5_R + roof_t))*((y5_R + roof_t)) - (((car_body_w/2) + roof_over))*(((car_body_w/2) + roof_over))))"
+     ],
+     [
+      "((car_body_w/2) + roof_over)",
+      "(y5_crown - y5_R + sqrt((y5_R)*(y5_R) - (((car_body_w/2) + roof_over))*(((car_body_w/2) + roof_over))))"
+     ]
+    ]
+   }
+  },
+  {
+   "command": "sketch.arc.three_point",
+   "params": {
+    "start": [
+     "((car_body_w/2) + roof_over)",
+     "(y5_crown - y5_R + sqrt((y5_R)*(y5_R) - (((car_body_w/2) + roof_over))*(((car_body_w/2) + roof_over))))"
+    ],
+    "end": [
+     "-((car_body_w/2) + roof_over)",
+     "(y5_crown - y5_R + sqrt((y5_R)*(y5_R) - (((car_body_w/2) + roof_over))*(((car_body_w/2) + roof_over))))"
+    ],
+    "through": [
+     "0 mm",
+     "y5_crown"
+    ]
+   }
+  },
+  {
+   "command": "sketch.finish",
+   "params": {}
+  },
+  {
+   "command": "solid.extrude",
+   "params": {
+    "distance": "((car_body_l/2) + roof_over) - ((-car_body_l/2) - roof_over)",
+    "start_offset": "(-car_body_l/2) - roof_over",
+    "operation": "new",
+    "body_name": "Y5Roof",
+    "name": "Y5RRoof"
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "((car_body_l/2) - wall_t - roof_clear) - ((-car_body_l/2) + wall_t + roof_clear)",
+    "width": "((car_body_w/2 - wall_t) - roof_clear) - ((car_body_w/2 - wall_t) - roof_clear - roof_tab_t)",
+    "height": "(y5_crown - y5_R + sqrt(y5_R*y5_R - (car_body_w/2 - wall_t)*(car_body_w/2 - wall_t)) + 1 mm) - (y5_crown - y5_R + sqrt(y5_R*y5_R - (car_body_w/2 - wall_t)*(car_body_w/2 - wall_t)) - roof_tab_h)",
+    "corner": [
+     "(-car_body_l/2) + wall_t + roof_clear",
+     "(car_body_w/2 - wall_t) - roof_clear - roof_tab_t",
+     "y5_crown - y5_R + sqrt(y5_R*y5_R - (car_body_w/2 - wall_t)*(car_body_w/2 - wall_t)) - roof_tab_h"
+    ],
+    "operation": "join",
+    "name": "Y5RRoofTabL",
+    "targets": [
+     "Y5Roof"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "((car_body_l/2) - wall_t - roof_clear) - ((-car_body_l/2) + wall_t + roof_clear)",
+    "width": "(-((car_body_w/2 - wall_t) - roof_clear - roof_tab_t)) - (-((car_body_w/2 - wall_t) - roof_clear))",
+    "height": "(y5_crown - y5_R + sqrt(y5_R*y5_R - (car_body_w/2 - wall_t)*(car_body_w/2 - wall_t)) + 1 mm) - (y5_crown - y5_R + sqrt(y5_R*y5_R - (car_body_w/2 - wall_t)*(car_body_w/2 - wall_t)) - roof_tab_h)",
+    "corner": [
+     "(-car_body_l/2) + wall_t + roof_clear",
+     "-((car_body_w/2 - wall_t) - roof_clear)",
+     "y5_crown - y5_R + sqrt(y5_R*y5_R - (car_body_w/2 - wall_t)*(car_body_w/2 - wall_t)) - roof_tab_h"
+    ],
+    "operation": "join",
+    "name": "Y5RRoofTabR",
+    "targets": [
+     "Y5Roof"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "((car_body_l/2) - wall_t - roof_clear) - ((-car_body_l/2) + wall_t + roof_clear)",
+    "width": "(led_pad_w/2) - (-led_pad_w/2)",
+    "height": "((y5_crown - y5_R + sqrt(y5_R*y5_R - (led_pad_w/2)*(led_pad_w/2)) + 0.3 mm)) - ((y5_crown - led_pad_t))",
+    "corner": [
+     "(-car_body_l/2) + wall_t + roof_clear",
+     "-led_pad_w/2",
+     "(y5_crown - led_pad_t)"
+    ],
+    "operation": "join",
+    "name": "Y5RLedPad",
+    "targets": [
+     "Y5Roof"
+    ]
+   }
+  },
+  {
+   "command": "solid.box",
+   "params": {
+    "length": "(roof_notch_w/2) - (-roof_notch_w/2)",
+    "width": "(((car_body_w/2 - wall_t) - roof_clear) + 1 mm) - (((car_body_w/2 - wall_t) - roof_clear) - roof_tab_t - 1 mm)",
+    "height": "((y5_crown - y5_R + sqrt(y5_R*y5_R - (car_body_w/2 - wall_t)*(car_body_w/2 - wall_t))) - 1 mm) - ((y5_crown - y5_R + sqrt(y5_R*y5_R - (car_body_w/2 - wall_t)*(car_body_w/2 - wall_t))) - roof_tab_h - 1 mm)",
+    "corner": [
+     "-roof_notch_w/2",
+     "((car_body_w/2 - wall_t) - roof_clear) - roof_tab_t - 1 mm",
+     "(y5_crown - y5_R + sqrt(y5_R*y5_R - (car_body_w/2 - wall_t)*(car_body_w/2 - wall_t))) - roof_tab_h - 1 mm"
+    ],
+    "operation": "cut",
+    "name": "Y5RLedNotch",
+    "targets": [
+     "Y5Roof"
+    ]
+   }
+  }
+ ]
+}
