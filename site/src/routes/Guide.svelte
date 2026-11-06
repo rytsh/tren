@@ -93,7 +93,7 @@
     </div>
     <div class="notes">
       <article><h3>Seçilenler (öneri)</h3><ul><li>Hat gerilimi: doğrudan 2S pil, 6,0–8,4 V; her araç kendi regülatörüyle düşürür.</li><li>Besleyici başına akım sınırı 2 A, tüketici girişinde 1 A PTC/eFuse.</li><li>Veri: CAN 2.0, 125 kbit/s, araç başına bir düğüm.</li><li>Rayda elektrik yok; şarj akımı TrenBus'tan geçmez.</li></ul></article>
-      <article><h3>Henüz doğrulanmayanlar</h3><ul><li>Konnektör seçimi, temas direnci ve su koruması.</li><li>Uzun trende BAT+ gerilim düşümü ve toplam ışık yükü.</li><li>Tenderdeki 2-pin aksesuar yuvası 4 pinli TrenBus yuvasına çevrilecek.</li><li>R750 ve S-virajda gerçek kol ve kablo testi.</li></ul></article>
+      <article><h3>Henüz doğrulanmayanlar</h3><ul><li>Konnektör seçimi, temas direnci ve su koruması.</li><li>Uzun trende BAT+ gerilim düşümü ve toplam ışık yükü.</li><li>Lokomotif kabininde TrenBus yuvası yok; tenderden gelen kablo kabin arka açıklığından girer.</li><li>R750 ve S-virajda gerçek kol ve kablo testi.</li></ul></article>
     </div>
     <p class="safety"><span class="label">Uyarı</span>250 mm vagonlar virajda uçlarından daha çok dışa açılır. Kirişler arası 40 mm seçildi: R750'de iç taraftaki tampon başları arasında ≈ 11 mm kalır (<code>cad/coupling_calc.py</code>, düzlemsel hesap). Aralık daralırsa tamponlar virajda çarpışır.</p>
     <p class="safety"><span class="label">Uyarı</span>2S Li-ion paket tam doluyken 8,4 V olur. Gerilim doğrulanmadan LED şerit veya 5 V modül doğrudan bağlanmamalı.</p>

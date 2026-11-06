@@ -904,6 +904,10 @@
     "cable_d": [
       8.0,
       "Ana güç kablosu deliği (pil → lokomotif, depo ön yüzü, z = platform+12). Aksesuar hattı konnektöründen ayrı"
+    ],
+    "cable_y": [
+      20.0,
+      "Ana güç kablosu deliği Y (TrenBus yuvasının yanında)"
     ]
   },
   "coach": {

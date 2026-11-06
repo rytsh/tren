@@ -370,6 +370,6 @@ Kiriş altı çentiği ±12°: R750'de yeterli, S-virajda ve ray hatasında pay 
 - Servo ve yaprak yay ölçüleri seçilmedi; yuvalar varsayım. Servo kolu yuvası tek kollu kısa servo koluna göre.
 - Yay baskısının temas direnci, açık havada pirinç oksitlenmesi ve 8.4 V / 1 A için kesit denenmedi.
 - Çeki kolu ve pivot göbeği baskıyla denenmedi; M3 vida plastik göbekte zamanla gevşeyebilir (kontra somun veya ısıyla gömme somun düşünülebilir).
-- TrenBus konnektörü seçilmedi (JST-XH 4P varsayıldı). Tenderin 2-pin aksesuar yuvası 4 pinli yuvaya çevrilmedi; lokomotifte yuva yok.
+- TrenBus konnektörü seçilmedi (JST-XH 4P varsayıldı). Tender deposu da 4 pinli yuvaya çevrildi (Faz 4b); lokomotifte yuva yok, kablo kabin arka açıklığından girer.
 - Yolcu, Enerji, Radar, Ses ve Gözlem 250 gövdeleri modellenmedi; parametreleri (`y5_*`, `en_*`, `rd_*`, `ss_*`, `gz_*`) hazır.
 - Faz 3'ün 220 mm yolcu vagonu (`vagon_platform`, `vagon_govde`, `vagon_cati`) eski prototip olarak durur; katalog modellerinin adetlerine sayılmaz.

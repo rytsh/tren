@@ -23,7 +23,7 @@ Mekanik bağlantı ile elektrik ayrıdır. Önceki öneri (T45: koni–huni, mı
 - **Çeki kolu.** Tek parça, düz basılan bir kol (8 × 5,5 mm). Her 250 vagonun **ön** ucunda, platform altındaki pivot göbeğine (kiriş yüzünden 38 mm içeride) alttan M3 vidayla takılır; öbür ucu öndeki aracın **arka** pivotuna gelir. Vida pulla takılır, sıkılmaz: kol iki pivotta da serbest döner. Kiriş altındaki çentik kola ±12° salınım verir.
 - **Lokomotif ve tender.** Eski Faz 3 çeki çatalları kalır: lokomotif–tender arasında 44 mm kol; tender arka çatalı ile ilk 250 vagonun ön pivotu arasında 86 mm kol.
 - **Kuvvet.** Çekme ve itmeyi yalnız kol ve pimler taşır. Tamponlar görseldir.
-- **Elektrik.** Her araç gövdesinin iki alın duvarında bir **4 pinli kutuplu yuva** vardır (JST-XH 4P sınıfı, ölçü varsayım, ray üstünden ≈ 63 mm). Araçlar arasına 80 mm'lik, iki ucu fişli 4 damarlı **ara kablo** elle takılır. Kablo kuvvet taşımaz; yuvanın arkasında kablo bağıyla tutulur. Tenderdeki eski 2-pin yuva 4 pinliye çevrilecek (açık iş).
+- **Elektrik.** Her araç gövdesinin iki alın duvarında bir **4 pinli kutuplu yuva** vardır (JST-XH 4P sınıfı, ölçü varsayım, ray üstünden ≈ 63 mm). Araçlar arasına 80 mm'lik, iki ucu fişli 4 damarlı **ara kablo** elle takılır. Kablo kuvvet taşımaz; yuvanın arkasında kablo bağıyla tutulur. Tender deposu da aynı 4 pinli yuvayı taşır; lokomotifte yuva yok, tenderden gelen kablo kabin arka açıklığından girer.
 
 Pin sırası (yuvada kutuplama kanalı üstte, soldan sağa):
 

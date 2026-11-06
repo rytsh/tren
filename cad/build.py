@@ -1048,10 +1048,11 @@ def tender_tank(name="TTank"):
     ]
     cmds += side_ribs(name, ["t_hole_x", "-t_hole_x"], "t_hole_y", "(t_tank_w/2 - wall_t)", FP_TOP,
                       "t_tank_top - wall_t + 0.5 mm - fp_z - fp_t", "TT")
-    # Ana güç (pil → lokomotif) kablosu: Faz 3'teki Ø8 delik korunur; aksesuar hattından ayrıdır.
-    cmds.append(xcyl("cable_d", "t_tank_x1 - wall_t - 1 mm", "t_tank_x1 + 1 mm", "0 mm",
+    # Ana güç (pil → lokomotif motoru) kablosu: Ø8 delik, TrenBus yuvasının yanında (y = cable_y).
+    cmds.append(xcyl("cable_d", "t_tank_x1 - wall_t - 1 mm", "t_tank_x1 + 1 mm", "cable_y",
                      f"{FP_TOP} + 12 mm", "cut", name, "CableHole"))
-    cmds += conn_holder(name, "t_tank_x1", 1, "TTF") + conn_holder(name, "t_tank_x0", -1, "TTB")
+    # Faz 4b: 2-pin aksesuar yuvaları yerine 250 vagonlarla aynı 4 pinli TrenBus yuvası
+    cmds += bus_socket(name, "t_tank_x1", 1, "TTF") + bus_socket(name, "t_tank_x0", -1, "TTB")
     cmds += wall_clips(name, ["-clip_xs_tender", "0 mm", "clip_xs_tender"], "(t_tank_w/2 - wall_t)", "TT")
     return cmds
 
@@ -1217,8 +1218,14 @@ def tender_assembly():
         cmds += fn(nm)
     movers = ["TFrame"] + [p for p, _ in parts]
     cmds.append(c("solid.move", bodies=movers, translate=[xc, "0 mm", AXLE_Z]))
+    # Arka çatalda tender–250 çeki kolu (86 mm): çatal pimi → ilk 250 vagonun ön pivotu
+    cmds += car_drawbar("KDrawbarT", "dbc_L_tender")
+    cmds += [c("solid.move", bodies=["KDrawbarT"], axis=[0, 0, 1], angle="180 deg"),
+             c("solid.move", bodies=["KDrawbarT"],
+               translate=[f"{xc} - ({T2} - fork_pin_in)", "0 mm", f"{AXLE_Z} + (fork_z0 + fork_z1)/2 - dbc_t/2"])]
     cmds += [c("appearance.assign", bodies=["TFrame"], color="#202020"),
-             c("appearance.assign", bodies=["TDeck", "TTank", "TLid"], color=BLACK)]
+             c("appearance.assign", bodies=["TDeck", "TTank", "TLid"], color=BLACK),
+             c("appearance.assign", bodies=["KDrawbarT"], color="#d8b000")]
     cmds += beam_colours(V["track_len"] / 2, [("TDeck", V["t_len"] / 2), ("TDeck", -V["t_len"] / 2)])
     return cmds
 

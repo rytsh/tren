@@ -3,7 +3,7 @@
   {
    "command": "file.export",
    "params": {
-    "path": "\\\\wsl.localhost\\Ubuntu\\home\\ray\\repo\\tren\\cad\\out\\3mf\\tender_montaj.3mf",
+    "path": "/Users/rytsh/repo/tren/cad/out/3mf/tender_montaj.3mf",
     "format": "3mf",
     "bodies": [
      "TFrame",
@@ -15,7 +15,8 @@
      "Axle1",
      "TDeck",
      "TTank",
-     "TLid"
+     "TLid",
+     "KDrawbarT"
     ]
    }
   }

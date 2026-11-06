@@ -574,15 +574,15 @@
         86.0,
         63.0
       ],
-      "volume_mm3": 95017.5,
-      "mass_g_petg": 120.7,
+      "volume_mm3": 96700.0,
+      "mass_g_petg": 122.8,
       "bodies": 1,
       "fits_x2d": true,
       "qty_per_loco": 0,
       "qty_per_tender": 1,
       "qty_per_coach": 0,
       "qty_per_straight_track": 0,
-      "notes_tr": "Ters (üstü yatakta) basılır; ön/arka 2-pin aksesuar konnektörü yuvası (ölçüler VARSAYIM), 3 iç kablo kelepçesi, Ø8 ana güç deliği"
+      "notes_tr": "Ters (üstü yatakta) basılır; ön/arka 4 pinli TrenBus yuvası (250 vagonlarla aynı, VARSAYIM), 3 iç kablo kelepçesi, Ø8 ana güç deliği"
     },
     {
       "id": "tender_kapak",
@@ -1304,10 +1304,10 @@
       "id": "acc_conn",
       "name_tr": "Aksesuar hattı 2-pin kutuplu konnektör çifti (VARSAYIM: JST-XH 2P sınıfı)",
       "qty_per_loco": 0,
-      "qty_per_tender": 2,
+      "qty_per_tender": 0,
       "qty_per_coach": 2,
       "qty_per_track_piece": 0,
-      "spec": "Her uçta 1 yuva; yuva 10.4×6.2×8 mm VARSAYIM. Akım değeri ve tip AÇIK KARAR",
+      "spec": "Yalnız Faz 3 220 mm vagon prototipi; yuva 10.4×6.2×8 mm VARSAYIM",
       "qty_by_model": {
         "yolcu-250": 0,
         "enerji-250": 0,
@@ -1321,10 +1321,10 @@
       "id": "acc_jumper",
       "name_tr": "Aksesuar ara kablosu 70 mm (2×0.35 mm² silikon, VARSAYIM)",
       "qty_per_loco": 0,
-      "qty_per_tender": 1,
+      "qty_per_tender": 0,
       "qty_per_coach": 1,
       "qty_per_track_piece": 0,
-      "spec": "Araç başına 1 (arkadaki araca); iki ucu fişli",
+      "spec": "Yalnız Faz 3 220 mm vagon prototipi",
       "qty_by_model": {
         "yolcu-250": 0,
         "enerji-250": 0,
@@ -1389,27 +1389,29 @@
     {
       "id": "bus_conn",
       "name_tr": "TrenBus 4 pinli kutuplu konnektör (JST-XH 4P sınıfı, VARSAYIM)",
-      "spec": "Gövde alın duvarlarındaki yuvalara (her uçta 1); pin sırası BAT+, CAN-H, CAN-L, GND",
+      "spec": "Gövde/depo alın duvarlarındaki yuvalara (her uçta 1); pin sırası BAT+, CAN-H, CAN-L, GND",
       "qty_by_model": {
         "yolcu-250": 2,
         "enerji-250": 2,
         "radar-250": 2,
         "sarj-250": 2,
         "ses-250": 2,
-        "gozlem-250": 2
+        "gozlem-250": 2,
+        "tender-160": 2
       }
     },
     {
       "id": "bus_jumper",
       "name_tr": "TrenBus ara kablosu 80 mm, 4 damar 26 AWG, iki ucu fişli",
-      "spec": "Araç başına 1 (öndeki araca); tender için ayrıca 1 (tender yuvası 2-pin: AÇIK KARAR)",
+      "spec": "Araç başına 1 (öndeki araca); tenderinki lokomotife (lokomotif kabininde yuva yok: kablo kabin arka açıklığından girer)",
       "qty_by_model": {
         "yolcu-250": 1,
         "enerji-250": 1,
         "radar-250": 1,
         "sarj-250": 1,
         "ses-250": 1,
-        "gozlem-250": 1
+        "gozlem-250": 1,
+        "tender-160": 1
       }
     },
     {
