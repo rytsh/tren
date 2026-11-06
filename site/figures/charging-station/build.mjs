@@ -28,9 +28,10 @@ const WIDTH = 7.5;
 const AXLE_Z = RT + WHEEL_R;
 const BOGIE_X = [-75, 75];
 const AXLE_X = BOGIE_X.flatMap((b) => [b - 24, b + 24]);
-const HALF = 45;
+const HALF = 45; // underframe half width (car_w/2)
+const BW = 40; // body shell half width (car_body_w/2)
 const FRAME = { x: 121, z0: RT + 47, z1: RT + 51 };
-const BODY = { x: 118, z0: FRAME.z1, side: RT + 89, crown: RT + 97 };
+const BODY = { x: 116, z0: FRAME.z1, side: RT + 91, crown: RT + 97 }; // cad: car_body_l/2, sj_wall_top, sj_crown
 const SENSOR = { x: 40, y: 8 };
 const STOP_X = SENSOR.x; // stop magnet under the sensor when the car is at c = 0
 const DECEL = 80; // approach magnet 80 mm before
@@ -38,14 +39,14 @@ const APPROACH_X = STOP_X - DECEL;
 
 // Charge arms: one shaft at (PX, PY), two arms that lie in a side pocket when stowed (pointing −x) and swing a
 // quarter turn out to point +y. A brass shoe rides 1.5 mm in a holder at the tip.
-const ARM = { px: 0, py: 41, eye: 3.6, half: 3.2, hold0: 18, hold1: 22, holdHalf: 3.8, shoe: 4, shoeHalf: 2.6, travel: 1.5 };
+const ARM = { px: 12, py: 35, eye: 4, half: 4, hold0: 17, hold1: 22, holdHalf: 4, shoe: 4, shoeHalf: 2.5, travel: 1.5 }; // cad: sj_px/py, sj_hub_d, sj_arm_len, sj_shoe_out, sj_travel
 const LEVELS = [
-  { name: "lo", z0: RT + 62, z1: RT + 66, bar: RT + 64 },
-  { name: "up", z0: RT + 76, z1: RT + 80, bar: RT + 78 },
+  { name: "lo", z0: RT + 57, z1: RT + 61, bar: RT + 59 },
+  { name: "up", z0: RT + 75, z1: RT + 79, bar: RT + 77 },
 ];
 const TIP = ARM.hold1 + ARM.shoe; // pivot to the free shoe tip, 26 mm
 const RAIL_FACE = ARM.py + TIP - ARM.travel; // station rails' face: the shoe is pressed its full 1.5 mm at 90°
-const POCKET = { x0: -29, x1: 5, y0: 36.5, z0: RT + 57, z1: RT + 86 };
+const POCKET = { x0: -18, x1: 17, y0: 30, z0: RT + 54, z1: RT + 81 }; // cad: sj_pk_*
 
 // Station
 const PLATFORM = { x: -160, y: 52, w: 320, d: 64, r: 2, h: 40 };
@@ -155,54 +156,48 @@ V.box("car.hall", [SENSOR.x - 2, SENSOR.y - 2.1, RT + 5], [SENSOR.x + 2, SENSOR.
   extra: `<g data-part="hall-dot">${Dots([at([SENSOR.x, SENSOR.y, RT + 9])], { size: 0.7, tone: "hi" })}</g>`,
 });
 
-// End beams, buffers, T45 couplers
+// End beams, buffers, drawbar
 for (const sign of [-1, 1]) {
   const face = sign * 125;
   const x0 = sign > 0 ? FRAME.x : -125;
-  V.box("car.beam", [x0, -HALF, RT + 34], [x0 + 4, HALF, FRAME.z1], { tone: "mid", className: "rt-red" }, { r: 0.6, bevel: 0.4 });
+  for (const [y0, y1] of [[-HALF, -14], [14, HALF]]) V.box("car.beam", [x0, y0, RT + 34], [x0 + 4, y1, FRAME.z1], { tone: "mid", className: "rt-red" }, { r: 0.6, bevel: 0.4 });
+  V.box("car.beam", [x0, -14, RT + 43.5], [x0 + 4, 14, FRAME.z1], { tone: "mid", className: "rt-red" }, { r: 0.4, steps: 2 });
   for (const y of [-32, 32]) {
     const F = sign > 0 ? alongX([0, y, RT + 41]) : alongMinusX([0, -y, RT + 41]);
     V.disc("car.buffer", F, 125, 129.5, 4.6, { tone: "mid" }, { bevel: 0.3 });
     V.disc("car.bufferrod", F, 129.5, 130.2, 2.6, { tone: "mid" });
     V.disc("car.bufferhead", F, 130.2, 131.8, 6.4, { tone: "mid" }, { bevel: 0.4 });
   }
-  const zc = RT + 39;
-  V.box("coupler.arm", [sign > 0 ? face : face - 6, -3.5, zc - 3], [sign > 0 ? face + 6 : face, 3.5, zc + 3], { tone: "mid" }, { r: 0.5, steps: 2 });
-  const hx0 = sign > 0 ? face + 6 : face - 20;
-  const fx = sign > 0 ? hx0 + 14 : hx0;
-  V.box("coupler.head", [hx0, -19, zc - 15], [hx0 + 14, 19, zc + 15], { tone: "mid" }, {
-    r: 1.6,
-    bevel: 0.5,
-    extra: sign > 0
-      ? `<path class="rt-hole" d="${circleOnX(fx, 11, zc + 6, 3.6, 28)}"/>` +
-        Ln(rectOnX(fx, -10.5, -4.5, zc - 14, zc - 2, 0.8) + rectOnX(fx, 4.5, 10.5, zc - 14, zc - 2, 0.8), { tone: "lo" }) +
-        Dots([...[-9.5, -7, -4.5, -2].map((d) => at([fx, -7.5, zc + d - 1])), ...[-9.5, -7, -4.5, -2].map((d) => at([fx, 7.5, zc + d - 1]))], { size: 0.45, tone: "mid" })
-      : "",
-  });
-  const coneF = sign > 0 ? alongX([0, -11, zc + 6]) : alongMinusX([0, 11, zc + 6]);
-  V.turned("coupler.cone", coneF, [[145, 6.5], [148.5, 4.5, 1], [150, 3.5]], { tone: "mid" });
+  // drawbar on the front pivot (out through the beam notch to its eye); a boss under each end's pivot
+  const zbar = RT + 37;
+  V.disc("drawbar.boss", alongZ([sign * 87, 0, 0]), zbar + 5.5, FRAME.z0, 4.5, { tone: "mid" });
+  if (sign > 0) {
+    V.box("drawbar", [87, -4, zbar], [125 + 34, 4, zbar + 5.5], { tone: "mid", className: "cs-brass" }, { r: 0.6, steps: 2 });
+    V.disc("drawbar.eye", alongZ([125 + 34, 0, 0]), zbar, zbar + 5.5, 5, { tone: "mid", className: "cs-brass" }, { extra: `<path class="rt-hole" d="${k.ring(125 + 34, 0, 1.7, zbar + 5.5, P, 20)}"/>` });
+  }
 }
 
 // Body: low arched box van with a pocket for the arms, a charge light bar and an end door; arched roof with vents.
-const R = (HALF ** 2 + (BODY.crown - BODY.side) ** 2) / (2 * (BODY.crown - BODY.side));
+const R = (BW ** 2 + (BODY.crown - BODY.side) ** 2) / (2 * (BODY.crown - BODY.side));
 const zc = BODY.crown - R;
 const arc = (half, rr, n = 22) => Array.from({ length: n + 1 }, (_, i) => { const y = half - (2 * half * i) / n; return [y, zc + Math.sqrt(Math.max(0, rr * rr - y * y))]; });
 const roofTop = zc + R + 2.6;
 const BELT = [BODY.z0 + 4, BODY.side - 3];
-const LIGHTBAR = { x0: 30, x1: 104, z0: RT + 68, z1: RT + 74 };
+const LIGHTBAR = { x0: 26, x1: 104, z0: RT + 65, z1: RT + 69 }; // cad: sj_lb_*
 const LEDS = Array.from({ length: 10 }, (_, i) => LIGHTBAR.x0 + 3 + i * 7);
-const panelLines = [-88, -58, 18].map((x) => k.pathOf([at([x, HALF, BELT[0]]), at([x, HALF, BELT[1]])])).join("");
-const belts = BELT.map((z) => k.pathOf([at([-BODY.x, HALF, z]), at([BODY.x, HALF, z])]) + k.pathOf([at([BODY.x, -HALF, z]), at([BODY.x, HALF, z])])).join("");
-const lightbar = `<path class="rt-hole" d="${rectOnY(HALF, LIGHTBAR.x0, LIGHTBAR.x1, LIGHTBAR.z0, LIGHTBAR.z1, 1.2)}"/>` +
-  LEDS.map((x, i) => `<path class="cs-led" data-led="${i}" d="${rectOnY(HALF, x, x + 5, LIGHTBAR.z0 + 1.4, LIGHTBAR.z1 - 1.4, 0.5)}"/>`).join("");
-const pocket = `<path class="rt-hole" d="${rectOnY(HALF, POCKET.x0, POCKET.x1, POCKET.z0, POCKET.z1, 1.5)}"/>` + Ln(rectOnY(HALF, POCKET.x0 - 1.5, POCKET.x1 + 1.5, POCKET.z0 - 1.5, POCKET.z1 + 1.5, 2.4), { tone: "mid" });
-const endDoor = `<path class="rt-hole" d="${rectOnX(BODY.x, -16, 16, BODY.z0 + 4, RT + 80, 2)}"/>` + Ln(rectOnX(BODY.x, -12, 12, RT + 66, RT + 76, 1.5), { tone: "faint" });
+const panelLines = [-88, -58, 22].map((x) => k.pathOf([at([x, BW, BELT[0]]), at([x, BW, BELT[1]])])).join("");
+const belts = BELT.map((z) => k.pathOf([at([-BODY.x, BW, z]), at([BODY.x, BW, z])]) + k.pathOf([at([BODY.x, -BW, z]), at([BODY.x, BW, z])])).join("");
+const lightbar = `<path class="rt-hole" d="${rectOnY(BW, LIGHTBAR.x0, LIGHTBAR.x1, LIGHTBAR.z0, LIGHTBAR.z1, 1.2)}"/>` +
+  LEDS.map((x, i) => `<path class="cs-led" data-led="${i}" d="${rectOnY(BW, x, x + 5, LIGHTBAR.z0 + 1.4, LIGHTBAR.z1 - 1.4, 0.5)}"/>`).join("");
+const pocket = `<path class="rt-hole" d="${rectOnY(BW, POCKET.x0, POCKET.x1, POCKET.z0, POCKET.z1, 1.5)}"/>` + Ln(rectOnY(BW, POCKET.x0 - 1.5, POCKET.x1 + 1.5, POCKET.z0 - 1.5, POCKET.z1 + 1.5, 2.4), { tone: "mid" });
+// front end wall: the 4-pin TrenBus socket (cad: bus_socket, bus_conn_z 42 → rail top 63)
+const endDoor = `<path class="rt-hole" d="${rectOnX(BODY.x, -6.2, 6.2, RT + 60, RT + 66, 0.8)}"/>` + Ln(rectOnX(BODY.x, -8.4, 8.4, RT + 57.8, RT + 68.4, 1.2), { tone: "mid" }) + Dots([-4.5, -1.5, 1.5, 4.5].map((y) => at([BODY.x, y, RT + 63])), { size: 0.45, tone: "lo" });
 const tail = [-30, 30].map((y) => `<path class="cs-tail" d="${circleOnX(BODY.x, y, RT + 62, 2.6, 20)}"/>`).join("");
-const rivets = Dots(Array.from({ length: 30 }, (_, i) => at([-BODY.x + 4 + i * ((2 * BODY.x - 8) / 29), HALF, BODY.z0 + 2])), { size: 0.4, tone: "mid" });
-V.prism("car.body", F0, [[-HALF, BODY.z0], [HALF, BODY.z0], ...arc(HALF, R)], -BODY.x, BODY.x, { tone: "mid" }, {
+const rivets = Dots(Array.from({ length: 30 }, (_, i) => at([-BODY.x + 4 + i * ((2 * BODY.x - 8) / 29), BW, BODY.z0 + 2])), { size: 0.4, tone: "mid" });
+V.prism("car.body", F0, [[-BW, BODY.z0], [BW, BODY.z0], ...arc(BW, R)], -BODY.x, BODY.x, { tone: "mid" }, {
   extra: Ln(belts + panelLines, { tone: "faint" }) + lightbar + pocket + endDoor + tail + rivets,
 });
-V.prism("car.roof", F0, [...arc(HALF + 2, R + 0.2), ...arc(HALF + 2, R + 2.6).reverse()], -BODY.x - 2, BODY.x + 2, { tone: "mid" });
+V.prism("car.roof", F0, [...arc(BW + 2, R + 0.2), ...arc(BW + 2, R + 2.6).reverse()], -BODY.x - 2, BODY.x + 2, { tone: "mid" });
 for (const x of [-80, 80]) {
   V.disc("car.vent", alongZ([x, 0, 0]), roofTop - 1, roofTop + 2.5, 3.2, { tone: "mid" }, { bevel: 0.3 });
   V.disc("car.ventcap", alongZ([x, 0, 0]), roofTop + 2.5, roofTop + 3.6, 4.4, { tone: "mid" });
@@ -213,7 +208,7 @@ const vehicle = V.finish();
 const shaft = (z0, z1) => S(k.cylinder(ARM.px, ARM.py, 1.5, z0, z1 - z0, P, 20), { tone: "hi", crease: "lo" });
 const [LO, UP] = LEVELS;
 const armsSvg =
-  S(k.slabOf({ x: POCKET.x0, y: POCKET.y0, w: POCKET.x1 - POCKET.x0, d: HALF - POCKET.y0, r: 0.6 }, POCKET.z0 - 0.6, 0.6, P, 3), { tone: "lo", crease: "none" }) +
+  S(k.slabOf({ x: POCKET.x0, y: POCKET.y0, w: POCKET.x1 - POCKET.x0, d: BW - POCKET.y0, r: 0.6 }, POCKET.z0 - 0.6, 0.6, P, 3), { tone: "lo", crease: "none" }) +
   S(k.cylinder(ARM.px, ARM.py, 3, POCKET.z0, 1.2, P, 24), { tone: "mid" }) +
   shaft(POCKET.z0 + 1.2, LO.z0) +
   `<g data-part="arm-lo"></g>` +

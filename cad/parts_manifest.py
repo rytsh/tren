@@ -188,7 +188,7 @@ HARDWARE_BY_MODEL = [
     ("st_screw", "M3×16 vida + dübel (istasyon tabanı)", {}, 2, "Tutucuyu zemine sabitler"),
     ("screw_m3x25", "M3×25 vida (çeki pimi)", LEGACY_220, 0, "Lokomotif/tender çatalı başına 1; 250 vagonlarda pivot pimi M3×20 (dbc_pin)"),
     ("acc_conn", "Aksesuar hattı 2-pin kutuplu konnektör çifti (VARSAYIM: JST-XH 2P sınıfı)", LEGACY_220, 0,
-     "Faz 3 aksesuar hattı; 250 vagonlarda TrenBus kuplörde"),
+     "Faz 3 aksesuar hattı; 250 vagonlarda 4 pinli TrenBus yuvası"),
     ("acc_jumper", "Aksesuar ara kablosu 70 mm (2×0.35 mm² silikon, VARSAYIM)", LEGACY_220, 0, "Faz 3 aksesuar hattı"),
     ("cable_tie_25", "Kablo bağı 2.5 mm", {m: 2 for m in CARS_250}, 0, "Yuva arkasında TrenBus kablosu gerilim alıcısı"),
     ("led_strip", "LED şerit (vagon iç aydınlatması)", {"yolcu-250": 1, "gozlem-250": 1}, 0,

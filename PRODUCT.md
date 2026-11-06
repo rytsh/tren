@@ -46,12 +46,12 @@ Kullanıcı önceki turuncu afiş/uzun tanıtım sayfasını reddetti. 4 Kasım 
 
 - Ad **Tren** (repo adı), logo Lucide `train-track`; site, README ve favicon'da aynı.
 - Palet maviden sıcak kum/krem + işaret sarısına çevrildi (kullanıcı isteği).
-- Standart vagon 250 × 90 mm; altı vagon tipi (yolcu, enerji, radar, şarj, ses, gözlem). Hepsi T45 otomatik kuplör ve TrenBus (BAT+, CAN-H, CAN-L, GND) kullanır: `docs/standart.md`. Önceki "2-pin aksesuar hattı" bunun yerine geçti.
-- Yeni vagonların çizimleri hazır; CAD dosyaları üretilene kadar "CAD sırada" olarak işaretlenir ve indirme/3D sunulmaz.
+- Standart vagon 250 × 90 mm; altı vagon tipi (yolcu, enerji, radar, şarj, ses, gözlem). Hepsi TrenBus (BAT+, CAN-H, CAN-L, GND) kullanır: `docs/standart.md`. (Bu revizyondaki T45 kuplörü 6 Kasım'da çeki kolu + ara kabloyla değiştirildi.)
+- Yeni vagonların çizimleri hazır; CAD dosyaları üretilene kadar "CAD sırada" olarak işaretlenir ve indirme/3D sunulmaz. (6 Kasım: altısının da CAD'i üretildi.)
 
 ## Revizyon · 6 Kasım 2026
 
 - Şarj 250 yan cebinden kapı gibi açılan üst (+) / alt (−) iki kolla istasyondaki iki pirinç lamaya basar (kullanıcı fikri); kapalıyken kollar gövdeden taşmaz. Alt pabuçlar ve çatı kolu kaldırıldı.
-- Hat tasarlayıcısında araçlar gerçek pivotlarına oturur ve çeki kolu ölçüsüyle dizilir; gövdesi gelmeyen 250 vagonlar gerçek ortak şasi üstünde ölçülü taslak gövdeyle gösterilir ve "Gövde sırada" işaretlenir.
+- Hat tasarlayıcısında araçlar gerçek pivotlarına oturur ve çeki kolu ölçüsüyle dizilir. (Ara adımda gövdesi gelmeyen vagonlar taslak gövdeyle gösterildi; Faz 4c'de hepsi gerçek montaja geçti.)
 - Vagonlar arası T45 otomatik kuplörü bırakıldı (kullanıcı: "fazla küçükçe"); araçlar tek parça çeki koluyla, TrenBus 4 pinli ara kabloyla bağlanır.
 - Altı 250 vagonun gövdeleri CAD'e alındı (Faz 4c); hat tasarlayıcısında artık hepsi gerçek montajla görünür.
